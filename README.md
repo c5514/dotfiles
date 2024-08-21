@@ -4,3 +4,4 @@ Includes:
 - Neovim configuration for TeX editing and required dependecies for pdf compilation
 - Emacs simple configuration using Org and Elpaca package manager.
 - Installation of Hyprland without including its configuration using home manager. For future updates, this feature will be included as well Aquamarine implementation.
+- Waybar, rofi-wayland, kitty, waypaper, pywal, hyprland, hyprlock, hypridle configurations in .config directory.
