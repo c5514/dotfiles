@@ -56,15 +56,39 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  programs.bash.enable = true;
-  programs.bash.shellAliases = {
+  programs.zsh = {
+  	enable = true;
+	autosuggestion = {
+		enable = true;
+		highlight = "fg=#6f6c5d";
+	};
+	history = {
+        path = "$HOME/.histfile";
+        save = 10000;
+        size = 10000;
+    };
+  	shellAliases = {
     ll = "ls -l";
     ff = "fastfetch";
     tex = "cd ~/Documents/Vim/Tex/";
     nv = "nvim";
     ".." = "cd ..";
     c = "clear";
+  	};
+	oh-my-zsh = {
+		enable = true;
+		theme = "agnoster";
+	};
   };
+  	  # programs.bash.enable = true;
+  # programs.bash.shellAliases = {
+  #   ll = "ls -l";
+  #   ff = "fastfetch";
+  #   tex = "cd ~/Documents/Vim/Tex/";
+  #   nv = "nvim";
+  #   ".." = "cd ..";
+  #   c = "clear";
+  # };
   gtk.enable = true;
   gtk.cursorTheme.package = pkgs.bibata-cursors;
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
