@@ -5,8 +5,14 @@ Includes:
 - Emacs simple configuration using Org and Elpaca package manager.
 - Installation of Hyprland, without including its configuration using home manager. For future updates, this feature will be included as well Aquamarine implementation.
 - Waybar, rofi-wayland, kitty, waypaper, pywal, hyprland, hyprlock, hypridle configurations in .config directory.
+## 24/08/2024
+New changes:
+- New default shell: Zsh
+- Disabled amd-gpu at the beginning of booting
+- Disabled battery saving configurations due to conflict with optimal performance.
 ## 25/08/2024
 New changes: 
+- Enabled amd-gpu at the beginning of booting.
 - New Hyprland animations in hyprland.conf
 - Waybar: App launcher buttom, hyprshader buttom are fixed.
 - New bootloader, systemd boot is replaced by grub bootloader with a custom theme.
