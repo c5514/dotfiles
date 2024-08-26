@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, grub2-themes, ... }:
 
 {
   imports =
@@ -11,8 +11,35 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.devices = ["nodev"];
+  # boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.font = "${pkgs.grub2}/share/grub/unicode.pf2";
+  boot.loader.grub2-theme = {
+  	enable = true;
+	theme = "vimix";
+	footer = true;
+  };
+  boot.loader.grub.fontSize = 24;
+  boot.loader.systemd-boot.enable = false;
+  boot.plymouth = {
+  	enable = true;
+	theme = "breeze";
+  };
+  boot.kernelParams = [
+  	"quiet"
+  	"splash"
+	"boot.shell_on_fail"
+    "loglevel=3"
+    "rd.systemd.show_status=false"
+    "rd.udev.log_level=3"
+    "udev.log_priority=3"
+  ];
+
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
@@ -35,18 +62,29 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v16n.psf.gz";
+    font = "ter-v20n";
     packages = with pkgs; [ terminus_font ];
-    keyMap = "la-latin1";
+    keyMap = "us";
   };
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "latam";
-    xkbVariant = "";
+  	enable = true;
+    layout = "us";
+    xkbVariant = "altgr-intl";
     videoDrivers = [ "amdgpu" ];
+	displayManager.gdm.enable = true;
+	displayManager.gdm.wayland = true;
+	# displayManager.gdm.settings = {
+	# 	User = "c5514";	
+	# };
   };
 
+  hardware.opengl = {
+	enable = true;
+	driSupport = true;
+	driSupport32Bit = true;
+};
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.c5514 = {
     isNormalUser = true;
@@ -54,7 +92,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
-
+  programs.zsh.enable = true;
+  users.users.c5514.shell = pkgs.zsh;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # Hyprland modules
@@ -67,11 +106,9 @@
 environment.systemPackages = 
   (with pkgs; [
     firefox
-    waybar
     grim
     slurp
     rofi-wayland
-    swww
     waypaper
     brightnessctl
     kitty
@@ -89,7 +126,6 @@ environment.systemPackages =
     gnome.nautilus
     wl-clipboard
     playerctl
-    dunst
     feh
     pavucontrol
     obs-studio
@@ -101,7 +137,6 @@ environment.systemPackages =
     hyprpaper
     hyprshade
     xdg-desktop-portal-hyprland
-
   ])
   ++
   (with pkgs-unstable; [
@@ -153,21 +188,21 @@ hardware.printers = {
 };
 #To enable trash support in nautilus
   services.gvfs.enable = true;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MAX_PERF_ON_BAT = 50;
-      START_CHARGE_THRESH_BAT0 = 40;
-      STOP_CHARGE_THRESH_BAT0 = 80;
-    };
-  };
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+  #     CPU_MIN_PERF_ON_AC = 0;
+  #     CPU_MIN_PERF_ON_BAT = 0;
+  #     CPU_MAX_PERF_ON_AC = 100;
+  #     CPU_MAX_PERF_ON_BAT = 50;
+  #     START_CHARGE_THRESH_BAT0 = 40;
+  #     STOP_CHARGE_THRESH_BAT0 = 80;
+  #   };
+  # };
   powerManagement.powertop.enable = true;
 #Enable Display Manager greetd
   #services.greetd = {

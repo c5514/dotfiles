@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ags, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -6,13 +6,22 @@
   home.username = "c5514";
   home.homeDirectory = "/home/c5514";
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.packages = [
-    pkgs.libsForQt5.okular
-	pkgs.ripgrep
-	pkgs.emacs29-pgtk
-	pkgs.findutils
-	pkgs.fd
-	pkgs.clang
+  home.packages = with pkgs; [
+    libsForQt5.okular
+	ripgrep
+	emacs29-pgtk
+	findutils
+	fd
+	clang
+	bun
+	dart-sass
+	dunst
+	waybar
+    swww
+	gtk3
+	hyprpicker
+	# gnome.gnome-settings-daemon
+	# gjs
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -21,6 +30,15 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+  imports = [ ags.homeManagerModules.default];
+  programs.ags = {
+  	enable = true;
+	extraPackages = with pkgs; [
+		gtksourceview
+		webkitgtk
+		accountsservice
+	];
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -56,15 +74,39 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  programs.bash.enable = true;
-  programs.bash.shellAliases = {
+  programs.zsh = {
+  	enable = true;
+	autosuggestion = {
+		enable = true;
+		highlight = "fg=#6f6c5d";
+	};
+	history = {
+        path = "$HOME/.histfile";
+        save = 10000;
+        size = 10000;
+    };
+  	shellAliases = {
     ll = "ls -l";
     ff = "fastfetch";
     tex = "cd ~/Documents/Vim/Tex/";
     nv = "nvim";
     ".." = "cd ..";
     c = "clear";
+  	};
+	oh-my-zsh = {
+		enable = true;
+		theme = "agnoster";
+	};
   };
+  	  # programs.bash.enable = true;
+  # programs.bash.shellAliases = {
+  #   ll = "ls -l";
+  #   ff = "fastfetch";
+  #   tex = "cd ~/Documents/Vim/Tex/";
+  #   nv = "nvim";
+  #   ".." = "cd ..";
+  #   c = "clear";
+  # };
   gtk.enable = true;
   gtk.cursorTheme.package = pkgs.bibata-cursors;
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
@@ -73,7 +115,12 @@
   gtk.theme.name = "adw-gtk3-dark";
   gtk.iconTheme.package = pkgs.papirus-icon-theme;
   gtk.iconTheme.name = "Papirus";
-  #Neovim configuration
+qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style.name = "Catppuccin-Mocha-Standard-Blue-Dark";
+  };
+#Neovim configuration
 programs.git.enable = true;
 programs.neovim = 
 let 
