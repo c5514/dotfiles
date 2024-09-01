@@ -6,8 +6,11 @@
   home.username = "c5514";
   home.homeDirectory = "/home/c5514";
   home.stateVersion = "24.05"; # Please read the comment before changing.
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (_: true);
   home.packages = with pkgs; [
-    libsForQt5.okular
+    # libsForQt5.okular
+	# mupdf
 	ripgrep
 	emacs29-pgtk
 	findutils
@@ -19,9 +22,10 @@
 	waybar
     swww
 	gtk3
-	hyprpicker
-	# gnome.gnome-settings-daemon
-	# gjs
+	# hyprpicker
+	vesktop
+	ranger
+	evince
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -117,8 +121,9 @@
   gtk.iconTheme.name = "Papirus";
 qt = {
     enable = true;
-    platformTheme = "gtk";
-    style.name = "Catppuccin-Mocha-Standard-Blue-Dark";
+    platformTheme.name = "gtk3";
+	style.package = pkgs.adwaita-qt;
+    style.name = "adwaita-dark";
   };
 #Neovim configuration
 programs.git.enable = true;

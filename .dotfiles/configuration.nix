@@ -28,8 +28,15 @@
   boot.loader.systemd-boot.enable = false;
   boot.plymouth = {
   	enable = true;
-	theme = "breeze";
+	theme = "rings";
+	themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
   };
+  # boot.consoleLogLevel = 0;
+  # boot.initrd.verbose = false;
   boot.kernelParams = [
   	"quiet"
   	"splash"
@@ -39,6 +46,7 @@
     "rd.udev.log_level=3"
     "udev.log_priority=3"
   ];
+  # boot.loader.timeout = 0;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.bluetooth.enable = true;
@@ -69,15 +77,12 @@
 
   # Configure keymap in X11
   services.xserver = {
-  	enable = true;
+  	# enable = true;
     layout = "us";
     xkbVariant = "altgr-intl";
     videoDrivers = [ "amdgpu" ];
-	displayManager.gdm.enable = true;
-	displayManager.gdm.wayland = true;
-	# displayManager.gdm.settings = {
-	# 	User = "c5514";	
-	# };
+	# displayManager.gdm.enable = true;
+	# displayManager.gdm.wayland = true;
   };
 
   hardware.opengl = {
@@ -204,16 +209,25 @@ hardware.printers = {
   #   };
   # };
   powerManagement.powertop.enable = true;
-#Enable Display Manager greetd
-  #services.greetd = {
-  # enable = true;
-  # settings = {
-  #   default_session = {
-  #     command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-  #     user = "greeter";
-  #   };
-  # };
-  #};
+#Enable Display Manager sddm
+services.displayManager.sddm = {
+    enable = true; # Enable SDDM.
+	wayland.enable = true;
+    sugarCandyNix = {
+        enable = true; # This set SDDM's theme to "sddm-sugar-candy-nix".
+        settings = {
+          # Set your configuration options here.
+          # Here is a simple example:
+          Background = lib.cleanSource ./nixwall.png;
+          ScreenWidth = 1920;
+          ScreenHeight = 1080;
+          FormPosition = "left";
+          HaveFormBackground = true;
+          PartialBlur = true;
+          # ...
+        };
+      };
+    };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

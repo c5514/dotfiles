@@ -56,7 +56,7 @@ ls.add_snippets('tex',{
         }
         \settitlemarks{section,subsection}
         \pagestyle{mypage}
-        \input{/home/cesar/Documents/Vim/Tex/Newcomm/theorem.tex}
+        \input{~/Documents/Vim/Tex/Newcomm/theorem.tex}
 
 
 
