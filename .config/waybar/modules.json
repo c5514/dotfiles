@@ -101,11 +101,15 @@
 
   // ChatGPT Launcher
   "custom/chatgpt": {
-    "format": " ",
-    "on-click": "~/dotfiles/.settings/ai.sh",
+    "format": "󰟍",
+    "on-click": "firefox https://poe.com/",
     "tooltip-format": "AI Support"
   },
-
+  "custom/whatsapp": {
+    "format": "",
+    "on-click": "firefox https://web.whatsapp.com",
+    "tooltip-format": "WhatsApp Web"
+  },
   // Calculator
   "custom/calculator": {
     "format": "",
@@ -252,7 +256,8 @@
   "group/links": {
     "orientation": "horizontal",
     "modules": [
-      "custom/chatgpt",
+      // "custom/chatgpt",
+	  "custom/whatsapp",
       "custom/empty"      
     ]
   },
@@ -282,7 +287,7 @@
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "kitty -e nmtui",
+    "on-click": "kitty --class floating -e nmtui",
     "on-click-right": "nm-connection-editor"
   },
 
