@@ -22,4 +22,4 @@ New changes:
 ## 05/09/2024
 - Changed waybar for hyprpanel.
 - Enabled dependencies for hyprpanel.
-- Bluetooth needs to be configure.
+- Bluetooth needs to be configured.
