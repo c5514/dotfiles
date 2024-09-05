@@ -28,8 +28,15 @@
   boot.loader.systemd-boot.enable = false;
   boot.plymouth = {
   	enable = true;
-	theme = "breeze";
+	theme = "rings";
+	themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
   };
+  # boot.consoleLogLevel = 0;
+  # boot.initrd.verbose = false;
   boot.kernelParams = [
   	"quiet"
   	"splash"
@@ -39,10 +46,11 @@
     "rd.udev.log_level=3"
     "udev.log_priority=3"
   ];
+  # boot.loader.timeout = 0;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -69,15 +77,12 @@
 
   # Configure keymap in X11
   services.xserver = {
-  	enable = true;
+  	# enable = true;
     layout = "us";
     xkbVariant = "altgr-intl";
     videoDrivers = [ "amdgpu" ];
-	displayManager.gdm.enable = true;
-	displayManager.gdm.wayland = true;
-	# displayManager.gdm.settings = {
-	# 	User = "c5514";	
-	# };
+	# displayManager.gdm.enable = true;
+	# displayManager.gdm.wayland = true;
   };
 
   hardware.opengl = {
@@ -120,7 +125,6 @@ environment.systemPackages =
     pywal
     zathura
     telegram-desktop
-    usbutils
     material-design-icons
     pavucontrol
     gnome.nautilus
@@ -137,6 +141,9 @@ environment.systemPackages =
     hyprpaper
     hyprshade
     xdg-desktop-portal-hyprland
+	usbutils
+	udiskie
+	udisks
   ])
   ++
   (with pkgs-unstable; [
@@ -186,8 +193,14 @@ hardware.printers = {
     }
   ];
 };
+services.power-profiles-daemon.package = pkgs.power-profiles-daemon;
+services.power-profiles-daemon.enable = true;
+
+services.upower.package = pkgs.upower;
+services.upower.enable = true;
 #To enable trash support in nautilus
   services.gvfs.enable = true;
+  services.udisks2.enable = true;
   # services.tlp = {
   #   enable = true;
   #   settings = {
@@ -204,16 +217,25 @@ hardware.printers = {
   #   };
   # };
   powerManagement.powertop.enable = true;
-#Enable Display Manager greetd
-  #services.greetd = {
-  # enable = true;
-  # settings = {
-  #   default_session = {
-  #     command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-  #     user = "greeter";
-  #   };
-  # };
-  #};
+#Enable Display Manager sddm
+services.displayManager.sddm = {
+    enable = true; # Enable SDDM.
+	wayland.enable = true;
+    sugarCandyNix = {
+        enable = true; # This set SDDM's theme to "sddm-sugar-candy-nix".
+        settings = {
+          # Set your configuration options here.
+          # Here is a simple example:
+          Background = lib.cleanSource ./nixwall.png;
+          ScreenWidth = 1920;
+          ScreenHeight = 1080;
+          FormPosition = "left";
+          HaveFormBackground = true;
+          PartialBlur = true;
+          # ...
+        };
+      };
+    };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

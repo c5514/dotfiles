@@ -25,7 +25,8 @@ ls.add_snippets('bib',{
         i(2),
         i(3),
 		i(4),
-		i(5)
+		i(5),
+		i(6)
       })
   ),
   s({trig="art", dscr="Add article citation"},
@@ -50,7 +51,8 @@ ls.add_snippets('bib',{
 		i(5),
 		i(6),
 		i(7),
-		i(8)
+		i(8),
+		i(9)
       })
   ),
 })

@@ -6,8 +6,11 @@
   home.username = "c5514";
   home.homeDirectory = "/home/c5514";
   home.stateVersion = "24.05"; # Please read the comment before changing.
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (_: true);
   home.packages = with pkgs; [
-    libsForQt5.okular
+    # libsForQt5.okular
+	# mupdf
 	ripgrep
 	emacs29-pgtk
 	findutils
@@ -15,13 +18,17 @@
 	clang
 	bun
 	dart-sass
+	btop
 	dunst
+	hyprpanel
 	waybar
     swww
 	gtk3
-	hyprpicker
-	# gnome.gnome-settings-daemon
-	# gjs
+	# hyprpicker
+	libgtop
+	gtop
+	ranger
+	evince
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -30,15 +37,15 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-  imports = [ ags.homeManagerModules.default];
-  programs.ags = {
-  	enable = true;
-	extraPackages = with pkgs; [
-		gtksourceview
-		webkitgtk
-		accountsservice
-	];
-  };
+ #  imports = [ ags.homeManagerModules.default];
+ #  programs.ags = {
+ #  	enable = true;
+	# extraPackages = with pkgs; [
+	# 	gtksourceview
+	# 	webkitgtk
+	# 	accountsservice
+	# ];
+ #  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -117,9 +124,25 @@
   gtk.iconTheme.name = "Papirus";
 qt = {
     enable = true;
-    platformTheme = "gtk";
-    style.name = "Catppuccin-Mocha-Standard-Blue-Dark";
+    platformTheme.name = "gtk3";
+	style.package = pkgs.adwaita-qt;
+    style.name = "adwaita-dark";
   };
+#VSCodium
+programs.vscode = {
+	enable = true;
+	package = pkgs.vscodium;
+	extensions = with pkgs.vscode-extensions; [
+		dracula-theme.theme-dracula 
+		vscodevim.vim 
+		# asvetliakov.vscode-neovim
+		arrterian.nix-env-selector
+		ms-python.python
+		ms-python.debugpy
+		ms-pyright.pyright
+		ms-toolsai.jupyter
+	];
+};
 #Neovim configuration
 programs.git.enable = true;
 programs.neovim = 
