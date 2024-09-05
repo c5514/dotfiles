@@ -23,3 +23,4 @@ New changes:
 - Changed waybar for hyprpanel.
 - Enabled dependencies for hyprpanel.
 - Bluetooth needs to be configured.
+- Vscodium enabled with extensions using home-manager.
