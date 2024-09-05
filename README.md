@@ -19,3 +19,7 @@ New changes:
 - Using display manager gdm in services.xserver.displayManager.gdm.
 - Added Plymouth with breeze theme.
 - Moved some packages from configuration.nix to home.nix and installed ags for future change of status bar(waybar -> ags).
+## 05/09/2024
+- Changed waybar for hyprpanel.
+- Enabled dependencies for hyprpanel.
+- Bluetooth needs to be configure.
