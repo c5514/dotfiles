@@ -82,6 +82,8 @@
 		./home/ags.nix
 		./home/wlogout.nix
 		./home/hyprland.nix
+		./home/hyprlock.nix
+		./home/hypridle.nix
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
