@@ -1,4 +1,4 @@
-{ config, pkgs, ags, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -9,8 +9,6 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
   home.packages = with pkgs; [
-    # libsForQt5.okular
-	# mupdf
 	ripgrep
 	emacs29-pgtk
 	findutils
@@ -22,8 +20,8 @@
 	waybar
     swww
 	gtk3
-	# hyprpicker
-	vesktop
+	hyprpicker
+	hyprpanel
 	ranger
 	evince
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
@@ -34,16 +32,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-  imports = [ ags.homeManagerModules.default];
-  programs.ags = {
-  	enable = true;
-	extraPackages = with pkgs; [
-		gtksourceview
-		webkitgtk
-		accountsservice
-	];
-  };
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -78,169 +66,14 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  programs.zsh = {
-  	enable = true;
-	autosuggestion = {
-		enable = true;
-		highlight = "fg=#6f6c5d";
-	};
-	history = {
-        path = "$HOME/.histfile";
-        save = 10000;
-        size = 10000;
-    };
-  	shellAliases = {
-    ll = "ls -l";
-    ff = "fastfetch";
-    tex = "cd ~/Documents/Vim/Tex/";
-    nv = "nvim";
-    ".." = "cd ..";
-    c = "clear";
-  	};
-	oh-my-zsh = {
-		enable = true;
-		theme = "agnoster";
-	};
-  };
-  	  # programs.bash.enable = true;
-  # programs.bash.shellAliases = {
-  #   ll = "ls -l";
-  #   ff = "fastfetch";
-  #   tex = "cd ~/Documents/Vim/Tex/";
-  #   nv = "nvim";
-  #   ".." = "cd ..";
-  #   c = "clear";
-  # };
-  gtk.enable = true;
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  gtk.cursorTheme.size = 24;
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3-dark";
-  gtk.iconTheme.package = pkgs.papirus-icon-theme;
-  gtk.iconTheme.name = "Papirus";
-qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
-	style.package = pkgs.adwaita-qt;
-    style.name = "adwaita-dark";
-  };
-#Neovim configuration
-programs.git.enable = true;
-programs.neovim = 
-let 
-	toLua = str: "lua << EOF\n${str}\nEOF\n";
-	toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-in
-{
-	enable = true;
-	defaultEditor = true;
-	viAlias = true;
-	vimAlias = true;
-	vimdiffAlias = true;
-	extraLuaConfig = ''${builtins.readFile ./nvim/options.lua}'';
-	plugins = 
-	let
-	 nvim-treesitter-with-plugins = pkgs.vimPlugins.nvim-treesitter.withPlugins (treesitter-plugins:
-	 with treesitter-plugins; [
-		bash
-		c 
-		cpp
-		json
-		lua 
-		nix 
-		python
-		rasi
-		toml
-		vim
-		zig
-	]);
-	in 
-	with pkgs.vimPlugins; [
-		nvim-treesitter-with-plugins
-		nui-nvim
-		nvim-web-devicons
-		plenary-nvim
-		{
-			plugin = nvim-lspconfig;
-			config = toLuaFile ./nvim/configs/lsp.lua;
-		}
-		{
-			plugin = nvim-treesitter-context;
-			config = toLuaFile ./nvim/configs/treesitterContext.lua;
-		}
-		{
-			plugin = nvim-autopairs;
-			config = toLua "require(\"nvim-autopairs\").setup()";
-		}
-		{
-			plugin = indent-blankline-nvim;
-			config = toLua "require(\"ibl\").setup()";
-		}
-		{
-			plugin = dashboard-nvim;
-			config = toLuaFile ./nvim/configs/dashboard.lua;
-		}
-		{
-			plugin = bufferline-nvim;
-			config = toLua "require(\"bufferline\").setup{}";
-		}
-		{
-			plugin = nvim-cmp;
-			config = toLuaFile ./nvim/configs/cmp.lua;
-		}
-		cmp-nvim-lsp
-		cmp_luasnip
-		cmp-buffer
-		cmp-path
-		{
-			plugin = vimtex;
-			config = toLuaFile ./nvim/configs/vimtex.lua;
-		}
-		{
-			plugin = comment-nvim;
-			config = toLua "require(\"Comment\").setup()";
-		}
-		{
-			plugin = lualine-nvim;
-			config = toLuaFile ./nvim/configs/lualine.lua;
-		}
-		{
-			plugin = todo-comments-nvim;
-			config = toLuaFile ./nvim/configs/todoComments.lua;
-		}
-		{
-			plugin = onedark-nvim;
-			config = toLuaFile ./nvim/configs/onedark.lua;
-		}
-		{
-			plugin = telescope-nvim;
-			config = toLuaFile ./nvim/configs/telescope.lua;
-		}
-		which-key-nvim
-		{
-			plugin = neo-tree-nvim;
-			config = toLuaFile ./nvim/configs/neotree.lua;
-		}
-		friendly-snippets
-		{
-			plugin = luasnip;
-			config = toLuaFile ./nvim/configs/luasnip.lua;
-		}
+	programs.git.enable = true;
+	imports = [
+		./home/zsh.nix
+		./home/theme.nix
+		./home/nvim.nix
+		./home/vscodium.nix
+		./home/zathura.nix
 	];
-	extraPackages = with pkgs; [
-		# LSP 
-		lua-language-server
-		nixd
-		texlab
-		pyright
-		# Tools 
-		cmake
-		fzf
-		gcc
-		gnumake
-	];
-};
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+	# Let Home Manager install and manage itself.
+	programs.home-manager.enable = true;
 }

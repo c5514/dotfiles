@@ -7,15 +7,15 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	grub2-themes.url = "github:vinceliuice/grub2-themes";
-	ags.url = "github:Aylur/ags";
 	sddm-sugar-candy-nix = {
 		url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, grub2-themes,
-  				ags, sddm-sugar-candy-nix, ... }:
+  				hyprpanel, sddm-sugar-candy-nix, ... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -44,8 +44,15 @@
     homeConfigurations = {
       c5514 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-		extraSpecialArgs = { inherit ags; };
-        modules = [ ./home.nix ];
+		extraSpecialArgs = { };
+        modules = [ 
+			./home.nix
+			{
+				nixpkgs = {
+					overlays = [hyprpanel.overlay];
+				};
+			}
+		];
       };
     };
   };

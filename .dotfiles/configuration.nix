@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, pkgs-unstable, grub2-themes, ... }:
+{ config, lib, pkgs, pkgs-unstable, grub2-themes,... }:
 
 {
   imports =
@@ -17,11 +17,11 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.devices = ["nodev"];
-  # boot.loader.grub.useOSProber = true;
+  boot.loader.grub.useOSProber = true;
   # boot.loader.grub.font = "${pkgs.grub2}/share/grub/unicode.pf2";
   boot.loader.grub2-theme = {
   	enable = true;
-	theme = "vimix";
+	theme = "whitesur";
 	footer = true;
   };
   boot.loader.grub.fontSize = 24;
@@ -123,9 +123,10 @@ environment.systemPackages =
     texliveFull
     wlogout
     pywal
-    zathura
     telegram-desktop
     usbutils
+	udiskie
+	udisks
     material-design-icons
     pavucontrol
     gnome.nautilus
@@ -193,6 +194,9 @@ hardware.printers = {
 };
 #To enable trash support in nautilus
   services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
   # services.tlp = {
   #   enable = true;
   #   settings = {
