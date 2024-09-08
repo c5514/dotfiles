@@ -11,11 +11,15 @@
 		url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
-	hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+	ags.url = "github:Aylur/ags";
+	hyprland-contrib = {
+		url = "github:hyprwm/contrib";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, grub2-themes,
-  				hyprpanel, sddm-sugar-candy-nix, ... }:
+  				ags, sddm-sugar-candy-nix, hyprland-contrib, ... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -44,14 +48,12 @@
     homeConfigurations = {
       c5514 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-		extraSpecialArgs = { };
+		extraSpecialArgs = {
+			inherit ags;
+			inherit hyprland-contrib;
+		};
         modules = [ 
 			./home.nix
-			{
-				nixpkgs = {
-					overlays = [hyprpanel.overlay];
-				};
-			}
 		];
       };
     };

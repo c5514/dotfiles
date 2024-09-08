@@ -62,8 +62,6 @@
 	(with pkgs; [
 		firefox
 		#Utilities
-		grim
-		slurp
 		brightnessctl
 		wl-clipboard
 		playerctl
@@ -84,7 +82,6 @@
 		#Extra
 		rofi-wayland
 		waypaper
-		wlogout
 		material-design-icons
 		pavucontrol
 		gnome.nautilus

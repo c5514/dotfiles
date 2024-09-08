@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs,ags,hyprland-contrib, ... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -10,8 +10,7 @@
 	nixpkgs.config.allowUnfreePredicate = (_: true);
 	home.packages = with pkgs; [
 		ripgrep
-		emacs29-pgtk
-		findutils
+		coreutils
 		fd
 		clang
 		bun
@@ -19,10 +18,18 @@
     	swww
 		gtk3
 		hyprpicker
-		hyprpanel
 		ranger
 		evince
 		webcord
+		gawk
+		imagemagick
+		inotify-tools
+		util-linux
+		procps
+		gnome.gnome-control-center
+		mission-center
+		overskride
+		hyprland-contrib.packages.${pkgs.system}.grimblast
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -72,6 +79,9 @@
 		./home/nvim.nix
 		./home/vscodium.nix
 		./home/zathura.nix
+		./home/ags.nix
+		./home/wlogout.nix
+		./home/hyprland.nix
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
