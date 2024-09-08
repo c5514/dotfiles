@@ -24,3 +24,6 @@ New changes:
 - Enabled dependencies for hyprpanel.
 - Bluetooth needs to be configured.
 - Vscodium enabled with extensions using home-manager.
+## 07/09/2024
+- Nvim, zathura, zsh, vscodium installed via home-manager.
+- Added hyprpanel through flakes.
