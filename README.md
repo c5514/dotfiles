@@ -28,5 +28,4 @@ New changes:
 - Nvim, zathura, zsh, vscodium installed via home-manager.
 - Added hyprpanel through flakes.
 ## 08/09/2024
-- Hyprland, hyprlock, hypridle configurations managed through home-manager.
-- wlogout installed via home-manager, configuration is still the same.
+- Hyprland, hyprlock, hypridle, wlogout, zathura configurations managed through home-manager.
