@@ -38,9 +38,12 @@
 			general = {
 				gaps_in = 5;
 				gaps_out = 5;
+				border_size = 3;
 				# "col.active_border" = "$color7 $color11 45deg";
-				"col.active_border" = "rgba(888888aa)";
-				"col.inactive_border" = "rgba(00000088)";
+    			"col.active_border" = "rgba(33ccff99) rgba(7147DDaa) rgba(9848D688) rgba(7147DD99) rgba(33ccff88) 45deg";
+    			"col.inactive_border" = "rgba(595959aa)";
+				# "col.active_border" = "rgba(888888aa)";
+				# "col.inactive_border" = "rgba(00000088)";
 				resize_on_border  = true;
 				allow_tearing = false;
 				layout = "dwindle";
@@ -198,13 +201,23 @@
 			];
 			windowrule = [
 				"float, ^(waypaper)$"
-				"float, ^(pavucontrol)$"
 				"float, blueman-manager"
-				"float, feh"
 				"float, class:floating"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
+				"float,class:(iwgtk)"
+				"size 35% 60%,class:(iwgtk)"
+				"center,class:(iwgtk)"
+				"float,class:(pavucontrol)"
+				"center,title:(pavucontrol)"
+				"size 60% 70%,title:(pavucontrol)"
+				"float,class:(blueberry)"
+				"size 35% 60%,class:(blueberry)"
+				"center,class:(blueberry)"
+				"float,class:(feh)"
+				"size 35% 60%,class:(feh)"
+				"center,class:(feh)"
 			];
 		};
 	};
