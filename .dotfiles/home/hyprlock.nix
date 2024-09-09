@@ -26,12 +26,12 @@
     			font_color = "rgb(10, 10, 10)";
     			fade_on_empty = true;
     			fade_timeout = 1000;
-    			placeholder_text = "<i>Input Password...</i>"; 
+    			placeholder_text = ''<i>Input Password...</i>''; 
     			hide_input = false;
     			rounding = -1;
     			check_color = "rgb(204, 136, 34)";
     			fail_color = "rgb(204, 34, 34)";
-    			fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+    			fail_text = ''<i>$FAIL <b>($ATTEMPTS)</b></i>'';
     			fail_transition = 200;
     			capslock_color = -1;
     			numlock_color = -1;

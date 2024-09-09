@@ -21,14 +21,9 @@
 		ranger
 		evince
 		webcord
-		gawk
-		imagemagick
-		inotify-tools
-		util-linux
-		procps
-		gnome.gnome-control-center
-		mission-center
-		overskride
+		libnotify
+		blueberry
+		gnome.gnome-bluetooth
 		hyprland-contrib.packages.${pkgs.system}.grimblast
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
