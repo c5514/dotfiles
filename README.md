@@ -2,7 +2,7 @@
 - Window manager: Hyprland
 - Display manager: SDDM
 - Bootloader: GRUB2
-- App launcher: rofi-wayland
+- App launcher: rofi-wayland & ags
 - Bar: ags
 - Lock: hyprlock and wlogout
 - Pdf viewer: zathura and evince
