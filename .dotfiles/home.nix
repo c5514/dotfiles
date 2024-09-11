@@ -24,7 +24,8 @@
 		libnotify
 		blueberry
 		gnome.gnome-bluetooth
-		iwgtk
+		pywal
+		rofi-wayland
 		hyprland-contrib.packages.${pkgs.system}.grimblast
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
@@ -70,16 +71,19 @@
 	};
 	programs.git.enable = true;
 	imports = [
-		./home/zsh.nix
-		./home/theme.nix
-		./home/nvim.nix
-		./home/vscodium.nix
-		./home/zathura.nix
 		./home/ags.nix
-		./home/wlogout.nix
+		./home/hypridle.nix
 		./home/hyprland.nix
 		./home/hyprlock.nix
-		./home/hypridle.nix
+		./home/nvim.nix
+		./home/kitty.nix
+		# ./home/pywal.nix
+		# ./home/rofi.nix
+		./home/theme.nix
+		./home/vscodium.nix
+		./home/wlogout.nix
+		./home/zathura.nix
+		./home/zsh.nix
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

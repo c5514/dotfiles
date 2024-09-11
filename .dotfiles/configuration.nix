@@ -5,28 +5,14 @@
 	[ # Include the results of the hardware scan.
     	./hardware-configuration.nix
 		./config/bootloader.nix
+		./config/network.nix
 		./config/bluetooth.nix
 		./config/sddm.nix
 		./config/sound.nix
 		./config/printers.nix
 		./config/firewall.nix
 	];
-	networking.hostName = "nixos"; # Define your hostname.
-	networking.wireless.iwd.enable = true;  # Enables wireless support via wpa_supplicant.
-	networking.wireless.iwd.settings = {
-    	IPv6 = {
-    		Enabled = true;
-    	};
-    	Settings = {
-    		AutoConnect = true;
-    	};
-	};
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-	# Enable networking
-	networking.networkmanager.enable = true;
 	# Set your time zone.
 	time.timeZone = "America/Lima";
 	# Select internationalisation properties.
@@ -76,17 +62,14 @@
 		htop
 		unzip
 		
-		kitty
 		texliveFull
 
-		pywal
 		telegram-desktop
 		#USB utilities
 		usbutils
 		udiskie
 		udisks
 		#Extra
-		rofi-wayland
 		waypaper
 		material-design-icons
 		pavucontrol

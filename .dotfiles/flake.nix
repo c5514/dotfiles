@@ -16,6 +16,10 @@
 		url = "github:hyprwm/contrib";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	# nixvim = {
+	# 	url = "github:nix-community/nixvim";
+	# 	inputs.nixpkgs.follows = "nixpkgs";
+	# };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, grub2-themes,

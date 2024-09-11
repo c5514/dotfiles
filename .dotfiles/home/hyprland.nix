@@ -2,6 +2,7 @@
 {
 	wayland.windowManager.hyprland = {
 		enable = true;
+		# extraConfig = ''import ${config.xdg.cacheHome}/wal/colors-hyprland.conf''};
 		settings = {
 			monitor = ",preferred, auto, 1";
 			#Autostart
