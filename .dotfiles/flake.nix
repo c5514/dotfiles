@@ -2,9 +2,8 @@
   description = "My first flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+	nixpkgs.url = "nixpkgs/nixos-unstable";
+	home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	grub2-themes.url = "github:vinceliuice/grub2-themes";
 	sddm-sugar-candy-nix = {
@@ -16,19 +15,26 @@
 		url = "github:hyprwm/contrib";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	hyprland = {
+		url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
+	hyprland-plugins = {
+		url = "github:hyprwm/hyprland-plugins";
+		inputs.hyprland.follows = "hyprland";
+	};
 	# nixvim = {
 	# 	url = "github:nix-community/nixvim";
 	# 	inputs.nixpkgs.follows = "nixpkgs";
 	# };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, grub2-themes,
-  				ags, sddm-sugar-candy-nix, hyprland-contrib, ... }:
+  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, ... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      # pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
@@ -44,7 +50,6 @@
       		}
 		];
         specialArgs = {
-          inherit pkgs-unstable;
 		  inherit grub2-themes;
         };
       };
@@ -55,6 +60,8 @@
 		extraSpecialArgs = {
 			inherit ags;
 			inherit hyprland-contrib;
+			inherit hyprland-plugins;
+			inherit hyprland;
 		};
         modules = [ 
 			./home.nix

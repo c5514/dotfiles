@@ -1,4 +1,4 @@
-{ config, pkgs,ags,hyprland-contrib, ... }:
+{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, ... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -23,9 +23,10 @@
 		webcord
 		libnotify
 		blueberry
-		gnome.gnome-bluetooth
+		gnome-bluetooth
 		pywal
-		rofi-wayland
+		expat
+		# rofi-wayland
 		hyprland-contrib.packages.${pkgs.system}.grimblast
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
@@ -72,16 +73,16 @@
 	programs.git.enable = true;
 	imports = [
 		./home/ags.nix
-		./home/hypridle.nix
-		./home/hyprland.nix
-		./home/hyprlock.nix
+		./home/hypr/hypridle.nix
+		./home/hypr/hyprland.nix
+		./home/hypr/hyprlock.nix
 		./home/nvim.nix
 		./home/kitty.nix
-		# ./home/pywal.nix
-		# ./home/rofi.nix
+		./home/rofi.nix
 		./home/theme.nix
 		./home/vscodium.nix
-		./home/wlogout.nix
+		./home/waypaper/waypaper.nix
+		./home/wlogout/wlogout.nix
 		./home/zathura.nix
 		./home/zsh.nix
 	];

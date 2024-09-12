@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, grub2-themes,... }:
+{ config, lib, pkgs, grub2-themes,... }:
 
 {
 	imports =
@@ -26,15 +26,19 @@
 	#Configure keymap in X11
 	services.xserver = {
 		# enable = true;
-		layout = "us";
-		xkbVariant = "altgr-intl";
+		xkb.layout = "us";
+		xkb.variant = "altgr-intl";
 		videoDrivers = [ "amdgpu" ];
 	};
-	hardware.opengl = {
+	hardware.graphics = {
 		enable = true;
-		driSupport = true;
-		driSupport32Bit = true;
+		enable32Bit = true;
 	};
+	# hardware.opengl = {
+	# 	enable = true;
+	# 	# driSupport = true;
+	# 	driSupport32Bit = true;
+	# };
 	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.c5514 = {
 		isNormalUser = true;
@@ -49,7 +53,7 @@
 	# Hyprland modules
 	programs.hyprland.enable = true;
 	programs.hyprlock.enable = true;
-	programs.hyprland.xwayland.enable = true;
+	# programs.hyprland.xwayland.enable = true;
 	environment.systemPackages = 
 	(with pkgs; [
 		firefox
@@ -70,10 +74,9 @@
 		udiskie
 		udisks
 		#Extra
-		waypaper
 		material-design-icons
 		pavucontrol
-		gnome.nautilus
+		nautilus
 		feh
 		obs-studio
 		libreoffice-qt6-fresh
@@ -81,14 +84,15 @@
 		spotify
 		vlc
 		#Hyprland
-		hyprland
+		# hyprland
 		hyprpaper
 		hyprshade
 		xdg-desktop-portal-hyprland
-	])
-	++
-	(with pkgs-unstable; [
+	# ])
+	# ++
+	# (with pkgs-unstable; [
 		fastfetch
+		libinput
 	]);
 	fonts.packages = with pkgs;[
 		noto-fonts

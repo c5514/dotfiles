@@ -1,10 +1,11 @@
-{ config, lib, pkgs, pkgs-unstable, grub2-themes,... }:
+{ config, lib, pkgs, grub2-themes,... }:
 
 {
-	sound = {
-		enable=false;
-		mediaKeys.enable = true;
-	};
+	# sound = {
+	# 	enable=false;
+	# 	mediaKeys.enable = true;
+	# };
+	hardware.alsa.enablePersistence = true;
 	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
