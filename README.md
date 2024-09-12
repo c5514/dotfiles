@@ -1,5 +1,6 @@
 # Dotfiles for NixOS:
 - Window manager: Hyprland
+- Hyprland Plugins: Hyprspace(Broken in hyprland 43.0)
 - Display manager: SDDM
 - Bootloader: GRUB2
 - App launcher: rofi-wayland & ags
