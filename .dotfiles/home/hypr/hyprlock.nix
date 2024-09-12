@@ -1,6 +1,9 @@
 {pkgs,...}:
 
 {
+	home.file = {
+		"nixwall.png".source = ../../config/nixwall.png;
+	};
 	programs.hyprlock = {
 		enable = true;
 		settings = {
@@ -11,7 +14,7 @@
     		};
 			background = {
     			monitor = "";
-    			path = "../../config/nixwall.png";
+    			path = "~/nixwall.png";
 			};
 			input-field = [{
     			monitor = "";
