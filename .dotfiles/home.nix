@@ -1,4 +1,4 @@
-{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, ... }:
+{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, ... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -26,7 +26,7 @@
 		gnome-bluetooth
 		pywal
 		expat
-		# rofi-wayland
+		wf-recorder
 		hyprland-contrib.packages.${pkgs.system}.grimblast
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
@@ -78,6 +78,7 @@
 		./home/hypr/hyprlock.nix
 		./home/nvim.nix
 		./home/kitty.nix
+		./home/python.nix
 		./home/rofi.nix
 		./home/theme.nix
 		./home/vscodium.nix

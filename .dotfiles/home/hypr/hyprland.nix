@@ -1,4 +1,4 @@
-{ pkgs, lib, hyprland, hyprland-plugins, ... }:
+{ pkgs, lib, hyprland, hyprland-plugins, Hyprspace,... }:
 {
 	home.file = {
 		".config/wal/templates/colors-hyprland.conf".source = ./colors-hyprland.conf;
@@ -7,7 +7,10 @@
 		enable = true;
 		package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 		xwayland.enable = true;
-		plugins = [hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo];
+		plugins = [
+			# hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+			Hyprspace.packages.${pkgs.system}.Hyprspace
+		];
 		settings = {
 			monitor = ",preferred, auto, 1";
 			#Autostart
@@ -144,7 +147,8 @@
 				"$mainMod, N, exec, hyprshade on blue-light-filter"
 				"$mainMod, D, exec, hyprshade off"
 				#Workspaces overview
-				"$mainMod, P, hyprexpo:expo, toggle"
+				# "$mainMod, P, hyprexpo:expo, toggle"
+				"$mainMod, P, overview:toggle"
 				#Screenshot
 				", PRINT, exec, grimblast copy screen"
 				"$mainMod, PRINT, exec, grimblast copy active"
@@ -223,7 +227,7 @@
 				"size 35% 60%,class:(blueberry)"
 				"center,class:(blueberry)"
 				"float,class:(feh)"
-				"size 35% 60%,class:(feh)"
+				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"
 			];
 		};

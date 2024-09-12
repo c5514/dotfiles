@@ -23,13 +23,17 @@
 		url = "github:hyprwm/hyprland-plugins";
 		inputs.hyprland.follows = "hyprland";
 	};
+	Hyprspace = {
+		url = "github:KZDKM/Hyprspace";
+		inputs.hyprland.follows = "hyprland";
+	};
 	# nixvim = {
 	# 	url = "github:nix-community/nixvim";
 	# 	inputs.nixpkgs.follows = "nixpkgs";
 	# };
   };
 
-  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, ... }:
+  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, Hyprspace,... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -62,6 +66,7 @@
 			inherit hyprland-contrib;
 			inherit hyprland-plugins;
 			inherit hyprland;
+			inherit Hyprspace;
 		};
         modules = [ 
 			./home.nix
