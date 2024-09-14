@@ -1,5 +1,5 @@
 {
-  description = "My first flake";
+  description = "My NixOS configuration";
 
   inputs = {
 	nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -27,6 +27,10 @@
 		url = "github:KZDKM/Hyprspace";
 		inputs.hyprland.follows = "hyprland";
 	};
+	# spicetify-nix = {
+	# 	url = "github:the-argus/spicetify-nix";
+	# 	inputs.nixpkgs.follows = "nixpkgs";
+	# };
 	# nixvim = {
 	# 	url = "github:nix-community/nixvim";
 	# 	inputs.nixpkgs.follows = "nixpkgs";
@@ -67,6 +71,7 @@
 			inherit hyprland-plugins;
 			inherit hyprland;
 			inherit Hyprspace;
+			# inherit spicetify-nix;
 		};
         modules = [ 
 			./home.nix

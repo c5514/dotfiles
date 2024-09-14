@@ -144,8 +144,9 @@
 				"$mainMod, W, exec, waypaper"
 				"$mainMod SHIFT, W, exec, waypaper --random"
 				"$mainMod, BACKSPACE, exec, wlogout"
-				"$mainMod, N, exec, hyprshade on blue-light-filter"
-				"$mainMod, D, exec, hyprshade off"
+				"$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
+				"$mainMod, D, exec, ags -t datemenu"
+				"$mainMod, U, exec, ags -t quicksettings"
 				#Workspaces overview
 				# "$mainMod, P, hyprexpo:expo, toggle"
 				"$mainMod, P, overview:toggle"

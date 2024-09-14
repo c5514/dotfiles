@@ -11,6 +11,7 @@
 		./config/sound.nix
 		./config/printers.nix
 		./config/firewall.nix
+		./config/nextcloud.nix
 	];
 
 	# Set your time zone.
@@ -34,6 +35,7 @@
 		enable = true;
 		enable32Bit = true;
 	};
+	hardware.i2c.enable = true;
 	# hardware.opengl = {
 	# 	enable = true;
 	# 	# driSupport = true;
@@ -108,6 +110,7 @@
 	];
 	xdg.portal.enable = true;
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
 	#To enable trash and USB support in nautilus
 	services.gvfs.enable = true;

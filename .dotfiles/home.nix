@@ -1,4 +1,4 @@
-{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, ... }:
+{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, spicetify-nix,... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -22,6 +22,9 @@
 		evince
 		webcord
 		libnotify
+		lshw
+		procps
+		lm_sensors
 		blueberry
 		gnome-bluetooth
 		pywal
@@ -78,10 +81,11 @@
 		./home/hypr/hyprlock.nix
 		./home/nvim.nix
 		./home/kitty.nix
-		./home/python.nix
+		# ./home/python.nix
 		./home/rofi.nix
+		# ./home/spicetify.nix
 		./home/theme.nix
-		./home/vscodium.nix
+		# ./home/vscodium.nix
 		./home/waypaper/waypaper.nix
 		./home/wlogout/wlogout.nix
 		./home/zathura.nix
