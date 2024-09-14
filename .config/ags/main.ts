@@ -12,6 +12,7 @@ import OSD from "widget/osd/OSD"
 import SettingsDialog from "widget/settings/SettingsDialog"
 import FloatingDock from "widget/dock/FloatingDock"
 import ToolBoxDock from "widget/dock/ToolBoxDock"
+import { start_battery_warning_service } from "service/battery_warning.ts";
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
@@ -41,3 +42,4 @@ App.config({
         SettingsDialog(),
     ],
 })
+start_battery_warning_service();

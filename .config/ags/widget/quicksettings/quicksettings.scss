@@ -169,9 +169,11 @@ window#quicksettings .quicksettings {
 
     .media {
         @include spacing;
-
         .player {
             @include media;
+        image {
+            font-size: 1.5em;
+        }
         }
     }
 }

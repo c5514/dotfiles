@@ -4,6 +4,8 @@ import { Header } from "./widgets/Header"
 import { Volume, Microphone, SinkSelector, AppMixer } from "./widgets/Volume"
 import { Brightness } from "./widgets/Brightness"
 import { NetworkToggle, WifiSelection } from "./widgets/Network"
+// import NetworkMenu from "./network/index.js";
+// import { Wifi } from "./widgets/network/wifi/index.js";
 import { BluetoothToggle, BluetoothDevices } from "./widgets/Bluetooth"
 import { DND } from "./widgets/DND"
 import { DarkModeToggle } from "./widgets/DarkMode"
@@ -41,6 +43,7 @@ const Settings = () => Widget.Box({
         Header(),
 		Row(
             [NetworkToggle, BluetoothToggle],
+            // [Wifi(), BluetoothToggle],
             [WifiSelection, BluetoothDevices],
         ),
         Row(
