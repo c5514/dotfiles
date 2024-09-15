@@ -27,6 +27,8 @@
 		lm_sensors
 		blueberry
 		gnome-bluetooth
+		nautilus
+		spotify
 		pywal
 		expat
 		wf-recorder
@@ -85,7 +87,7 @@
 		./home/rofi.nix
 		# ./home/spicetify.nix
 		./home/theme.nix
-		# ./home/vscodium.nix
+		./home/vscodium.nix
 		./home/waypaper/waypaper.nix
 		./home/wlogout/wlogout.nix
 		./home/zathura.nix

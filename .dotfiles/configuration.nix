@@ -11,7 +11,7 @@
 		./config/sound.nix
 		./config/printers.nix
 		./config/firewall.nix
-		./config/nextcloud.nix
+		# ./config/nextcloud.nix
 	];
 
 	# Set your time zone.
@@ -78,12 +78,10 @@
 		#Extra
 		material-design-icons
 		pavucontrol
-		nautilus
 		feh
 		obs-studio
 		libreoffice-qt6-fresh
 		thunderbird
-		spotify
 		vlc
 		#Hyprland
 		# hyprland
