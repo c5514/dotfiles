@@ -18,7 +18,6 @@
     	swww
 		gtk3
 		hyprpicker
-		ranger
 		evince
 		webcord
 		libnotify
@@ -27,7 +26,6 @@
 		lm_sensors
 		blueberry
 		gnome-bluetooth
-		nautilus
 		spotify
 		pywal
 		expat
@@ -78,6 +76,7 @@
 	programs.git.enable = true;
 	imports = [
 		./home/ags.nix
+		./home/fish.nix
 		./home/hypr/hypridle.nix
 		./home/hypr/hyprland.nix
 		./home/hypr/hyprlock.nix
@@ -90,8 +89,9 @@
 		./home/vscodium.nix
 		./home/waypaper/waypaper.nix
 		./home/wlogout/wlogout.nix
+		./home/yazi.nix
 		./home/zathura.nix
-		./home/zsh.nix
+		# ./home/zsh.nix
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

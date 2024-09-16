@@ -6,7 +6,7 @@
 		font.name = "JetBrainsMono";
 		font.size = 12;
 		theme = "Dark Pastel";
-		shellIntegration.enableZshIntegration = true;
+		shellIntegration.enableFishIntegration = true;
 		settings = {
 			background = "#000000";
 			background_opacity = "0.9";

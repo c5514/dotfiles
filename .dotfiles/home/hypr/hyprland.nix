@@ -30,7 +30,7 @@
 			];
 			#Programs
 			"$terminal" = "kitty";
-			"$fileManager" = "nautilus";
+			"$fileManager" = "thunar";
 			"$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
 			"$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
 			"$browser" = "firefox";

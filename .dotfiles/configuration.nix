@@ -48,8 +48,10 @@
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [];
 	};
-	programs.zsh.enable = true;
-	users.users.c5514.shell = pkgs.zsh;
+	# programs.zsh.enable = true;
+	programs.fish.enable = true;
+	# users.users.c5514.shell = pkgs.zsh;
+	users.users.c5514.shell = pkgs.fish;
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 	# Hyprland modules
@@ -110,8 +112,11 @@
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
-	#To enable trash and USB support in nautilus
+	#configuration for file manager
+	programs.thunar.enable = true;
+	programs.xfconf.enable = true;
 	services.gvfs.enable = true;
+	services.tumbler.enable = true;
 	services.udisks2.enable = true;
 	#To enable power saving
 	services.upower.enable = true;
