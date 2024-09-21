@@ -31,8 +31,8 @@
 			#Programs
 			"$terminal" = "kitty";
 			"$fileManager" = "thunar";
-			"$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
-			"$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
+			# "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
+			# "$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
 			"$browser" = "firefox";
 			#Input
 			input = {
@@ -45,12 +45,13 @@
 				};
 			};
 			#General
-			source = "~/.cache/wal/colors-hyprland.conf";
+			# source = "~/.cache/wal/colors-hyprland.conf"; #To enable pywal generated colors, must use waypaper, rofi and wlogout instead of ags
 			general = {
 				gaps_in = 3;
 				gaps_out = 5;
 				border_size = 4;
-    			"col.active_border" = "$color7 $color11 45deg";
+    			# "col.active_border" = "$color7 $color11 45deg";
+				"col.active_border" = "rgba(33ccff99) rgba(7147DDaa) rgba(9848D688) rgba(7147DD99) rgba(33ccff88) 45deg";
     			"col.inactive_border" = "rgba(595959aa)";
 				resize_on_border  = true;
 				allow_tearing = false;
@@ -143,8 +144,8 @@
 				"$mainMod, P, pseudo,"
 				"$mainMod, J, togglesplit,"
 				"$mainMod, B, exec, $browser"
-				"$mainMod, W, exec, waypaper"
-				"$mainMod SHIFT, W, exec, waypaper --random"
+				# "$mainMod, W, exec, waypaper"
+				# "$mainMod SHIFT, W, exec, waypaper --random"
 				# "$mainMod, BACKSPACE, exec, wlogout"
 				"$mainMod, BACKSPACE, exec, ags -t powermenu"
 				"$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
@@ -158,8 +159,9 @@
 				"$mainMod, PRINT, exec, grimblast copy active"
 				"$mainMod SHIFT, PRINT, exec, grimblast copy area"
 				#Cliphist
-				"$mainMod, V, exec, cliphist list | $clipboard| cliphist decode | wl-copy"
-				"$mainMod SHIFT, V, exec, cliphist list | $clipboard | cliphist delete"
+				# "$mainMod, V, exec, cliphist list | $clipboard| cliphist decode | wl-copy"
+				"$mainMod, V, exec, ags -r 'launcher.open(\":ch\")'"
+				# "$mainMod SHIFT, V, exec, cliphist list | $clipboard | cliphist delete"
 				"$mainMod CTRL, V, exec, cliphist wipe"
 				#Change focus of workspace
 				"$mainMod, left, movefocus, l"
@@ -218,6 +220,7 @@
 				"float, ^(waypaper)$"
 				# "float, blueman-manager"
 				"float, class:floating"
+				"float, ^(com.github.Aylur.ags)$"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
@@ -233,9 +236,6 @@
 				"float,class:(feh)"
 				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"
-				"float,class:(megasync)"
-				# "center,class:(megasync)"
-				"size 20% 50%,title:(megasync)"
 			];
 		};
 	};

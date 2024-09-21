@@ -27,7 +27,7 @@
 		blueberry
 		gnome-bluetooth
 		spotify
-		pywal
+		# pywal
 		expat
 		fzf
 		wf-recorder
@@ -86,16 +86,15 @@
 		./home/kitty.nix
 		./home/megasync.nix
 		# ./home/python.nix
-		./home/rofi.nix
+		# ./home/rofi.nix
 		# ./home/spicetify.nix
 		./home/theme.nix
 		./home/vscodium.nix
-		./home/waypaper/waypaper.nix
-		./home/wlogout/wlogout.nix
+		# ./home/waypaper/waypaper.nix
+		# ./home/wlogout/wlogout.nix
 		./home/yazi.nix
 		./home/zathura.nix
 		# ./home/zsh.nix
-		# matugen.nixosModules.default
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
