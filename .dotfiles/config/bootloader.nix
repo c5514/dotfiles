@@ -11,7 +11,7 @@
 	boot.loader.grub.useOSProber = true;
 	boot.loader.grub2-theme = {
 		enable = true;
-		theme = "whitesur";
+		theme = "stylish";
 		footer = true;
 	};
 	boot.loader.grub.fontSize = 24;

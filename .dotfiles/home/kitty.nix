@@ -5,7 +5,7 @@
 		package = pkgs.kitty;
 		font.name = "JetBrainsMono";
 		font.size = 12;
-		theme = "Dark Pastel";
+		themeFile = "Dark_Pastel";
 		shellIntegration.enableFishIntegration = true;
 		settings = {
 			background = "#000000";

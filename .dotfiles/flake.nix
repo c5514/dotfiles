@@ -27,6 +27,10 @@
 		url = "github:KZDKM/Hyprspace";
 		inputs.hyprland.follows = "hyprland";
 	};
+	matugen = {
+		url = "github:Iniox/Matugen";
+		# ref = "refs/tags/matugen-v0.10.0";
+	};
 	# spicetify-nix = {
 	# 	url = "github:the-argus/spicetify-nix";
 	# 	inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +41,7 @@
 	# };
   };
 
-  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, Hyprspace,... }:
+  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, Hyprspace,matugen,... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -71,6 +75,7 @@
 			inherit hyprland-plugins;
 			inherit hyprland;
 			inherit Hyprspace;
+			inherit matugen;
 			# inherit spicetify-nix;
 		};
         modules = [ 

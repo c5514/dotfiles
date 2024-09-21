@@ -3,6 +3,9 @@
 	programs.fish = {
 		enable = true;
 		package = pkgs.fish;
+		interactiveShellInit = ''
+		set fish_greeting
+		'';
 		shellAliases = {
     		ll = "ls -l";
     		ff = "fastfetch";

@@ -15,7 +15,7 @@
 			monitor = ",preferred, auto, 1";
 			#Autostart
 			exec-once = [
-				"waypaper --restore &"
+				# "waypaper --restore &"
 				"ags &"
 				"hypridle &"
 				"wl-paste --type text --watch cliphist store"
@@ -135,18 +135,21 @@
 				"$mainMod, RETURN, exec, $terminal"
 				"$mainMod, Q, killactive,"
 				"$mainMod, M, exec, exit"
-				"$mainMod, E, exec, $fileManager"
+				"$mainMod, E, exec, kitty -e yazi"
+				"$mainMod SHIFT, E, exec, $fileManager"
 				"$mainMod, T, togglefloating"
-				"$mainMod, SPACE, exec, $menu"
+				# "$mainMod, SPACE, exec, $menu"
+				"$mainMod, SPACE, exec, ags -t launcher"
 				"$mainMod, P, pseudo,"
 				"$mainMod, J, togglesplit,"
 				"$mainMod, B, exec, $browser"
 				"$mainMod, W, exec, waypaper"
 				"$mainMod SHIFT, W, exec, waypaper --random"
-				"$mainMod, BACKSPACE, exec, wlogout"
+				# "$mainMod, BACKSPACE, exec, wlogout"
+				"$mainMod, BACKSPACE, exec, ags -t powermenu"
 				"$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
 				"$mainMod, D, exec, ags -t datemenu"
-				"$mainMod, U, exec, ags -t quicksettings"
+				"$mainMod, M, exec, ags -t quicksettings"
 				#Workspaces overview
 				# "$mainMod, P, hyprexpo:expo, toggle"
 				"$mainMod, P, overview:toggle"
@@ -154,7 +157,7 @@
 				", PRINT, exec, grimblast copy screen"
 				"$mainMod, PRINT, exec, grimblast copy active"
 				"$mainMod SHIFT, PRINT, exec, grimblast copy area"
-				#Cliphist rofi
+				#Cliphist
 				"$mainMod, V, exec, cliphist list | $clipboard| cliphist decode | wl-copy"
 				"$mainMod SHIFT, V, exec, cliphist list | $clipboard | cliphist delete"
 				"$mainMod CTRL, V, exec, cliphist wipe"
@@ -213,7 +216,7 @@
 			];
 			windowrule = [
 				"float, ^(waypaper)$"
-				"float, blueman-manager"
+				# "float, blueman-manager"
 				"float, class:floating"
 			];
 			windowrulev2 = [
@@ -230,6 +233,9 @@
 				"float,class:(feh)"
 				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"
+				"float,class:(megasync)"
+				# "center,class:(megasync)"
+				"size 20% 50%,title:(megasync)"
 			];
 		};
 	};

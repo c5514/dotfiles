@@ -1,4 +1,4 @@
-{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, spicetify-nix,... }:
+{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, spicetify-nix,matugen,... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -29,8 +29,10 @@
 		spotify
 		pywal
 		expat
+		fzf
 		wf-recorder
 		hyprland-contrib.packages.${pkgs.system}.grimblast
+		matugen.packages.${system}.default
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -82,6 +84,7 @@
 		./home/hypr/hyprlock.nix
 		./home/nvim.nix
 		./home/kitty.nix
+		./home/megasync.nix
 		# ./home/python.nix
 		./home/rofi.nix
 		# ./home/spicetify.nix
@@ -92,6 +95,7 @@
 		./home/yazi.nix
 		./home/zathura.nix
 		# ./home/zsh.nix
+		# matugen.nixosModules.default
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
