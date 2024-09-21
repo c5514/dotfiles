@@ -34,10 +34,10 @@ export default () => PopupWindow({
             switch (layout) {
                 case "line": return [
                     SysButton("shutdown", "Shutdown"),
-                    SysButton("logout", "Log Out"),
                     SysButton("reboot", "Reboot"),
-                    SysButton("sleep", "Sleep"),
+                    SysButton("logout", "Log Out"),
                     SysButton("hibernate", "Hibernate"),
+                    SysButton("sleep", "Sleep"),
 					SysButton("lock", "Lock"),
                 ]
                 case "box": return [
