@@ -45,7 +45,7 @@ const options = mkOptions(OPTIONS, {
         scheme: opt<"dark" | "light">("dark"),
         widget: { opacity: opt(94) },
         border: {
-            width: opt(3),
+            width: opt(4),
             opacity: opt(96),
         },
 
@@ -245,8 +245,8 @@ const options = mkOptions(OPTIONS, {
     },
 
     hyprland: {
-        gaps: opt(0.5),
-        inactiveBorder: opt("#282828"),
+        gaps: opt(1.0),
+        inactiveBorder: opt("rgba(595959aa)"),
         gapsWhenOnly: opt(true),
     },
 })
