@@ -27,6 +27,7 @@
 				"HYPRCURSOR_SIZE, 24"
 				"XCURSOR_THEME, Bibata-Modern-Ice"
 				"XCURSOR_SIZE,24"
+				# "XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose"
 			];
 			#Programs
 			"$terminal" = "kitty";
@@ -224,9 +225,12 @@
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
-				"float,class:(iwgtk)"
-				"size 35% 60%,class:(iwgtk)"
-				"center,class:(iwgtk)"
+				# "float,class:(iwgtk)"
+				# "size 35% 60%,class:(iwgtk)"
+				# "center,class:(iwgtk)"
+				"float,class:(nm-connection-editor)"
+				"size 35% 60%,class:(nm-connection-editor)"
+				"center,class:(nm-connection-editor)"
 				"float,class:(pavucontrol)"
 				"center,title:(pavucontrol)"
 				"size 60% 70%,title:(pavucontrol)"

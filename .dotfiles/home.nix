@@ -26,6 +26,8 @@
 		lm_sensors
 		blueberry
 		gnome-bluetooth
+		# gnome-control-center
+		networkmanagerapplet
 		spotify
 		# pywal
 		expat

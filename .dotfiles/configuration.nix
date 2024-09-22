@@ -67,7 +67,7 @@
 		playerctl
 		pavucontrol
 		cliphist
-		htop
+		btop
 		unzip
 		
 		texliveFull
@@ -122,6 +122,8 @@
 	services.upower.enable = true;
 	services.power-profiles-daemon.enable = true;
 	powerManagement.powertop.enable = true;
+	#To enable gnome apps outside Gnome 
+	programs.dconf.enable = true;
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
