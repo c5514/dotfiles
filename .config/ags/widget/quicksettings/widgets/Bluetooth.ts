@@ -1,6 +1,7 @@
 import { type BluetoothDevice } from "types/service/bluetooth"
 import { Menu, ArrowToggleButton } from "../ToggleButton"
 import icons from "lib/icons"
+import { sh } from "lib/utils"
 
 const bluetooth = await Service.import("bluetooth")
 
@@ -56,6 +57,16 @@ export const BluetoothDevices = () => Menu({
             children: bluetooth.bind("devices").as(ds => ds
                 .filter(d => d.name)
                 .map(DeviceItem)),
+        }),
+		Widget.Separator(),
+        Widget.Button({
+            on_clicked: () => sh(options.quicksettings.bluetoothSettings.value),
+            child: Widget.Box({
+                children: [
+                    Widget.Icon(icons.ui.settings),
+                    Widget.Label("Bluetooth"),
+                ],
+            }),
         }),
     ],
 })

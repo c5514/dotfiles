@@ -197,7 +197,8 @@ const options = mkOptions(OPTIONS, {
         },
         width: opt(380),
         position: opt<"left" | "center" | "right">("right"),
-        networkSettings: opt("gtk-launch iwgtk"),
+        networkSettings: opt("gtk-launch nm-connection-editor"),
+        bluetoothSettings: opt("gtk-launch blueberry"),
         media: {
             monochromeIcon: opt(false),
             coverSize: opt(100),
