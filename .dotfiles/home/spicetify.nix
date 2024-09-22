@@ -1,12 +1,17 @@
 {pkgs,lib, spicetify-nix, ...}:
 let 
-	spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+	spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
-	imports = [ spicetify-nix.homeManagerModule ];
+	imports = [ spicetify-nix.homeManagerModules.default ];
 	programs.spicetify = {
 		enable = true;
-		theme = spicePkgs.themes.catppuccin;
-		colorScheme = "mocha";
+		theme = spicePkgs.themes.dribbblish;
+		colorScheme = "lunar";
+		enabledExtensions = with spicePkgs.extensions; [
+			adblock
+			hidePodcasts
+			shuffle
+		];
 	};
 }

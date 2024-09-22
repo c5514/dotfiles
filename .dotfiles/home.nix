@@ -28,7 +28,7 @@
 		gnome-bluetooth
 		# gnome-control-center
 		networkmanagerapplet
-		spotify
+		# spotify
 		# pywal
 		expat
 		fzf
@@ -89,7 +89,7 @@
 		./home/megasync.nix
 		# ./home/python.nix
 		# ./home/rofi.nix
-		# ./home/spicetify.nix
+		./home/spicetify.nix
 		./home/theme.nix
 		./home/vscodium.nix
 		# ./home/waypaper/waypaper.nix
