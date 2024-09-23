@@ -1,10 +1,13 @@
 {pkgs, ...}:
+let starshipCmd = "${pkgs.starship}/bin/starship";
+in
 {
 	programs.fish = {
 		enable = true;
 		package = pkgs.fish;
 		interactiveShellInit = ''
-		set fish_greeting
+			set fish_greeting
+			eval "$(${starshipCmd} init fish)"
 		'';
 		shellAliases = {
     		ll = "ls -l";

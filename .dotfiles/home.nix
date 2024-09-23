@@ -28,7 +28,7 @@
 		gnome-bluetooth
 		# gnome-control-center
 		networkmanagerapplet
-		# spotify
+		# spotify #Comment to use spicetify
 		# pywal
 		expat
 		fzf
@@ -90,6 +90,7 @@
 		# ./home/python.nix
 		# ./home/rofi.nix
 		./home/spicetify.nix
+		./home/starship.nix
 		./home/theme.nix
 		./home/vscodium.nix
 		# ./home/waypaper/waypaper.nix

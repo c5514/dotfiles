@@ -60,6 +60,30 @@
     			shadow_size = 10;
 			}
 			{
+				monitor = "";
+				text = " ";
+				shadow_passes = 1;
+				shadow_boost = "0.5";
+    			color = "rgba(200, 200, 200, 1.0)";
+				font_size = 21;
+				font_family = "Font Awesome";
+				position = "0, 65";
+				halign = "center";
+				valign = "bottom";
+			}
+			{
+				monitor = "";
+				text = "locked";
+				shadow_passes = 1;
+				shadow_boost = "0.5";
+    			color = "rgba(200, 200, 200, 1.0)";
+				font_size = 14;
+				font_family = "Font Awesome";
+				position = "0, 45";
+				halign = "center";
+				valign = "bottom";
+			}
+			{
     			monitor = "";
     			text = "$USER";
     			color = "rgba(200, 200, 200, 1.0)";
