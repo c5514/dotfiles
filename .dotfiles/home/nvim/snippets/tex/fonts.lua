@@ -498,7 +498,7 @@ ls.add_snippets('tex',{
   ),
   s({trig="set", dscr="Set definition"},
     fmta(       [[
-        <> = \left\}<> \in <>\mid <>\right\}
+        <> = \left\{<> \in <>\mid <>\right\}
       ]],
       { i(1,'A'), i(2, 'x'), i(3, '\\mathbb{R}'), i(4, 'condition') }
     )
