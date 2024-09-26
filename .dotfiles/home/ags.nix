@@ -1,6 +1,6 @@
-{ pkgs,ags, ... }:
+{ pkgs,inputs, ... }:
 {
-  imports = [ ags.homeManagerModules.default ];
+  imports = [ inputs.ags.homeManagerModules.default ];
 
   programs.ags = {
     enable = true;

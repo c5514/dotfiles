@@ -1,4 +1,4 @@
-{ config, lib, pkgs, grub2-themes,... }:
+{ config, lib, pkgs, ... }:
 
 {
 	services.displayManager.sddm = {

@@ -1,4 +1,4 @@
-{ config, pkgs,ags,hyprland-contrib, hyprland, hyprland-plugins, Hyprspace, spicetify-nix,matugen,... }:
+{ config, pkgs, inputs,... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -15,7 +15,7 @@
 		clang
 		bun
 		dart-sass
-    	swww
+		swww
 		gtk3
 		hyprpicker
 		evince
@@ -33,8 +33,8 @@
 		expat
 		fzf
 		wf-recorder
-		hyprland-contrib.packages.${pkgs.system}.grimblast
-		matugen.packages.${system}.default
+		inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+		inputs.matugen.packages.${system}.default
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -80,6 +80,7 @@
 	programs.git.enable = true;
 	imports = [
 		./home/ags.nix
+		./home/firefox.nix
 		./home/fish.nix
 		./home/hypr/hypridle.nix
 		./home/hypr/hyprland.nix
@@ -87,7 +88,6 @@
 		./home/nvim.nix
 		./home/kitty.nix
 		./home/megasync.nix
-		# ./home/python.nix
 		# ./home/rofi.nix
 		./home/spicetify.nix
 		./home/starship.nix

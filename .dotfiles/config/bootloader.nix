@@ -1,4 +1,4 @@
-{ pkgs, grub2-themes,... }:
+{ pkgs, inputs,... }:
 
 {
 	#Bootloader.

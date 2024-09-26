@@ -1,15 +1,14 @@
-{ pkgs, lib, hyprland, hyprland-plugins, Hyprspace,... }:
+{ pkgs, inputs,... }:
 {
-	home.file = {
-		".config/wal/templates/colors-hyprland.conf".source = ./colors-hyprland.conf;
-	};
+	# home.file = {
+	# 	".config/wal/templates/colors-hyprland.conf".source = ./colors-hyprland.conf;
+	# };
 	wayland.windowManager.hyprland = {
 		enable = true;
-		package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 		xwayland.enable = true;
 		plugins = [
-			# hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-			Hyprspace.packages.${pkgs.system}.Hyprspace
+			inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
 		];
 		settings = {
 			monitor = ",preferred, auto, 1";
@@ -48,7 +47,7 @@
 			#General
 			# source = "~/.cache/wal/colors-hyprland.conf"; #To enable pywal generated colors, must use waypaper, rofi and wlogout instead of ags
 			general = {
-				gaps_in = 3;
+				gaps_in = 2;
 				gaps_out = 5;
 				border_size = 4;
     			# "col.active_border" = "$color7 $color11 45deg";

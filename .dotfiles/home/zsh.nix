@@ -18,9 +18,5 @@
     		".." = "cd ..";
     		c = "clear";
 		};
-		oh-my-zsh = {
-			enable = true;
-			theme = "agnoster";
-		};
 	};
 }

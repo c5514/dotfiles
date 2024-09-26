@@ -1,4 +1,4 @@
-{ config, lib, pkgs, grub2-themes,... }:
+{ config, lib, pkgs, inputs,... }:
 
 {
 	imports =
@@ -69,7 +69,7 @@
 		cliphist
 		btop
 		unzip
-		
+		git
 		texliveFull
 
 		telegram-desktop

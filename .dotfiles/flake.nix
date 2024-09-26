@@ -35,13 +35,21 @@
 		url = "github:Gerg-L/spicetify-nix";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+	firefox-addons = {
+		url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
+	firefox-gnome-theme = {
+		url = "github:rafaelmardojai/firefox-gnome-theme";
+		flake = false;
+	};
 	# nixvim = {
 	# 	url = "github:nix-community/nixvim";
 	# 	inputs.nixpkgs.follows = "nixpkgs";
 	# };
   };
 
-  outputs = { self, nixpkgs, home-manager, grub2-themes, ags, sddm-sugar-candy-nix, hyprland-contrib, hyprland, hyprland-plugins, Hyprspace,matugen,spicetify-nix,... }:
+  outputs = { nixpkgs, home-manager,... }@inputs:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -53,16 +61,16 @@
         inherit system;
         modules = [
 			./configuration.nix
-			grub2-themes.nixosModules.default
-			sddm-sugar-candy-nix.nixosModules.default
+			inputs.grub2-themes.nixosModules.default
+			inputs.sddm-sugar-candy-nix.nixosModules.default
 			{
-        		nixpkgs = {
-          		overlays = [sddm-sugar-candy-nix.overlays.default];
-        		};
-      		}
+    			nixpkgs = {
+    			overlays = [inputs.sddm-sugar-candy-nix.overlays.default];
+				};
+			}
 		];
         specialArgs = {
-		  inherit grub2-themes;
+		  inherit inputs;
         };
       };
     };
@@ -70,13 +78,7 @@
       c5514 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 		extraSpecialArgs = {
-			inherit ags;
-			inherit hyprland-contrib;
-			inherit hyprland-plugins;
-			inherit hyprland;
-			inherit Hyprspace;
-			inherit matugen;
-			inherit spicetify-nix;
+			inherit inputs;
 		};
         modules = [ 
 			./home.nix

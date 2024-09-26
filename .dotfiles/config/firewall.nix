@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, grub2-themes,... }:
+{ config, lib, pkgs,... }:
 
 {
 	networking.firewall = {
