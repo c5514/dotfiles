@@ -26,7 +26,11 @@
 				"HYPRCURSOR_SIZE, 24"
 				"XCURSOR_THEME, Bibata-Modern-Ice"
 				"XCURSOR_SIZE,24"
-				# "XDG_CURRENT_DESKTOP=GNOME gnome-control-center --verbose"
+				"GDK_BACKEND,wayland,x11,*"
+				"QT_QPA_PLATFORM,wayland;xcb"
+				"XDG_CURRENT_DESKTOP,Hyprland"
+				"XDG_SESSION_TYPE,wayland"
+				"XDG_SESSION_DESKTOP,Hyprland"
 			];
 			#Programs
 			"$terminal" = "kitty";
@@ -217,16 +221,12 @@
 				", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
 			];
 			windowrule = [
-				"float, ^(waypaper)$"
-				# "float, blueman-manager"
+				# "float, ^(waypaper)$"
 				"float, class:floating"
 				"float, ^(com.github.Aylur.ags)$"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
-				# "float,class:(iwgtk)"
-				# "size 35% 60%,class:(iwgtk)"
-				# "center,class:(iwgtk)"
 				"float,class:(nm-connection-editor)"
 				"size 35% 60%,class:(nm-connection-editor)"
 				"center,class:(nm-connection-editor)"
@@ -236,6 +236,9 @@
 				"float,class:(blueberry)"
 				"size 35% 60%,class:(blueberry)"
 				"center,class:(blueberry)"
+				"float,class:(megasync)"
+				"size 35% 60%,class:(megasync)"
+				"center,class:(megasync)"
 				"float,class:(feh)"
 				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"

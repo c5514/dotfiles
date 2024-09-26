@@ -26,9 +26,7 @@
 		lm_sensors
 		blueberry
 		gnome-bluetooth
-		# gnome-control-center
 		networkmanagerapplet
-		# spotify #Comment to use spicetify
 		# pywal
 		expat
 		fzf
