@@ -3,6 +3,7 @@
 	home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;	
 	programs.firefox = {
 		enable = true;
+		package = pkgs.firefox;
 		policies = {
 			DisableTelemetry = true;
 			DisableFirefoxStudies = true;
@@ -24,8 +25,12 @@
 			};
 			bookmarks = [
 				{
-					name = "Nix";
+					name = "NixOS";
 					url = "https://nixos.org/";
+				}
+				{
+					name = "Nixpkgs";
+					url = "https://search.nixos.org/packages?channel=unstable";
 				}
 				{
 					name = "GitHub";

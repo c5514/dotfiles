@@ -1,4 +1,4 @@
-{ config, pkgs, inputs,... }:
+{ config, lib, pkgs, inputs,... }:
 
 {
 	# Home Manager needs a bit of information about you and the paths it should
@@ -20,6 +20,7 @@
 		hyprpicker
 		evince
 		webcord
+		megacmd
 		libnotify
 		lshw
 		procps
@@ -83,9 +84,9 @@
 		./home/hypr/hypridle.nix
 		./home/hypr/hyprland.nix
 		./home/hypr/hyprlock.nix
-		./home/nvim.nix
+		# ./home/nvim.nix
+		./home/nixvim/nixvim.nix
 		./home/kitty.nix
-		./home/megasync.nix
 		# ./home/rofi.nix
 		./home/spicetify.nix
 		./home/starship.nix

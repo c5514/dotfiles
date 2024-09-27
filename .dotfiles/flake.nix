@@ -43,10 +43,10 @@
 		url = "github:rafaelmardojai/firefox-gnome-theme";
 		flake = false;
 	};
-	# nixvim = {
-	# 	url = "github:nix-community/nixvim";
-	# 	inputs.nixpkgs.follows = "nixpkgs";
-	# };
+	nixvim = {
+		url = "github:nix-community/nixvim";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
   outputs = { nixpkgs, home-manager,... }@inputs:

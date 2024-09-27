@@ -26,11 +26,37 @@
 	};
 	#Configure keymap in X11
 	services.xserver = {
-		# enable = true;
+		enable = true;
 		xkb.layout = "us";
 		xkb.variant = "altgr-intl";
 		videoDrivers = [ "amdgpu" ];
+		desktopManager.gnome.enable = true;
 	};
+	environment.gnome.excludePackages = (with pkgs; [
+		gnome-console
+		gnome-photos
+		gnome-tour
+		gnome-connections
+		snapshot
+		gedit
+		cheese
+		epiphany
+		geary
+		totem
+		evince
+		yelp
+		gnome-font-viewer
+		gnome-text-editor
+		gnome-music
+		gnome-characters
+		tali
+		iagno
+		hitori
+		atomix
+		gnome-contacts
+		gnome-maps
+		xterm
+	]);
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;
@@ -46,7 +72,12 @@
 		isNormalUser = true;
 		description = "Cesar Levano";
 		extraGroups = [ "networkmanager" "wheel" ];
-		packages = with pkgs; [];
+		packages = with pkgs; [
+			qt6.qtwayland
+			qt5.qtwayland
+			libsForQt5.qtstyleplugin-kvantum
+			libsForQt5.qt5ct
+		];
 	};
 	# programs.zsh.enable = true;
 	programs.fish.enable = true;
@@ -56,12 +87,11 @@
 	nixpkgs.config.allowUnfree = true;
 	# Hyprland modules
 	programs.hyprland.enable = true;
+	programs.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 	programs.hyprlock.enable = true;
 	# programs.hyprland.xwayland.enable = true;
 	environment.systemPackages = 
 	(with pkgs; [
-		firefox
-		#Utilities
 		brightnessctl
 		wl-clipboard
 		playerctl
@@ -70,8 +100,6 @@
 		btop
 		unzip
 		git
-		texliveFull
-
 		telegram-desktop
 		#USB utilities
 		usbutils
@@ -85,14 +113,7 @@
 		libreoffice-qt6-fresh
 		thunderbird
 		vlc
-		#Hyprland
-		# hyprland
-		hyprpaper
 		hyprshade
-		xdg-desktop-portal-hyprland
-	# ])
-	# ++
-	# (with pkgs-unstable; [
 		fastfetch
 		libinput
 	]);
@@ -109,8 +130,8 @@
 		(nerdfonts.override {fonts = ["JetBrainsMono"];})
 	];
 	xdg.portal.enable = true;
-	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-	services.gnome.gnome-keyring.enable = true;
+	# xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	# services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
 	#configuration for file manager
 	programs.thunar.enable = true;
@@ -122,8 +143,10 @@
 	services.upower.enable = true;
 	services.power-profiles-daemon.enable = true;
 	powerManagement.powertop.enable = true;
-	#To enable gnome apps outside Gnome 
+	#To enable Gnome apps outside Gnome 
 	programs.dconf.enable = true;
+	#To enable Ozone Wayland support
+	environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.

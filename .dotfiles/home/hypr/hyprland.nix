@@ -3,9 +3,18 @@
 	# home.file = {
 	# 	".config/wal/templates/colors-hyprland.conf".source = ./colors-hyprland.conf;
 	# };
+	# xdg.desktopEntries."org.gnome.Settings" = {
+ #    	name = "Settings";
+ #    	comment = "Gnome Control Center";
+ #    	icon = "org.gnome.Settings";
+ #    	exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome-control-center}/bin/gnome-control-center";
+ #    	categories = ["X-Preferences"];
+ #    	terminal = false;
+	# };
 	wayland.windowManager.hyprland = {
 		enable = true;
 		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+		systemd.enable = true;
 		xwayland.enable = true;
 		plugins = [
 			inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
@@ -17,8 +26,12 @@
 				# "waypaper --restore &"
 				"ags &"
 				"hypridle &"
+				"mega-cmd &"
 				"wl-paste --type text --watch cliphist store"
 				"wl-paste --type image --watch cliphist store"
+				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+				"dbus-update-activation-environment --systemd --all"
+				"systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 			];
 			#Set cursor theme
 			env = [
@@ -47,6 +60,7 @@
 				touchpad = {
 					natural_scroll = false;
 				};
+				float_switch_override_focus = 2;
 			};
 			#General
 			# source = "~/.cache/wal/colors-hyprland.conf"; #To enable pywal generated colors, must use waypaper, rofi and wlogout instead of ags
@@ -204,6 +218,9 @@
 				"$mainMod, Tab, workspace, e+1"
 				"$mainMod SHIFT, Tab, workspace, e-1"
 			];
+			binds = {
+				allow_workspace_cycles = true;
+			};
 			bindm = [
 				"$mainMod, mouse:272, movewindow"
 				"$mainMod, mouse:273, resizewindow"
@@ -220,10 +237,14 @@
 				", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+"
 				", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
 			];
-			windowrule = [
-				# "float, ^(waypaper)$"
-				"float, class:floating"
-				"float, ^(com.github.Aylur.ags)$"
+			windowrule = let 
+				f = regex: "float, ^(${regex})$";
+				in [
+				(f "waypaper")
+				(f "com.github.Aylur.ags")
+				(f "org.gnome.Calculator")
+				(f "org.gnome.Settings")
+				"workspace 7, title:Spotify"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
@@ -236,9 +257,6 @@
 				"float,class:(blueberry)"
 				"size 35% 60%,class:(blueberry)"
 				"center,class:(blueberry)"
-				"float,class:(megasync)"
-				"size 35% 60%,class:(megasync)"
-				"center,class:(megasync)"
 				"float,class:(feh)"
 				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"
