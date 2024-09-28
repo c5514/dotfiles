@@ -8,7 +8,7 @@
 - Powermenu: ags(wlogout can be enabled)
 - Lock: hyprlock
 - Pdf viewer: zathura and evince
-- Editor: Neovim and VScodium
+- Editor: Neovim(Nixvim) and VScodium
 - Browser: Firefox
 - File manager: Thunar and yazi
 - Terminal: Kitty
