@@ -1,12 +1,6 @@
 {pkgs, ...}:
 {
 
-	programs.nixvim.extraConfigLua = ''
-		require("copilot").setup({
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-		})
-	'';
 	programs.nixvim.plugins = {
 		copilot-cmp.enable = true;
 		copilot-lua = {
@@ -37,7 +31,7 @@
 					'';
 				};
 				formatting = {
-					fields = [ "kind" "abbr" "menu" ];
+					fields = [ "kind" "abbr" "menu"];
 					expandable_indicator = true;
 					format = ''
 						function(_, item)

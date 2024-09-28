@@ -35,6 +35,9 @@
 			comment.enable = true;
 			nvim-autopairs.enable = true;
 			comment-box.enable = true;
+			rainbow-delimiters.enable = true;
+			nvim-colorizer.enable = true;
+			noice.enable = true;
 		};
 	};
 }

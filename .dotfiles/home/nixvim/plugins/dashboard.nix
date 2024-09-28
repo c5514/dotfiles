@@ -3,6 +3,7 @@
 	programs.nixvim.plugins.dashboard = {
 		enable = true;
 		settings = {
+			change_to_vcs_root = true;
 			config = {
 				footer = [ "Neovim configured using Nix"];
 				header = [
