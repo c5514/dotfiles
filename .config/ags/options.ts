@@ -163,7 +163,7 @@ const options = mkOptions(OPTIONS, {
             favorites: opt([
                 [
                     "firefox",
-                    "thunar",
+                    "webcord",
                     "telegram-desktop",
                     "spotify",
 					"codium"
