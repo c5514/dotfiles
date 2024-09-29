@@ -19,6 +19,15 @@
 				sections = 1;
 				styles = 1;
 			};
+			vimtex_compiler_latexmk = {
+				options = [
+				"-shell-escape"
+    			"-verbose"
+				"-file-line-error"
+				"-synctex=1"
+				"-interaction=nonstopmode"
+				];
+			};
 		};
 		opts = {
 			number = true;

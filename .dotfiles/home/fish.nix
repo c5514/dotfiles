@@ -17,7 +17,15 @@ in
 			doc = "cd ~/Documents/";
     		nv = "nvim";
     		".." = "cd ..";
-    		c = "clear";
+    		cc = "clear";
+			ee = "exit";
+			hmS = "home-manager switch --flake .";
+			hmG = "home-manager generations";
+			hmR = "home-manager remove-generations";
+			nixS = "sudo nixos-rebuild switch --flake .";
+			nixG = "nixos-rebuild list-generations";
+			nixR = "sudo nix-env -p /nix/var/nix/profiles/system/ --delete-generations";
+			garb = "nix-collect-garbage";
 		};
 	};
 }

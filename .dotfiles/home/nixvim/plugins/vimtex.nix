@@ -6,10 +6,10 @@
 		};
 		plugins.vimtex = {
 			enable = true;
-			xdotoolPackage = pkgs.xdotool;
+			# xdotoolPackage = pkgs.xdotool;
 			texlivePackage = pkgs.texliveFull;
 			settings = {
-				view_method = "zathura";
+				view_method = "zathura_simple";
 				quickfix_enabled = true;
 				quickfix_open_on_warning = false;
 				quickfix_ignore_filters = [
