@@ -5,7 +5,8 @@
 		./options.nix
 		./plugins/bufferline.nix
 		./plugins/cmp.nix
-		./plugins/dashboard.nix
+		./plugins/alpha.nix
+		# ./plugins/dashboard.nix
 		./plugins/lsp.nix
 		./plugins/lualine.nix
 		./plugins/luasnip.nix
@@ -38,6 +39,10 @@
 			rainbow-delimiters.enable = true;
 			nvim-colorizer.enable = true;
 			noice.enable = true;
+			notify = {
+				enable = true;
+				backgroundColour = "#000000";
+			};
 		};
 	};
 }

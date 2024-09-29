@@ -31,7 +31,7 @@
 					'';
 				};
 				formatting = {
-					fields = [ "kind" "abbr" "menu"];
+					fields = [ "abbr" "kind" "menu"];
 					expandable_indicator = true;
 					format = ''
 						function(_, item)

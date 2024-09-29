@@ -2,9 +2,16 @@
 {
 	programs.nixvim.plugins.telescope = {
 		enable = true;
+		extensions = {
+    		file-browser.enable = true;
+    		ui-select.enable = true;
+    		frecency.enable = true;
+    		fzf-native.enable = true;
+			media-files.enable = true;
+		};
 		settings = {
 			defaults = {
-				path_display = "smart";#Not sure if syntax is correct
+				# path_display = "smart";#Not sure if syntax is correct
 				mappings = {
 					i = {
 						"<C-k>" = {
