@@ -32,10 +32,13 @@
 		opts = {
 			number = true;
 			relativenumber = true;
+			timeoutlen = 250;
+			smartindent = true;
+			cursorline = true;
 			shiftwidth = 4;
 			signcolumn = "yes";
 			tabstop = 4;
-			updatetime = 150;
+			updatetime = 50;
 			termguicolors = true;
 			mouse = "a";
 			swapfile = false;

@@ -2,12 +2,12 @@
 {
 
 	programs.nixvim.plugins = {
-		copilot-cmp.enable = true;
-		copilot-lua = {
-    		enable = true;
-    		suggestion.enabled = false;
-    		panel.enabled = false;
-		};
+		# copilot-cmp.enable = true;
+		# copilot-lua = {
+  #   		enable = true;
+  #   		suggestion.enabled = false;
+  #   		panel.enabled = false;
+		# };
 		cmp-emoji.enable = true;
 		cmp-nvim-lsp.enable = true;
 		cmp-buffer.enable = true;
@@ -90,12 +90,13 @@
 						keywordLength = 3;
 						option.show_autosnippets = true;
 					}
+					{	name = "orgmode";  }
 					{
 						name = "buffer";
 						option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
 						keywordLength = 3;
 					}
-					{	name = "copilot";	}
+					# {	name = "copilot";	}
 					{	name = "emoji";	}
 					{
 						name = "path";

@@ -28,7 +28,9 @@
 		blueberry
 		gnome-bluetooth
 		networkmanagerapplet
+		inkscape
 		# pywal
+		# tmux
 		expat
 		fzf
 		wf-recorder
@@ -91,6 +93,7 @@
 		./home/spicetify.nix
 		./home/starship.nix
 		./home/theme.nix
+		./home/tmux.nix
 		./home/vscodium.nix
 		# ./home/waypaper/waypaper.nix
 		# ./home/wlogout/wlogout.nix

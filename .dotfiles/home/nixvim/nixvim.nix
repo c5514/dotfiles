@@ -6,11 +6,14 @@
 		./plugins/bufferline.nix
 		./plugins/cmp.nix
 		./plugins/alpha.nix
+		./plugins/conform.nix
 		# ./plugins/dashboard.nix
 		./plugins/lsp.nix
 		./plugins/lualine.nix
 		./plugins/luasnip.nix
+		# ./plugins/neorg.nix
 		./plugins/neotree.nix
+		./plugins/orgmode.nix
 		./plugins/telescope.nix
 		./plugins/todoComents.nix
 		./plugins/treesitter.nix
@@ -43,6 +46,9 @@
 				enable = true;
 				backgroundColour = "#000000";
 			};
+			lsp-lines.enable = true;
+			# nvim-ufo.enable = true;
+			trouble.enable = true;
 		};
 	};
 }

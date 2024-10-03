@@ -19,6 +19,7 @@ in
     		".." = "cd ..";
     		cc = "clear";
 			ee = "exit";
+			ns = "nix-shell --run fish";
 			hmS = "home-manager switch --flake .";
 			hmG = "home-manager generations";
 			hmR = "home-manager remove-generations";
