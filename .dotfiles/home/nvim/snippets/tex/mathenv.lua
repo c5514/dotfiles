@@ -8,6 +8,7 @@ local i = ls.insert_node
 local c = ls.choice_node
 local f = ls.function_node
 local rep = require("luasnip.extras").rep
+
 ls.add_snippets('tex', {
 	s({ trig = "ali", dscr = "Indexed align environment" },
 		fmta([[
@@ -279,5 +280,4 @@ ls.add_snippets('tex', {
 		fmta([[\frac{<>}{<>}]],
 			{ i(1), i(2) }
 		)),
-
 })
