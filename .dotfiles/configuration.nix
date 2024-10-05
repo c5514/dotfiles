@@ -26,37 +26,37 @@
 	};
 	#Configure keymap in X11
 	services.xserver = {
-		enable = true;
+		# enable = true;
 		xkb.layout = "us";
 		xkb.variant = "altgr-intl";
 		videoDrivers = [ "amdgpu" ];
-		desktopManager.gnome.enable = true;
+		# desktopManager.gnome.enable = true;
 	};
-	environment.gnome.excludePackages = (with pkgs; [
-		gnome-console
-		gnome-photos
-		gnome-tour
-		gnome-connections
-		snapshot
-		gedit
-		cheese
-		epiphany
-		geary
-		totem
-		evince
-		yelp
-		gnome-font-viewer
-		gnome-text-editor
-		gnome-music
-		gnome-characters
-		tali
-		iagno
-		hitori
-		atomix
-		gnome-contacts
-		gnome-maps
-		xterm
-	]);
+	# environment.gnome.excludePackages = (with pkgs; [
+	# 	gnome-console
+	# 	gnome-photos
+	# 	gnome-tour
+	# 	gnome-connections
+	# 	snapshot
+	# 	gedit
+	# 	cheese
+	# 	epiphany
+	# 	geary
+	# 	totem
+	# 	evince
+	# 	yelp
+	# 	gnome-font-viewer
+	# 	gnome-text-editor
+	# 	gnome-music
+	# 	gnome-characters
+	# 	tali
+	# 	iagno
+	# 	hitori
+	# 	atomix
+	# 	gnome-contacts
+	# 	gnome-maps
+	# 	xterm
+	# ]);
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;
@@ -130,7 +130,7 @@
 		(nerdfonts.override {fonts = ["JetBrainsMono"];})
 	];
 	xdg.portal.enable = true;
-	# xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	# services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
 	#configuration for file manager
