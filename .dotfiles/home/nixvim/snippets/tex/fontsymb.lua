@@ -139,6 +139,7 @@ ls.add_snippets('tex', {
 	s({ trig = "lr|", dscr = "'\\left| \\right|" }, fmta([[\left|<>\right|]], { i(1) })),
 	s({ trig = "lr{", dscr = "'\\left{ \\right}" }, fmta([[\left\{ <> \right\}]], { i(1) })),
 	s({ trig = "lrb", dscr = "'\\left{ \\right}" }, fmta([[\left\{ <> \right\}]],{ i(1) })),
+	s({ trig = "lrB", dscr = "'\\left[ \\right]" }, { t('\\left['), i(1), t('\\right]') }),
 	s({ trig = "lra", dscr = "'leftangle rightangle)" }, fmta([[\left\langle<>\right\rangle]], { i(1) })),
 	s({ trig = "norm", dscr = "Norm", snippetType = "autosnippet" }, fmta([[\left\lVert <>\right\rVert]], { i(1) }), {condition = tex.in_mathzone}),
 })
