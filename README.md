@@ -1,5 +1,6 @@
 # Dotfiles for NixOS:
 - Window manager: Hyprland
+- Desktop environment: XFCE 
 - Hyprland Plugins: Hyprspace
 - Display manager: SDDM
 - Bootloader: GRUB2
