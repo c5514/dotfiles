@@ -128,7 +128,8 @@ ls.add_snippets('tex', {
 	s({ trig = "conj", snippetType = "autosnippet" }, fmta([[\overline{<>} ]], { i(1) }), { condition = tex.in_mathzone }),
 	s({ trig = "set", dscr = "Set definition" },
 		fmta([[<> = \left\{<> \in <>\mid <>\right\}]], { i(1, 'A'), i(2, 'x'), i(3, '\\mathbb{R}'), i(4, 'condition') })),
-	s({ trig = "vec", dscr = "\\vec{}" }, fmta([[\vec{<>}]], { i(1) })),
+	s({ trig = "vec", dscr = "\\vec{}", snippetType = "autosnippet" }, fmta([[\vec{<>}]], { i(1) }),
+		{ condition = tex.in_mathzone }),
 	s({ trig = "em", dscr = "Display '\\emph{}'" }, fmta([[\emph{<>}]], { i(1) })),
 	s({ trig = "ovl", dscr = "Display '\\underline{}'" }, fmta([[\overline{<>}]], { i(1) })),
 	s({ trig = "udl", dscr = "Display '\\underline{}'" }, fmta([[\underline{<>}]], { i(1) })),
@@ -167,4 +168,10 @@ ls.add_snippets('tex', {
 	s({ trig = "lra", dscr = "'leftangle rightangle)" }, fmta([[\left\langle<>\right\rangle]], { i(1) })),
 	s({ trig = "norm", dscr = "Norm", snippetType = "autosnippet" }, fmta([[\left\lVert <>\right\rVert]], { i(1) }),
 		{ condition = tex.in_mathzone }),
+	s({ trig = "bk", dscr = "Braket notation" }, fmta([[\braket{<>}{<>}]], { i(1), i(2) }), { condition = tex
+	.in_mathzone }),
+	s({ trig = "kb", dscr = "ketbra notation" }, fmta([[\ketbra{<>}{<>}]], { i(1), i(2) }), { condition = tex
+	.in_mathzone }),
+	s({ trig = "bra", dscr = "bra notation" }, fmta([[\bra{<>}]], { i(1) }), { condition = tex.in_mathzone }),
+	s({ trig = "ket", dscr = "ket notation" }, fmta([[\ket{<>}]], { i(1) }), { condition = tex.in_mathzone }),
 })
