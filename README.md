@@ -1,5 +1,5 @@
 # Dotfiles for NixOS:
-- Window manager: Hyprland
+- Wayland compositor: Hyprland
 - Desktop environment: XFCE 
 - Hyprland Plugins: Hyprspace
 - Display manager: SDDM
