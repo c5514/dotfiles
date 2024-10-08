@@ -22,6 +22,7 @@
 				toml
 				vim
 				zig
+				html
 			];
 		};
 		treesitter-context.enable = true;

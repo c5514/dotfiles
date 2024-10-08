@@ -9,6 +9,14 @@
 			};
 			notify_on_error = true;
 			formatters_by_ft = {
+				css = [
+					"prettierd"
+					"prettier"
+				];
+				html = [
+					"prettierd"
+					"prettier"
+				];
 				lua = "stylua";
 				python = [
 					"isort"

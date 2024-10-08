@@ -1,4 +1,11 @@
-{ inputs,config,lib,...}:
+{ inputs,pkgs,config,lib,...}:
+let 
+	illustrate = pkgs.vimUtils.buildVimPlugin {
+		pname = "illustrate";
+		version = "2024-08-06";
+		src = inputs.illustrate;
+	};
+in
 {
 	imports = [
 		inputs.nixvim.homeManagerModules.nixvim
@@ -49,6 +56,9 @@
 			lsp-lines.enable = true;
 			# nvim-ufo.enable = true;
 			trouble.enable = true;
+			markview.enable = true;
 		};
+		extraPlugins = [ illustrate ];
+		extraConfigLua = ''${builtins.readFile ./plugins/illustrate.lua}'';
 	};
 }

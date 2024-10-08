@@ -27,8 +27,11 @@
 		lm_sensors
 		blueberry
 		gnome-bluetooth
+		gnome-weather
+		gnome-clocks
 		networkmanagerapplet
-		inkscape
+		inkscape-with-extensions
+		inkscape-extensions.textext
 		# pywal
 		# tmux
 		expat

@@ -6,8 +6,10 @@
 		enable = true;
 		servers = {
 			html.enable = true;
+			bashls.enable = true;
+			clangd.enable = true;
 			lua-ls.enable = true;
-			nil-ls.enable = true;
+			# nil-ls.enable = true;
 			nixd.enable = true;
 			pyright.enable = true;
 			texlab.enable = true;
