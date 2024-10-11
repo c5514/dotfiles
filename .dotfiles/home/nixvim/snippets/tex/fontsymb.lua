@@ -31,7 +31,7 @@ ls.add_snippets('tex', {
 	s({ trig = "iot", snippetType = "autosnippet", priority = 10 }, t("\\iota "), { condtion = tex.in_mathzone }),
 	s({ trig = "kap", snippetType = "autosnippet", priority = 10 }, t("\\kappa "), { condition = tex.in_mathzone }),
 	s({ trig = "lam", snippetType = "autosnippet", priority = 10 }, t("\\lambda "), { condition = tex.in_mathzone }),
-	s({ trig = "Lam", snippetType = "autosnippet", priority = 10 }, t("\\lambda "), { condition = tex.in_mathzone }),
+	s({ trig = "Lam", snippetType = "autosnippet", priority = 10 }, t("\\Lambda "), { condition = tex.in_mathzone }),
 	s({ trig = "mu", snippetType = "autosnippet", priority = 10 }, t("\\mu "), { condition = tex.in_mathzone }),
 	s({ trig = "nu", snippetType = "autosnippet", priority = 10 }, t("\\nu "), { condition = tex.in_mathzone }),
 	s({ trig = "ome", snippetType = "autosnippet", priority = 10 }, t("\\omega "), { condition = tex.in_mathzone }),
@@ -88,11 +88,10 @@ ls.add_snippets('tex', {
 	}),
 	s({ trig = "--<", snippetType = "autosnippet", priority = 75 }, t("\\longleftarrow "),
 		{ condition = tex.in_mathzone }),
-	s({ trig = "==<", snippetType = "autosnippet", priority = 75 }, t("\\Longrightarrow "), {
-		condition = tex
-			.in_mathzone
-	}),
-	s({ trig = "==>", snippetType = "autosnippet", priority = 75 }, t("\\Longleftarrow "),
+	s({ trig = "==<", snippetType = "autosnippet", priority = 75 }, t("\\Longleftarrow "), { condition = tex.in_mathzone }),
+	s({ trig = "thn", snippetType = "autosnippet", priority = 75 }, t("\\Longrightarrow "), { condition = tex
+	.in_mathzone }),
+	s({ trig = "==>", snippetType = "autosnippet", priority = 75 }, t("\\Longrightarrow "),
 		{ condition = tex.in_mathzone }),
 	s({ trig = "b-->", snippetType = "autosnippet", priority = 100 }, t("\\Longleftrightarrow "),
 		{ condition = tex.in_mathzone }),
@@ -168,10 +167,14 @@ ls.add_snippets('tex', {
 	s({ trig = "lra", dscr = "'leftangle rightangle)" }, fmta([[\left\langle<>\right\rangle]], { i(1) })),
 	s({ trig = "norm", dscr = "Norm", snippetType = "autosnippet" }, fmta([[\left\lVert <>\right\rVert]], { i(1) }),
 		{ condition = tex.in_mathzone }),
-	s({ trig = "bk", dscr = "Braket notation" }, fmta([[\braket{<>}{<>}]], { i(1), i(2) }), { condition = tex
-	.in_mathzone }),
-	s({ trig = "kb", dscr = "ketbra notation" }, fmta([[\ketbra{<>}{<>}]], { i(1), i(2) }), { condition = tex
-	.in_mathzone }),
+	s({ trig = "bk", dscr = "Braket notation" }, fmta([[\braket{<>}{<>}]], { i(1), i(2) }), {
+		condition = tex
+			.in_mathzone
+	}),
+	s({ trig = "kb", dscr = "ketbra notation" }, fmta([[\ketbra{<>}{<>}]], { i(1), i(2) }), {
+		condition = tex
+			.in_mathzone
+	}),
 	s({ trig = "bra", dscr = "bra notation" }, fmta([[\bra{<>}]], { i(1) }), { condition = tex.in_mathzone }),
 	s({ trig = "ket", dscr = "ket notation" }, fmta([[\ket{<>}]], { i(1) }), { condition = tex.in_mathzone }),
 })

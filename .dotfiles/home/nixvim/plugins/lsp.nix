@@ -8,7 +8,7 @@
 			html.enable = true;
 			bashls.enable = true;
 			clangd.enable = true;
-			lua-ls.enable = true;
+			lua_ls.enable = true;
 			# nil-ls.enable = true;
 			nixd.enable = true;
 			pyright.enable = true;

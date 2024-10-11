@@ -12,7 +12,10 @@
 		./config/printers.nix
 		./config/firewall.nix
 		./config/vm.nix
-		./config/xfce.nix
+		./config/gnome.nix
+		# ./config/xfce.nix
+		# ./config/budgieDE.nix
+		# ./config/scanner.nix
 	];
 
 	# Set your time zone.
@@ -45,7 +48,7 @@
 	users.users.c5514 = {
 		isNormalUser = true;
 		description = "Cesar Levano";
-		extraGroups = [ "networkmanager" "wheel" ];
+		extraGroups = [ "networkmanager" "wheel" "scanner" "lp"];
 		# packages = with pkgs; [
 		# ];
 	};
@@ -99,7 +102,7 @@
 		(nerdfonts.override {fonts = ["JetBrainsMono"];})
 	];
 	xdg.portal.enable = true;
-	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	# xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	# services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
 	programs.thunar.enable = true;
@@ -112,7 +115,6 @@
 	services.upower.enable = true;
 	services.power-profiles-daemon.enable = true;
 	powerManagement.powertop.enable = true;
-	#To enable Gnome apps outside Gnome 
 	programs.dconf.enable = true;
 	#To enable Ozone Wayland support
 	environment.sessionVariables.NIXOS_OZONE_WL = 1;

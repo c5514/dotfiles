@@ -20,20 +20,23 @@
 		hyprpicker
 		evince
 		webcord
+		# discord
 		megacmd
 		libnotify
 		lshw
 		procps
 		lm_sensors
+		# kdePackages.xwaylandvideobridge
 		blueberry
 		gnome-bluetooth
 		gnome-weather
 		gnome-clocks
+		gnome-calendar
+		gnome-calculator
+		gnome-disk-utility
 		networkmanagerapplet
-		inkscape-with-extensions
-		inkscape-extensions.textext
+		(pkgs.inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ]; })
 		# pywal
-		# tmux
 		expat
 		fzf
 		wf-recorder
@@ -84,12 +87,12 @@
 	programs.git.enable = true;
 	imports = [
 		./home/ags.nix
+		./home/dconf.nix
 		./home/firefox.nix
 		./home/fish.nix
 		./home/hypr/hypridle.nix
 		./home/hypr/hyprland.nix
 		./home/hypr/hyprlock.nix
-		# ./home/nvim.nix
 		./home/nixvim/nixvim.nix
 		./home/kitty.nix
 		# ./home/rofi.nix
@@ -102,7 +105,6 @@
 		# ./home/wlogout/wlogout.nix
 		./home/yazi.nix
 		./home/zathura.nix
-		# ./home/zsh.nix
 	];
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

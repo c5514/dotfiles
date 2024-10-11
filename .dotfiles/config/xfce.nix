@@ -15,8 +15,5 @@
 		xfce.xfce4-cpufreq-plugin
 		xfce.xfce4-whiskermenu-plugin
 		xfce.xfce4-panel
-		gnome-calendar
-		gnome-calculator
-		gnome-disk-utility
 	];
 }

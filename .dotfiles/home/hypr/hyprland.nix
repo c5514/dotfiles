@@ -240,11 +240,15 @@
 			windowrule = let 
 				f = regex: "float, ^(${regex})$";
 				in [
-				(f "waypaper")
+				# (f "waypaper")
 				(f "com.github.Aylur.ags")
 				(f "org.gnome.Calculator")
+				(f "org.gnome.Weather")
+				(f "org.inkscape.Inkscape")
 				(f "org.gnome.Settings")
+				"workspace 6, title:Telegram"
 				"workspace 7, title:Spotify"
+				"workspace 8, title:WebCord"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
