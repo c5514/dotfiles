@@ -36,6 +36,7 @@
 		gnome-calculator
 		gnome-disk-utility
 		networkmanagerapplet
+		libsForQt5.qt5.qtwayland
 		# pywal
 		expat
 		fzf

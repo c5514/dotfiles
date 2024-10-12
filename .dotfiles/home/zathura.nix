@@ -28,7 +28,7 @@
 		notification-fg = "transparent";
 
 		recolor = "true";
-		recolor-lightcolor = "rgba(0,0,0,0.8)";
+		recolor-lightcolor = "rgba(0,0,0,0.9)";
 		recolor-darkcolor = "#E0E0E0";
 		recolor-reverse-video = "true";
 		recolor-keephue = "true";
