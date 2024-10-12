@@ -58,7 +58,9 @@ in
 			trouble.enable = true;
 			markview.enable = true;
 		};
-		extraPlugins = [ illustrate ];
+		extraPlugins = [ 
+			illustrate
+		];
 		extraConfigLua = ''${builtins.readFile ./plugins/illustrate.lua}'';
 	};
 }

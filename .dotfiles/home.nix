@@ -20,6 +20,7 @@
 		hyprpicker
 		evince
 		webcord
+		zotero
 		wineWowPackages.waylandFull
 		megacmd
 		libnotify

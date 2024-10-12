@@ -17,6 +17,7 @@
 				json
 				lua 
 				nix 
+				latex
 				python
 				rasi
 				toml
