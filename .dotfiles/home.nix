@@ -20,7 +20,7 @@
 		hyprpicker
 		evince
 		webcord
-		# discord
+		wineWowPackages.waylandFull
 		megacmd
 		libnotify
 		lshw
@@ -36,6 +36,7 @@
 		gnome-disk-utility
 		networkmanagerapplet
 		(pkgs.inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ]; })
+		github-desktop
 		# pywal
 		expat
 		fzf

@@ -3,14 +3,6 @@
 	# home.file = {
 	# 	".config/wal/templates/colors-hyprland.conf".source = ./colors-hyprland.conf;
 	# };
-	# xdg.desktopEntries."org.gnome.Settings" = {
- #    	name = "Settings";
- #    	comment = "Gnome Control Center";
- #    	icon = "org.gnome.Settings";
- #    	exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome-control-center}/bin/gnome-control-center";
- #    	categories = ["X-Preferences"];
- #    	terminal = false;
-	# };
 	wayland.windowManager.hyprland = {
 		enable = true;
 		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -47,7 +39,7 @@
 			];
 			#Programs
 			"$terminal" = "kitty";
-			"$fileManager" = "thunar";
+			"$fileManager" = "nautilus";
 			# "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
 			# "$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
 			"$browser" = "firefox";

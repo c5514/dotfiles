@@ -105,10 +105,10 @@
 	# xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	# services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
-	programs.thunar.enable = true;
-	programs.xfconf.enable = true;
+	# programs.thunar.enable = true;
+	# programs.xfconf.enable = true;
 	services.gvfs.enable = true;
-	services.tumbler.enable = true;
+	# services.tumbler.enable = true;
 	services.udisks2.enable = true;
 	services.libinput.enable = true;
 	#To enable power saving

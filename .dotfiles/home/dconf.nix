@@ -5,6 +5,8 @@
 		clipboard-indicator
 		app-icons-taskbar
 		bluetooth-quick-connect
+		quick-settings-tweaker
+		# forge
 	];
 	dconf = {
 		settings = {
@@ -16,6 +18,14 @@
 				natural-scroll = false;
 			};
 			"org/gnome/shell" = {
+				favorite-apps = [
+					"firefox.desktop"
+					"kitty.desktop"
+					"spotify.desktop"
+					"nautilus.desktop"
+					"telegram-desktop.desktop"
+					"webcord.desktop"
+				];
 				disable-user-extensions = false;
 				enabled-extensions = [
 					"blur-my-shell@aunetx"
@@ -23,6 +33,8 @@
 					"clipboard-indicator@tudmotu.com"
 					"aztaskbar@aztaskbar.gitlab.com"
 					"launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+					"quick-settings-tweaker@gnome-shell-extensions.gcampax.github.com"
+					# "forge@gnome-shell-extensions.gcampax.github.com"
 				];
 			};
 			"org/gnome/desktop/interface" = {
