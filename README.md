@@ -1,6 +1,6 @@
 # Dotfiles for NixOS:
 - Wayland compositor: Hyprland
-- Desktop environment: XFCE 
+- Desktop environment: GNOME
 - Hyprland Plugins: Hyprspace
 - Display manager: SDDM
 - Bootloader: GRUB2
