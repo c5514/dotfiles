@@ -236,23 +236,41 @@
 				(f "com.github.Aylur.ags")
 				(f "org.gnome.Calculator")
 				(f "org.gnome.Weather")
-				(f "org.inkscape.Inkscape")
+				# (f "org.inkscape.Inkscape")
 				(f "org.gnome.Settings")
-				"workspace 6, title:Telegram"
-				"workspace 7, title:Spotify"
-				"workspace 8, title:WebCord"
+				(f "Zotero")
+				"workspace 7 silent, title:Telegram"
+				"workspace 7 silent, title:Spotify"
+				"workspace 7 silent, title:WebCord"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
+				"float,class:(xdg-desktop-portal-gtk)"
+				"center,class:(xdg-desktop-portal-gtk)"
+				"float,class:(firefox),title:(Library)"
+				"center,class:(firefox),title:(Library)"
+				"float,class:(org.gnome.Nautilus),title:(Open File)"
+				"center,class:(org.gnome.Nautilus),title:(Open File)"
+				"float,class:(org.gnome.Nautilus),title:(Properties)"
+				"center,class:(org.gnome.Nautilus),title:(Properties)"
+				"float,class:(org.telegram.desktop)"
+				"move 60% 6%,class:(org.telegram.desktop)"
+				"size 35% 45%,class:(org.telegram.desktop)"
+				"float,title:(Spotify)"
+				"size 50% 50%,title:(Spotify)"
+				"move 5% 10%,title:(Spotify)"
+				"float,class:(WebCord)"
+				"move 60% 53%,class:(WebCord)"
+				"size 35% 45%,class:(WebCord)"
 				"float,class:(nm-connection-editor)"
 				"size 35% 60%,class:(nm-connection-editor)"
 				"center,class:(nm-connection-editor)"
-				"float,class:(pavucontrol)"
-				"center,title:(pavucontrol)"
-				"size 60% 70%,title:(pavucontrol)"
-				"float,class:(blueberry)"
-				"size 35% 60%,class:(blueberry)"
-				"center,class:(blueberry)"
+				"float,class:(org.pulseaudio.pavucontrol)"
+				"center,title:(Volume Control)"
+				"size 60% 50%,title:(Volume Control)"
+				"float,class:(blueberry.py)"
+				"size 35% 60%,class:(blueberry.py)"
+				"center,class:(blueberry.py)"
 				"float,class:(feh)"
 				"size 50% 50%,class:(feh)"
 				"center,class:(feh)"

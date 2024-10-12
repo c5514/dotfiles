@@ -22,12 +22,12 @@
 		webcord
 		zotero
 		wineWowPackages.waylandFull
+		(pkgs.inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ]; })
 		megacmd
 		libnotify
 		lshw
 		procps
 		lm_sensors
-		# kdePackages.xwaylandvideobridge
 		blueberry
 		gnome-bluetooth
 		gnome-weather
@@ -36,8 +36,6 @@
 		gnome-calculator
 		gnome-disk-utility
 		networkmanagerapplet
-		(pkgs.inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ]; })
-		github-desktop
 		# pywal
 		expat
 		fzf
