@@ -164,6 +164,7 @@ const options = mkOptions(OPTIONS, {
                 [
                     "firefox",
                     "webcord",
+					"nautilus",
                     "telegram-desktop",
                     "spotify",
 					"codium"
