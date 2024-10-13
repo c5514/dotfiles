@@ -7,7 +7,7 @@
 		./config/bootloader.nix
 		./config/network.nix
 		./config/bluetooth.nix
-		./config/sddm.nix
+		# ./config/sddm.nix
 		./config/sound.nix
 		./config/printers.nix
 		./config/firewall.nix

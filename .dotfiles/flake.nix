@@ -6,10 +6,10 @@
 		home-manager.url = "github:nix-community/home-manager";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
-		sddm-sugar-candy-nix = {
-			url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		# sddm-sugar-candy-nix = {
+		# 	url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
 		ags.url = "github:Aylur/ags";
 		hyprland-contrib = {
 			url = "github:hyprwm/contrib";
@@ -65,12 +65,12 @@
         		modules = [
 					./configuration.nix
 					inputs.grub2-themes.nixosModules.default
-					inputs.sddm-sugar-candy-nix.nixosModules.default
-					{
-    					nixpkgs = {
-    						overlays = [inputs.sddm-sugar-candy-nix.overlays.default];
-						};
-					}
+					# inputs.sddm-sugar-candy-nix.nixosModules.default
+					# {
+    	# 				nixpkgs = {
+    	# 					overlays = [inputs.sddm-sugar-candy-nix.overlays.default];
+					# 	};
+					# }
 				];
         		specialArgs = {
 					inherit inputs;
