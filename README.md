@@ -2,7 +2,7 @@
 - Wayland compositor: Hyprland
 - Desktop environment: GNOME
 - Hyprland Plugins: Hyprspace
-- Display manager: SDDM
+- Display manager: GDM
 - Bootloader: GRUB2
 - App launcher: ags (rofi can be enabled)
 - Bar: ags
@@ -13,3 +13,5 @@
 - Browser: Firefox
 - File manager: Thunar and yazi
 - Terminal: Kitty
+- Zotero installed though is not set up declaratively
+- Inkscape with Neovim plugin that allows to create images for LaTex faster
