@@ -9,7 +9,7 @@
 		shellIntegration.enableFishIntegration = true;
 		settings = {
 			background = "#000000";
-			background_opacity = "0.9";
+			background_opacity = "0.95";
 			padding_width = 15;
 			padding_height = 15;
 			copy_on_select = "yes";
