@@ -1,4 +1,4 @@
-# Dotfiles for NixOS:
+# My setup for NixOS:
 - Wayland compositor: Hyprland
 - Desktop environment: GNOME
 - Hyprland Plugins: Hyprspace
