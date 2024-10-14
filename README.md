@@ -15,3 +15,7 @@
 - Terminal: Kitty
 - Zotero installed though is not set up declaratively
 - Inkscape with Neovim plugin that allows to create images for LaTex faster
+# Notes:
+- Ags widgets are basically the ones from Aylur's dotfiles with some modifications.
+- I am still learning Nix and my setup is mainly for writing TeX files.
+- Previous versions shows my first configurations for Hyprland.
