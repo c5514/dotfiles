@@ -44,7 +44,14 @@ in
 			which-key.enable = true;
 			indent-blankline.enable = true;
 			comment.enable = true;
-			nvim-autopairs.enable = true;
+			nvim-autopairs = {
+				enable = true;
+				settings.disable_filetype = [ 
+					"TelescopePrompt"
+					"spectre_panel"
+					"tex"
+				];
+			};
 			comment-box.enable = true;
 			rainbow-delimiters.enable = true;
 			nvim-colorizer.enable = true;
