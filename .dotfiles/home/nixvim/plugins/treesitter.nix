@@ -6,7 +6,7 @@
 			settings = {
 				highlight = {
 					enable = true;
-					disable = ["latex"];
+					# disable = ["latex"];
 				};
 				indent.enable = true;
 			};
@@ -17,7 +17,7 @@
 				json
 				lua 
 				nix 
-				latex
+				# latex
 				python
 				rasi
 				toml
