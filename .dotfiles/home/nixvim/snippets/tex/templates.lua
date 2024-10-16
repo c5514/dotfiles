@@ -25,6 +25,7 @@ ls.add_snippets('tex', {
         \usepackage{physics}
         \usepackage{dsfont}
         \usepackage{tikz}
+        \usepackage{svg}
         %\usetikzlibrary{quantikz2}%for quantum circuits
         \usepackage{circuitikz}%for logic gates
         \usepackage{caption}
