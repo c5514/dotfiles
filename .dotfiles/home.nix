@@ -8,6 +8,7 @@
 	home.stateVersion = "24.05"; # Please read the comment before changing.
 	nixpkgs.config.allowUnfree = true;
 	nixpkgs.config.allowUnfreePredicate = (_: true);
+	programs.gh.enable = true;
 	home.packages = with pkgs; [
 		ripgrep
 		coreutils
@@ -24,6 +25,7 @@
 		wineWowPackages.waylandFull
 		(pkgs.inkscape-with-extensions.override {inkscapeExtensions = [ inkscape-extensions.textext ]; })
 		megacmd
+		webkitgtk_6_0
 		libnotify
 		lshw
 		procps
@@ -107,6 +109,11 @@
 		./home/yazi.nix
 		./home/zathura.nix
 	];
+	home.sessionVariables = {
+		EDITOR = "nvim";
+		BROWSER = "firefox";
+		TERMINAL = "kitty";
+	};
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
 }

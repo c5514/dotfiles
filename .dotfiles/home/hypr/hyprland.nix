@@ -163,7 +163,7 @@
 				"$mainMod, M, exec, ags -t quicksettings"
 				#Workspaces overview
 				# "$mainMod, P, hyprexpo:expo, toggle"
-				"$mainMod, P, overview:toggle"
+				"$mainMod, R, overview:toggle"
 				#Screenshot
 				", PRINT, exec, grimblast copy screen"
 				"$mainMod, PRINT, exec, grimblast copy active"
@@ -241,9 +241,8 @@
 				(f "com.github.Aylur.ags")
 				(f "org.gnome.Calculator")
 				(f "org.gnome.Weather")
-				# (f "org.inkscape.Inkscape")
+				(f "org.inkscape.Inkscape")
 				(f "org.gnome.Settings")
-				(f "Zotero")
 				"workspace 7 silent, title:Telegram"
 				"workspace 7 silent, title:Spotify"
 				"workspace 7 silent, title:WebCord"
@@ -263,8 +262,9 @@
 				"float,class:(simple-scan),title:(Print)"
 				"float,class:(simple-scan),title:(Preferences)"
 				"float,class:(simple-scan),title:(About)"
-				"float,class:(org.inkscape.Inkscape),title:(Select file to open)"
-				"float,class:(org.inkscape.Inkscape),title:(Select file to save to)"
+				"float,class:(Zotero)"
+				"size 50% 50%,class:(Zotero),title:(Zotero)"
+				"size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
 				"float,class:(soffice)"
 				"center,class:(soffice)"
 				# "stayfocused,title:(MainPicker)"

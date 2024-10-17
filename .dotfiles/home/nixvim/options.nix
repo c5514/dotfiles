@@ -43,6 +43,10 @@
 			mouse = "a";
 			swapfile = false;
 			conceallevel = 2;
+			# spell = true;
+			# spelllang = ["en_us" "es"];
+			ignorecase = true;
+			smartcase = true;
 		};
 		clipboard.register = "unnamedplus";
 		keymaps = [
@@ -55,6 +59,22 @@
 				key = "jk";
 				action = "<ESC>";
 				options.silent = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>cs";
+				action = ":setlocal spell spelllang=es<CR>";
+				options.desc = "Change spelllang to Spanish";
+				options.silent = true;
+				options.noremap = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>ce";
+				action = ":setlocal spell spelllang=en_us<CR>";
+				options.desc = "Change spelllang to English";
+				options.silent = true;
+				options.noremap = true;
 			}
 		];
 	};

@@ -17,9 +17,12 @@ end
 
 ls.add_snippets('tex', {
 	s({ trig = "class", dscr = "Display '\\documentclass'" },
-		fmta([[\documentclass{<>}]],{ i(1) })),
+		fmta([[\documentclass{<>}]], { i(1) })),
 	s({ trig = "pkg", dscr = "Display '\\usepackage'" },
-		fmta([[\usepackage{<>}]],{ i(1) })),
+		fmta([[\usepackage{<>}]], { i(1) })),
 	s({ trig = "ltikz", dscr = "Display '\\usetikzlibrary'" },
-		fmta([[\usetikzlibrary{<>}]],{ i(1) })),
+		fmta([[\usetikzlibrary{<>}]], { i(1) })),
+	s({ trig = "%##", snippetType = "autosnippet" }, t(
+"% ──────────────────────────────────────────────────────────────────────"
+))
 })

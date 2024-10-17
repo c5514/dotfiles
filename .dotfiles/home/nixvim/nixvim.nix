@@ -10,9 +10,10 @@ in
 	imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 		./options.nix
+		./plugins/alpha.nix
+		./plugins/autopairs.nix
 		./plugins/bufferline.nix
 		./plugins/cmp.nix
-		./plugins/alpha.nix
 		./plugins/conform.nix
 		# ./plugins/dashboard.nix
 		./plugins/lsp.nix
@@ -20,7 +21,7 @@ in
 		./plugins/luasnip.nix
 		# ./plugins/neorg.nix
 		./plugins/neotree.nix
-		./plugins/orgmode.nix
+		# ./plugins/orgmode.nix
 		./plugins/telescope.nix
 		./plugins/todoComents.nix
 		./plugins/treesitter.nix
@@ -44,14 +45,6 @@ in
 			which-key.enable = true;
 			indent-blankline.enable = true;
 			comment.enable = true;
-			nvim-autopairs = {
-				enable = true;
-				settings.disable_filetype = [ 
-					"TelescopePrompt"
-					"spectre_panel"
-					"tex"
-				];
-			};
 			comment-box.enable = true;
 			rainbow-delimiters.enable = true;
 			nvim-colorizer.enable = true;
@@ -61,9 +54,10 @@ in
 				backgroundColour = "#000000";
 			};
 			lsp-lines.enable = true;
-			# nvim-ufo.enable = true;
 			trouble.enable = true;
-			markview.enable = true;
+			nvim-surround.enable = true;
+			lazygit.enable = true;
+			# markview.enable = true;
 		};
 		extraPlugins = [ 
 			illustrate

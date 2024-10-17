@@ -14,6 +14,8 @@
 		cmp-path.enable = true;
 		cmp_luasnip.enable = true;
 		cmp-cmdline.enable = true;
+		cmp-spell.enable = true;
+		cmp-git.enable = true;
 		cmp = {
 			enable = true;
 			settings = {
@@ -91,18 +93,22 @@
 						keywordLength = 3;
 						option.show_autosnippets = true;
 					}
-					{	name = "orgmode";  }
+					# {	name = "orgmode";  }
 					{
 						name = "buffer";
 						option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
 						keywordLength = 3;
 					}
+					{	
+						name = "spell";
+						keywordLength = 4;
+					}
 					# {	name = "copilot";	}
-					{	name = "emoji";	}
 					{
 						name = "path";
 						keywordLength = 3;
 					}
+					{	name = "emoji";	}
 				];
 				window = {
 					completion.border = "rounded";
