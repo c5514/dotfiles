@@ -4,7 +4,7 @@
 		enable = true;
 		settings = {
     logo= {
-        source = "Nixos_small";
+        source = "NixoOS";
         padding.right = 1;
         printRemaining = true;
         position = "left";
@@ -41,20 +41,15 @@
         };
     };
     modules = [
-        {
-            type = "title";
-            key = "󰶫 Account";
-            format = "{1}@{2}";
-        }
-        {
-            type = "player";
-            key = "  󰥠 Player";
-        }
-        {
-            type = "media";
-            key = "   Media";
-            format = "{1} - {3}";
-        }
+		{
+    		"type" =  "title";
+    		"format" = "{#1}╭───────────── {#}{user-name-colored}";
+		}
+        # {
+        #     type = "title";
+        #     key = "󰶫 Account";
+        #     format = "{1}@{2}";
+        # }
         {
             type = "os";
             key = " os";
@@ -175,17 +170,9 @@
             key= "  󰓡 Swap";
         }
         {
-            type = "custom";
-            format = "   PhysicalDisk";
-        }
-        {
             type = "physicaldisk";
             key = "    󰋊 Drive";
             temp= true;
-        }
-        {
-            type= "custom";
-            format= "  󰪶 MountedFileSystems";
         }
         {
             type= "disk";
@@ -203,6 +190,10 @@
             type= "brightness";
             key= "    󰃠 Brightness";
         }
+				{
+    				"type"= "custom";
+    				"format"= "{#1}╰───────────────────────────────╯";
+				}
     	];
 		};
 	};
