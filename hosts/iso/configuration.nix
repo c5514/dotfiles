@@ -1,7 +1,7 @@
 { pkgs, lib,modulesPath,...}:
 {
 	imports = [
-		"${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+		"${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
 	];
 	nixpkgs = {
 		hostPlatform = lib.mkDefault "x86_64-linux";
