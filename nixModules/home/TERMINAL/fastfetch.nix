@@ -43,13 +43,8 @@
     modules = [
 		{
     		"type" =  "title";
-    		"format" = "{#1}╭───────────── {#}{user-name-colored}";
+    		"format" = "{#1}╭────────────────────────────────────────────────}";
 		}
-        # {
-        #     type = "title";
-        #     key = "󰶫 Account";
-        #     format = "{1}@{2}";
-        # }
         {
             type = "os";
             key = " os";
@@ -81,17 +76,6 @@
         {
             type = "shell";
             key = "     Shell";
-        }
-        {
-            type = "localip";
-            key = "  󰩟 LocalIP";
-            showipv4 = true;
-            showipv6 = true;
-            compact = true;
-        }
-        {
-            type = "publicip";
-            key = "  󰩠 PublicIP";
         }
         {
             type = "locale";
@@ -191,8 +175,13 @@
             key= "    󰃠 Brightness";
         }
 				{
+    				"type" = "colors";
+    				"key" = "{#separator}│";
+    				"symbol" = "circle";
+    			}
+				{
     				"type"= "custom";
-    				"format"= "{#1}╰───────────────────────────────╯";
+    				"format"= "{#1}╰────────────────────────────────────────────────╯";
 				}
     	];
 		};
