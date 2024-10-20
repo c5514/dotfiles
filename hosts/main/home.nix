@@ -8,7 +8,6 @@
 	imports = [
 		../../nixModules/home/HYPR/default.nix
 		../../nixModules/home/default.nix
-		../../nixModules/home/HYPR/withoutAgs/waybar/default.nix
 	];
 	home.sessionVariables = {
 		EDITOR = "nvim";

@@ -12,5 +12,6 @@
 	# 	./withoutAgs/rofi.nix
 	# 	./withoutAgs/wlogout/wlogout.nix
 	# 	./withoutAgs/waypaper/waypaper.nix
+	# 	./withoutAgs/waybar/default.nix
 	# ];
 }
