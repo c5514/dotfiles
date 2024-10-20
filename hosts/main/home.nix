@@ -17,6 +17,7 @@
 	home.packages = with pkgs; [
 		ripgrep
 		coreutils
+		brillo
 		clang
 		swww
 		megacmd
