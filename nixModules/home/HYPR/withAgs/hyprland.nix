@@ -5,9 +5,9 @@
 		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 		systemd.enable = true;
 		xwayland.enable = true;
-		plugins = [
-			inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-		];
+		# plugins = [
+		# 	inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+		# ];
 		settings = {
 			monitor = ",preferred, auto, 1";
 			#Autostart
@@ -153,7 +153,7 @@
 				"$mainMod, D, exec, ags -t datemenu"
 				"$mainMod, M, exec, ags -t quicksettings"
 				#Workspaces overview
-				"$mainMod, R, overview:toggle"
+				# "$mainMod, R, overview:toggle"
 				#Screenshot
 				", PRINT, exec, grimblast copy screen"
 				"$mainMod, PRINT, exec, grimblast copy active"
