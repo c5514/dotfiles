@@ -9,6 +9,9 @@
 		gtk3
 		hyprpicker
 		wf-recorder
+		swappy
+		slurp
+		inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 	];
 	programs.ags = {
 		enable = true;
