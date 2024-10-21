@@ -167,7 +167,7 @@ const options = mkOptions(OPTIONS, {
 					"nautilus",
                     "telegram-desktop",
                     "spotify",
-					"codium"
+					"zotero"
                 ],
             ]),
         },
