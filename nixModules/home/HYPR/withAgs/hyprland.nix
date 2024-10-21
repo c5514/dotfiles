@@ -154,7 +154,7 @@
 				"$mainMod, M, exec, ags -t quicksettings"
 				#Workspaces overview
 				# "$mainMod, R, overview:toggle"
-				"$mainMod, R, ags -t overview"
+				"$mainMod, R, exec, ags -t overview"
 				#Screenshot
 				", PRINT, exec, grimblast copy screen"
 				"$mainMod, PRINT, exec, grimblast copy active"
