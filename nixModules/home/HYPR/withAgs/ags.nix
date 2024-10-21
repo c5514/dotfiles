@@ -11,6 +11,7 @@
 		wf-recorder
 		swappy
 		slurp
+		wayshot
 		inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 	];
 	programs.ags = {

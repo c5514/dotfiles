@@ -120,7 +120,7 @@ const options = mkOptions(OPTIONS, {
         taskbar: {
             iconSize: opt(24),
             monochrome: opt(false),
-            exclusive: opt(false),
+            exclusive: opt(true),
         },
         messages: {
             action: opt(() => App.toggleWindow("datemenu")),
@@ -167,13 +167,14 @@ const options = mkOptions(OPTIONS, {
 					"nautilus",
                     "telegram-desktop",
                     "spotify",
+					"zotero"
                 ],
             ]),
         },
     },
 
     overview: {
-        scale: opt(6),
+        scale: opt(10),
         workspaces: opt(0),
         monochromeIcon: opt(false),
     },
@@ -225,16 +226,16 @@ const options = mkOptions(OPTIONS, {
 
     osd: {
         progress: {
-            vertical: opt(false),
+            vertical: opt(true),
             pack: {
-                h: opt<"start" | "center" | "end">("center"),
-                v: opt<"start" | "center" | "end">("start"),
+                h: opt<"start" | "center" | "end">("end"),
+                v: opt<"start" | "center" | "end">("center"),
             },
         },
         microphone: {
             pack: {
                 h: opt<"start" | "center" | "end">("center"),
-                v: opt<"start" | "center" | "end">("start"),
+                v: opt<"start" | "center" | "end">("end"),
             },
         },
     },
