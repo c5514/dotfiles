@@ -12,6 +12,7 @@
 		swappy
 		slurp
 		wayshot
+		pywal
 		inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 	];
 	programs.ags = {

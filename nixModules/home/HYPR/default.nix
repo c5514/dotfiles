@@ -4,6 +4,7 @@
 		./withAgs/hyprland.nix
 		./hypridle.nix
 		./hyprlock.nix
+		./withoutAgs/rofi.nix
 	];
 	# imports = [
 	# 	./withoutAgs/hyprland.nix

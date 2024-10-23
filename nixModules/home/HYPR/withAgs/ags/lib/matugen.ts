@@ -16,7 +16,7 @@ export async function matugen(
     type: "image" | "color" = "image",
     arg = wallpaper.wallpaper,
 ) {
-    if (!options.autotheme.value || !dependencies("matugen"))
+    if (!options.autotheme.value || !dependencies("matugen") || !dependencies("wal"))
         return
 
     const colors = await sh(`matugen --dry-run -j hex ${type} ${arg}`)
@@ -24,6 +24,8 @@ export async function matugen(
     const { dark, light } = options.theme
 
     animate(
+		() => sh(`rm -rf /home/c5514/.cache/wal`),
+		() => sh(`wal -s -t -i ${arg}`),
         () => {
             dark.widget.value = c.dark.on_surface
             light.widget.value = c.light.on_surface

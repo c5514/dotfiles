@@ -40,7 +40,8 @@
 			"$terminal" = "kitty";
 			"$fileManager" = "nautilus";
 			"$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
-			"$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
+			# "$clipboard" = "rofi -dmenu -theme 	~/.config/rofi/cliphist.rasi";
+			"$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
 			"$browser" = "firefox";
 			#Input
 			input = {
@@ -166,8 +167,9 @@
 				"$mainMod, PRINT, exec, grimblast copy active"
 				"$mainMod SHIFT, PRINT, exec, grimblast copy area"
 				#Cliphist
-				"$mainMod, V, exec, cliphist list | $clipboard| cliphist decode | wl-copy"
-				"$mainMod SHIFT, V, exec, cliphist list | $clipboard | cliphist delete"
+				"$mainMod, V, exec, $clipboard"
+				# "$mainMod, V, exec, cliphist list | $clipboard| cliphist decode | wl-copy"
+				# "$mainMod SHIFT, V, exec, cliphist list | $clipboard | cliphist delete"
 				"$mainMod CTRL, V, exec, cliphist wipe"
 				#Change focus of workspace
 				"$mainMod, left, movefocus, l"
