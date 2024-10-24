@@ -2,7 +2,6 @@
 {
 	users.users.c5514.extraGroups = [ "libvirtd" ];
 	environment.systemPackages = with pkgs; [
-		virt-manager
 		virt-viewer
 		spice
 		spice-gtk
@@ -23,4 +22,5 @@
 		spiceUSBRedirection.enable = true;
 	};
 	services.spice-vdagentd.enable = true;
+	programs.virt-manager.enable = true;
 }
