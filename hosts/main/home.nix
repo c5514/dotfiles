@@ -28,9 +28,11 @@
 		blueberry
 		networkmanagerapplet
 		libsForQt5.qt5.qtwayland
-		# pywal
 		expat
 		fzf
+		python3
+		python312Packages.tinycss2
+		texliveMedium
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your

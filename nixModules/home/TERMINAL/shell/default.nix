@@ -2,7 +2,7 @@
 let myAliases = {
     		ll = "ls -l";
     		ff = "fastfetch";
-    		tex = "cd ~/Documents/Vim/Tex/";
+    		tx = "cd ~/Documents/Vim/Tex/";
 			dwn = "cd ~/Downloads/";
 			doc = "cd ~/Documents/";
     		nv = "nvim";

@@ -261,6 +261,9 @@
 				"float,class:(Zotero)"
 				"size 50% 50%,class:(Zotero),title:(Zotero)"
 				"size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
+
+				"float,title:(TexText)"
+				"move 60% 6%,class:(TexText)"
 				"float,class:(soffice)"
 				"center,class:(soffice)"
 				# "stayfocused,title:(MainPicker)"
