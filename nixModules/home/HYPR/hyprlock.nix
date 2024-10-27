@@ -11,7 +11,7 @@
     		};
 			background = {
     			monitor = "";
-    			path = "~/nixwall.png";
+    			path = "~/Pictures/nixwall.png";
 			};
 			input-field = [{
     			monitor = "";
@@ -58,7 +58,7 @@
 			}
 			{
 				monitor = "";
-				text = " ";
+				text = "  ";
 				shadow_passes = 1;
 				shadow_boost = "0.5";
     			color = "rgba(200, 200, 200, 1.0)";

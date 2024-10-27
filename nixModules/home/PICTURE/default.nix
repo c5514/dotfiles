@@ -1,5 +1,5 @@
 {
 	home.file = {
-		"nixwall.png".source = ./nixwall.png;
+		"Pictures/nixwall.png".source = ./nixwall.png;
 	};
 }

@@ -18,10 +18,6 @@
 					cursor-theme = "Bibata-Modern-Ice";
 					show-battery-percentage = true;
 				};
-				"org/gnome/desktop/background" = {
-					picture-uri = "file:///home/c5514/nixwall.png";
-					picture-uri-dark = "file:///home/c5514/nixwall.png";
-				};
 			};
 		}
 	];

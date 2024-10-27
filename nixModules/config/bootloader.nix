@@ -13,6 +13,7 @@
 		enable = true;
 		theme = "tela";
 		footer = true;
+		icon = "color";
 	};
 	boot.loader.grub.fontSize = 24;
 	boot.loader.systemd-boot.enable = false;
