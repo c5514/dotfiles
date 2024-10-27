@@ -15,7 +15,6 @@ in
 		./plugins/bufferline.nix
 		./plugins/cmp.nix
 		./plugins/conform.nix
-		./plugins/illustrate.nix
 		./plugins/lsp.nix
 		./plugins/lualine.nix
 		./plugins/luasnip.nix
@@ -58,6 +57,6 @@ in
 		extraPlugins = [ 
 			illustrate
 		];
-		# extraConfigLua = ''${builtins.readFile ./plugins/illustrate.lua}'';
+		extraConfigLua = ''${builtins.readFile ./plugins/illustrate.lua}'';
 	};
 }
