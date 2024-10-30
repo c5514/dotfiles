@@ -1,0 +1,519 @@
+#+TITLE: GNU Emacs Config
+#+DESCRIPTION: Personal Emacs config.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+* TABLE OF CONTENTS :toc:
+- [[#important-programs-to-load-first][IMPORTANT PROGRAMS TO LOAD FIRST]]
+  - [[#elpaca-package-manager][Elpaca Package Manager]]
+  - [[#load-evil-mode][Load Evil mode]]
+  - [[#general-keybindings][General Keybindings]]
+  - [[#options][OPTIONS]]
+- [[#auctex][AUCTEX]]
+- [[#icons][ICONS]]
+- [[#dashboard][Dashboard]]
+- [[#fonts][FONTS]]
+  - [[#setting-the-font-face][Setting the font face]]
+  - [[#zooming-inout][Zooming In/Out]]
+- [[#diminish][DIMINISH]]
+- [[#flycheck][FLYCHECK]]
+- [[#graphical-user-interface-tweaks][GRAPHICAL USER INTERFACE TWEAKS]]
+  - [[#disable-menubar-toolbars-and-scrollbars][Disable Menubar, Toolbars and Scrollbars]]
+  - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
+- [[#ivy-counsel][IVY (COUNSEL)]]
+- [[#language-support][LANGUAGE SUPPORT]]
+- [[#lsp-mode][LSP-MODE]]
+- [[#org-mode][ORG MODE]]
+  - [[#enabling-table-of-contents][Enabling Table of Contents]]
+  - [[#enabling-org-bullets][Enabling Org Bullets]]
+  - [[#disable-electric-indent][Disable Electric Indent]]
+  - [[#setting-up-todo-keywords][Setting up TODO keywords]]
+  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
+  - [[#latex-export][LaTex Export]]
+- [[#pdf-tools][PDF TOOLS]]
+- [[#projectile][PROJECTILE]]
+- [[#rainbow-mode][RAINBOW MODE]]
+- [[#theme][THEME]]
+- [[#transparency][TRANSPARENCY]]
+- [[#which-key][WHICH-KEY]]
+
+* IMPORTANT PROGRAMS TO LOAD FIRST
+** Elpaca Package Manager
+#+begin_src emacs-lisp
+    (defvar elpaca-installer-version 0.7)
+    (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
+    (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
+    (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
+    (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+				  :ref nil :depth 1
+				  :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+				  :build (:not elpaca--activate-package)))
+    (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+	   (build (expand-file-name "elpaca/" elpaca-builds-directory))
+	   (order (cdr elpaca-order))
+	   (default-directory repo))
+      (add-to-list 'load-path (if (file-exists-p build) build repo))
+      (unless (file-exists-p repo)
+	(make-directory repo t)
+	(when (< emacs-major-version 28) (require 'subr-x))
+	(condition-case-unless-debug err
+	    (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+		     ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+						     ,@(when-let ((depth (plist-get order :depth)))
+							 (list (format "--depth=%d" depth) "--no-single-branch"))
+						     ,(plist-get order :repo) ,repo))))
+		     ((zerop (call-process "git" nil buffer t "checkout"
+					   (or (plist-get order :ref) "--"))))
+		     (emacs (concat invocation-directory invocation-name))
+		     ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+					   "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+		     ((require 'elpaca))
+		     ((elpaca-generate-autoloads "elpaca" repo)))
+		(progn (message "%s" (buffer-string)) (kill-buffer buffer))
+	      (error "%s" (with-current-buffer buffer (buffer-string))))
+	  ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+      (unless (require 'elpaca-autoloads nil t)
+	(require 'elpaca)
+	(elpaca-generate-autoloads "elpaca" repo)
+	(load "./elpaca-autoloads")))
+    (add-hook 'after-init-hook #'elpaca-process-queues)
+    (elpaca `(,@elpaca-order))
+#+end_src
+
+** Load Evil mode
+#+begin_src emacs-lisp
+;; Install a package via the elpaca macro
+;; Install use-package support
+    (elpaca elpaca-use-package
+;; Enable use-package :ensure support for Elpaca.
+    (elpaca-use-package-mode))
+;;When installing a package used in the init file itself,
+;;e.g. a package which adds a use-package key word,
+;;use the :wait recipe keyword to block until that package is installed/configured.
+;;For example:
+;;(use-package general :ensure (:wait t) :demand t)
+
+;; Expands to: (elpaca evil (use-package evil :demand t))
+;;(use-package evil :ensure t :demand t)
+  (use-package evil :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (evil-mode))
+  (use-package evil-collection :ensure t
+  :after evil
+  :config
+  (setq evil-collection-mode-list '(dashboard dired ibuffer))
+  (evil-collection-init))
+  (use-package evil-tutor :ensure t)
+;;Turns off elpaca-use-package-mode current declaration
+;;Note this will cause evaluate the declaration immediately. It is not deferred.
+;;Useful for configuring built-in emacs features.
+  (use-package emacs :ensure nil :config (setq ring-bell-function #'ignore))
+#+end_src
+** General Keybindings
+#+begin_src emacs-lisp
+(use-package general :ensure t
+  :config
+    (general-evil-setup)
+(general-create-definer dt/leader-keys
+  :states '(normal insert visual emacs)
+  :keymaps 'override
+  :prefix "SPC"
+  :global-prefix "M-SPC")
+(dt/leader-keys
+  "." '(find-file :wk "Find file")
+  "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
+  "f r" '(counsel-recentf :wk "Find recent files")
+  "TAB TAB" '(comment-line :wk "Comment lines"))
+(dt/leader-keys
+  "b" '(:ignore t :w "buffer")
+  "b b" '(switch-to-buffer :wk "Switch this buffer")
+  "b i" '(ibuffer :wk "Ibuffer")
+  "b k" '(kill-this-buffer :wk "Kill this buffer")
+  "b n" '(next-buffer :wk "Next buffer")
+  "b p" '(previous-buffer :wk "Previous buffer")
+  "b r" '(revert-buffer :wk "Reload buffer"))
+(dt/leader-keys
+  "e" '(:ignore t :wk "Evaluate")
+  "e b" '(eval-buffer :wk "Evaluate elisp in buffer")
+  "e d" '(eval-defun :wk "Evaluate defun containing or after point")
+  "e e" '(eval-expression :wk "Evaluate and elisp expression")
+  "e l" '(eval-last-sexp :wk "Evaluate elisp expression before point")
+  "e r" '(eval-region :wk "Evaluate elisp in region"))
+(dt/leader-keys
+  "h" '(:ignore t :wk "Help")
+  "h f" '(describe-function :wk "Describe function")
+  "h t" '(load-theme :wk "Load theme")
+  "h v" '(describe-variable :wk "Describe variable")
+  "h rr" '((lambda() (interactive)(load-file "~/.config/emacs/init.el")) :wk "Reload emacs config"))
+(dt/leader-keys
+  "m" '(:ignore t :wk "Org")
+  "m a" '(org-agenda :wk "Org agenda")
+  "m e" '(org-export-dispatch :wk "Org export dispatch")
+  "m i" '(org-toggle-item :wk "Org toggle item")
+  "m t" '(org-todo :wk "Org todo")
+  "m B" '(org-babel-tangle :wk "Org babel tangle")
+  "m T" '(org-todo-list :wk "Org todo list"))
+(dt/leader-keys
+  "m b" '(:ignore t :wk "Tables")
+  "m b -" '(org-table-insert-hline :wk "Insert hline in table"))
+(dt/leader-keys
+  "m d" '(:ignore t :wk "Date/deadline")
+  "m d t" '(org-time-stamp :wk "Org time stamp"))
+(dt/leader-keys
+  "t" '(:ignore t :wk "Toggle")
+  "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
+  "t t" '(visual-line-mode :wk "Toggle truncated lines"))
+)
+#+end_src
+** OPTIONS
+#+begin_src emacs-lisp
+(setq inhibit-startup-message t)
+(setq-default tab-width 4
+              fill-column 79
+              truncated-lines t
+              indent-tabs-mode nil
+              split-width-threshold 160
+              split-height-threshold nil
+              auto-fill-function 'do-auto-fill)
+#+end_src
+* AUCTEX
+#+begin_src emacs-lisp
+(use-package auctex :ensure t
+:defer t)
+#+end_src
+* ICONS
+This is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs
+#+begin_src emacs-lisp
+(use-package nerd-icons :ensure t)
+#+end_src
+* Dashboard
+#+begin_src emacs-lisp
+   (use-package dashboard :ensure t
+   :init
+   (setq initial-buffer-choice 'dashboard-open)
+   (setq dashboard-display-icons-p t)
+   (setq dashboard-icon-type 'nerd-icons)
+   (setq dashboard-set-heading-icons t)
+   (setq dashboard-set-file-icons t)
+   (setq dashboard-banner-logo-title nil)
+   (setq dashboard-set-footer nil)
+   (setq dashboard-center-content nil)
+   (setq dashboard-items '((recents . 5)
+                           (agenda . 5)
+                           (bookmarks . 3)
+                           (projects . 3)
+                           (registers . 3)))
+ :config
+ (dashboard-setup-startup-hook)
+(dashboard-modify-heading-icons '((bookmarks . "nf-oct-book"))))
+#+end_src
+* FONTS
+Defining the various fonts that emacs will use
+** Setting the font face
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil
+    :font "JetBrains Mono"
+    :height 110
+    :weight 'medium)
+  (set-face-attribute 'variable-pitch nil
+    :font "JetBrains Mono"
+    :height 110
+    :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+    :font "JetBrains Mono"
+    :height 110
+    :weight 'medium)
+  (set-face-attribute 'font-lock-comment-face nil
+    :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+    :slant 'italic)
+  (add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
+  (setq-default line-spacing 0.12)
+#+end_src
+** Zooming In/Out
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-=") 'text-scale-increase)
+  (global-set-key (kbd "C--") 'text-scale-decrease)
+  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+#+end_src
+* DIMINISH
+This package implements hiding or abbreviation of the modeline displays of minor-modes.
+#+begin_src emacs-lisp
+(use-package diminish :ensure t)
+#+end_src
+* FLYCHECK
+To syntax-checker
+#+begin_src emacs-lisp
+(use-package flycheck
+:ensure t 
+:defer t
+:diminish 
+:init (global-flycheck-mode))
+#+end_src
+* GRAPHICAL USER INTERFACE TWEAKS
+** Disable Menubar, Toolbars and Scrollbars
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+#+end_src
+** Display Line Numbers and Truncated Lines
+#+begin_src emacs-lisp
+  (global-display-line-numbers-mode 1)
+  (global-visual-line-mode t)
+#+end_src
+* IVY (COUNSEL)
++ Ivy, a generic completion mechanism for Emacs.
++ Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
++ Ivy-rich allows us to add descriptions alongside the commands in M-x.
+#+begin_src emacs-lisp
+  (use-package counsel :ensure t
+    :after ivy
+    :config (counsel-mode))
+  (use-package ivy :ensure t
+  :bind
+    (("C-c C-r" . ivy-resume)
+     ("C-x B" . ivy-switch-buffer-other-window))
+  :custom
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq enable-recursive-minibuffers t)
+  :config
+  (ivy-mode))
+  (use-package all-the-icons-ivy-rich 
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
+  (use-package ivy-rich
+  :after ivy
+  :ensure t
+  :init (ivy-rich-mode 1)
+  :custom
+  (ivy-virtual-abbreviate 'full
+   ivy-rich-switch-buffer-align-virtual-buffer t
+   ivy-rich-path-style 'abbrev)
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer))
+#+end_src
+* LANGUAGE SUPPORT
+#+begin_src emacs-lsp
+(use-package haskell-mode :ensure t)
+(use-package lua-mode :ensure t)
+(use-package python-mode :ensure t)
+(use-package latex-mode :ensure t)
+#+end_src
+* LSP-MODE
+#+begin_src emacs-lsp
+(use-package lsp-mode :ensure t
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
+(use-package company :ensure t
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box :ensure t
+  :hook (company-mode . company-box-mode))
+#+end_src
+* ORG MODE
+** Enabling Table of Contents
+#+begin_src emacs-lisp
+  (use-package toc-org :ensure t
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
+#+end_src
+** Enabling Org Bullets
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (use-package org-bullets :ensure t)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+** Disable Electric Indent
+#+begin_src emacs-lisp
+  (electric-indent-mode -1)
+  (setq org-edit-src-content-indentation 0)
+#+end_src
+** Setting up TODO keywords
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+  (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
+#+end_src
+** Source Code Block Tag Expansion
+Org-tempo allows for '<s' followed by TAB to expand to begin_src tag. Other expansions available include:
+| Typing the below + TAB | Expands to...                            |
+|------------------------+------------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' ... '#+END_EXPORT |
+#+begin_src emacs-lisp
+  (require 'org-tempo)
+#+end_src
+** LaTex Export
+#+begin_src emacs-lisp
+;; Convert font-lock faces to other formats
+(use-package engrave-faces :ensure t
+  :defer t)
+
+;; LaTeX Back-End for Org Export Engine
+(use-package ox-latex
+  :ensure nil
+  :after org
+  :config
+  (setq org-export-allow-bind-keywords t
+        org-latex-src-block-backend 'engraved
+        org-latex-pdf-process
+        '("latexmk -pdflatex='xelatex -shell-escape -interaction nonstopmode' -pdf -f %f"))
+
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+
+  (add-to-list 'org-latex-classes
+               '("ifimaster"
+                 "\\documentclass{ifimaster}
+[DEFAULT-PACKAGES]
+[PACKAGES]
+[EXTRA]
+\\usepackage{babel,csquotes,ifimasterforside,url,varioref}"
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+  (add-to-list 'org-latex-classes
+               '("easychair" "\\documentclass{easychair}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+(use-package org-noter :ensure t
+  :config
+  (require 'org-noter-pdftools))
+
+(use-package org-pdftools :ensure t
+  :hook (org-mode . org-pdftools-setup-link))
+
+(use-package org-noter-pdftools :ensure t
+  :after org-noter
+  :config
+  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                   (not org-noter-insert-note-no-questions)
+                                                 org-noter-insert-note-no-questions))
+           (org-pdftools-use-isearch-link t)
+           (org-pdftools-use-freepointer-annot t))
+       (org-noter-insert-note (org-noter--get-precise-info)))))
+
+   (defun org-noter-set-start-location (&optional arg)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+#+end_src
+* PDF TOOLS
+#+begin_src emacs-lisp
+(use-package pdf-tools :ensure t
+   :defer t
+   :config
+       (pdf-tools-install)
+       (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+       TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+       TeX-source-correlate-start-server t)
+       (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+       (setq-default pdf-view-display-size 'fit-page)
+   :bind (:map pdf-view-mode-map
+         ("\\" . hydra-pdftools/body)
+         ("<s-spc>" .  pdf-view-scroll-down-or-next-page)
+         ("g"  . pdf-view-first-page)
+         ("G"  . pdf-view-last-page)
+         ("l"  . image-forward-hscroll)
+         ("h"  . image-backward-hscroll)
+         ("j"  . pdf-view-next-page)
+         ("k"  . pdf-view-previous-page)
+         ("e"  . pdf-view-goto-page)
+         ("u"  . pdf-view-revert-buffer)
+         ("al" . pdf-annot-list-annotations)
+         ("ad" . pdf-annot-delete)
+         ("aa" . pdf-annot-attachment-dired)
+         ("am" . pdf-annot-add-markup-annotation)
+         ("at" . pdf-annot-add-text-annotation)
+         ("y"  . pdf-view-kill-ring-save)
+         ("i"  . pdf-misc-display-metadata)
+         ("s"  . pdf-occur)
+         ("b"  . pdf-view-set-slice-from-bounding-box)
+         ("r"  . pdf-view-reset-slice)))
+(defun my-turn-off-line-numbers ()
+(display-line-numbers-mode -1))
+(add-hook 'pdf-view-mode-hook #'my-turn-off-line-numbers)
+#+end_src
+* PROJECTILE
+#+begin_src emacs-lisp
+(use-package projectile :ensure t
+:config
+(projectile-mode 1))
+#+end_src
+* RAINBOW MODE
+#+begin_src emacs-lisp
+(use-package rainbow-mode :ensure t
+  :hook org-mode prog-mode)
+#+end_src
+* THEME
+#+begin_src emacs-lisp
+(use-package doom-themes :ensure t
+:config
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+(load-theme 'doom-dark+ t))
+#+end_src
+* TRANSPARENCY
+#+begin_src emacs-lisp
+(set-frame-parameter nil 'alpha-background 90)
+(add-to-list 'default-frame-alist '(alpha-background . 90))
+#+end_src
+* WHICH-KEY
+#+begin_src emacs-lisp
+  (use-package which-key :ensure t
+  :init
+    (which-key-mode 1)
+  :config
+    (setq which-key-side-window-location 'bottom
+	  which-key-sort-order #'which-key-key-order-alpha
+	  which-key-sort-uppercasep-first nil
+	  which-key-add-column-padding 1
+	  which-key-max-display-columns nil
+	  which-key-min-display-lines 6
+	  which-key-side-window-slot -10
+	  which-key-side-window-max-height 0.25
+	  which-key-idle-delay 0.8
+	  which-key-max-description-length 25
+	  which-key-allow-imprecise-window-fit t
+        which-key-separator " » "))
+#+end_src

@@ -16,7 +16,7 @@
 				}
 			];
 			fromLua = [
-				{	paths = "~/.dotfiles/nixModules/home/EDITOR/nixvim/snippets";	}
+				{	paths = "~/nixdotfiles/nixModules/home/EDITOR/nixvim/snippets";	}
 			];
 		};
 		keymaps = lib.mkIf config.programs.nixvim.plugins.luasnip.enable [
