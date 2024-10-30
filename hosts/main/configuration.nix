@@ -75,9 +75,10 @@
 		fira-code-symbols
 		fira-sans
 		font-awesome
+		material-icons
 		jetbrains-mono
 		freefont_ttf
-		(nerdfonts.override {fonts = ["JetBrainsMono"];})
+		(nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
 	];
 	xdg.portal.enable = true;
 	# services.gnome.gnome-keyring.enable = true;

@@ -3,8 +3,10 @@
 
 	inputs = {
 		nixpkgs.url = "nixpkgs/nixos-unstable";
-		home-manager.url = "github:nix-community/home-manager";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
 		# sddm-sugar-candy-nix = {
 		# 	url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
@@ -18,6 +20,24 @@
 		hyprland = {
 			url = "git+https://github.com/hyprwm/hyprland?submodules=1";
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		hypridle = {
+			url = "github:hyprwm/hypridle";
+			inputs = {
+			hyprlang.follows = "hyprland/hyprlang";
+			hyprutils.follows = "hyprland/hyprutils";
+			nixpkgs.follows = "hyprland/nixpkgs";
+			systems.follows = "hyprland/systems";
+			};
+		};
+		hyprlock = {
+			url = "github:hyprwm/hyprlock";
+			inputs = {
+				hyprlang.follows = "hyprland/hyprlang";
+				hyprutils.follows = "hyprland/hyprutils";
+				nixpkgs.follows = "hyprland/nixpkgs";
+				systems.follows = "hyprland/systems";
+			};
 		};
 		hyprland-plugins = {
 			url = "github:hyprwm/hyprland-plugins";

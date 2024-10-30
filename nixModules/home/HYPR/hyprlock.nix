@@ -1,8 +1,9 @@
-{pkgs,...}:
+{inputs, pkgs,...}:
 
 {
 	programs.hyprlock = {
 		enable = true;
+		package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
 		settings = {
 			general = {
     			disable_loading_bar = true;
@@ -58,13 +59,13 @@
 			}
 			{
 				monitor = "";
-				text = "  ";
+				text = "🔒";
 				shadow_passes = 1;
 				shadow_boost = "0.5";
     			color = "rgba(200, 200, 200, 1.0)";
 				font_size = 21;
-				font_family = "Font Awesome";
-				position = "0, 65";
+				font_family = "Material Symbols Outlined";
+				position = "0, 70";
 				halign = "center";
 				valign = "bottom";
 			}
