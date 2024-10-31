@@ -32,7 +32,7 @@
 		fzf
 		python3
 		python312Packages.tinycss2
-		texliveMedium
+		texliveFull
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
