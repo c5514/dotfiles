@@ -11,6 +11,7 @@
 			arrterian.nix-env-selector
 			emroussel.atomize-atom-one-dark-theme
 			ms-toolsai.jupyter
+			james-yu.latex-workshop
 		];
 	};
 }

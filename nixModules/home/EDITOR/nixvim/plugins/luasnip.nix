@@ -12,6 +12,7 @@
 			fromVscode = [
 				{
 					lazyLoad = true;
+					exclude = [ "tex" ];
 					paths = "${pkgs.vimPlugins.friendly-snippets}";
 				}
 			];
