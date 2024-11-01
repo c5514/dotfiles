@@ -6,7 +6,7 @@
 			vim-tmux-navigator
 			resurrect
 			yank
-			onedark-theme
+			tokyo-night-tmux
     	];
 		clock24 = true;
 		mouse = true;
@@ -27,7 +27,7 @@
     		bind % split-window -h -c "#{pane_current_path}"
 			set-option -g status-position top
 			set -g pane-border-style fg=colour8
-			set -g pane-active-border-style fg=colour11
+			set -g pane-active-border-style fg=colour229
 		'';
 	};
 }
