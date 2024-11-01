@@ -28,6 +28,28 @@
 				"-interaction=nonstopmode"
 				];
 			};
+			vimtex_syntax_custom_cmds_with_concealed_delims = [
+				{
+					name = "ket";
+					mathmode = 1;
+					cchar_open = "|";
+					cchar_close = ">";
+				}
+				{
+					name = "bra";
+					mathmode = 1;
+					cchar_open = "<";
+					cchar_close = "|";
+				}
+				{
+					name = "braket";
+					nargs = 2;
+					mathmode = 1;
+					cchar_open = "<";
+					cchar_mid = "|";
+					cchar_close = ">";
+				}
+			];
 		};
 		opts = {
 			number = true;
