@@ -101,7 +101,7 @@
 			{
 				mode = "n";
 				key = "<leader>gg";
-				action = ":Lazygit<CR>";
+				action = "<cmd>LazyGit<CR>";
 				options.desc = "Open lazygit";
 				options.silent = true;
 				options.noremap = true;
