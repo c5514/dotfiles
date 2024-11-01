@@ -12,7 +12,7 @@
 	# 	./hyprlock.nix
 	# 	./withoutAgs/rofi.nix
 	# 	./withoutAgs/wlogout/wlogout.nix
-	# 	./withoutAgs/waypaper/waypaper.nix
+	# 	./withoutAgs/waypaper.nix
 	# 	./withoutAgs/waybar/default.nix
 	# ];
 }

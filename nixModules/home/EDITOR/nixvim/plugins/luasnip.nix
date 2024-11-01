@@ -1,5 +1,6 @@
 {pkgs,lib,config, ...}:
 {
+	xdg.configFile."snippets".source = ../snippets;
 	programs.nixvim = {
 		plugins.luasnip = {
 			enable = true;
@@ -17,7 +18,7 @@
 				}
 			];
 			fromLua = [
-				{	paths = "~/nixdotfiles/nixModules/home/EDITOR/nixvim/snippets";	}
+				{	paths = "~/.config/snippets";	}
 			];
 		};
 		keymaps = lib.mkIf config.programs.nixvim.plugins.luasnip.enable [

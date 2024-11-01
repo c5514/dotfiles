@@ -1,4 +1,4 @@
-{ inputs,pkgs,config,lib,...}:
+{ inputs,pkgs,...}:
 let 
 	illustrate = pkgs.vimUtils.buildVimPlugin {
 		pname = "illustrate";
