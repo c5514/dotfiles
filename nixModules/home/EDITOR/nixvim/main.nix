@@ -52,7 +52,7 @@ in
 			nvim-surround.enable = true;
 			lazygit.enable = true;
 			yazi.enable = true;
-			zellij.enable = true;
+			# zellij.enable = true;
 			gitsigns.enable = true;
 		};
 		extraPlugins = [ 

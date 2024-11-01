@@ -33,21 +33,41 @@
 					name = "ket";
 					mathmode = 1;
 					cchar_open = "|";
-					cchar_close = ">";
+					cchar_close = "⟩";
 				}
 				{
 					name = "bra";
 					mathmode = 1;
-					cchar_open = "<";
+					cchar_open = "⟨";
 					cchar_close = "|";
 				}
 				{
 					name = "braket";
 					nargs = 2;
 					mathmode = 1;
-					cchar_open = "<";
+					cchar_open = "⟨";
 					cchar_mid = "|";
-					cchar_close = ">";
+					cchar_close = "⟩";
+				}
+				{
+					name = "ketbra";
+					nargs = 2;
+					mathmode = 1;
+					cchar_open = "|";
+					cchar_close = "⟩⟨";
+					cchar_mid = "|";
+				}
+				{
+					name = "abs";
+					mathmode = 1;
+					cchar_open = "|";
+					cchar_close = "|";
+				}
+				{
+					name = "vec";
+					mathmode = 1;
+					conceal = 1;
+					argstyle = "bold";
 				}
 			];
 		};
@@ -95,6 +115,14 @@
 				key = "<leader>ce";
 				action = ":setlocal spell spelllang=en_us<CR>";
 				options.desc = "Change spelllang to English";
+				options.silent = true;
+				options.noremap = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>gg";
+				action = ":Lazygit<CR>";
+				options.desc = "Open lazygit";
 				options.silent = true;
 				options.noremap = true;
 			}
