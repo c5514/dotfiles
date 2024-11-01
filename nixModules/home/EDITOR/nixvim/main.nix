@@ -20,6 +20,7 @@ in
 		./plugins/luasnip.nix
 		./plugins/neotree.nix
 		./plugins/noice.nix
+		./plugins/obsidian.nix
 		./plugins/telescope.nix
 		./plugins/todoComents.nix
 		./plugins/treesitter.nix
