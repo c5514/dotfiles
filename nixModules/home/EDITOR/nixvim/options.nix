@@ -49,26 +49,6 @@
 					cchar_mid = "|";
 					cchar_close = "⟩";
 				}
-				{
-					name = "ketbra";
-					nargs = 2;
-					mathmode = 1;
-					cchar_open = "|";
-					cchar_close = "⟩⟨";
-					cchar_mid = "|";
-				}
-				{
-					name = "abs";
-					mathmode = 1;
-					cchar_open = "|";
-					cchar_close = "|";
-				}
-				{
-					name = "vec";
-					mathmode = 1;
-					conceal = 1;
-					argstyle = "bold";
-				}
 			];
 		};
 		opts = {
