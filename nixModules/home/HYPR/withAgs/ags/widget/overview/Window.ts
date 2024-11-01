@@ -17,8 +17,8 @@ export default ({ address, size: [w, h], class: c, title }: Client) => Widget.Bu
     tooltip_text: `${title}`,
     child: Widget.Icon({
         css: options.overview.scale.bind().as(v => `
-            min-width: ${(v / 80) * w}px;
-            min-height: ${(v / 80) * h}px;
+            min-width: ${(v / 100) * w}px;
+            min-height: ${(v / 100) * h}px;
         `),
         icon: monochrome.bind().as(m => {
             const app = apps.list.find(app => app.match(c))

@@ -34,13 +34,20 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 (custom-set-faces
- '(default ((t (:background "black")))))
+ '(default ((t (:background "#111111")))))
 (set-frame-parameter nil 'alpha-background 95)
 (add-to-list 'default-frame-alist '(alpha-background . 95))
-
+;; Changing splash screen
+(custom-set-faces!
+  '(doom-dashboard-banner :foreground "white" :weight bold)
+  '(doom-dashboard-footer :inherit font-lock-constant-face)
+  '(doom-dashboard-footer-icon :inherit all-the-icons-white)
+  '(doom-dashboard-loaded :inherit font-lock-warning-face)
+  '(doom-dashboard-menu-desc :inherit font-lock-string-face)
+  '(doom-dashboard-menu-title :inherit font-lock-function-name-face))
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -49,6 +56,7 @@
 (setq +latex-viewers '(zathura))
 (global-prettify-symbols-mode t)
 (add-hook 'LaTeX-mode-hook #'evil-tex-mode)
+(add-hook 'LaTeX-mode-hook #'xenops-mode)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;

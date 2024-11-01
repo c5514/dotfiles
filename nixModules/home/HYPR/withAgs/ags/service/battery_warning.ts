@@ -1,11 +1,11 @@
 const battery = await Service.import("battery");
 
 const battery_messages = {
-    warnLevels: [20, 5],
-    warnTitles: ["Low battery", "Very low battery"],
-    warnMessages: ["Plug in the charger", "You there?"]
+    warnLevels: [20, 10, 5],
+    warnTitles: ["Low battery", "Very low battery", "Critical Battery"],
+    warnMessages: ["Plug in the charger", "Please plug in the charger", "I am being serious, plug in the charger"]
 };
-
+const sound = "~/.config/ags/assets/warning.wav";
 let battery_warned = false;
 
 async function battery_notification() {
@@ -21,7 +21,7 @@ async function battery_notification() {
             Utils.execAsync([
                 "bash",
                 "-c",
-                `notify-send "${battery_messages.warnTitles[i]}" "${battery_messages.warnMessages[i]}" -u critical &`
+                `aplay ${sound} & notify-send "${battery_messages.warnTitles[i]}" "${battery_messages.warnMessages[i]}" -t 10000 -u critical &`
             ]).catch(print);
             break;
         }

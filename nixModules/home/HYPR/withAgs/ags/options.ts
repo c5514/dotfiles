@@ -72,6 +72,7 @@ const options = mkOptions(OPTIONS, {
                 "launcher",
                 "workspaces",
                 "taskbar",
+				"stats",
                 "expander",
                 "messages",
             ]),
@@ -85,7 +86,7 @@ const options = mkOptions(OPTIONS, {
                 "colorpicker",
                 "screenrecord",
 				"hyprshade",
-				// "system-info",
+
                 "battery",
                 "system",
                 "powermenu",

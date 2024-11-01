@@ -11,7 +11,7 @@ import Workspaces from "./buttons/Workspaces"
 import ScreenRecord from "./buttons/ScreenRecord"
 import Messages from "./buttons/Messages"
 import Hyprshade from "./buttons/Hyprshade"
-// import SystemInfo from "./buttons/SystemInfo"
+import { SysStats } from "service/stats.ts";
 import options from "options"
 
 const { start, center, end } = options.bar.layout
@@ -26,6 +26,7 @@ const widget = {
     launcher: Launcher,
     media: Media,
     powermenu: PowerMenu,
+	stats: SysStats,
     systray: SysTray,
     system: SystemIndicators,
     taskbar: Taskbar,
@@ -33,7 +34,6 @@ const widget = {
     screenrecord: ScreenRecord,
 	hyprshade: Hyprshade,
     messages: Messages,
-	// ["system-info"]: SystemInfo,
     expander: () => Widget.Box({ expand: true }),
 }
 

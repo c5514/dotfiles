@@ -14,6 +14,8 @@
 		wayshot
 		pywal
 		inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+		sysstat # To find CPU usage
+		alsa-utils # To enable sound for battery warning
 	];
 	programs.ags = {
 		enable = true;
