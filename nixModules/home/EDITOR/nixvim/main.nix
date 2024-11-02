@@ -52,6 +52,7 @@ in
 			nvim-surround.enable = true;
 			lazygit.enable = true;
 			yazi.enable = true;
+			tmux-navigator.enable = true;
 			# zellij.enable = true;
 			gitsigns.enable = true;
 		};

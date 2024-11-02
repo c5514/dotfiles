@@ -6,7 +6,7 @@
 			vim-tmux-navigator
 			resurrect
 			yank
-			tokyo-night-tmux
+			catppuccin
     	];
 		clock24 = true;
 		mouse = true;
