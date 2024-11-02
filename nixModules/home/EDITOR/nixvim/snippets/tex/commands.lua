@@ -22,7 +22,13 @@ ls.add_snippets('tex', {
 		fmta([[\usepackage{<>}]], { i(1) })),
 	s({ trig = "ltikz", dscr = "Display '\\usetikzlibrary'" },
 		fmta([[\usetikzlibrary{<>}]], { i(1) })),
+	s({ trig = "cite", dscr = "Display '\\cite'" },
+		fmta([[\cite{<>}]], {i(1)})),
+	s({ trig = "ref", dscr = "Display '\\ref'" },
+		fmta([[\ref{<>}]], {i(1)})),
+	s({ trig = "eref", dscr = "Display '\\eqref'" },
+		fmta([[\eqref{<>}]], {i(1)})),
 	s({ trig = "%##", snippetType = "autosnippet" }, t(
-"% ──────────────────────────────────────────────────────────────────────"
-))
+		"% ──────────────────────────────────────────────────────────────────────"
+	))
 })

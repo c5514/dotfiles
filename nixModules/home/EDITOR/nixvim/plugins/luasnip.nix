@@ -24,7 +24,7 @@
 		keymaps = lib.mkIf config.programs.nixvim.plugins.luasnip.enable [
 			{
 				mode = ["s" "i"] ;
-				key = "<C-e>";
+				key = "<C-l>";
 				action = "<Plug>luasnip-next-choice";
 				options = {
 					silent = true;
@@ -32,7 +32,7 @@
 			}
 			{
 				mode = ["s" "i"] ;
-				key = "<C-t>";
+				key = "<C-f>";
 				action = "<cmd>lua _G.dynamic_node_external_update(1)<Cr>";
 				options = {
 					noremap = true;
@@ -40,7 +40,7 @@
 			}
 			{
 				mode = ["s" "i"] ;
-				key = "<C-g>";
+				key = "<C-d>";
 				action = "<cmd>lua _G.dynamic_node_external_update(2)<Cr>";
 				options = {
 					noremap = true;
