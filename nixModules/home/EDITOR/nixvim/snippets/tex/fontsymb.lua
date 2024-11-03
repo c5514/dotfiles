@@ -100,7 +100,8 @@ ls.add_snippets('tex', {
 	s({ trig = "***", wordTrig = false, snippetType = "autosnippet" }, t("\\cdots"), { condition = tex.in_mathzone }),
 	s({ trig = "...", wordTrig = false, snippetType = "autosnippet" }, t("\\ldots"), { condition = tex.in_mathzone }),
 	s({ trig = ",.", wordTrig = false, snippetType = "autosnippet" }, t("\\cdot"), { condition = tex.in_mathzone }),
-	s({ trig = "xx", wordTrig = false, snippetType = "autosnippet" }, t("\\times"), { condition = tex.in_mathzone }),
+	s({ trig = "xx", wordTrig = false, snippetType = "autosnippet", priority = 10 }, t("\\times"),
+		{ condition = tex.in_mathzone }),
 	s({ trig = "oxo", wordTrig = false, snippetType = "autosnippet" }, t("\\otimes"), { condition = tex.in_mathzone }),
 	s({ trig = "opo", wordTrig = false, snippetType = "autosnippet" }, t("\\oplus"), { condition = tex.in_mathzone }),
 	s({ trig = "to", wordTrig = false, snippetType = "autosnippet", priority = 10 },
@@ -108,19 +109,19 @@ ls.add_snippets('tex', {
 			t("\\longmapsto"),
 			t("\\mapsto")
 		}), { condition = tex.in_mathzone }),
-	s({ trig = "rra", wordTrig = false, snippetType = "autosnippet", priority = 10 },
+	s({ trig = "rra", wordTrig = false, snippetType = "autosnippet", priority = 75 },
 		c(1, {
 			t("\\rightarrow"),
 			t("\\longrightarrow"),
 			t("\\Longrightarrow"),
 		}), { condition = tex.in_mathzone }),
-	s({ trig = "lla", wordTrig = false, snippetType = "autosnippet", priority = 10 },
+	s({ trig = "lla", wordTrig = false, snippetType = "autosnippet", priority = 75 },
 		c(1, {
 			t("\\leftarrow"),
 			t("\\longleftarrow"),
 			t("\\Longleftarrow"),
 		}), { condition = tex.in_mathzone }),
-	s({ trig = "bba", wordTrig = false, snippetType = "autosnippet", priority = 10 },
+	s({ trig = "bba", wordTrig = false, snippetType = "autosnippet", priority = 75 },
 		c(1, {
 			t("\\leftrightarrow"),
 			t("\\longleftrightarrow"),

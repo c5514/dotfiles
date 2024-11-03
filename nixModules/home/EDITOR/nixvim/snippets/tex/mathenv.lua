@@ -122,16 +122,16 @@ ls.add_snippets('tex', {
 	s({ trig = "$", snippetType = "autosnippet" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_mathzone }),
 
 	s({ trig = "lim", dscr = "Limits" },
-		c(1,{
+		c(1, {
 			fmta([[
 				\lim_{<> \to <>}
 			]], { i(1, 'n'), i(2, '\\infty') }),
 			fmta([[
 				\limsup_{<>\to <>}
-			]], { i(1,'n'),i(2,'\\infty')}),
+			]], { i(1, 'n'), i(2, '\\infty') }),
 			fmta([[
 				\liminf_{<>\to <>}
-			]], { i(1,'n'),i(2,'\\infty')})
+			]], { i(1, 'n'), i(2, '\\infty') })
 		}), { condition = tex.in_mathzone }
 	),
 	s({ trig = "sum", dscr = "Sum of elements" },
@@ -246,7 +246,7 @@ ls.add_snippets('tex', {
 			)
 		}), { condition = tex.in_mathzone }
 	),
-	s({ trig = "tex", dscr = "Text environment", snippetType = "autosnippet" },
+	s({ trig = "tex", wordTrig = false, dscr = "Text environment", snippetType = "autosnippet" },
 		fmta([[\text{<>}]], { i(1) }), { condition = tex.in_mathzone }
 	),
 	s({ trig = "dev", wordTrig = false, dscr = "Derivative", snippetType = "autosnippet" },
@@ -311,47 +311,47 @@ ls.add_snippets('tex', {
 	),
 	s({ trig = "dif", wordTrig = false, dscr = "Differential forms", snippetType = "autosnippet" },
 		c(1, {
-			fmta([[\dd <>]],{ i(1, 'x') }),
-			fmta([[\dd <> \wedge\dd <>]],{ i(1, 'x'), i(2, 'y') }),
-			fmta([[\dd <> \wedge\dd <>\wedge <>]],{ i(1, 'x'), i(2, 'y'), i(3,'z') }),
+			fmta([[\dd <>]], { i(1, 'x') }),
+			fmta([[\dd <> \wedge\dd <>]], { i(1, 'x'), i(2, 'y') }),
+			fmta([[\dd <> \wedge\dd <>\wedge <>]], { i(1, 'x'), i(2, 'y'), i(3, 'z') }),
 			fmta([[
 			\dd <>_1\wedge\dd <>_2\dots\wedge\dd <>_<>
-			]], {i(1,'x'), rep(1),rep(1),i(2,'k')})
+			]], { i(1, 'x'), rep(1), rep(1), i(2, 'k') })
 		}), { condition = tex.in_mathzone }
 	),
 	s({ trig = "tup", wordTrig = false, dscr = "Tuples", snippetType = "autosnippet" },
 		c(1, {
-			fmta([[(<>,<>)]],{ i(1, 'x'), i(2, 'y') }),
-			fmta([[(<>,<>,<>)]],{ i(1, 'x'), i(2, 'y'), i(3,'z') }),
-			fmta([[(<>_1, <>_2,\dots,<>_<>)]], {i(1,'x'), rep(1),rep(1),i(2,'k')})
+			fmta([[(<>,<>)]], { i(1, 'x'), i(2, 'y') }),
+			fmta([[(<>,<>,<>)]], { i(1, 'x'), i(2, 'y'), i(3, 'z') }),
+			fmta([[(<>_1, <>_2,\dots,<>_<>)]], { i(1, 'x'), rep(1), rep(1), i(2, 'k') })
 		}), { condition = tex.in_mathzone }
 	),
 	s({ trig = "rep", wordTrig = false, dscr = "Repeated elements", snippetType = "autosnippet" },
 		c(1, {
 			fmta([[
-			\underbrace{\dd <>\wedge\dd <>\dots\wedge\dd <>}_{\text{$<>$ times}}
-			]], {i(1,'V'), rep(1),rep(1),i(2,'k')}),
+			\underbrace{<>\wedge <>\dots\wedge <>}_{\text{$<>$ times}}
+			]], { i(1, 'V'), rep(1), rep(1), i(2, 'k') }),
 			fmta([[
-			\underbrace{\dd <>\times\dd <>\dots\times\dd <>}_{\text{$<>$ times}}
-			]], {i(1,'V'), rep(1),rep(1),i(2,'k')}),
+			\underbrace{<>\times <>\dots\times <>}_{\text{$<>$ times}}
+			]], { i(1, 'V'), rep(1), rep(1), i(2, 'k') }),
 			fmta([[
-			\underbrace{\dd <>\otimes\dd <>\dots\otimes\dd <>}_{\text{$<>$ times}}
-			]], {i(1,'V'), rep(1),rep(1),i(2,'k')})
+			\underbrace{<>\otimes <>\dots\otimes <>}_{\text{$<>$ times}}
+			]], { i(1, 'V'), rep(1), rep(1), i(2, 'k') })
 		}), { condition = tex.in_mathzone }
 	),
 	s({ trig = "fun", dscr = "Function" },
 		c(1, {
 			fmta([[
-			<> \colon <>\longrightarrow <>
+			<> \colon <>\to <>
 			]],
-			{ i(1,'f'), i(2, '\\mathbb{R}'), i(3, '\\mathbb{R}')}),
+				{ i(1, 'f'), i(2, '\\mathbb{R}'), i(3, '\\mathbb{R}') }),
 			fmta([[
 				<>= \begin{cases}
 					<> & \text{, if }<>,\\
 					<> & \text{, if }<>
 					\end{cases}
 			]],
-			{ i(1, 'f(x)'), i(2), i(3), i(4), i(5) })})
+				{ i(1, 'f(x)'), i(2), i(3), i(4), i(5) }) })
 	),
 	s({ trig = "ff", wordTrig = false, dscr = "Display '\\frac{}{}}'" },
 		c(1, {

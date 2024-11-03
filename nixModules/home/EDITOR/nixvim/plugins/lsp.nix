@@ -1,7 +1,7 @@
 {pkgs,...}:
 {
 	programs.nixvim.plugins.trouble.enable = true;
-	programs.nixvim.plugins.lsp-format.enable = true;
+	# programs.nixvim.plugins.lsp-format.enable = true;
 	programs.nixvim.plugins.lsp = {
 		enable = true;
 		servers = {
@@ -9,6 +9,7 @@
 			bashls.enable = true;
 			clangd.enable = true;
 			lua_ls.enable = true;
+			marksman.enable = true;	
 			# nil_ls.enable = true;
 			nixd.enable = true;
 			pyright.enable = true;

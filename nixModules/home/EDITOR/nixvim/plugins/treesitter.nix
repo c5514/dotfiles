@@ -16,6 +16,8 @@
 				cpp
 				json
 				lua 
+				markdown
+				markdown-inline
 				nix 
 				# latex
 				python
