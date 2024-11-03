@@ -4,68 +4,6 @@
 		globals = {
 			mapleader = " ";
 			maplocalleader = " ";
-			vimtex_syntax_conceal = {
-				accents = 1;
-				ligatures = 1;
-				cites = 1;
-				fancy = 1;
-				spacing = 1;
-				greek = 1;
-				math_bounds = 1;
-				math_delimiters = 1;
-				math_fracs = 1;
-				math_super_sub = 1;
-				math_symbols = 1;
-				sections = 1;
-				styles = 1;
-			};
-			vimtex_compiler_latexmk = {
-				options = [
-				"-shell-escape"
-    			"-verbose"
-				"-file-line-error"
-				"-synctex=1"
-				"-interaction=nonstopmode"
-				];
-			};
-			vimtex_syntax_custom_cmds = [
-    			{
-					name = "vec";
-					mathmode = 1;
-					conceal = 1;
-					argstyle = "bold";
-				}
-			];
-			vimtex_syntax_custom_cmds_with_concealed_delims = [
-				{
-					name = "ket";
-					mathmode = 1;
-					cchar_open = "|";
-					cchar_close = "⟩";
-				}
-				{
-					name = "bra";
-					mathmode = 1;
-					cchar_open = "⟨";
-					cchar_close = "|";
-				}
-				{
-					name = "braket";
-					nargs = 2;
-					mathmode = 1;
-					cchar_open = "⟨";
-					cchar_mid = "|";
-					cchar_close = "⟩";
-				}
-				{
-					name = "ketbra";
-					nargs = 2;
-					mathmode = 1;
-					cchar_open = "|";
-					cchar_mid = "X";
-					cchar_close = "|";
-				}
-			];
 		};
 		opts = {
 			number = true;
@@ -81,6 +19,7 @@
 			mouse = "a";
 			swapfile = false;
 			conceallevel = 2;
+			# concealcursor = "nc";
 			encoding = "utf-8";
 			# spell = true;
 			# spelllang = ["en_us" "es"];
@@ -120,6 +59,30 @@
 				key = "<leader>gg";
 				action = "<cmd>LazyGit<CR>";
 				options.desc = "Open lazygit";
+				options.silent = true;
+				options.noremap = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>yy";
+				action = "<cmd>Yazi<CR>";
+				options.desc = "Open Yazi";
+				options.silent = true;
+				options.noremap = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>yd";
+				action = "<cmd>Yazi cwd<CR>";
+				options.desc = "Open Yazi in current directory";
+				options.silent = true;
+				options.noremap = true;
+			}
+			{
+				mode = "n";
+				key = "<leader>yr";
+				action = "<cmd>Yazi toggle<CR>";
+				options.desc = "Resume last Yazi session";
 				options.silent = true;
 				options.noremap = true;
 			}
