@@ -28,6 +28,14 @@
 				"-interaction=nonstopmode"
 				];
 			};
+			vimtex_syntax_custom_cmds = [
+    			{
+					name = "vec";
+					mathmode = 1;
+					conceal = 1;
+					argstyle = "bold";
+				}
+			];
 			vimtex_syntax_custom_cmds_with_concealed_delims = [
 				{
 					name = "ket";
@@ -49,6 +57,14 @@
 					cchar_mid = "|";
 					cchar_close = "⟩";
 				}
+				{
+					name = "ketbra";
+					nargs = 2;
+					mathmode = 1;
+					cchar_open = "|";
+					cchar_mid = "X";
+					cchar_close = "|";
+				}
 			];
 		};
 		opts = {
@@ -65,6 +81,7 @@
 			mouse = "a";
 			swapfile = false;
 			conceallevel = 2;
+			encoding = "utf-8";
 			# spell = true;
 			# spelllang = ["en_us" "es"];
 			ignorecase = true;

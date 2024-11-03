@@ -11,7 +11,14 @@
 			lua_ls.enable = true;
 			marksman.enable = true;	
 			# nil_ls.enable = true;
-			nixd.enable = true;
+			#nixd.enable = true; #uncomment this when neovim 10.1.3 is released
+			#Comment the next line when 10.1.3 is released
+			nixd = {
+				enable = true;
+				extraOptions = {
+					offset_encoding = "utf-8";
+				};
+			};
 			pyright.enable = true;
 			texlab.enable = true;
 		};
