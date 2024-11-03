@@ -57,9 +57,6 @@ ls.add_snippets('tex', {
         }
         \settitlemarks{section,subsection}
         \pagestyle{mypage}
-        \input{~/Documents/Vim/Tex/Newcomm/theorem.tex}
-
-
 
         \title{<>}
         \author{<>}

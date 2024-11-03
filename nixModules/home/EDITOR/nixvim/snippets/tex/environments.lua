@@ -142,11 +142,11 @@ ls.add_snippets('tex', {
 		fmta(
 			[[
         \begin{<>}
-           <>
+        	<>
         \end{<>}
       ]],
 			{
-				i(1),
+				i(1, 'environment'),
 				i(2),
 				rep(1),
 			}

@@ -4,7 +4,7 @@
 		enable = true;
 		package = pkgs.kitty;
 		font.name = "JetBrainsMono";
-		font.size = 12;
+		font.size = 13;
 		themeFile = "Dark_Pastel";
 		shellIntegration.enableFishIntegration = true;
 		settings = {
