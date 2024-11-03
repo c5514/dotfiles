@@ -196,6 +196,13 @@
 					argstyle = "bold";
 				}
     			{
+					name = "dd";
+					mathmode = 1;
+					conceal = 1;
+					argstyle = "bold";
+					concealchar = "d";
+				}
+    			{
 					name = "longrightarrow";
 					mathmode = 1;
 					conceal = 1;

@@ -87,28 +87,37 @@
 					'';
 				};
 				sources = [
-					{	name = "nvim_lsp";	}
+					{	
+						name = "nvim_lsp";
+						priority = 1000;
+					}
 					{
 						name = "luasnip";
 						keywordLength = 3;
+						priority = 750;
 						# option.show_autosnippets = true;
 					}
-					# {	name = "orgmode";  }
 					{
 						name = "buffer";
 						option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
 						keywordLength = 3;
+						priority = 500;
 					}
 					{	
 						name = "spell";
 						keywordLength = 4;
+						priority = 250;
 					}
 					# {	name = "copilot";	}
 					{
 						name = "path";
 						keywordLength = 3;
+						priority = 250;
 					}
-					{	name = "emoji";	}
+					{	
+						name = "emoji";
+						priority = 250;
+					}
 				];
 				window = {
 					completion.border = "rounded";

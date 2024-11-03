@@ -1,7 +1,7 @@
 {pkgs,...}:
 {
 	programs.nixvim.plugins.trouble.enable = true;
-	# programs.nixvim.plugins.lsp-format.enable = true;
+	programs.nixvim.plugins.lsp-format.enable = true;
 	programs.nixvim.plugins.lsp = {
 		enable = true;
 		servers = {
@@ -10,13 +10,12 @@
 			clangd.enable = true;
 			lua_ls.enable = true;
 			marksman.enable = true;	
-			# nil_ls.enable = true;
-			#nixd.enable = true; #uncomment this when neovim 10.1.3 is released
-			#Comment the next line when 10.1.3 is released
 			nixd = {
 				enable = true;
 				extraOptions = {
-					offset_encoding = "utf-8";
+					offset_encoding = "utf-8";#Comment this line when 10.1.3 is realeased
+					nixos.expr = "(builtins.getFlake \"/etc/nixos\).nixosConfigurations.aurelionite.options";
+					home_manager.expr = "(builtins.getFlake \"/etc/nixos\).homeConfigurations.aurelionite.options";
 				};
 			};
 			pyright.enable = true;

@@ -18,6 +18,7 @@ in
 		./plugins/lsp.nix
 		./plugins/lualine.nix
 		./plugins/luasnip.nix
+		./plugins/mini.nix
 		./plugins/neotree.nix
 		./plugins/noice.nix
 		./plugins/obsidian.nix
@@ -49,7 +50,7 @@ in
 			nvim-colorizer.enable = true;
 			lsp-lines.enable = true;
 			trouble.enable = true;
-			nvim-surround.enable = true;
+			# nvim-surround.enable = true;
 			lazygit.enable = true;
 			yazi.enable = true;
 			# tmux-navigator.enable = true;
