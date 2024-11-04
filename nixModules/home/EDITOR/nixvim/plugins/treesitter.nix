@@ -6,7 +6,7 @@
 			settings = {
 				highlight = {
 					enable = true;
-					# disable = ["latex"];
+					disable = ["latex"];
 				};
 				indent.enable = true;
 			};
@@ -19,7 +19,7 @@
 				markdown
 				markdown-inline
 				nix 
-				# latex
+				latex
 				python
 				rasi
 				toml

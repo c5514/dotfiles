@@ -3,6 +3,8 @@
 	programs.nixvim.plugins.mini = {
 		enable = true;
 		modules = {
+			indentscope = {};
+			notify = {};
 			surround.mappings = {
 				add = "gsa";
 				delete = "gsd";
