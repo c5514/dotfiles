@@ -50,12 +50,12 @@ in
 			nvim-colorizer.enable = true;
 			lsp-lines.enable = true;
 			trouble.enable = true;
-			# nvim-surround.enable = true;
 			lazygit.enable = true;
 			yazi.enable = true;
 			# tmux-navigator.enable = true;
 			zellij.enable = true;
 			gitsigns.enable = true;
+			markview.enable = true;
 		};
 		extraPlugins = [ 
 			illustrate

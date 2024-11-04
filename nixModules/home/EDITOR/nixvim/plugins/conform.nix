@@ -10,37 +10,27 @@
 			notify_on_error = true;
 			formatters_by_ft = {
 				css = [
-					[
-						"prettierd"
-						"prettier"
-					]
+					"prettierd"
+					"prettier"
 				];
 				html = [
-					[
-						"prettierd"
-						"prettier"
-					]
+					"prettierd"
+					"prettier"
 				];
 				lua = ["stylua"];
 				python = ["black"];
 				typescript = [
-					[
-						"prettierd"
-						"prettier"
-					]
+					"prettierd"
+					"prettier"
 				];
 				typescriptreact = [
-					[
-						"prettierd"
-						"prettier"
-					]
+					"prettierd"
+					"prettier"
 				];
 				nix = ["nixfmt"];
 				markdown = [
-					[
-						"prettierd"
-						"prettier"
-					]
+					"prettierd"
+					"prettier"
 				];
 				latex = ["latexindent"];
 			};
