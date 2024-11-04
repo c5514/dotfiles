@@ -8,7 +8,7 @@
 		opts = {
 			number = true;
 			relativenumber = true;
-			timeoutlen = 250;
+			timeoutlen = 200;
 			smartindent = true;
 			cursorline = true;
 			shiftwidth = 4;
@@ -18,13 +18,19 @@
 			termguicolors = true;
 			mouse = "a";
 			swapfile = false;
+			undofile = true;
+			backup = false;
 			conceallevel = 2;
 			# concealcursor = "nc";
 			encoding = "utf-8";
-			# spell = true;
-			# spelllang = ["en_us" "es"];
+			fileencoding = "utf-8";
 			ignorecase = true;
 			smartcase = true;
+			scrolloff = 8;
+			foldcolumn = "1";
+			foldlevel = 99;
+			foldlevelstart = 99;
+			foldenable = true;
 		};
 		clipboard.register = "unnamedplus";
 		keymaps = [
@@ -37,22 +43,6 @@
 				key = "jk";
 				action = "<ESC>";
 				options.silent = true;
-			}
-			{
-				mode = "n";
-				key = "<leader>cs";
-				action = ":setlocal spell spelllang=es<CR>";
-				options.desc = "Change spelllang to Spanish";
-				options.silent = true;
-				options.noremap = true;
-			}
-			{
-				mode = "n";
-				key = "<leader>ce";
-				action = ":setlocal spell spelllang=en_us<CR>";
-				options.desc = "Change spelllang to English";
-				options.silent = true;
-				options.noremap = true;
 			}
 			{
 				mode = "n";

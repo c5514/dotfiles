@@ -56,6 +56,7 @@ in
 			zellij.enable = true;
 			gitsigns.enable = true;
 			markview.enable = true;
+			nvim-ufo.enable = true;
 		};
 		extraPlugins = [ 
 			illustrate
