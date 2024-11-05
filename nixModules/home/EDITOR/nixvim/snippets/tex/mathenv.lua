@@ -118,8 +118,8 @@ ls.add_snippets('tex', {
 			{ i(1) }
 		), { condition = tex.in_text }
 	),
-	-- s({ trig = "im", dscr = "Inline math" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_text }),
-	s({ trig = "$", snippetType = "autosnippet" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_mathzone }),
+	s({ trig = "im", dscr = "Inline math" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_text }),
+	-- s({ trig = "$", snippetType = "autosnippet" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_mathzone }),
 
 	s({ trig = "lim", dscr = "Limits" },
 		c(1, {
@@ -198,7 +198,7 @@ ls.add_snippets('tex', {
 			)
 		}), { condition = tex.in_mathzone }
 	),
-	s({ trig = "int", dscr = "Indefinite integral", wordTrig = false },
+	s({ trig = "int", dscr = "Indefinite integral", snippetType = "autosnippet" },
 		c(1, {
 			fmta(
 				[[
@@ -230,7 +230,7 @@ ls.add_snippets('tex', {
 			}
 		), { condition = tex.in_mathzone }
 	),
-	s({ trig = "ont", dscr = "Integral", wordTrig = false },
+	s({ trig = "ont", dscr = "Integral", snippetType = "autosnippet" },
 		c(1, {
 			fmta(
 				[[

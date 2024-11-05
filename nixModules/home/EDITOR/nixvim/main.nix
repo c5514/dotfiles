@@ -1,15 +1,9 @@
 { inputs,pkgs,...}:
-let 
-	illustrate = pkgs.vimUtils.buildVimPlugin {
-		pname = "illustrate";
-		version = "2024-08-06";
-		src = inputs.illustrate;
-	};
-in
 {
 	imports = [
 		inputs.nixvim.homeManagerModules.nixvim
 		./options.nix
+		./autocmd.nix
 		./plugins/alpha.nix
 		./plugins/autopairs.nix
 		./plugins/bufferline.nix
@@ -26,6 +20,8 @@ in
 		./plugins/todoComents.nix
 		./plugins/treesitter.nix
 		./plugins/vimtex.nix
+		./plugins/extraPlugins/illustrate.nix
+		./plugins/extraPlugins/latex_concealer.nix
 	];
 	programs.nixvim = {
 		enable = true;
@@ -58,9 +54,5 @@ in
 			markview.enable = true;
 			nvim-ufo.enable = true;
 		};
-		extraPlugins = [ 
-			illustrate
-		];
-		extraConfigLua = ''${builtins.readFile ./plugins/illustrate.lua}'';
 	};
 }

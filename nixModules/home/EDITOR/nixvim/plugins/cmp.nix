@@ -106,7 +106,7 @@
 					{	
 						name = "spell";
 						keywordLength = 4;
-						priority = 250;
+						priority = 100;
 					}
 					# {	name = "copilot";	}
 					{

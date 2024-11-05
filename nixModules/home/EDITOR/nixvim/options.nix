@@ -8,7 +8,7 @@
 		opts = {
 			number = true;
 			relativenumber = true;
-			timeoutlen = 200;
+			timeoutlen = 100;
 			smartindent = true;
 			cursorline = true;
 			shiftwidth = 4;
@@ -31,6 +31,11 @@
 			foldlevel = 99;
 			foldlevelstart = 99;
 			foldenable = true;
+			completeopt = [
+				"menuone"
+				"noselect"
+				"noinsert"
+			];
 		};
 		clipboard.register = "unnamedplus";
 		keymaps = [

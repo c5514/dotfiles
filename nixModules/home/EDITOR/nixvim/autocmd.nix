@@ -12,7 +12,7 @@
 		{
 			event = "TextYankPost";
 			pattern = "*";
-			command = "lua vim.hightlight.on_yank{timeout=500}";
+			command = "lua vim.highlight.on_yank{timeout=500}";
 		}
 	];
 }

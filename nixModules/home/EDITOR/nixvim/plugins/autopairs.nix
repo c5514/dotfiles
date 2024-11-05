@@ -6,7 +6,7 @@
 		settings.disable_filetype = [ 
 			"TelescopePrompt"
 			"spectre_panel"
-			"tex"
+			# "tex"
 		];
 	};
 }

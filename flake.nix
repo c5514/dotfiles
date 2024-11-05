@@ -70,6 +70,10 @@
 			url = "github:rpapallas/illustrate.nvim";
 			flake = false;
 		};
+		latex_concealer= {
+			url = "github:dirichy/latex_concealer.nvim";
+			flake = false;
+		};
 	};
 
 	outputs = { nixpkgs, home-manager,... }@inputs:
