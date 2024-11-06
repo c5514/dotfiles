@@ -77,10 +77,10 @@
 				rounding = 15;
 				active_opacity = 1.0;
 				inactive_opacity = 0.9;
-				drop_shadow = true;
-				shadow_range = true;
-				shadow_render_power = 3;
-				"col.shadow" = "rgba(1a1a1aee)";
+				# drop_shadow = true;
+				# shadow_range = true;
+				# shadow_render_power = 3;
+				# "col.shadow" = "rgba(1a1a1aee)";
 				blur = {
 					enabled = true;
 					size = 3;
@@ -175,10 +175,10 @@
 				"$mainMod, K, movefocus, u"
 				"$mainMod, J, movefocus, d"
 				#Resize active panel
-				"$mainMod SHIFT, L, resizeactive, 20 0"
-				"$mainMod SHIFT, H, resizeactive, -20 0"
-				"$mainMod SHIFT, K, resizeactive, 0 -20"
-				"$mainMod SHIFT, J, resizeactive, 0 20"
+				"$mainMod SHIFT, L, resizeactive, 40 0"
+				"$mainMod SHIFT, H, resizeactive, -40 0"
+				"$mainMod SHIFT, K, resizeactive, 0 -40"
+				"$mainMod SHIFT, J, resizeactive, 0 40"
 				#Switch workspaces
 				"$mainMod, 1, workspace, 1"
 				"$mainMod, 2, workspace, 2"

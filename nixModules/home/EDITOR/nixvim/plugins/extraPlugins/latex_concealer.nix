@@ -1,4 +1,3 @@
-
 {inputs, pkgs,...}:
 let 
 	latex_concealer = pkgs.vimUtils.buildVimPlugin {
@@ -12,10 +11,6 @@ in
 		extraPlugins = [
 			latex_concealer
 		];
-		# extraConfigLua = ''
-		# 	ft={"tex","latex"},
-		# 		opts={},
-		# 		config=true,
-		# '';
+		extraConfigLua = ''require('latex_concealer').setup {}'';
 	};
 }

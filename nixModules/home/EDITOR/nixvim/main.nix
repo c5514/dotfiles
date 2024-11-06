@@ -21,7 +21,7 @@
 		./plugins/treesitter.nix
 		./plugins/vimtex.nix
 		./plugins/extraPlugins/illustrate.nix
-		# ./plugins/extraPlugins/latex_concealer.nix
+		./plugins/extraPlugins/latex_concealer.nix
 	];
 	programs.nixvim = {
 		enable = true;
