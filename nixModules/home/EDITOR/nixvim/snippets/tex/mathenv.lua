@@ -15,6 +15,7 @@ end
 tex.in_text = function()
 	return not vim.fn['vimtex#syntax#in_mathzone']() == 1
 end
+local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 ls.add_snippets('tex', {
 	s({ trig = "ali", dscr = "Indexed align environment" },
@@ -24,7 +25,7 @@ ls.add_snippets('tex', {
         \end{align}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 	s({ trig = "ali*", dscr = "Non-indexed align environment" },
 		fmta([[
@@ -33,7 +34,7 @@ ls.add_snippets('tex', {
         \end{align*}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 	s({ trig = "fal", dscr = "Indexed flalign environment" },
 		fmta([[
@@ -42,7 +43,7 @@ ls.add_snippets('tex', {
         \end{flalign}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 	s({ trig = "fal*", dscr = "Non-indexed flalign environment" },
 		fmta([[
@@ -51,7 +52,7 @@ ls.add_snippets('tex', {
         \end{flalign*}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 
 	s({ trig = "eq", dscr = "Indexed equation environment" },
@@ -61,7 +62,7 @@ ls.add_snippets('tex', {
         \end{equation}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 	s({ trig = "eq*", dscr = "Non-indexed equation environment" },
 		fmta([[
@@ -70,7 +71,7 @@ ls.add_snippets('tex', {
         \end{equation*}
       ]],
 			{ i(1) }
-		), { condition = tex.in_text }
+		), { condition = line_begin }
 	),
 	s({ trig = "pmat", dscr = "Matrix (...)" },
 		fmta([[
@@ -108,17 +109,16 @@ ls.add_snippets('tex', {
 			{ i(1) }
 		), { condition = tex.in_mathzone }
 	),
-	s({ trig = "dm", dscr = "Display math" },
+	s({ trig = "dm", wordTrig = false, dscr = "Display math" },
 		fmta(
 			[[
-        \[
-			<>
-		\]
-      ]],
-			{ i(1) }
-		), { condition = tex.in_text }
+				\[
+					<>
+				\]
+      		]], { i(1) }), { condition = tex.in_text }
 	),
-	s({ trig = "im", dscr = "Inline math" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_text }),
+	s({ trig = "im", wordTrig = false, dscr = "Inline math" },
+		fmta([[$<>$]], { i(1) }), { condition = tex.in_text }),
 	-- s({ trig = "$", snippetType = "autosnippet" }, fmta([[$<>$]], { i(1) }), { condition = tex.in_mathzone }),
 
 	s({ trig = "lim", dscr = "Limits" },
@@ -357,6 +357,11 @@ ls.add_snippets('tex', {
 		c(1, {
 			fmta([[\frac{<>}{<>}]], { i(1), i(2) }),
 			fmta([[\left(\frac{<>}{<>}\right)]], { i(1), i(2) })
+		})),
+	s({ trig = "ee", wordTrig = false, dscr = "Display 'e^{}'" },
+		c(1, {
+			fmta([[e^{<>}]], { i(1) }),
+			fmta([[e^{\left(\frac{<>}{<>}\right)}]], { i(1), i(2) })
 		})),
 	s({ trig = "case", dscr = "Begin cases env" },
 		fmta([[

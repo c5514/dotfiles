@@ -8,7 +8,7 @@
 		dart-sass
 		gtk3
 		hyprpicker
-		wf-recorder
+		# wf-recorder
 		swappy
 		slurp
 		wayshot

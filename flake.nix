@@ -80,7 +80,18 @@
 	let 
     	system = "x86_64-linux";
 		lib = nixpkgs.lib;
-		pkgs = nixpkgs.legacyPackages.${system};
+		# pkgs = nixpkgs.legacyPackages.${system};
+		overlays = [
+        (final: prev: {
+          _7zz = prev._7zz.override { useUasm = true; };
+        })
+      ];
+
+      # Import nixpkgs with overlays
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = overlays;
+      };
 		# pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
 	in {
 		nixosConfigurations = {

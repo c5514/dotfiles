@@ -5,6 +5,7 @@
 		modules = {
 			indentscope = {};
 			cursorword = {};
+			comment = {};
 			notify = {};
 			surround.mappings = {
 				add = "gsa";
