@@ -77,10 +77,10 @@
 				rounding = 15;
 				active_opacity = 1.0;
 				inactive_opacity = 0.9;
-				# drop_shadow = true;
-				# shadow_range = true;
-				# shadow_render_power = 3;
-				# "col.shadow" = "rgba(1a1a1aee)";
+				drop_shadow = true;
+				shadow_range = true;
+				shadow_render_power = 3;
+				"col.shadow" = "rgba(1a1a1aee)";
 				blur = {
 					enabled = true;
 					size = 3;
@@ -263,7 +263,7 @@
 				"size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
 
 				"float,title:(TexText)"
-				"move 60% 6%,class:(TexText)"
+				"move 80% 6%,class:(TexText)"
 				"float,class:(soffice)"
 				"center,class:(soffice)"
 				# "stayfocused,title:(MainPicker)"

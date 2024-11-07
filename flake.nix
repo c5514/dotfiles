@@ -8,10 +8,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
-		# sddm-sugar-candy-nix = {
-		# 	url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
 		ags.url = "github:Aylur/ags";
 		hyprland-contrib = {
 			url = "github:hyprwm/contrib";
@@ -66,14 +62,14 @@
 			url = "github:nix-community/nixvim";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		illustrate = {
-			url = "github:rpapallas/illustrate.nvim";
-			flake = false;
-		};
-		latex_concealer= {
-			url = "github:dirichy/latex_concealer.nvim";
-			flake = false;
-		};
+		# illustrate = {
+		# 	url = "github:rpapallas/illustrate.nvim";
+		# 	flake = false;
+		# };
+		# latex_concealer= {
+		# 	url = "github:dirichy/latex_concealer.nvim";
+		# 	flake = false;
+		# };
 	};
 
 	outputs = { nixpkgs, home-manager,... }@inputs:
@@ -82,16 +78,14 @@
 		lib = nixpkgs.lib;
 		pkgs = nixpkgs.legacyPackages.${system};
 		# overlays = [
-		#       (final: prev: {
-		#         _7zz = prev._7zz.override { useUasm = true; };
-		#       })
-		#     ];
-		#
-		#     # Import nixpkgs with overlays
-		#     pkgs = import nixpkgs {
-		#       inherit system;
-		#       overlays = overlays;
-		#     };
+		# 	(final: prev: {
+		# 		zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+		# 	})
+		# ];
+		# pkgs = import nixpkgs {
+		# 	inherit system;
+		# 	overlays = overlays;
+		# };
 		# pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
 	in {
 		nixosConfigurations = {

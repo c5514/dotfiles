@@ -1,10 +1,19 @@
 
 {inputs, pkgs,...}:
 let 
+	# illustrate = pkgs.vimUtils.buildVimPlugin {
+	# 	pname = "illustrate";
+	# 	version = "2024-08-06";
+	# 	src = inputs.illustrate;
+	# };
 	illustrate = pkgs.vimUtils.buildVimPlugin {
-		pname = "illustrate";
-		version = "2024-08-06";
-		src = inputs.illustrate;
+		name = "illustrate";
+		src = pkgs.fetchFromGitHub {
+			owner = "rpapallas";
+			repo = "illustrate.nvim";
+			rev = "3bac21adadeaf9328cdb75d9e1e99249107efcbb";
+			hash = "sha256-a21d130e0b9cb5f9c5fa756506a7447299503a556f52393b3541ccb6aeac6948";
+		};
 	};
 in
 {
