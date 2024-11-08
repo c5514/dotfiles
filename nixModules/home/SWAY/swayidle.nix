@@ -5,7 +5,7 @@
 		events = [
 			{ event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF";}
 			{ event = "lock"; command = "lock";}
-			{ event = "after-resume"; command = "";}
+			# { event = "after-resume"; command = "";}
 		];
 	};
 }
