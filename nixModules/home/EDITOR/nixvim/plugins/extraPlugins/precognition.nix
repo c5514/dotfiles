@@ -1,7 +1,7 @@
 { pkgs,...}:
 {
 	programs.nixvim = {
-		extraPlugins = with pkgs.vimPlugins; [
+		extraPlugins = with pkgs.vimUtils; [
 			(buildVimPlugin {
 				pname = "precognition.nvim";
 				version = "v1.0.0";
