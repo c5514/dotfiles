@@ -21,7 +21,7 @@
 		./plugins/treesitter.nix
 		./plugins/vimtex.nix
 		./plugins/extraPlugins/illustrate.nix
-		# ./plugins/extraPlugins/latex_concealer.nix
+		./plugins/extraPlugins/precognition.nix
 	];
 	programs.nixvim = {
 		enable = true;
@@ -40,11 +40,10 @@
 			web-devicons.enable = true;
 			which-key.enable = true;
 			indent-blankline.enable = true;
-			# comment.enable = true;
 			comment-box.enable = true;
 			rainbow-delimiters.enable = true;
-			nvim-colorizer.enable = true;
-			lsp-lines.enable = true;
+			# nvim-colorizer.enable = true;
+			# lsp-lines.enable = true;
 			trouble.enable = true;
 			lazygit.enable = true;
 			yazi.enable = true;

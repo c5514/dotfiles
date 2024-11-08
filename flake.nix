@@ -62,14 +62,6 @@
 			url = "github:nix-community/nixvim";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		# illustrate = {
-		# 	url = "github:rpapallas/illustrate.nvim";
-		# 	flake = false;
-		# };
-		# latex_concealer= {
-		# 	url = "github:dirichy/latex_concealer.nvim";
-		# 	flake = false;
-		# };
 	};
 
 	outputs = { nixpkgs, home-manager,... }@inputs:
