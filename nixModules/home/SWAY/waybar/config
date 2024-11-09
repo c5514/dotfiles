@@ -16,17 +16,19 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
+        "sway/workspaces",
+        "custom/empty",
         "sway/language",
         "cpu",
-        "custom/empty",
+		"power-profiles-daemon",
         //"group/links",
-        "sway/window",
+        //"sway/window",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "sway/workspaces"
+        "clock"
     ],
 
     // Modules Right    
@@ -40,6 +42,5 @@
         "group/tools",
         "tray",
         "custom/exit",
-        "clock"
     ]
 }

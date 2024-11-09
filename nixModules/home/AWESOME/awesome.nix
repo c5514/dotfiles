@@ -2,7 +2,7 @@
 {
 	home.packages = with pkgs; [
 		picom
-		rofi
+		# rofi
 		maim
 		ffmpeg
 		iw

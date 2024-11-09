@@ -8,6 +8,7 @@
 	imports = [
 		# ../../nixModules/home/HYPR/default.nix
 		../../nixModules/home/SWAY/sway.nix
+		../../nixModules/home/AWESOME/awesome.nix
 		../../nixModules/home/default.nix
 	];
 	home.sessionVariables = {

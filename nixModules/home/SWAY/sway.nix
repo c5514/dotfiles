@@ -42,6 +42,7 @@ in
 		config = {
 			window = {
 				titlebar = false;
+				border = 3;
 			};
 			bars = [
 				{
@@ -175,6 +176,22 @@ in
 					"Escape" = "mode default";
 					"Return" = "mode default";
 				};
+			};
+			floating = {
+				criteria = [
+					{
+						title = "Spotify";
+					}
+					{
+						title = "WebCord";
+					}
+					{
+						class = "feh";
+					}
+					{
+						class = "Evince";
+					}
+				];
 			};
 		};
 	};

@@ -49,7 +49,7 @@
   },
   // Empty
   "custom/empty": {
-    "format": ""
+    "format": " "
   },
   
   // Empty
@@ -68,7 +68,7 @@
 
   // Wallpaper
   "custom/wallpaper": {
-    "format": "",
+    "format": "  /",
     "on-click": "waypaper",
     "on-click-right": "waypaper --random",
     "tooltip-format": "Left: Select a wallpaper\nRight: Select a random wallpaper"
@@ -101,11 +101,18 @@
 
   // Hyprshade
   "custom/hyprshade": {
-    "format": "",
+    "format": "  ",
     "tooltip-format": "Blue-light filter on/off",
 "on-click": "sleep 0.5; if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi",
   },
-
+	// Idle inhibitor
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "  /",
+        "deactivated": "  /"
+    }
+},
   // System tray
   "tray": {
     "icon-size": 21,
@@ -113,11 +120,31 @@
   },
 
   // Clock
-  "clock": {
-    "format": "{:%H:%M %a}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-    "format-alt": "{:%Y-%m-%d}"
-  },
+"clock": {
+	"format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)} ",
+	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode"          : "year",
+		"mode-mon-col"  : 3,
+        "weeks-pos"     : "right",
+        "on-scroll"     : 1,
+        "format": {
+        	"months":     "<span color='#ffead3'><b>{}</b></span>",
+			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        	"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+            "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    },
+    "actions":  {
+    	"on-click-right": "mode",
+        "on-scroll-up": "tz_up",
+        "on-scroll-down": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+    }
+},
 
   // System
   "custom/system": {
@@ -127,9 +154,20 @@
 
   // CPU
   "cpu": {
-    "format": "/ CPU:{usage}% "
+    "format": "/ CPU:{usage}% /"
   },
 
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "  ",
+			"performance": "  ",
+			"balanced": " 󰗑 ",
+			"power-saver": "  "
+		}
+	},
   // Memory
   "memory": {
     "format": "/  {}% "
@@ -149,17 +187,6 @@
   "sway/language": {
     "format": "  {short}"
   },
-	"power-profiles-daemon": {
-		"format": "{icon}",
-		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-		"tooltip": true,
-		"format-icons": {
-			"default": "",
-			"performance": "",
-			"balanced": "",
-			"power-saver": ""
-		}
-	},
   // Group Hardware
   "group/hardware": {
     "orientation": "inherit",
@@ -168,7 +195,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": false
     },
-    "modules": ["custom/system", "disk", "memory", "temperature", "power-profiles-daemon"]
+    "modules": ["custom/system", "disk", "memory", "temperature"]
   },
 
   // Group Tools
@@ -182,6 +209,7 @@
     "modules": [
       "custom/cliphist",
       "custom/wallpaper",
+	"idle_inhibitor",
       "custom/hyprshade"
     ]
   },
@@ -229,8 +257,8 @@
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "  {volume}%",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-muted": "󰝟  {volume}%",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
