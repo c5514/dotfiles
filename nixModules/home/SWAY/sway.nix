@@ -26,6 +26,9 @@ in
 	home.packages = with pkgs; [
 		sov
 		pywal
+		wayshot
+		hyprpicker
+		autotiling
 	];
 	imports = [
 		./rofi.nix
@@ -77,6 +80,7 @@ in
 				{ command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"; }
 				{ command = "${pkgs.megacmd}/bin/mega-cmd"; }
 				{ command = "${pkgs.swayosd}/bin/swayosd-server"; }
+				{ command = "${pkgs.autotiling}/bin/autotiling"; }
 			];
 			inherit terminal;
 			modifier= super;
@@ -101,6 +105,7 @@ in
 				"xf86audioplay" = "exec playerctl play-pause";
 				"xf86audionext" = "exec playerctl next";
 				"xf86audioprev" = "exec playerctl previous";
+				"Print" = "exec wayshot --stdout | wl-copy";
 				"${super}+f" = "floating toggle";
 				"${super}+Shift+f" = "fullscreen";
 				"${super}+h" = "focus left";

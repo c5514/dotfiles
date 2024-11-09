@@ -79,6 +79,7 @@
 		material-icons
 		jetbrains-mono
 		freefont_ttf
+		inter
 		(nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
 	];
 	xdg.portal.enable = true;
