@@ -1,12 +1,11 @@
 {
   // Workspaces
-  "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace r-1",
-    "on-scroll-down": "hyprctl dispatch workspace r+1",
+  "sway/workspaces": {
+	"disable-scroll": true,
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    "format": "{}",
+    "format": "{icon}",
     "format-icons": {
       "1": "",
       "2": "",
@@ -15,17 +14,9 @@
       "5": "",
       "6": "",
       "urgent": "",
-      "active": "",
+      "focused": "",
       "default": ""
     },
-    "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
-    },
-    "persistent-workspaces": {
-            "*": 0
-    }
   },
 
   // Taskbar
@@ -45,8 +36,8 @@
     }
   },
 
-  // Hyprland Window
-  "hyprland/window": {
+  // Sway Window
+  "sway/window": {
     "rewrite": {
       "(.*) - Brave": "$1",
       "(.*) - Chromium": "$1",
@@ -56,7 +47,6 @@
     },
     "separate-outputs": true
   },
-
   // Empty
   "custom/empty": {
     "format": ""
@@ -71,10 +61,9 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && cliphist list | rofi -dmenu -theme ~/.config/rofi/cliphist.rasi| cliphist decode | wl-copy",
-    "on-click-right": "sleep 0.1 && cliphist list | rofi -dmenu -theme ~/.config/rofi/cliphist.rasi| cliphist delete",
-    "on-click-middle": "sleep 0.1 && cliphist wipe",
-    "tooltip-format": "Clipboard Manager: Left(select), right(delete), center(clean)"
+    "on-click": "sleep 0.1 && rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons",
+    "on-click-right": "sleep 0.1 && cliphist wipe",
+    "tooltip-format": "Clipboard Manager: Left(select), right(clean)"
   },
 
   // Wallpaper
@@ -99,7 +88,7 @@
   // Rofi Application Launcher
   "custom/appmenu": {
     "format": " ",
-"on-click": "sleep 0.2; if pgrep -x rofi > /dev/null; then pkill rofi; else rofi -show drun -replace; fi",
+"on-click": "sleep 0.2; if pgrep -x rofi > /dev/null; then pkill rofi; else rofi -show drun -theme ~/.config/rofi/launcher.rasi -replace; fi",
     "tooltip-format": "Open/Close the application launcher"
   },
 
@@ -157,10 +146,20 @@
     "format": "󰋊 {percentage_used}% "
   },
 
-  "hyprland/language": {
+  "sway/language": {
     "format": "  {short}"
   },
-
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
+	},
   // Group Hardware
   "group/hardware": {
     "orientation": "inherit",
@@ -169,7 +168,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": false
     },
-    "modules": ["custom/system", "disk", "memory", "temperature"]
+    "modules": ["custom/system", "disk", "memory", "temperature", "power-profiles-daemon"]
   },
 
   // Group Tools

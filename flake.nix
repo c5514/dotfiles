@@ -86,7 +86,8 @@
         		inherit system;
         		modules = [
 					# ./configuration.nix
-					./hosts/main/configuration.nix
+					# ./hosts/main/configuration.nix
+					./hosts/stable/configuration.nix
 					inputs.grub2-themes.nixosModules.default
 					# inputs.sddm-sugar-candy-nix.nixosModules.default
 					# {
@@ -115,7 +116,8 @@
 				};
 				modules = [ 
 					# ./home.nix
-					./hosts/main/home.nix
+					# ./hosts/main/home.nix
+					./hosts/stable/home.nix
 				];
 			};
 		};

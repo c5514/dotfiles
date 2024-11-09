@@ -23,6 +23,13 @@
 		xkb.layout = "us";
 		xkb.variant = "altgr-intl";
 		videoDrivers = [ "amdgpu" ];
+		windowManager.awesome = {
+			enable = true;
+			luaModules = with pkgs.luaPackages; [
+				luarocks
+				luadbi-mysql
+			];
+		};
 	};
 	hardware.graphics = {
 		enable = true;

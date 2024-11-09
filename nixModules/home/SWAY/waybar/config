@@ -16,17 +16,17 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
-        "hyprland/language",
+        "sway/language",
         "cpu",
         "custom/empty",
-        "group/links",
-        "hyprland/window",
+        //"group/links",
+        "sway/window",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces"
+        "sway/workspaces"
     ],
 
     // Modules Right    
