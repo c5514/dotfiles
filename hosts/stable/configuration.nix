@@ -6,6 +6,7 @@
 		../../nixModules/config/Utils/default.nix
 		../../nixModules/config/Network/default.nix
 		../../nixModules/config/DeskEnv/gnome.nix
+		../../nixModules/config/DeskEnv/awesome.nix
 	];
 
 	# Set your time zone.
@@ -23,13 +24,6 @@
 		xkb.layout = "us";
 		xkb.variant = "altgr-intl";
 		videoDrivers = [ "amdgpu" ];
-		windowManager.awesome = {
-			enable = true;
-			luaModules = with pkgs.luaPackages; [
-				luarocks
-				luadbi-mysql
-			];
-		};
 	};
 	hardware.graphics = {
 		enable = true;

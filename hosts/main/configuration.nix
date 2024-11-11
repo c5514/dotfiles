@@ -6,6 +6,8 @@
 		../../nixModules/config/Utils/default.nix
 		../../nixModules/config/Network/default.nix
 		../../nixModules/config/DeskEnv/gnome.nix
+		../../nixModules/config/DeskEnv/awesome.nix
+		../../nixModules/config/DeskEnv/hyprland.nix
 	];
 
 	# Set your time zone.
@@ -41,15 +43,6 @@
 	programs.fish.enable = true;
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
-	# Hyprland modules
-	programs.hyprland.enable = true;
-	nix.settings = {
-    	substituters = ["https://hyprland.cachix.org"];
-    	trusted-public-keys = [
-    	"hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    	];
-	};
-	programs.hyprlock.enable = true;
 	environment.systemPackages = 
 	(with pkgs; [
 		brightnessctl
@@ -64,7 +57,6 @@
 		udiskie
 		udisks
 		material-design-icons
-		hyprshade
 		fastfetch
 	]);
 	fonts.packages = with pkgs;[
@@ -81,7 +73,7 @@
 		(nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
 	];
 	xdg.portal.enable = true;
-	# services.gnome.gnome-keyring.enable = true;
+	services.gnome.gnome-keyring.enable = true;
 	security.polkit.enable = true;
 	services.gvfs.enable = true;
 	services.udisks2.enable = true;

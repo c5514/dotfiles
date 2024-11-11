@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
 	home.packages = with pkgs; [
-		picom
+		picom-pijulius
 		# rofi
 		maim
 		ffmpeg
@@ -12,9 +12,19 @@
 		alsa-utils
 		acpi
 		mpd
-		redshift
 		xfce.xfce4-power-manager
 		imagemagick
 		xclip
+		nitrogen
+		flameshot
 	];
+	services.screen-locker = {
+		enable = true;
+		inactiveInterval = 5;
+		lockCmd = "${pkgs.i3lock-color}/bin/i3lock-color -n -c 000000";
+		xautolock = {
+			enable = true;
+			detectSleep = true;
+		};
+	};
 }

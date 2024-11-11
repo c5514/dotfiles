@@ -8,6 +8,7 @@
 	imports = [
 		../../nixModules/home/HYPR/default.nix
 		../../nixModules/home/default.nix
+		../../nixModules/home/AWESOME/awesome.nix
 	];
 	home.sessionVariables = {
 		EDITOR = "nvim";
@@ -32,7 +33,6 @@
 		fzf
 		python3
 		python312Packages.tinycss2
-		texliveFull
 	# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
