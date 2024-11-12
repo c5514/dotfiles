@@ -6,7 +6,7 @@
 		./spicetify.nix
 	];
 	home.packages = with pkgs; [
-		webcord
+		vesktop
 		evince
 		zotero
 		wineWowPackages.waylandFull

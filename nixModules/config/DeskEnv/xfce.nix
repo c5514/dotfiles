@@ -3,8 +3,21 @@
 	services.xserver = {
 		enable = true;
 		desktopManager = {
-			xfce.enable = true;
+			xfce = {
+				enable = true;
+				noDesktop = true;
+				enableXfwm = false;
+			};
 			xterm.enable = false;
+		};
+		windowManager.xmonad = {
+			enable = true;
+			enableContribAndExtras = true;
+			extraPackages = haskellPackages : [
+				haskellPackages.xmonad-contrib
+				haskellPackages.xmonad-extras
+				haskellPackages.xmonad
+			];
 		};
 	};
 	environment.systemPackages = with pkgs; [

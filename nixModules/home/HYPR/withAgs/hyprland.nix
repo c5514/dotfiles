@@ -243,7 +243,7 @@
 				(f "org.gnome.Settings")
 				"workspace 7 silent, title:Telegram"
 				"workspace 7 silent, title:Spotify"
-				"workspace 7 silent, title:WebCord"
+				"workspace 7 silent, ^(vesktop)"
 			];
 			windowrulev2 = [
 				"suppressevent maximize, class:.*"
@@ -281,9 +281,9 @@
 				"bordercolor rgba(f5dd27aa) rgba(ffffffaa) rgba(33ccffaa) 45deg,title:(Spotify)"
 				"size 50% 50%,title:(Spotify)"
 				"move 2% 10%,title:(Spotify)"
-				"float,class:(WebCord)"
-				"move 53% 53%,class:(WebCord)"
-				"size 46% 45%,class:(WebCord)"
+				"float,class:(vesktop)"
+				"move 53% 53%,class:(vesktop)"
+				"size 46% 45%,class:(vesktop)"
 				"float,class:(nm-connection-editor)"
 				"size 35% 60%,class:(nm-connection-editor)"
 				"center,class:(nm-connection-editor)"
