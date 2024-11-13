@@ -24,6 +24,7 @@ let myAliases = {
 {
 	imports = [
 		./starship.nix
+		./eza.nix
 	];
 	programs.fish = {
 		enable = true;
@@ -47,6 +48,14 @@ let myAliases = {
 		autosuggestion = {
 			enable = true;
 			highlight = "fg=#6f6c5d";
+			strategy = [
+				"history"
+				"completion"
+				"match_prev_cmd"
+			];
+		};
+		syntaxHighlighting = {
+			enable = true;
 		};
 		history = {
         	path = "$HOME/.histfile";

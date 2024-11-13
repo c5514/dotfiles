@@ -3,8 +3,8 @@
 	home.sessionVariables.TERMINAL = "wezterm";
 	programs.wezterm = {
 		enable = true;
+		package = pkgs.wezterm;
 		enableBashIntegration = true;
-		enableFishIntegration = true;
 		enableZshIntegration = true;
 	};
 }

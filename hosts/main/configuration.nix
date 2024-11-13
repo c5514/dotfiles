@@ -37,11 +37,11 @@
 		isNormalUser = true;
 		description = "Cesar Levano";
 		extraGroups = [ "networkmanager" "wheel" "scanner" "lp"];
-		shell = pkgs.fish;
+		shell = pkgs.zsh;
 		# packages = with pkgs; [
 		# ];
 	};
-	programs.fish.enable = true;
+	programs.zsh.enable = true;
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 	environment.systemPackages = 
