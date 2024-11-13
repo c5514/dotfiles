@@ -1,5 +1,6 @@
 {pkgs, ...}:
 {
+	home.sessionVariables.TERMINAL = "kitty";
 	programs.kitty = {
 		enable = true;
 		package = pkgs.kitty;

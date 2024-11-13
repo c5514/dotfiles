@@ -8,6 +8,7 @@
 		../../nixModules/config/DeskEnv/gnome.nix
 		../../nixModules/config/DeskEnv/awesome.nix
 		../../nixModules/config/DeskEnv/hyprland.nix
+		# ../../nixModules/config/DeskEnv/xfce.nix
 	];
 
 	# Set your time zone.

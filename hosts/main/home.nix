@@ -13,7 +13,7 @@
 	home.sessionVariables = {
 		EDITOR = "nvim";
 		BROWSER = "firefox";
-		TERMINAL = "kitty";
+
 	};
 	home.packages = with pkgs; [
 		ripgrep

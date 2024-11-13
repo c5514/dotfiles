@@ -34,7 +34,7 @@
 				"XDG_SESSION_DESKTOP,Hyprland"
 			];
 			#Programs
-			"$terminal" = "kitty";
+			"$terminal" = "wezterm";
 			"$fileManager" = "nautilus";
 			"$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
 			"$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
@@ -145,7 +145,7 @@
 				"$mainMod, RETURN, exec, $terminal"
 				"$mainMod, Q, killactive,"
 				"$mainMod, M, exec, exit"
-				"$mainMod, E, exec, kitty -e yazi"
+				"$mainMod, E, exec, wezterm -e yazi"
 				"$mainMod SHIFT, E, exec, $fileManager"
 				"$mainMod, F, togglefloating"
 				"$mainMod, SPACE, exec, $menu"
@@ -276,7 +276,6 @@
 				"float,class:(org.telegram.desktop)"
 				"move 60% 6%,class:(org.telegram.desktop)"
 				"size 35% 45%,class:(org.telegram.desktop)"
-				"bordersize 2, class:(kitty)"
 				"float,title:(Spotify)"
 				"bordercolor rgba(f5dd27aa) rgba(ffffffaa) rgba(33ccffaa) 45deg,title:(Spotify)"
 				"size 50% 50%,title:(Spotify)"

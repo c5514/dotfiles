@@ -4,9 +4,10 @@
 		./shell/default.nix
 		./fastfetch.nix
 		./git.nix
-		./kitty.nix
-		# ./tmux.nix
+		# ./kitty.nix
+		./tmux.nix
 		./yazi.nix
-		./zellij.nix
+		# ./zellij.nix
+		./wezterm.nix
 	];
 }

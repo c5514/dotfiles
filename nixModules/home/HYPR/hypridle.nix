@@ -7,7 +7,7 @@ let
 	fi
 	'';
 	brillo = lib.getExe pkgs.brillo;
-	timeout = 300;
+	timeout = 600;
 in {
 	services.hypridle = {
 		enable = true;
