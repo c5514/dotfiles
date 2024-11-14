@@ -8,44 +8,26 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
-		ags.url = "github:Aylur/ags";
-		hyprland-contrib = {
-			url = "github:hyprwm/contrib";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-		hyprland = {
-			url = "git+https://github.com/hyprwm/hyprland?submodules=1";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-		hypridle = {
-			url = "github:hyprwm/hypridle";
-			inputs = {
-			hyprlang.follows = "hyprland/hyprlang";
-			hyprutils.follows = "hyprland/hyprutils";
-			nixpkgs.follows = "hyprland/nixpkgs";
-			systems.follows = "hyprland/systems";
-			};
-		};
-		hyprlock = {
-			url = "github:hyprwm/hyprlock";
-			inputs = {
-				hyprlang.follows = "hyprland/hyprlang";
-				hyprutils.follows = "hyprland/hyprutils";
-				nixpkgs.follows = "hyprland/nixpkgs";
-				systems.follows = "hyprland/systems";
-			};
-		};
-		hyprland-plugins = {
-			url = "github:hyprwm/hyprland-plugins";
-			inputs.hyprland.follows = "hyprland";
-		};
-		Hyprspace = {
-			url = "github:KZDKM/Hyprspace";
-			inputs.hyprland.follows = "hyprland";
-		};
-		matugen = {
-			url = "github:Iniox/Matugen";
-		};
+		# ags.url = "github:Aylur/ags";
+		# hyprland-contrib = {
+		# 	url = "github:hyprwm/contrib";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
+		# hyprland = {
+		# 	url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
+		# hyprland-plugins = {
+		# 	url = "github:hyprwm/hyprland-plugins";
+		# 	inputs.hyprland.follows = "hyprland";
+		# };
+		# Hyprspace = {
+		# 	url = "github:KZDKM/Hyprspace";
+		# 	inputs.hyprland.follows = "hyprland";
+		# };
+		# matugen = {
+		# 	url = "github:Iniox/Matugen";
+		# };
 		spicetify-nix = {
 			url = "github:Gerg-L/spicetify-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +42,10 @@
 		};
 		nixvim = {
 			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		wezterm = {
+			url = "github:wez/wezterm/main?dir=nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -85,7 +71,6 @@
 			nixos = lib.nixosSystem {
         		inherit system;
         		modules = [
-					# ./configuration.nix
 					./hosts/main/configuration.nix
 					# ./hosts/stable/configuration.nix
 					inputs.grub2-themes.nixosModules.default
@@ -115,7 +100,6 @@
 					inherit inputs;
 				};
 				modules = [ 
-					# ./home.nix
 					./hosts/main/home.nix
 					# ./hosts/stable/home.nix
 				];

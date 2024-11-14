@@ -40,6 +40,7 @@
 		clipboard.register = "unnamedplus";
 		keymaps = [
 			{
+				mode = "n";
 				key = ";";
 				action = ":";
 			}

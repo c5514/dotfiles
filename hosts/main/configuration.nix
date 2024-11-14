@@ -7,7 +7,8 @@
 		../../nixModules/config/Network/default.nix
 		../../nixModules/config/DeskEnv/gnome.nix
 		../../nixModules/config/DeskEnv/awesome.nix
-		../../nixModules/config/DeskEnv/hyprland.nix
+		../../nixModules/config/DeskEnv/sway.nix
+		# ../../nixModules/config/DeskEnv/hyprland.nix
 		# ../../nixModules/config/DeskEnv/xfce.nix
 	];
 
@@ -71,7 +72,11 @@
 		material-icons
 		jetbrains-mono
 		freefont_ttf
-		(nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
+		(nerdfonts.override {fonts = [
+			"JetBrainsMono"
+			"CascadiaCode"
+			"NerdFontsSymbolsOnly"
+		];})
 	];
 	xdg.portal.enable = true;
 	services.gnome.gnome-keyring.enable = true;

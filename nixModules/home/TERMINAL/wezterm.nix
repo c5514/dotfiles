@@ -1,9 +1,9 @@
-{pkgs,...}:
+{inputs, pkgs, ...}:
 {
 	home.sessionVariables.TERMINAL = "wezterm";
 	programs.wezterm = {
 		enable = true;
-		package = pkgs.wezterm;
+		package = inputs.wezterm.packages.${pkgs.system}.default;
 		enableBashIntegration = true;
 		enableZshIntegration = true;
 	};

@@ -14,7 +14,7 @@ let
 	workspace10 = "workspace number 10";
 	workspace11 = "workspace number 11";
 	workspace12 = "workspace number 12";	
-	terminal = "${pkgs.kitty}/bin/kitty";
+	terminal = "wezterm";
 	appLauncher = "${pkgs.rofi-wayland}/bin/rofi -show drun -theme ~/.config/rofi/launcher.rasi";
 	clipboard = "${pkgs.rofi-wayland}/bin/rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
 	notification = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";

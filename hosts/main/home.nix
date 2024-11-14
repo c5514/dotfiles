@@ -6,9 +6,10 @@
 	nixpkgs.config.allowUnfree = true;
 	nixpkgs.config.allowUnfreePredicate = (_: true);
 	imports = [
-		../../nixModules/home/HYPR/default.nix
+		# ../../nixModules/home/HYPR/default.nix
 		../../nixModules/home/default.nix
 		../../nixModules/home/AWESOME/awesome.nix
+		../../nixModules/home/SWAY/sway.nix
 	];
 	home.sessionVariables = {
 		EDITOR = "nvim";
