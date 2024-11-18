@@ -10,4 +10,7 @@
     ./theme.nix
     ./apps/default.nix
   ];
+  home.file = {
+    "Pictures".source = ./pictures;
+  };
 }

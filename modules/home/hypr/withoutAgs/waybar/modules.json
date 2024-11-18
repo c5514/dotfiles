@@ -24,7 +24,7 @@
       "default": ""
     },
     "persistent-workspaces": {
-            "*": 0
+      "*": 0
     }
   },
 
@@ -59,9 +59,9 @@
 
   // Empty
   "custom/empty": {
-    "format": ""
+    "format": " "
   },
-  
+
   // Empty
   "custom/tools": {
     "format": "",
@@ -99,7 +99,7 @@
   // Rofi Application Launcher
   "custom/appmenu": {
     "format": " ",
-"on-click": "sleep 0.2; if pgrep -x rofi > /dev/null; then pkill rofi; else rofi -show drun -replace; fi",
+    "on-click": "sleep 0.2; if pgrep -x rofi > /dev/null; then pkill rofi; else rofi -show drun -theme ~/.config/rofi/launcher.rasi -replace; fi",
     "tooltip-format": "Open/Close the application launcher"
   },
 
@@ -114,9 +114,17 @@
   "custom/hyprshade": {
     "format": "",
     "tooltip-format": "Blue-light filter on/off",
-"on-click": "sleep 0.5; if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi",
+    "on-click": "sleep 0.5; if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
   },
 
+  // Idle inhibitor
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "  /",
+      "deactivated": "  /"
+    }
+  },
   // System tray
   "tray": {
     "icon-size": 21,
@@ -125,11 +133,30 @@
 
   // Clock
   "clock": {
-    "format": "{:%H:%M %a}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-    "format-alt": "{:%Y-%m-%d}"
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)} ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
-
   // System
   "custom/system": {
     "format": "",
@@ -141,10 +168,23 @@
     "format": "/ CPU:{usage}% "
   },
 
+  // Power profiles daemon
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "  ",
+      "performance": "  ",
+      "balanced": " 󰗑 ",
+      "power-saver": "  "
+    }
+  },
   // Memory
   "memory": {
     "format": "/  {}% "
   },
+  // Temperature
   "temperature": {
     "thermal-zone": 0,
     "critical-threshold": 80,
@@ -183,20 +223,21 @@
     "modules": [
       "custom/cliphist",
       "custom/wallpaper",
+      "idle_inhibitor",
       "custom/hyprshade"
     ]
   },
 
   // Group Links
-	"group/links": {
-	"orientation": "horizontal",
-	"modules": [
-		"custom/empty",    
-		"custom/github",
-		"custom/whatsapp",
-		"custom/empty"      
-	]
-	},
+  "group/links": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/empty",
+      "custom/github",
+      "custom/whatsapp",
+      "custom/empty"
+    ]
+  },
 
   // Network
   "network": {
@@ -209,7 +250,7 @@
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "nm-connection-editor",
+    "on-click": "nm-connection-editor"
   },
 
   // Battery
@@ -223,15 +264,15 @@
     "format-plugged": " {capacity}%",
     "format-alt": "{icon}  {time}",
     "format-icons": [" ", " ", " ", " ", " "],
-	"tooltip" : false
+    "tooltip": false
   },
 
   // Pulseaudio
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "  {volume}%",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-muted": "󰝟  {volume}%",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {

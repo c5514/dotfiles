@@ -16,17 +16,20 @@
     // Modules Left
     "modules-left": [
         "custom/appmenu",
+        "hyprland/workspaces",
+        "custom/empty",
         "hyprland/language",
         "cpu",
-        "custom/empty",
-        "group/links",
-        "hyprland/window",
+		    "power-profiles-daemon",
+        //"custom/empty",
+        //"group/links",
+        //"hyprland/window",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces"
+        "clock"
     ],
 
     // Modules Right    
@@ -40,6 +43,5 @@
         "group/tools",
         "tray",
         "custom/exit",
-        "clock"
     ]
 }
