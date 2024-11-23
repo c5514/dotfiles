@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, ... }:
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -39,15 +34,19 @@
   };
   #Configure keymap in X11
   services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "altgr-intl";
+    xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
     videoDrivers = [ "amdgpu" ];
   };
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    i2c.enable = true;
   };
-  hardware.i2c.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.c5514 = {
     isNormalUser = true;
@@ -67,20 +66,17 @@
     firefox.enable = true;
     dconf.enable = true;
   };
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    wget
+    git
     brightnessctl
     wl-clipboard
     playerctl
     pavucontrol
     cliphist
-    btop
+    htop
     unzip
-    git
-    usbutils
-    udiskie
-    udisks
     material-design-icons
     fastfetch
   ];
@@ -98,7 +94,7 @@
     (nerdfonts.override {
       fonts = [
         "JetBrainsMono"
-        "CascadiaCode"
+        "CascadiaMono"
         "NerdFontsSymbolsOnly"
       ];
     })
@@ -113,18 +109,6 @@
     power-profiles-daemon.enable = true;
   };
   xdg.portal.enable = true;
-  #To enable power saving
-  powerManagement.powertop.enable = true;
-  #To enable Ozone Wayland support
-  environment.sessionVariables.NIXOS_OZONE_WL = 1;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 

@@ -7,8 +7,8 @@
 }:
 {
   imports = [
-    # ../../nixModules/home/HYPR/default.nix
-    ../../nixModules/home/default.nix
+    # ../../modules/home/hypr/default.nix
+    ../../modules/home/default.nix
   ];
   nixpkgs.config = {
     allowUnfree = true;
@@ -18,9 +18,6 @@
     username = "c5514";
     homeDirectory = "/home/c5514";
     stateVersion = "24.05";
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
     packages = with pkgs; [
       ripgrep
       coreutils

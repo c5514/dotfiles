@@ -1,16 +1,13 @@
 { inputs, ... }:
 {
   imports = [
-    ./picture/default.nix
     ./terminal/default.nix
-    ./editor/nixvim/main.nix
-    ./editor/emacs.nix
-    ./editor/vscodium.nix
+    ./editor/default.nix
     ./dconf.nix
     ./theme.nix
     ./apps/default.nix
   ];
   home.file = {
-    "Pictures".source = ./pictures;
+    "Pictures/Nix".source = ./pictures;
   };
 }

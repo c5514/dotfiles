@@ -2,9 +2,9 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -25,9 +25,9 @@
     # 	url = "github:KZDKM/Hyprspace";
     # 	inputs.hyprland.follows = "hyprland";
     # };
-    # matugen = {
-    # 	url = "github:Iniox/Matugen";
-    # };
+    matugen = {
+      url = "github:Iniox/Matugen";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,10 +40,7 @@
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:c5514/nixvim";
     wezterm = {
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,21 +62,6 @@
           modules = [
             ./hosts/main/configuration.nix
             inputs.grub2-themes.nixosModules.default
-            # inputs.sddm-sugar-candy-nix.nixosModules.default
-            # {
-            # 				nixpkgs = {
-            # 					overlays = [inputs.sddm-sugar-candy-nix.overlays.default];
-            # 	};
-            # }
-          ];
-          specialArgs = {
-            inherit inputs;
-          };
-        };
-        #ISO configuration
-        iso = lib.nixosSystem {
-          modules = [
-            ./hosts/iso/configuration.nix
           ];
           specialArgs = {
             inherit inputs;

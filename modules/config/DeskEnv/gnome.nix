@@ -43,7 +43,7 @@
       totem
       evince
       yelp
-      gnome-font-viewer
+      # gnome-font-viewer
       gnome-text-editor
       gnome-music
       gnome-characters

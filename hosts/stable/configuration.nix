@@ -12,7 +12,6 @@
     ../../modules/config/Utils/default.nix
     ../../modules/config/Network/default.nix
     ../../modules/config/DeskEnv/gnome.nix
-    ../../modules/config/DeskEnv/awesome.nix
   ];
 
   # Set your time zone.

@@ -73,13 +73,14 @@
       };
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
+        show-battery-percentage = true;
       };
       "org/gnome/desktop/screensaver" = {
-        picture-uri = "file:///home/c5514/Pictures/nixwall.png";
+        picture-uri = "file:///home/c5514/Pictures/Nix/nixwall.png";
       };
       "org/gnome/desktop/background" = {
-        picture-uri = "file:///home/c5514/Pictures/nixwall.png";
-        picture-uri-dark = "file:///home/c5514/Pictures/nixwall.png";
+        picture-uri = "file:///home/c5514/Pictures/Nix/nixwall.png";
+        picture-uri-dark = "file:///home/c5514/Pictures/Nix/nixwall.png";
         primary-color = "#3465a4";
       };
     };
