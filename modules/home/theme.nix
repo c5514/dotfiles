@@ -3,8 +3,10 @@
   gtk = {
     enable = true;
     theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
+      name = "Orchis-Dark";
+      # name = "adw-gtk3-dark";
+      package = pkgs.orchis-theme;
+      # package = pkgs.adw-gtk3;
     };
     cursorTheme = {
       package = pkgs.bibata-cursors;
@@ -12,15 +14,19 @@
       size = 24;
     };
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
+      # package = pkgs.papirus-icon-theme;
+      package = pkgs.tela-circle-icon-theme;
+      # name = "Papirus";
+      name = "Tela-circle";
     };
   };
   qt = {
     enable = true;
     platformTheme.name = "gtk3";
-    style.package = pkgs.adwaita-qt;
-    style.name = "adwaita-dark";
+    style = {
+      package = pkgs.adwaita-qt;
+      name = "adwaita-dark";
+    };
   };
   home.pointerCursor = {
     package = pkgs.bibata-cursors;

@@ -26,6 +26,7 @@ in
   imports = [
     ./starship.nix
     ./eza.nix
+    ./zoxide.nix
   ];
   programs.fish = {
     enable = true;

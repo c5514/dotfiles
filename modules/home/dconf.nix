@@ -50,6 +50,9 @@
         two-finger-scrolling-enabled = true;
         natural-scroll = false;
       };
+      "org/gnome/shell/extensions/user-theme" = {
+        name = "Orchis-Dark";
+      };
       "org/gnome/shell" = {
         favorite-apps = [
           "firefox.desktop"
@@ -68,6 +71,7 @@
           "aztaskbar@aztaskbar.gitlab.com"
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
           "quick-settings-tweaker@gnome-shell-extensions.gcampax.github.com"
+          "user-theme@gnome-shell-extensions.gcampax.github.com"
           # "forge@gnome-shell-extensions.gcampax.github.com"
         ];
       };
