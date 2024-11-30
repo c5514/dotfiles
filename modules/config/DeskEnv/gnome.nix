@@ -28,9 +28,12 @@
   users.users.gdm.packages = with pkgs; [
     bibata-cursors
   ];
-  environment.gnome.excludePackages = (
-    with pkgs;
-    [
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "wezterm";
+  };
+  environment = {
+    gnome.excludePackages = with pkgs; [
       gnome-console
       gnome-photos
       gnome-tour
@@ -53,6 +56,6 @@
       atomix
       gnome-contacts
       gnome-maps
-    ]
-  );
+    ];
+  };
 }

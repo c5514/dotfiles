@@ -6,7 +6,10 @@
     app-icons-taskbar
     bluetooth-quick-connect
     quick-settings-tweaker
-    # forge
+    tray-icons-reloaded
+    vitals
+    no-title-bar
+    user-themes
   ];
   dconf = {
     settings = {
@@ -72,7 +75,9 @@
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
           "quick-settings-tweaker@gnome-shell-extensions.gcampax.github.com"
           "user-theme@gnome-shell-extensions.gcampax.github.com"
-          # "forge@gnome-shell-extensions.gcampax.github.com"
+          # "no-title-bar@franglais125"
+          "Vitals@CoreCoding.com"
+          "trayIconsReloaded@selfmade.pl"
         ];
       };
       "org/gnome/desktop/interface" = {
