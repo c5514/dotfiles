@@ -7,6 +7,7 @@
     ../../modules/config/Utils/default.nix
     ../../modules/config/Network/default.nix
     ../../modules/config/DeskEnv/gnome.nix
+    # ../../modules/config/DeskEnv/hyprland.nix
   ];
 
   # Set your time zone.
