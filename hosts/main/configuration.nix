@@ -80,6 +80,8 @@
     unzip
     material-design-icons
     fastfetch
+    usbutils
+    qpdf
   ];
   fonts.packages = with pkgs; [
     noto-fonts
