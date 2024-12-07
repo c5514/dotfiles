@@ -2,6 +2,7 @@
 let
   myAliases = {
     ll = "ls -l";
+    cd = "z";
     ff = "fastfetch";
     tx = "cd ~/Documents/Vim/Tex/";
     dwn = "cd ~/Downloads/";
@@ -28,48 +29,51 @@ in
     ./eza.nix
     ./zoxide.nix
   ];
-  programs.fish = {
-    enable = true;
-    package = pkgs.fish;
-    interactiveShellInit = ''
-      set fish_greeting
-    '';
-    shellAliases = myAliases;
-  };
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    historyFileSize = 10000;
-    historyIgnore = [
-      "ls"
-      "cd"
-      ".."
-      "ee"
-      "cc"
-      "ll"
-      "ff"
-    ];
-    shellAliases = myAliases;
-  };
-  programs.zsh = {
-    enable = true;
-    autosuggestion = {
+  programs = {
+    fish = {
       enable = true;
-      highlight = "fg=#6f6c5d";
-      strategy = [
-        "history"
-        "completion"
-        "match_prev_cmd"
+      package = pkgs.fish;
+      interactiveShellInit = ''
+        set fish_greeting
+      '';
+      shellAliases = myAliases;
+    };
+    bash = {
+      enable = true;
+      enableCompletion = true;
+      historyFileSize = 10000;
+      historyIgnore = [
+        "ls"
+        "cd"
+        ".."
+        "ee"
+        "cc"
+        "ll"
+        "ff"
+        "tx"
       ];
+      shellAliases = myAliases;
     };
-    syntaxHighlighting = {
+    zsh = {
       enable = true;
+      autosuggestion = {
+        enable = true;
+        highlight = "fg=#6f6c5d";
+        strategy = [
+          "history"
+          "completion"
+          "match_prev_cmd"
+        ];
+      };
+      syntaxHighlighting = {
+        enable = true;
+      };
+      history = {
+        path = "$HOME/.histfile";
+        save = 10000;
+        size = 10000;
+      };
+      shellAliases = myAliases;
     };
-    history = {
-      path = "$HOME/.histfile";
-      save = 10000;
-      size = 10000;
-    };
-    shellAliases = myAliases;
   };
 }

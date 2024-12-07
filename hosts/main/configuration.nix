@@ -72,16 +72,15 @@
     wget
     git
     brightnessctl
-    wl-clipboard
     playerctl
-    pavucontrol
+    wl-clipboard
     cliphist
+    pavucontrol
     htop
     unzip
     material-design-icons
     fastfetch
     usbutils
-    qpdf
   ];
   fonts.packages = with pkgs; [
     noto-fonts
