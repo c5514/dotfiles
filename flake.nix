@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs =
@@ -65,7 +65,7 @@
             ./hosts/main/configuration.nix
             inputs.grub2-themes.nixosModules.default
             # {
-            #   nix-settings = {
+            #   nix.settings = {
             #     substituters = [ "https://cosmic.cachix.org" ];
             #     trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             #   };
