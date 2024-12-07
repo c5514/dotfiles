@@ -44,7 +44,7 @@
       epiphany
       geary
       totem
-      evince
+      # evince
       yelp
       # gnome-font-viewer
       gnome-text-editor

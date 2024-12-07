@@ -45,6 +45,7 @@
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs =
@@ -56,12 +57,19 @@
     in
     {
       nixosConfigurations = {
-        #Configuration.nix
+        # Configuration.nix
         nixos = lib.nixosSystem {
           inherit system;
           modules = [
             ./hosts/main/configuration.nix
             inputs.grub2-themes.nixosModules.default
+            # {
+            #   nix-settings = {
+            #     substituters = [ "https://cosmic.cachix.org" ];
+            #     trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            #   };
+            # }
+            # inputs.nixos-cosmic.nixosModules.default
           ];
           specialArgs = {
             inherit inputs;
@@ -69,6 +77,7 @@
         };
       };
       homeConfigurations = {
+        # Home manager
         c5514 = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {

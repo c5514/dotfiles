@@ -7,7 +7,8 @@
   ];
   home.packages = with pkgs; [
     vesktop
-    evince
+    freetube
+    # evince
     zotero
     wineWowPackages.waylandFull
     inkscape
