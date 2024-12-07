@@ -12,7 +12,10 @@
       monitor = ",preferred, auto, 1";
       #Autostart
       exec-once = [
+        # "waypaper --restore &"
+        # "waybar"
         "hypridle &"
+        "ags & "
         "mega-cmd &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -35,10 +38,10 @@
       #Programs
       "$terminal" = "wezterm";
       "$fileManager" = "nautilus";
-      "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
-      "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
-      # "$menu" = "ags -t launcher";
-      # "$clipboard" = "ags -r 'launcher.open(\":ch\")'";
+      # "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
+      # "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
+      "$menu" = "ags -t launcher";
+      "$clipboard" = "ags -r 'launcher.open(\":ch\")'";
       "$browser" = "firefox";
       #Input
       input = {
@@ -151,13 +154,14 @@
         "$mainMod, P, pseudo,"
         "$mainMod, T, togglesplit,"
         "$mainMod, B, exec, $browser"
-        # "$mainMod, BACKSPACE, exec, ags -t powermenu"
+        # "$mainMod, BACKSPACE, exec, wlogout"
+        "$mainMod, BACKSPACE, exec, ags -t powermenu"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
-        # "$mainMod, D, exec, ags -t datemenu"
-        # "$mainMod, M, exec, ags -t quicksettings"
+        "$mainMod, D, exec, ags -t datemenu"
+        "$mainMod, M, exec, ags -t quicksettings"
         #Workspaces overview
         # "$mainMod, R, overview:toggle"
-        # "$mainMod, R, exec, ags -t overview"
+        "$mainMod, R, exec, ags -t overview"
         #Screenshot
         ", PRINT, exec, grimblast copy screen"
         "$mainMod, PRINT, exec, grimblast copy active"
@@ -237,7 +241,7 @@
         in
         [
           # (f "waypaper")
-          # (f "com.github.Aylur.ags")
+          (f "com.github.Aylur.ags")
           (f "org.gnome.Calculator")
           (f "org.gnome.Weather")
           (f "org.inkscape.Inkscape")

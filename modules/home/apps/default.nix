@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./firefox.nix
@@ -9,6 +9,7 @@
     vesktop
     freetube
     # evince
+    inputs.zen-browser.packages.${pkgs.system}.default
     zotero
     wineWowPackages.waylandFull
     inkscape

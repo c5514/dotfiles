@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-themes.url = "github:vinceliuice/grub2-themes";
-    # ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
     # hyprland-contrib = {
     # 	url = "github:hyprwm/contrib";
     # 	inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +45,7 @@
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
