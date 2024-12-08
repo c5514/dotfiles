@@ -15,6 +15,7 @@
         # "waypaper --restore &"
         # "waybar"
         "hypridle &"
+        "hyprsunset -t 4000"
         "ags & "
         "mega-cmd &"
         "wl-paste --type text --watch cliphist store"
