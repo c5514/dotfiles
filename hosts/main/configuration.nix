@@ -101,7 +101,10 @@
       ];
     })
   ];
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    pam.services.gdm.enableGnomeKeyring = true;
+  };
   services = {
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;

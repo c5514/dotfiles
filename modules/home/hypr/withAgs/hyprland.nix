@@ -42,7 +42,7 @@
       # "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
       # "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
       "$menu" = "ags -t launcher";
-      "$clipboard" = "ags -r 'launcher.open(\":ch\")'";
+      "$clipboard" = "ags -r 'launcher.open(\":ch \")'";
       "$browser" = "firefox";
       #Input
       input = {
