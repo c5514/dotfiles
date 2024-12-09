@@ -9,10 +9,10 @@
     };
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-    # hyprland-contrib = {
-    # 	url = "github:hyprwm/contrib";
-    # 	inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # hyprland = {
     # 	url = "git+https://github.com/hyprwm/hyprland?submodules=1";
     # 	inputs.nixpkgs.follows = "nixpkgs";

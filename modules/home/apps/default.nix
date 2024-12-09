@@ -9,10 +9,12 @@
     vesktop
     freetube
     # evince
+    obsidian
     inputs.zen-browser.packages.${pkgs.system}.default
     zotero
     wineWowPackages.waylandFull
     inkscape
+    # texliveFull
     typst
     python312Packages.tkinter
     telegram-desktop

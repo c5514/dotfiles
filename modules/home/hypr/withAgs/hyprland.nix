@@ -35,6 +35,7 @@
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
+        "WAYLAND_DISPLAY,wayland-1"
       ];
       #Programs
       "$terminal" = "wezterm";
