@@ -1,0 +1,19 @@
+[Unit]
+Description=Noisetorch Noise Cancelling
+Requires=sys-devices-pci0000:00-0000:00:08.1-0000:04:00.1-sound-card0-controlC0.device 
+After=sys-devices-pci0000:00-0000:00:08.1-0000:04:00.1-sound-card0-controlC0.device 
+# Depending on if you're using pulseaudio or pipewire, uncomment the correct line
+# After=pulseaudio.service
+After=pipewire.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/noisetorch -i -t 95
+ExecStop=/usr/local/bin/noisetorch -u
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+

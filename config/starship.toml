@@ -1,0 +1,106 @@
+add_newline = true
+continuation_prompt = "∙  ┆ "
+format = "$nix_shell$os$directory$container$git_branch $git_status$python$nodejs$lua$rust$java$c$golang$cmd_duration$status$line_break[❯](bold green)${custom.space}"
+
+[bun]
+format = "[$symbol ](blue)"
+symbol = "󰛦"
+
+[c]
+format = "[$symbol ](blue)"
+symbol = ""
+
+[cmd_duration]
+format = "[$duration ](fg:yellow)"
+min_time = 1000
+
+[container]
+format = "[$symbol ](yellow dimmed)"
+symbol = " 󰏖"
+
+[custom.space]
+format = "  "
+when = "! test $env"
+
+[dart]
+format = "[$symbol ](blue)"
+symbol = ""
+
+[deno]
+format = "[$symbol ](blue)"
+symbol = "󰛦"
+
+[directory]
+format = " [](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black) [$read_only](fg:yellow)"
+read_only = " "
+truncate_to_repo = true
+truncation_length = 4
+truncation_symbol = ""
+
+[elixir]
+format = "[$symbol ](purple)"
+symbol = ""
+
+[git_branch]
+format = "[ $symbol $branch](fg:purple)(:$remote_branch)"
+style = ""
+symbol = ""
+
+[golang]
+format = "[$symbol ](blue)"
+symbol = ""
+
+[java]
+format = "[$symbol ](red)"
+symbol = ""
+
+[line_break]
+disabled = false
+
+[lua]
+format = "[$symbol ](blue)"
+symbol = "󰢱"
+
+[nix_shell]
+disabled = false
+format = "[](fg:white)[ ](bg:white fg:black)[](fg:white) "
+
+[nodejs]
+format = "[$symbol ](bright-blue)"
+symbol = "󰛦"
+
+[os]
+disabled = false
+format = "$symbol"
+
+[os.symbols]
+Alpine = "[ ](fg:bright-blue)"
+Arch = "[ ](fg:bright-blue)"
+Debian = "[ ](fg:red))"
+EndeavourOS = "[ ](fg:purple)"
+Fedora = "[ ](fg:blue)"
+Macos = "[ ](fg:white)"
+NixOS = "[ ](fg:blue)"
+SUSE = "[ ](fg:green)"
+Ubuntu = "[ ](fg:bright-purple)"
+openSUSE = "[ ](fg:green)"
+Mint = "[󰣭 ](fg:green)"
+
+[python]
+format = "[$symbol ](yellow)"
+symbol = ""
+
+[rust]
+format = "[$symbol ](red)"
+symbol = ""
+
+[status]
+disabled = false
+format = "[$symbol](fg:red)"
+map_symbol = true
+not_executable_symbol = " Can't Execute E"
+not_found_symbol = "󰍉 Not Found"
+sigint_symbol = "󰂭 "
+signal_symbol = "󱑽 "
+success_symbol = ""
+symbol = "✗"

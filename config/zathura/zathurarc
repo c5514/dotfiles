@@ -1,0 +1,9 @@
+set adjust-open "best-fit"
+set pages-per-row 1
+set synctex true
+set scroll-step 50
+set zoom-min 10
+set default-bg "rgba(0,0,0,0.4)"
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
