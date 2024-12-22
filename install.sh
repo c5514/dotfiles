@@ -1,29 +1,86 @@
 #!/bin/bash
+echo "Installing packages"
+sudo apt update
+sudo apt install git gnome-themes-extra npm python3 gtk2-engines-murrine sassc zathura texlive-science texlive-latex-extra texlive-publishers texlive-fonts-extra texlive-bibtex-extra texlive-fonts-recommended make perl-tk kitty fish latexmk
 
-sudo pacman -Syu
+echo "Installing Orchis theme"
+git clone http://github.com/vinceliuice/Orchis-theme.git
+cd "Orchis-theme" || exit
+./install.sh
 
-echo "Installing dependencies..."
-sudo pacman -S cliphist kitty network-manager network-manager-applet iwd htop polkit-gnome polkit-kde-agent pavucontrol nwg-look brightnessctl unzip usbutils
+echo "Installing Tela circle icon theme"
+git clone http://github.com/vinceliuice/Tela-circle-icon-theme.git
+cd "Tela-circle-icon-theme" || exit
+./install.sh
+cd ..
+rm -rf "Tela-circle-icon-theme"
 
-echo "Installing yay"
-sudo pacman -S --needed base-devel git
-git clone https://aur.archlinux.org/yay.git
-cd yay || exit
-makepkg -si 
+#Installing neovim
+echo "Installing neovim"
+sudo apt install -y ninja-build gettext cmake unzip curl
 
-echo "Installing hyprland dependencies..."
-sudo pacman -S hyprlock aylurs-gtk-shell swww-git rofi-wayland hyprland hypridle
-yay -S matugen-bin
-sudo pacman -S bun dart-sass fd fzf hyprpicker slurp wf-recorder wl-clipboard wayshot swappy
-git clone https://github.com/Aylur/dotfiles.git
-cp -r dotfiles/ags ~/.config/ags
+LATEST_RELEASE=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+wget "https://github.com/neovim/neovim/releases/download/$LATEST_RELEASE/nvim-linux64.tar.gz"
+tar xzf "nvim-linux64.tar.gz"
+sudo mv nvim-linux64/bin/nvim /usr/local/bin/
+sudo mv nvim-linux64/share/nvim /usr/local/share/
+sudo mv nvim-linux64/man/man1/nvim.1 /usr/local/share/man/man1/
+rm -rf nvim-linux64*
 
-echo "Installing neovim and LaTex related dependencies..."
-sudo pacman -S neovim zathura zathura-pdf-mupdf inkscape texlive-bibtexextra texlive-binextra texlive-langchinese texlive-langenglish texlive-langfrench texlive-langjapanese texlive-korean texlive-spanish texlive-publishers texlive-fontsextra texlive-latexextra texlive-latexrecommended texlive-mathscience
-git clone htpps://github.com/c5514/nvim_config.git
-mv ./nvim_config/nvim ~/.config/
-mv ./nvim_config/zathura ~/.config/
-echo "Installing inkscape extension textext"
+echo "Adding neovim configuration"
+git clone http://github.com/c5514/nvim_config.git
+cd "nvim_config" || exit
+mv nvim ~/.config
+mv zathura ~/.config
+cd ..
+rm -rf "nvim_config"
+
+echo "Adding JetBrainsMono Nerd Font"
+bash -c  "$(curl -fsSL https://raw.githubusercontent.com/officialrajdeepsingh/nerd-fonts-installer/main/install.sh)" <<EOF
+28
+EOF
+
+
+echo "Adding new repository for wezterm"
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo apt update
+echo "Installing wezterm"
+sudo apt install wezterm
+
+echo "Installing starship"
+curl -sS https://starship.rs/install.sh | sh
+echo "Adding starship configuration"
+# TODO: Need to finish 
+
+# ALIAS_COMMAND="alias nv='nvim'"
+#
+# # Check if the alias already exists
+# if ! grep -Fxq "$ALIAS_COMMAND" ~/.bashrc; then
+#     # Append the alias to .bashrc
+#     echo "$ALIAS_COMMAND" >> ~/.bashrc
+#     echo "Alias 'nv' added to ~/.bashrc"
+# else
+#     echo "Alias 'nv' already exists in ~/.bashrc"
+# fi
+#
+# # Inform the user to source .bashrc
+# echo "Run 'source ~/.bashrc' to apply the change"
+# source ~/.bashrc
+
+echo "Installing Elegant-grub2-themes"
+git clone https://github.com/vinceliuice/Elegant-grub2-themes.git
+cd "Elegant-grub2-themes" || exit
+sudo ./install.sh -t mojave -s 1080p -l system
+
+
+
+echo "Updating to install inkscape"
+sudo add-apt-repository ppa:inkscape.dev/stable
+sudo apt update
+sudo apt install inkscape
+
+
 # Variables
 TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.10.2/TexText-Linux-1.10.2.zip"
 DOWNLOAD_DIR="$HOME/Downloads"
@@ -59,13 +116,5 @@ python3 setup.py --skip-requirements-check
 # Clean up
 echo "Cleaning up..."
 rm -rf "$ZIP_FILE" "$DOWNLOAD_DIR/textext-1.10.2"
+
 echo "TexText extension installed successfully!"
-
-echo "Installing icon themes and fonts"
-sudo pacman -S papirus-icon-theme otf-font-awesome gnu-free-fonts noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono ttf-font-awesome ttf-jetbrains-mono-nerd ttf-material-design-icons-desktop-git
-
-echo "Installing non essential dependencies..."
-sudo pacman -S telegram-desktop spotify-launcher 
-
-echo "Changing shell to fish"
-chsh -s /usr/bin/fish
