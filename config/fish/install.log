@@ -1,0 +1,8 @@
+[14:12:13 2024-12-18] FETCHING Version 2.38.5
+[14:12:13 2024-12-18] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.38.5/spicetify-2.38.5-linux-amd64.tar.gz
+[14:12:15 2024-12-18] EXTRACTING /home/c5514/.spicetify/spicetify.tar.gz
+[14:12:15 2024-12-18] SETTING EXECUTABLE PERMISSIONS TO /home/c5514/.spicetify/spicetify
+[14:12:16 2024-12-18] REMOVING /home/c5514/.spicetify/spicetify.tar.gz
+[14:12:16 2024-12-18] APPENDING /home/c5514/.spicetify to PATH in /home/c5514/.config/fish/config.fish
+[14:12:16 2024-12-18] spicetify v2.38.5 was installed successfully to /home/c5514/.spicetify
+[14:12:16 2024-12-18] Run 'spicetify --help' to get started
