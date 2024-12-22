@@ -1,54 +1,29 @@
-#/bin/bash
+#!/bin/bash
 
-echo "Installing packages..."
-sudo dnf install fish python3 pip
+sudo pacman -Syu
 
-echo "Installing Orchis theme"
-git clone http://github.com/vinceliuice/Orchis-theme.git
-cd "Orchis-theme" || exit
-./install.sh
-cd ..
-rm -rf "Orchis-theme"
+echo "Installing dependencies..."
+sudo pacman -S cliphist kitty network-manager network-manager-applet iwd htop polkit-gnome polkit-kde-agent pavucontrol nwg-look brightnessctl unzip usbutils
 
-echo "Installing Tela circle icon theme"
-git clone http://github.com/vinceliuice/Tela-circle-icon-theme.git
-cd "Tela-circle-icon-theme" || exit
-./install.sh
-cd ..
-rm -rf "Tela-circle-icon-theme"
+echo "Installing yay"
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay.git
+cd yay || exit
+makepkg -si 
 
-echo "Installing Bibata cursor theme"
-sudo dnf copr enable peterwu/rendezvous
-sudo dnf install bibata-cursor-themes
-
-echo "Configuring terminal"
-sudo dnf install eza
-curl -sS https://starship.rs/install.sh | sh
-sudo dnf copr enable wezfurlong/wezterm-nightly
-sudo dnf install wezterm
-#
-# echo "Installing Hyprland and some dependencies..."
-# sudo dnf copr enable solopasha/hyprland
-# sudo dnf install hyprland cliphist swwww hypridle hyprlock
-
-# echo "Installing pywal and hyprshade..."
-# pip install --user pywal
-# sudo dnf install pipx
-# pipx ensurepath
-# sudo pipx ensurepath --global
-# pipx install hyprshade
-
-echo "Installing fonts..."
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CaskaydiaMono.tar.xz
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Noto.tar.xz
+echo "Installing hyprland dependencies..."
+sudo pacman -S hyprlock aylurs-gtk-shell swww-git rofi-wayland hyprland hypridle
+yay -S matugen-bin
+sudo pacman -S bun dart-sass fd fzf hyprpicker slurp wf-recorder wl-clipboard wayshot swappy
+git clone https://github.com/Aylur/dotfiles.git
+cp -r dotfiles/ags ~/.config/ags
 
 echo "Installing neovim and LaTex related dependencies..."
-sudo dnf install nvim zathura zathura-poppler-pdf texlive-scheme-full inkscape
-git clone https://github.com/c5514/nvim_config.git
-mv nvim ~/.config
-mv zathura ~/.config
-
+sudo pacman -S neovim zathura zathura-pdf-mupdf inkscape texlive-bibtexextra texlive-binextra texlive-langchinese texlive-langenglish texlive-langfrench texlive-langjapanese texlive-korean texlive-spanish texlive-publishers texlive-fontsextra texlive-latexextra texlive-latexrecommended texlive-mathscience
+git clone htpps://github.com/c5514/nvim_config.git
+mv ./nvim_config/nvim ~/.config/
+mv ./nvim_config/zathura ~/.config/
+echo "Installing inkscape extension textext"
 # Variables
 TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.10.2/TexText-Linux-1.10.2.zip"
 DOWNLOAD_DIR="$HOME/Downloads"
@@ -86,9 +61,11 @@ echo "Cleaning up..."
 rm -rf "$ZIP_FILE" "$DOWNLOAD_DIR/textext-1.10.2"
 echo "TexText extension installed successfully!"
 
-# TODO: Need to add spotify installation via flatpak and spicetify
-# Need to add vesktop
-# And extensions and gnome-tweaks installation. I am not sure how to configure gnome via dconf
+echo "Installing icon themes and fonts"
+sudo pacman -S papirus-icon-theme otf-font-awesome gnu-free-fonts noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono ttf-font-awesome ttf-jetbrains-mono-nerd ttf-material-design-icons-desktop-git
+
+echo "Installing non essential dependencies..."
+sudo pacman -S telegram-desktop spotify-launcher 
 
 echo "Changing shell to fish"
 chsh -s /usr/bin/fish
