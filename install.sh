@@ -1,11 +1,10 @@
 #!/bin/bash
 echo "Installing packages"
 sudo apt update
-sudo apt install git npm python3 sassc fish escputil gh printer-driver-escpr
+sudo apt install git npm python3 sassc escputil gh printer-driver-escpr
 echo "Installing LaTeX dependecies"
 sudo apt install texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-extra-links texlive-fonts-extra texlive-fonts-recommended texlive-formats-extra texlive-lang-english texlive-lang-spanish texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-lualatex texlive-pictures texlive-plain-generic texlive-publishers texlive-science texlive-xetex latexmk
-echo "Installing apps used with neovim"
-sudo apt install zathura zathura-pdf-poppler tmux 
+
 echo "To install inkscape answer the following question"
 while true; do
     read -p "Are you in a Ubuntu based distro? (y/n): " answer
@@ -63,7 +62,7 @@ done
 
 
 echo "Installing latest version of neovim"
-sudo apt install -y ninja-build gettext cmake unzip curl
+sudo apt install -y ninja-build gettext cmake unzip curl zathura zathura-pdf-poppler
 LATEST_RELEASE=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep "tag_name" | cut -d '"' -f 4)
 wget "https://github.com/neovim/neovim/releases/download/$LATEST_RELEASE/nvim-linux64.tar.gz"
 tar xzf "nvim-linux64.tar.gz"
@@ -84,6 +83,11 @@ rm -rf "nvim_config"
 #28
 #EOF
 
+echo "Installing fish shell"
+sudo apt install fish
+cd "config" || exit
+mv fish ~/.config
+cd ..
 
 echo "Adding new repository for wezterm"
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
@@ -91,17 +95,45 @@ echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez
 sudo apt update
 echo "Installing wezterm"
 sudo apt install wezterm
+cd "config" || exit
+mv weztern ~/.config
+cd ..
 
 echo "Installing starship"
 curl -sS https://starship.rs/install.sh | sh
 echo "Adding starship configuration"
+cd "config" || exit
+mv starship.toml ~/.config
+cd ..
 
 echo "Installing zoxide"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
+echo "Installing tmux"
+sudo apt install tmux
+cd "config" || exit
+mv tmux ~/.config
+cd ..
+
 echo "Installing yazi"
+#Add installation with wget
+cd "config" || exit
+mv yazi ~/.config
+cd ..
 
 echo "Installing lazygit"
+
+echo "Installing noisetorch"
+wget "https://github.com/neovim/neovim/releases/download/v0.12.2/NoiseTorch_x64_v0.12.2.tgz"
+tar -C $HOME -h -xzf NoiseTorch_x64_v0.12.2.tgz
+gtk-update-icon-cache
+sudo setcap 'CAP_SYS_RESOURCE=+ep' ~/.local/bin/noisetorch
+cd "config" || exit
+mv systemd ~/.config
+cd ..
+systemctl --user daemon-reload
+systemctl --user start noisetorch
+systemctl --user enable noisetorch
 
 echo "Installing Orchis theme"
 git clone http://github.com/vinceliuice/Orchis-theme.git
