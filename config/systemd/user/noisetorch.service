@@ -9,8 +9,8 @@ After=pipewire.service
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/usr/local/bin/noisetorch -i -t 95
-ExecStop=/usr/local/bin/noisetorch -u
+ExecStart=/home/c5514/.local/bin/noisetorch -i -t 95
+ExecStop=/home/c5514/.local/bin/noisetorch -u
 Restart=on-failure
 RestartSec=3
 
