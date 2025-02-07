@@ -1,0 +1,35 @@
+font-family = "JetBrains Mono"
+font-size = 14
+theme = dark:Dark+,light:catppuccin-latte
+background = 0c090a
+
+copy-on-select = clipboard
+
+mouse-hide-while-typing = true
+cursor-style = bar
+
+window-decoration = false
+focus-follows-mouse = false
+
+keybind = ctrl+a>h=new_split:left
+keybind = ctrl+a>j=new_split:down
+keybind = ctrl+a>l=new_split:right
+keybind = ctrl+a>k=new_split:up
+
+keybind = ctrl+d>h=goto_split:left
+keybind = ctrl+d>j=goto_split:bottom
+keybind = ctrl+d>l=goto_split:right
+keybind = ctrl+d>k=goto_split:top
+
+keybind = alt+h=resize_split:left,10
+keybind = alt+j=resize_split:down,10
+keybind = alt+l=resize_split:right,10
+keybind = alt+k=resize_split:up,10
+
+keybind = ctrl+a>n=new_window
+keybind = ctrl+a>t=new_tab
+keybind = ctrl+tab=next_tab
+keybind = ctrl+shift+tab=previous_tab
+
+shell-integration = fish
+command = /usr/bin/fish --login --interactive

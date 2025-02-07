@@ -28,6 +28,7 @@ sudo dnf copr enable pgdev/ghostty
 sudo dnf install ghostty
 cd "config" || exit
 mv starship.toml ~/.config
+mv ghostty ~/.config
 cd ..
 
 echo "Installing neovim and LaTex related dependencies..."
