@@ -1,82 +1,31 @@
 #!/bin/bash
 echo "Installing packages"
 sudo apt update
-sudo apt install git npm python3 sassc escputil gh printer-driver-escpr
+sudo apt remove gnome-games
+sudo apt install git npm wget python3 sassc escputil gh printer-driver-escpr gnome-tweaks bibata-cursor-theme neofetch
+
 echo "Installing LaTeX dependecies"
-sudo apt install texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-extra-links texlive-fonts-extra texlive-fonts-recommended texlive-formats-extra texlive-lang-english texlive-lang-spanish texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-lualatex texlive-pictures texlive-plain-generic texlive-publishers texlive-science texlive-xetex latexmk
+sudo apt install texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-extra-links texlive-fonts-extra texlive-fonts-recommended texlive-formats-extra texlive-lang-english texlive-lang-spanish texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-pictures texlive-plain-generic texlive-publishers texlive-science texlive-xetex latexmk biber
 
-echo "To install inkscape answer the following question"
-while true; do
-    read -p "Are you in a Ubuntu based distro? (y/n): " answer
-
-    case "$answer" in
-        [yY] | [yY][eE][sS])
-            echo "Adding latest version of inkscape to repository"
-            sudo add-apt-repository ppa:inkscape.dev/stable
-            sudo apt update
-            echo "Installing inkscape"
-            sudo apt install inkscape
-            TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.10.2/TexText-Linux-1.10.2.zip"
-            DOWNLOAD_DIR="$HOME/Downloads"
-            INSTALL_DIR="$HOME/.config/inkscape/extensions"
-            ZIP_FILE="$DOWNLOAD_DIR/TexText-Linux-1.10.2.zip"
-            mkdir -p "$DOWNLOAD_DIR"
-            mkdir -p "$INSTALL_DIR"
-
-            echo "Downloading TexText extension"
-            if curl -L -o "$ZIP_FILE" "$TEXTEXT_URL"; then
-                echo "Download completed."
-            else
-                echo "Error downloading the file. Please check the URL."
-                exit 1
-            fi
-
-            echo "Extracting files"
-            if unzip -o "$ZIP_FILE" -d "$DOWNLOAD_DIR"; then
-                echo "Extraction completed."
-            else
-                echo "Error extracting the ZIP file."
-                exit 1
-            fi
-
-            echo "Installing TexText extension"
-            cd "$HOME/Downloads/textext-1.10.2/" || exit
-            python3 setup.py --skip-requirements-check
-            
-            echo "Cleaning up..."
-            rm -rf "$ZIP_FILE" "$DOWNLOAD_DIR/textext-1.10.2"
-
-            echo "TexText extension installed successfully!"
-            break
-            ;;
-        [nN] | [nN][oO])
-            echo "Installing inkscape and textext extension"
-            sudo apt install inkscape inkscape-textext
-            break
-            ;;
-        *)
-            echo "Invalid entry. Try again!"
-            ;;
-    esac
-done
-
+echo "Installing Inkscape and Textext"
+sudo apt install inkscape inkscape-textext
 
 echo "Installing latest version of neovim"
-sudo apt install -y ninja-build gettext cmake unzip curl zathura zathura-pdf-poppler
+sudo apt install -y cmake unzip curl zathura zathura-pdf-poppler
 LATEST_RELEASE=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep "tag_name" | cut -d '"' -f 4)
-wget "https://github.com/neovim/neovim/releases/download/$LATEST_RELEASE/nvim-linux64.tar.gz"
-tar xzf "nvim-linux64.tar.gz"
-sudo mv nvim-linux64/bin/nvim /usr/local/bin/
-sudo mv nvim-linux64/share/nvim /usr/local/share/
-sudo mv nvim-linux64/man/man1/nvim.1 /usr/local/share/man/man1/
-rm -rf nvim-linux64*
+wget "https://github.com/neovim/neovim/releases/download/$LATEST_RELEASE/nvim-linux-x86_64.tar.gz"
+tar xzf "nvim-linux-x86_64.tar.gz"
+sudo mv nvim-linux-x86_64/bin/nvim /usr/local/bin/
+sudo mv nvim-linux-x86_64/share/nvim /usr/local/share/
+rm -rf nvim-linux-x86_64*
+
 echo "Downloading neovim configuration"
-git clone http://github.com/c5514/nvim_config.git
-cd "nvim_config" || exit
+git clone http://github.com/c5514/nvim.git
+cd "nvim" || exit
 mv nvim ~/.config
 mv zathura ~/.config
 cd ..
-rm -rf "nvim_config"
+rm -rf "nvim"
 
 #echo "Adding JetBrainsMono Nerd Font"
 #bash -c  "$(curl -fsSL https://raw.githubusercontent.com/officialrajdeepsingh/nerd-fonts-installer/main/install.sh)" <<EOF
@@ -87,6 +36,7 @@ echo "Installing fish shell"
 sudo apt install fish
 cd "config" || exit
 mv fish ~/.config
+cat .bashrc >> $HOME/.bashrc
 cd ..
 
 echo "Adding new repository for wezterm"
@@ -109,19 +59,17 @@ cd ..
 echo "Installing zoxide"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
-echo "Installing tmux"
-sudo apt install tmux
-cd "config" || exit
-mv tmux ~/.config
-cd ..
-
-echo "Installing yazi"
-#Add installation with wget
-cd "config" || exit
-mv yazi ~/.config
-cd ..
+# echo "Installing yazi"
+# #Add installation with wget
+# cd "config" || exit
+# mv yazi ~/.config
+# cd ..
 
 echo "Installing lazygit"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
 
 echo "Installing noisetorch"
 wget "https://github.com/neovim/neovim/releases/download/v0.12.2/NoiseTorch_x64_v0.12.2.tgz"
@@ -139,6 +87,8 @@ echo "Installing Orchis theme"
 git clone http://github.com/vinceliuice/Orchis-theme.git
 cd "Orchis-theme" || exit
 ./install.sh
+cd .. 
+rm -rf "Orchis-theme"
 
 echo "Installing Tela circle icon theme"
 git clone http://github.com/vinceliuice/Tela-circle-icon-theme.git
@@ -146,20 +96,18 @@ cd "Tela-circle-icon-theme" || exit
 ./install.sh
 cd ..
 rm -rf "Tela-circle-icon-theme"
-# TODO: Need to finish 
 
-# ALIAS_COMMAND="alias nv='nvim'"
-#
-# # Check if the alias already exists
-# if ! grep -Fxq "$ALIAS_COMMAND" ~/.bashrc; then
-#     # Append the alias to .bashrc
-#     echo "$ALIAS_COMMAND" >> ~/.bashrc
-#     echo "Alias 'nv' added to ~/.bashrc"
-# else
-#     echo "Alias 'nv' already exists in ~/.bashrc"
-# fi
-#
-# # Inform the user to source .bashrc
-# echo "Run 'source ~/.bashrc' to apply the change"
-# source ~/.bashrc
+echo "Installing flatpak"
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+echo "Modifying grub"
+git clone https://github.com/vinceliuice/grub2-themes
+cd "grub2-themes" || exit
+sudo ./install.sh -b -t tela
+cd .. 
+rm -rf "grub2-themes"
+
+echo "Reboot"
+sudo reboot now
