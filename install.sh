@@ -2,7 +2,8 @@
 echo "Installing packages"
 sudo apt update
 sudo apt remove gnome-games
-sudo apt install git npm wget python3 sassc escputil gh printer-driver-escpr gnome-tweaks bibata-cursor-theme neofetch
+sudo apt install git npm wget python3 sassc escputil gh printer-driver-escpr gnome-tweaks bibata-cursor-theme neofetch ripgrep
+
 
 echo "Installing LaTeX dependecies"
 sudo apt install texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-extra-links texlive-fonts-extra texlive-fonts-recommended texlive-formats-extra texlive-lang-english texlive-lang-spanish texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-pictures texlive-plain-generic texlive-publishers texlive-science texlive-xetex latexmk biber
@@ -27,10 +28,6 @@ mv zathura ~/.config
 cd ..
 rm -rf "nvim"
 
-#echo "Adding JetBrainsMono Nerd Font"
-#bash -c  "$(curl -fsSL https://raw.githubusercontent.com/officialrajdeepsingh/nerd-fonts-installer/main/install.sh)" <<EOF
-#28
-#EOF
 
 echo "Installing fish shell"
 sudo apt install fish
@@ -39,15 +36,15 @@ mv fish ~/.config
 cat .bashrc >> $HOME/.bashrc
 cd ..
 
-echo "Adding new repository for wezterm"
-curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-sudo apt update
-echo "Installing wezterm"
-sudo apt install wezterm
-cd "config" || exit
-mv weztern ~/.config
-cd ..
+# echo "Adding new repository for wezterm"
+# curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg
+# echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+# sudo apt update
+# echo "Installing wezterm"
+# sudo apt install wezterm
+# cd "config" || exit
+# mv weztern ~/.config
+# cd ..
 
 echo "Installing starship"
 curl -sS https://starship.rs/install.sh | sh
@@ -96,6 +93,22 @@ cd "Tela-circle-icon-theme" || exit
 ./install.sh
 cd ..
 rm -rf "Tela-circle-icon-theme"
+
+echo "Building awesomewm"
+sudo apt build-dep awesome
+sudo apt install libxcb-xfixes0-dev
+git clone https://github.com/awesomewm/awesome
+cd "awesome" || exit
+make package
+cd "build" || exit
+sudo apt install ./*.deb
+
+echo "Installing dependecies for awesomewm and configuration"
+sudo apt install brightnessctl dunst rofi jq policykit-1-gnome playerctl mpd ncmpcpp mpc picom xdotool ueberzug libwebp-dev webp-pixbuf-loader zsh zsh-autosuggestions zsh-syntax-highlighting thunar thunar-volman thunar-archive-plugin gvfs gvfs-backends engrampa suckless-tools xdo redshift xautolock fzf ytfzf yt-dlp gawk tumbler gpick xdg-utils python-is-python3 python3-gi gir1.2-nm-1.0 duf libglib2.0-bin btop ncdu bat exa wmctrl acpid xclip scrot mpdris2 libplayerctl-dev gir1.2-playerctl-2.0 lxappearance bc
+wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+sudo mv greenclip /usr/bin/
+sudo chmod +x /usr/bin/greenclip
+cp -r ./config/awesome ~/.config/
 
 echo "Installing flatpak"
 sudo apt install flatpak
