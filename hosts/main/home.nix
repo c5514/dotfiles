@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    ../../modules/home/hypr/default.nix
+   # ../../modules/home/hypr/default.nix
     ../../modules/home/default.nix
   ];
   nixpkgs.config = {
@@ -17,7 +17,7 @@
   home = {
     username = "c5514";
     homeDirectory = "/home/c5514";
-    stateVersion = "24.05";
+    stateVersion = "25.05";
     packages = with pkgs; [
       ripgrep
       coreutils

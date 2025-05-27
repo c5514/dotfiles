@@ -1,9 +1,9 @@
-{pkgs,...}:
+{ pkgs, ... }:
 {
-	imports = [
-		./printers.nix
-		./sound.nix
-		./VM.nix
-		# ./scanner.nix
-	];
+  imports = [
+    ./printers.nix
+    ./sound.nix
+    # ./VM.nix
+    # ./scanner.nix
+  ];
 }

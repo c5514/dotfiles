@@ -13,7 +13,7 @@
       copy-on-select = "clipboard";
       mouse-hide-while-typing = true;
       cursor-style = "bar";
-      window_decoration = false;
+      window-decoration = false;
       focus-follows-mouse = false;
       keybind = [
         "shift+alt+h=new_split:left"
@@ -37,7 +37,7 @@
         "ctrl+shift+f=toggle_maximize"
         "ctrl+alt+f=toggle_fullscreen"
       ];
-      command = "/usr/bin/fish --login --interactive";
+      command = "fish --login --interactive";
     };
   };
 }

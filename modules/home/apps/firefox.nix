@@ -23,35 +23,42 @@
       name = "Default";
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "ddg";
         order = [
-          "DuckDuckGo"
-          "Google"
+          "ddg"
+          "google"
         ];
       };
-      bookmarks = [
-        {
-          name = "NixOS";
-          url = "https://nixos.org/";
-        }
-        {
-          name = "Nixpkgs";
-          url = "https://search.nixos.org/packages?channel=unstable";
-        }
-        {
-          name = "GitHub";
-          url = "https://github.com/";
-        }
-        {
-          name = "Home-manager";
-          url = "https://nix-community.github.io/home-manager";
-        }
-        {
-          name = "Wiki";
-          url = "https://wiki.nixos.org/";
-        }
-      ];
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "NixOS";
+            url = "https://nixos.org/";
+          }
+          {
+            name = "Nixpkgs";
+            url = "https://search.nixos.org/packages?channel=unstable";
+          }
+          {
+            name = "GitHub";
+            url = "https://github.com/";
+          }
+          {
+            name = "Home-manager";
+            url = "https://nix-community.github.io/home-manager";
+          }
+          {
+            name = "Wiki";
+            url = "https://wiki.nixos.org/";
+          }
+          {
+            name = "Arxiv";
+            url = "https://arxiv.org/";
+          }
+        ];
+      };
+      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         ublock-origin
         darkreader
         sponsorblock
