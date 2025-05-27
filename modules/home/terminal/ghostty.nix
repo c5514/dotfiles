@@ -40,4 +40,5 @@
       command = "fish --login --interactive";
     };
   };
+  home.sessionVariables.TERMINAL = "ghostty";
 }

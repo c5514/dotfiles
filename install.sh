@@ -1,14 +1,14 @@
 #!/bin/bash
 
-set -e
-#Installing Nix configuration
-echo "Changing nix configuration to main host"
-sudo nixos-rebuild switch --flake .
-echo "Installing home-manager configuration"
-home-manager switch --flake .
+# set -e
+# #Installing Nix configuration
+# echo "Changing nix configuration to main host"
+# sudo nixos-rebuild switch --flake .
+# echo "Installing home-manager configuration"
+# home-manager switch --flake .
 
 # Variables
-TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.10.2/TexText-Linux-1.10.2.zip"
+TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.11.1/TexText-Linux-1.11.1.zip"
 DOWNLOAD_DIR="$HOME/Downloads"
 INSTALL_DIR="$HOME/.config/inkscape/extensions"
 
@@ -18,7 +18,7 @@ mkdir -p "$INSTALL_DIR"
 
 # Download the TexText ZIP file
 echo "Downloading TexText extension..."
-curl -L -o "$DOWNLOAD_DIR/TexText-Linux-1.10.2.zip" "$TEXTEXT_URL"
+curl -L -o "$DOWNLOAD_DIR/TexText-Linux-1.11.1.zip" "$TEXTEXT_URL"
 ZIP_FILE=$(find "$DOWNLOAD_DIR" -name "*.zip" -printf "%T@ %p\n" | sort -n | tail -n 1 | cut -d' ' -f2-)
 echo "Download completed: $ZIP_FILE"
 

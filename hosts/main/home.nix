@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-   # ../../modules/home/hypr/default.nix
+    # ../../modules/home/hypr/default.nix
     ../../modules/home/default.nix
   ];
   nixpkgs.config = {
@@ -24,7 +24,6 @@
       brillo
       clang
       swww
-      megacmd
       libnotify
       lshw
       procps
