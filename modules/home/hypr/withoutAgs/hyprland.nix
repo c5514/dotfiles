@@ -16,8 +16,9 @@
       exec-once = [
         "waypaper --restore &"
         "waybar"
+        "hyprsunset -t 4000"
         "hypridle &"
-        "mega-cmd &"
+        # "mega-cmd &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -37,10 +38,11 @@
         "XDG_SESSION_DESKTOP,Hyprland"
       ];
       #Programs
-      "$terminal" = "wezterm";
+      "$terminal" = "ghostty";
       "$fileManager" = "nautilus";
       "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
-      "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
+      "$clipboard" =
+        "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
       "$browser" = "firefox";
       #Input
       input = {

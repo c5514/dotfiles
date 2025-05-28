@@ -22,6 +22,26 @@
     };
     nixvim.url = "github:c5514/nixvim";
     # zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    # hyprland-contrib = {
+    #   url = "github:hyprwm/contrib";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # hyprland = {
+    # 	url = "git+https://github.com/hyprwm/hyprland?submodules=1";
+    # 	inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # hyprland-plugins = {
+    # 	url = "github:hyprwm/hyprland-plugins";
+    # 	inputs.hyprland.follows = "hyprland";
+    # };
+    # Hyprspace = {
+    # 	url = "github:KZDKM/Hyprspace";
+    # 	inputs.hyprland.follows = "hyprland";
+    # };
+    matugen = {
+      url = "github:Iniox/Matugen";
+    };
   };
 
   outputs =

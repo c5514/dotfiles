@@ -64,6 +64,7 @@
         favorite-apps = [
           "firefox.desktop"
           "org.wezfurlong.wezterm.desktop"
+          "com.mitchellh.ghostty.desktop"
           "spotify.desktop"
           "org.gnome.Nautilus.desktop"
           "org.telegram.desktop.desktop"

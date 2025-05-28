@@ -8,10 +8,11 @@
     # ./withoutAgs/rofi.nix
     # ./withoutAgs/wlogout/wlogout.nix
     # ./withoutAgs/waybar/default.nix
+    # ./withoutAgs/hyprland.nix
   ];
   home.packages = with pkgs; [
     # waypaper
-    # grimblast
+    grimblast
     hyprsunset
   ];
 }

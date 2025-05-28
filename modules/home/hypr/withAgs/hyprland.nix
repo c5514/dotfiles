@@ -12,12 +12,10 @@
       monitor = ",preferred, auto, 1";
       #Autostart
       exec-once = [
-        # "waypaper --restore &"
-        # "waybar"
         "hypridle &"
         "hyprsunset -t 4000"
         "ags & "
-        "mega-cmd &"
+        # "mega-cmd &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -38,7 +36,7 @@
         "WAYLAND_DISPLAY,wayland-1"
       ];
       #Programs
-      "$terminal" = "wezterm";
+      "$terminal" = "ghostty";
       "$fileManager" = "nautilus";
       # "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
       # "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
@@ -62,7 +60,7 @@
         gaps_in = 2;
         gaps_out = 5;
         border_size = 4;
-        "col.active_border" = "rgba(33ccff99) rgba(7147DDaa) rgba(9848D688) rgba(7147DD99) rgba(33ccff88) 45deg";
+        "col.active_border" = "rgba(49A0E6FF)";
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = true;
         allow_tearing = false;
@@ -149,7 +147,7 @@
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exec, exit"
-        "$mainMod, E, exec, wezterm -e yazi"
+        "$mainMod, E, exec, $terminal -e yazi"
         "$mainMod SHIFT, E, exec, $fileManager"
         "$mainMod, F, togglefloating"
         "$mainMod, SPACE, exec, $menu"
@@ -239,7 +237,7 @@
       ];
       windowrule =
         let
-          f = regex: "float, ^(${regex})$";
+          f = regex: "float, class:${regex}$";
         in
         [
           # (f "waypaper")
@@ -250,9 +248,10 @@
           (f "org.gnome.Settings")
           "workspace 7 silent, title:Telegram"
           "workspace 7 silent, title:Spotify"
-          "workspace 7 silent, ^(vesktop)"
+          "workspace 7 silent, class:vesktop"
         ];
       windowrulev2 = [
+        "size 30% 45%,class:(com.github.Aylur.ags)"
         "suppressevent maximize, class:.*"
         "float,class:(xdg-desktop-portal-gtk)"
         "center,class:(xdg-desktop-portal-gtk)"
