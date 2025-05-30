@@ -149,10 +149,7 @@
         "$mainMod, M, exec, exit"
         "$mainMod, E, exec, $terminal -e yazi"
         "$mainMod SHIFT, E, exec, $fileManager"
-        "$mainMod, F, togglefloating"
         "$mainMod, SPACE, exec, $menu"
-        "$mainMod, P, pseudo,"
-        "$mainMod, T, togglesplit,"
         "$mainMod, B, exec, $browser"
         # "$mainMod, BACKSPACE, exec, wlogout"
         "$mainMod, BACKSPACE, exec, ags -t powermenu"
@@ -169,6 +166,12 @@
         #Cliphist
         "$mainMod, V, exec, $clipboard"
         "$mainMod CTRL, V, exec, cliphist wipe"
+        #Window management
+        "$mainMod, F, fullscreen, 0"
+        "$mainMod SHIFT, F, fullscreen, 1"
+        "$mainMod CTRL, F, togglefloating"
+        "$mainMod, P, pseudo,"
+        "$mainMod, T, togglesplit,"
         #Change focus of workspace
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -215,6 +218,9 @@
         #Move through existing workspaces
         "$mainMod, Tab, workspace, e+1"
         "$mainMod SHIFT, Tab, workspace, e-1"
+        #Change window focus on a workspace
+        "ALT, Tab, cyclenext, none"
+        "ALT SHIFT, Tab, cyclenext, prev"
       ];
       binds = {
         allow_workspace_cycles = true;
@@ -246,15 +252,18 @@
           (f "org.gnome.Weather")
           (f "org.inkscape.Inkscape")
           (f "org.gnome.Settings")
+          (f "nz.co.mega.")
           "workspace 7 silent, title:Telegram"
-          "workspace 7 silent, title:Spotify"
+          "workspace 7 silent, class:Spotify"
           "workspace 7 silent, class:vesktop"
         ];
       windowrulev2 = [
+        "size 50% 50%,class:(nz.co.mega.)"
         "size 30% 45%,class:(com.github.Aylur.ags)"
         "suppressevent maximize, class:.*"
         "float,class:(xdg-desktop-portal-gtk)"
         "center,class:(xdg-desktop-portal-gtk)"
+        "idleinhibit focus, class:(firefox)"
         "float,class:(firefox),title:(Library)"
         "center,class:(firefox),title:(Library)"
         "float,class:(evince),title:(Print)"
@@ -269,7 +278,6 @@
         "float,class:(Zotero)"
         "size 50% 50%,class:(Zotero),title:(Zotero)"
         "size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
-
         "float,title:(TexText)"
         "move 80% 6%,class:(TexText)"
         "float,class:(soffice)"
@@ -282,13 +290,17 @@
         "float,class:(org.telegram.desktop)"
         "move 60% 6%,class:(org.telegram.desktop)"
         "size 35% 45%,class:(org.telegram.desktop)"
-        "float,title:(Spotify)"
-        "bordercolor rgba(f5dd27aa) rgba(ffffffaa) rgba(33ccffaa) 45deg,title:(Spotify)"
-        "size 50% 50%,title:(Spotify)"
-        "move 2% 10%,title:(Spotify)"
+        "float,class:(Spotify)"
+        "idleinhibit focus, class:(Spotify)"
+        "bordercolor rgba(FFC000FF),class:(Spotify)"
+        "size 50% 60%,class:(Spotify)"
+        "move 2% 10%,class:(Spotify)"
+        "idleinhibit focus, class:(org.pwmt.zathura)"
+        "idleinhibit focus, class:(evince)"
+        "idleinhibit focus, class:(com.mitchetllh.ghostty)"
         "float,class:(vesktop)"
         "move 53% 53%,class:(vesktop)"
-        "size 46% 45%,class:(vesktop)"
+        "size 46% 40%,class:(vesktop)"
         "float,class:(nm-connection-editor)"
         "size 35% 60%,class:(nm-connection-editor)"
         "center,class:(nm-connection-editor)"

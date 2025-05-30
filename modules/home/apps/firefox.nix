@@ -67,6 +67,7 @@
         ghostery
       ];
       settings = {
+        "extensions.autoDisableScopes" = 0;
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
         # For Firefox GNOME theme:
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
