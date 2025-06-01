@@ -9,5 +9,6 @@
   ];
   home.file = {
     "Pictures/Nix".source = ./pictures;
+    "Templates/latex".source = ./latex;
   };
 }
