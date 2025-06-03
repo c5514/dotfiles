@@ -151,17 +151,18 @@
         "$mainMod, M, exec, exit"
         "$mainMod, E, exec, $terminal -e yazi"
         "$mainMod SHIFT, E, exec, $fileManager"
-        "$mainMod, F, togglefloating"
         "$mainMod, SPACE, exec, $menu"
-        "$mainMod, P, pseudo,"
-        "$mainMod, T, togglesplit,"
         "$mainMod, B, exec, $browser"
         "$mainMod, W, exec, waypaper"
+
+        "$mainMod, F, togglefloating"
+        "$mainMod, P, pseudo,"
+        "$mainMod, T, togglesplit,"
         "$mainMod SHIFT, W, exec, waypaper --random"
         "$mainMod, BACKSPACE, exec, wlogout"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
-        "$mainMod, D, exec, ags -t datemenu"
-        "$mainMod, M, exec, ags -t quicksettings"
+        # "$mainMod, D, exec, ags -t datemenu"
+        # "$mainMod, M, exec, ags -t quicksettings"
         #Workspaces overview
         # "$mainMod, R, overview:toggle"
         #Screenshot
@@ -219,6 +220,9 @@
         #Move through existing workspaces
         "$mainMod, Tab, workspace, e+1"
         "$mainMod SHIFT, Tab, workspace, e-1"
+        #Change window focus on a workspace
+        "ALT, Tab, cyclenext, none"
+        "ALT SHIFT, Tab, cyclenext, prev"
       ];
       binds = {
         allow_workspace_cycles = true;
@@ -241,7 +245,7 @@
       ];
       windowrule =
         let
-          f = regex: "float, ^(${regex})$";
+          f = regex: "float, class:${regex}$";
         in
         [
           (f "waypaper")
@@ -254,9 +258,12 @@
           "workspace 7 silent, title:WebCord"
         ];
       windowrulev2 = [
+        "size 50% 50%,class:(nz.co.mega.)"
+        # "size 30% 45%,class:(com.github.Aylur.ags)"
         "suppressevent maximize, class:.*"
         "float,class:(xdg-desktop-portal-gtk)"
         "center,class:(xdg-desktop-portal-gtk)"
+        "idleinhibit focus, class:(firefox)"
         "float,class:(firefox),title:(Library)"
         "center,class:(firefox),title:(Library)"
         "float,class:(evince),title:(Print)"
@@ -271,8 +278,11 @@
         "float,class:(Zotero)"
         "size 50% 50%,class:(Zotero),title:(Zotero)"
         "size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
+        "float,title:(TexText)"
+        "move 80% 6%,class:(TexText)"
         "float,class:(soffice)"
         "center,class:(soffice)"
+        # "stayfocused,title:(MainPicker)"
         "float,class:(org.gnome.Nautilus),title:(Open File)"
         "center,class:(org.gnome.Nautilus),title:(Open File)"
         "float,class:(org.gnome.Nautilus),title:(Properties)"
@@ -280,12 +290,17 @@
         "float,class:(org.telegram.desktop)"
         "move 60% 6%,class:(org.telegram.desktop)"
         "size 35% 45%,class:(org.telegram.desktop)"
-        "float,title:(Spotify)"
-        "size 50% 50%,title:(Spotify)"
-        "move 2% 10%,title:(Spotify)"
-        "float,class:(WebCord)"
-        "move 53% 53%,class:(WebCord)"
-        "size 46% 45%,class:(WebCord)"
+        "float,class:(Spotify)"
+        "idleinhibit focus, class:(Spotify)"
+        "bordercolor rgba(FFC000FF),class:(Spotify)"
+        "size 50% 60%,class:(Spotify)"
+        "move 2% 10%,class:(Spotify)"
+        "idleinhibit focus, class:(org.pwmt.zathura)"
+        "idleinhibit focus, class:(evince)"
+        "idleinhibit focus, class:(com.mitchetllh.ghostty)"
+        "float,class:(vesktop)"
+        "move 53% 53%,class:(vesktop)"
+        "size 46% 40%,class:(vesktop)"
         "float,class:(nm-connection-editor)"
         "size 35% 60%,class:(nm-connection-editor)"
         "center,class:(nm-connection-editor)"

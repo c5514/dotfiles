@@ -2,7 +2,8 @@
 {
   imports = [ inputs.ags.homeManagerModules.default ];
   home.packages = with pkgs; [
-    inputs.matugen.packages.${system}.default
+    # inputs.matugen.packages.${system}.default
+    matugen
     fd
     bun
     dart-sass

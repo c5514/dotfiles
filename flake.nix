@@ -39,9 +39,8 @@
     # 	url = "github:KZDKM/Hyprspace";
     # 	inputs.hyprland.follows = "hyprland";
     # };
-    matugen = {
-      url = "github:Iniox/Matugen";
-    };
+    # matugen.url = "github:Iniox/Matugen";
+    # matshell.url = "github:Neurarian/matshell";
   };
 
   outputs =
