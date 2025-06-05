@@ -25,5 +25,8 @@
     libreoffice-qt6-fresh
     # thunderbird
     vlc
+    tor-browser
+    ttyper
+    btop
   ];
 }

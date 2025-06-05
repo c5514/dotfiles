@@ -15,6 +15,7 @@
         "hypridle &"
         "hyprsunset -t 4000"
         "ags & "
+        # "megasync & "
         # "mega-cmd &"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -211,7 +212,7 @@
         "$mainMod SHIFT, 0, movetoworkspace, 10"
         #Special workspace
         "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod SHIFT, S, movetoworkspacesilent, special:magic"
         #Scroll through existing workspaces
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
@@ -220,7 +221,9 @@
         "$mainMod SHIFT, Tab, workspace, e-1"
         #Change window focus on a workspace
         "ALT, Tab, cyclenext, none"
+        "ALT, Tab, bringactivetotop"
         "ALT SHIFT, Tab, cyclenext, prev"
+        "ALT SHIFT, Tab, bringactivetotop"
       ];
       binds = {
         allow_workspace_cycles = true;
@@ -252,13 +255,18 @@
           (f "org.gnome.Weather")
           (f "org.inkscape.Inkscape")
           (f "org.gnome.Settings")
+          (f "org.gnome.Nautilus")
           (f "nz.co.mega.")
-          "workspace 7 silent, title:Telegram"
+          (f "Tor Browser")
+          "workspace 6 silent, title:Telegram"
           "workspace 7 silent, class:Spotify"
-          "workspace 7 silent, class:vesktop"
+          "workspace 7 silent, class:FreeTube"
+          "workspace 6 silent, class:vesktop"
+          "workspace 8 silent, class:Tor Browser"
         ];
       windowrulev2 = [
-        "size 50% 50%,class:(nz.co.mega.)"
+        "size 40% 50%,class:(nz.co.mega.)"
+        "size 50% 60%,class:(org.gnome.Nautilus)"
         "size 30% 45%,class:(com.github.Aylur.ags)"
         "suppressevent maximize, class:.*"
         "float,class:(xdg-desktop-portal-gtk)"
@@ -292,12 +300,17 @@
         "size 35% 45%,class:(org.telegram.desktop)"
         "float,class:(Spotify)"
         "idleinhibit focus, class:(Spotify)"
-        "bordercolor rgba(FFC000FF),class:(Spotify)"
+        "bordercolor rgba(1DD15DFF),class:(Spotify)"
         "size 50% 60%,class:(Spotify)"
         "move 2% 10%,class:(Spotify)"
+        "float,class:(FreeTube)"
+        "idleinhibit focus, class:(FreeTube)"
+        "bordercolor rgba(FF3333FF),class:(FreeTube)"
+        "size 40% 60%,class:(FreeTube)"
+        "move 60% 10%,class:(Freetube)"
         "idleinhibit focus, class:(org.pwmt.zathura)"
         "idleinhibit focus, class:(evince)"
-        "idleinhibit focus, class:(com.mitchetllh.ghostty)"
+        "idleinhibit focus, class:(com.mitchellh.ghostty)"
         "float,class:(vesktop)"
         "move 53% 53%,class:(vesktop)"
         "size 46% 40%,class:(vesktop)"
