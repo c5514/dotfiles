@@ -28,5 +28,6 @@
     tor-browser
     ttyper
     btop
+    cava
   ];
 }

@@ -6,7 +6,9 @@
     ../../modules/config/bootloader.nix
     ../../modules/config/Utils/default.nix
     ../../modules/config/Network/default.nix
-    ../../modules/config/DeskEnv/gnome.nix
+    #../../modules/config/DeskEnv/gnome.nix
+    # ../../modules/config/DeskEnv/xfce.nix
+    ../../modules/config/DeskEnv/dwl.nix
     ../../modules/config/DeskEnv/hyprland.nix
   ];
 

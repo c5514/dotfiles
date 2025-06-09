@@ -14,7 +14,7 @@
       lightdm = {
         enable = true;
         background = ../../home/pictures/nixwall.png;
-        greeters.gtk = {
+        greeters.slick = {
           cursorTheme = {
             package = pkgs.bibata-cursors;
             name = "Bibata-Modern-Ice";
@@ -26,16 +26,6 @@
     excludePackages = with pkgs; [
       xterm
     ];
-
-    # windowManager.xmonad = {
-    # 	enable = true;
-    # 	enableContribAndExtras = true;
-    # 	extraPackages = haskellPackages : [
-    # 		haskellPackages.xmonad-contrib
-    # 		haskellPackages.xmonad-extras
-    # 		haskellPackages.xmonad
-    # 	];
-    # };
   };
   environment.systemPackages = with pkgs; [
     xfce.xfce4-weather-plugin

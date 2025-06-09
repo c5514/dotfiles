@@ -38,7 +38,7 @@
       ];
       #Programs
       "$terminal" = "ghostty";
-      "$fileManager" = "nautilus";
+      "$fileManager" = "thunar";
       # "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
       # "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
       "$menu" = "ags -t launcher";
@@ -81,13 +81,13 @@
         active_opacity = 1.0;
         inactive_opacity = 0.9;
         shadow = {
-          enabled = true;
+          enabled = false;
           color = "rgba(1a1a1aee)";
           render_power = 3;
           range = 4;
         };
         blur = {
-          enabled = true;
+          enabled = false;
           size = 3;
           passes = 1;
           vibrancy = 0.1696;
@@ -95,7 +95,7 @@
       };
       #Animations
       animations = {
-        enabled = true;
+        enabled = false;
         bezier = [
           "linear, 0, 0, 1, 1"
           "md3_standard, 0.2, 0, 0, 1"
@@ -256,6 +256,7 @@
           (f "org.inkscape.Inkscape")
           (f "org.gnome.Settings")
           (f "org.gnome.Nautilus")
+          (f "thunar")
           (f "nz.co.mega.")
           (f "Tor Browser")
           "workspace 6 silent, title:Telegram"
@@ -267,6 +268,8 @@
       windowrulev2 = [
         "size 40% 50%,class:(nz.co.mega.)"
         "size 50% 60%,class:(org.gnome.Nautilus)"
+        "size 50% 60%,class:(thunar)"
+        "size 50% 60%,class:(Thunar)"
         "size 30% 45%,class:(com.github.Aylur.ags)"
         "suppressevent maximize, class:.*"
         "float,class:(xdg-desktop-portal-gtk)"

@@ -3,7 +3,7 @@
   imports = [
     ./terminal/default.nix
     ./editor/default.nix
-    ./dconf.nix
+    # ./dconf.nix
     ./theme.nix
     ./apps/default.nix
   ];
