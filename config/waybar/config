@@ -1,0 +1,48 @@
+{
+    // General Settings
+    "layer": "top",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "layer": "top",
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 0,
+
+    // Load Modules
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+
+    // Modules Left
+    "modules-left": [
+        "niri/workspaces",
+        "custom/empty",
+		    //"power-profiles-daemon",
+        //"group/links",
+        "custom/empty",
+        "wlr/taskbar",
+        "custom/empty",
+        "niri/window",
+    ],
+
+    // Modules Center
+    "modules-center": [
+        "clock"
+    ],
+
+    // Modules Right    
+    "modules-right": [
+        "pulseaudio",
+        "pulseaudio/slider",
+        "backlight",
+        "backlight/slider",
+        //"bluetooth",
+        "battery", 
+        "network",
+        "group/hardware",
+        "tray",
+        //"custom/exit",
+        "custom/appmenu",
+        "custom/notification",
+    ]
+}

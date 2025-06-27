@@ -1,0 +1,19 @@
+[core]
+  editor = "nvim"
+
+[credential "https://gist.github.com"]
+  helper = "gh auth git-credential"
+
+[credential "https://github.com"]
+  helper = "gh auth git-credential"
+
+[github]
+  user = "c5514"
+
+[init]
+  defaultBranch = "main"
+
+[user]
+  email = "c5514@c5514.com"
+  name = "c5514"
+

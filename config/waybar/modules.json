@@ -1,0 +1,309 @@
+{
+  // Workspaces
+  "niri/workspaces": {
+	"disable-scroll": true,
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "urgent": "",
+      "focused": "",
+      "active": "󰧞",
+      "default": "󰧞"
+    },
+  },
+
+  // Notifications
+  "custom/notification": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "makoctl dismiss",
+    "on-click-right": "makoctl dismiss --all",
+  },
+
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 22,
+    "icon-theme": "Tela-circle-dark",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["Alacritty", "kitty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+  //window
+"niri/window": {
+	"format": "{}",
+	"rewrite": {
+		"(.*) - Mozilla Firefox": "🌎 $1",
+		"(.*) - zsh": "> [$1]"
+	}
+},
+  // player
+"mpris": {
+	"format": "{player_icon} {artist} {title}",
+	"format-paused": "{status_icon} ({position} / {length}) {title}",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵",
+    "firefox": " ",
+    "spotify": " ",
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+},
+
+  // Empty
+  "custom/empty": {
+    "format": " "
+  },
+  
+  // Empty
+  "custom/tools": {
+    "format": "",
+    "tooltip-format": "Tools"
+  },
+
+  // Rofi Application Launcher
+  "custom/appmenu": {
+    "format": " ",
+"on-click": "sleep 0.2; if pgrep -x fuzzel> /dev/null; then pkill fuzzel; else fuzzel & fi",
+    "tooltip-format": "Open/Close the application launcher"
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "tooltip-format": "Power Menu"
+  },
+
+	// Idle inhibitor
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "  /",
+        "deactivated": "  /"
+    }
+},
+  // System tray
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+
+  // Clock
+"clock": {
+	"format": "  {:%H:%M}",
+    "format-alt": "{:%A, %B %d, %Y} ",
+	"tooltip-format": "\n<span size='12pt' font='JetBrainsMono NF'>{calendar}</span>",
+	"calendar": {
+		"mode"          : "year",
+		"mode-mon-col"  : 4,
+    //"weeks-pos": "right",
+        "on-scroll"     : 1,
+        "format": {
+        	"months":     "<span color='#66e755'><b>{}</b></span>",
+			"days":       "<span color='#e0e0e0'><b>{}</b></span>",
+            "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        	"weekdays":   "<span color='#757dea'><b>{}</b></span>",
+            "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    },
+    "actions":  {
+    	"on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+    }
+},
+
+  // System
+  "custom/system": {
+    "format": "",
+    "tooltip": false
+  },
+
+  // CPU
+  "cpu": {
+    "format": "CPU:{usage}% "
+  },
+
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "󰗑",
+			"power-saver": ""
+		}
+	},
+  // Memory
+  "memory": {
+    "format": "󰍛 {}%"
+  },
+  "temperature": {
+    "thermal-zone": 0,
+    "critical-threshold": 80,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C  "
+  },
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {percentage_used}% "
+  },
+
+  // Cliphist
+  "custom/cliphist": {
+    "format": "",
+    "on-click": "sleep 0.1 && pkill fuzzel || cliphist list | fuzzel --match-mode fzf --dmenu | cliphist decode | wl-copy",
+    "on-click-right": "sleep 0.1 && cliphist wipe",
+    "tooltip-format": "Clipboard Manager: Left(select), right(clean)"
+  },
+  "niri/language": {
+    "format": "  {long}"
+  },
+  // Group Hardware
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/cliphist", "disk", "memory", "temperature" ]
+  },
+
+  // Group Links
+	"group/links": {
+	"orientation": "horizontal",
+	"modules": [
+		"custom/empty",    
+		"custom/github",
+		"custom/whatsapp",
+		"custom/empty"      
+	]
+	},
+
+  // Network
+  "network": {
+    "format": "  {ifname}",
+    "format-wifi": "   {signalStrength}%",
+    "format-ethernet": "󰊗  {ifname}",
+    "format-disconnected": "Disconnected",
+    "tooltip-format": "󰊗 {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {ifname} 󰿀 {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": "󰊗 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "nm-connection-editor",
+  },
+
+  // Battery
+  "battery": {
+    "interval": 60,
+    "max-length": 25,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {timeTo}",
+    "format-icons": [" ", " ", " ", " ", " "],
+	"tooltip" : false
+  },
+
+  // Pulseaudio
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-muted": "󰝟  {volume}%",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": ["󰕿", "󰖀", " "]
+    },
+    "tooltip": false,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+  },
+"pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+},
+  // Bluetooth
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲 off",
+    "format-off": "󰂲 off",
+    "interval": 30,
+    "on-click": "blueberry",
+    "format-no-controller": ""
+  },
+
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false
+  },
+
+  // backlight:
+
+"backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+    "device": "intel_backlight"
+},
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "tooltip": false,
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "scroll-step": 1
+  }
+}

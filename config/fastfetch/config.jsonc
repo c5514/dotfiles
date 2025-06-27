@@ -1,0 +1,158 @@
+{
+  "display": {
+    "bar": {
+      "border": false,
+      "charElapsed": "█",
+      "charTotal": "░",
+      "width": 20,
+    },
+    "brightColor": false,
+    "disableLinewrap": true,
+    "hideCursor": true,
+    "key": {
+      "type": "string",
+      "width": 12,
+    },
+    "percent": {
+      "ndigits": 2,
+      "type": 3,
+    },
+    "separator": " ",
+    "showErrors": false,
+    "size": {
+      "binaryPrefix": "iec",
+      "ndigits": "2",
+    },
+    "stat": false,
+    "temp": {
+      "ndigits": 2,
+      "unit": "C",
+    },
+  },
+  "general": {
+    "multithreading": true,
+  },
+  "logo": {
+    "padding": {
+      "right": 1,
+    },
+    "position": "left",
+    "printRemaining": true,
+    // "source": "~/Pictures/Nix/mem.png",
+  },
+  "modules": [
+    {
+      "color": {
+        "at": "38;2;162;193;74",
+        "host": "38;2;162;193;74",
+        "user": "38;2;162;193;74",
+      },
+      "format": "{#38;2;162;193;74}┏━━━━━━━━━━━━━━━━━━━━ {user-name-colored} {#38;2;162;193;74}━━━━━━━━━━━━━━━━━━━━━┓",
+      "type": "title",
+    },
+    {
+      "format": "{#38;2;162;193;74}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫",
+      "type": "custom",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} OS",
+      "keyColor": "38;2;162;193;74",
+      "type": "os",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} Kernel",
+      "keyColor": "38;2;162;193;74",
+      "type": "kernel",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} Uptime",
+      "keyColor": "38;2;162;193;74",
+      "type": "uptime",
+    },
+    {
+      "format": "{all}",
+      "key": "┃ {#keys}{#38;2;162;193;74}󰏖 Pkgs",
+      "keyColor": "38;2;162;193;74",
+      "type": "packages",
+    },
+    {
+      "format": "{#38;2;162;193;74}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫",
+      "type": "custom",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} DE",
+      "keyColor": "38;2;162;193;74",
+      "type": "de",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} WM",
+      "keyColor": "38;2;162;193;74",
+      "type": "wm",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74} Shell",
+      "keyColor": "38;2;162;193;74",
+      "type": "shell",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74}󰹑 Display",
+      "keyColor": "38;2;162;193;74",
+      "type": "display",
+    },
+    {
+      "format": "{#38;2;162;193;74}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫",
+      "type": "custom",
+    },
+    {
+      "format": "{name} @ {freq-max} │ {3}°C",
+      "key": "┃ {#keys}{#38;2;162;193;74} CPU",
+      "keyColor": "38;2;162;193;74",
+      "temp": true,
+      "type": "cpu",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74}󰓅 Usage",
+      "keyColor": "38;2;162;193;74",
+      "type": "cpuusage",
+    },
+    {
+      "format": "{2} | {4}",
+      "key": "┃ {#keys}{#38;2;162;193;74}󰾲 GPU",
+      "keyColor": "38;2;162;193;74",
+      "temp": true,
+      "type": "gpu",
+    },
+    {
+      "format": "{used} / {total}",
+      "key": "┃ {#keys}{#38;2;162;193;74} Memory",
+      "keyColor": "38;2;162;193;74",
+      "type": "memory",
+    },
+    {
+      "key": "┃ {#keys}{#38;2;162;193;74}󰋊 Drive",
+      "keyColor": "38;2;162;193;74",
+      "temp": true,
+      "type": "physicaldisk",
+    },
+    {
+      "format": "{1} / {2} ({3}) - {9}",
+      "key": "┃ {#keys}{#38;2;162;193;74}󱁼 Disk",
+      "keyColor": "38;2;162;193;74",
+      "type": "disk",
+    },
+    {
+      "format": "{#38;2;162;193;74}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫",
+      "type": "custom",
+    },
+    {
+      "key": "┃        ",
+      "keyColor": "38;2;162;193;74",
+      "symbol": "circle",
+      "type": "colors",
+    },
+    {
+      "format": "{#38;2;162;193;74}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛",
+      "type": "custom",
+    },
+  ],
+}

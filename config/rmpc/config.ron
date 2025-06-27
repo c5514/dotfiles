@@ -1,0 +1,8 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    address: "/tmp/mpd_socket",
+    theme: "/home/c5514/.config/rmpc/themes/matcchiato",
+    cache_dir: "/tmp/rmpc/cache",
+)
