@@ -358,7 +358,7 @@ binds {
     Mod+Shift+E hotkey-overlay-title="Open file manager: yazi" { spawn "foot" "-e" "yazi"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-c" "000000"; }
     Mod+D hotkey-overlay-title="Utils: fuzzel scripts" { spawn "launcher.sh"; }
-    Mod+S hotkey-overlay-title="Utils: fuzzel scripts" { spawn "~/.config/wofi/scripts/wallpaper.sh"; }
+    Mod+S hotkey-overlay-title="Utils: fuzzel scripts" { spawn "wallpaper.sh"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

@@ -87,6 +87,12 @@ sudo ln -s /etc/sv/power-profiles-daemon/ /var/service
 nohup pipewire > /dev/null & 
 dbus-run-session niri --session
 ``` 
+ - Or use the script from the `Scripts` folder and execute when login in. Add this to `.bash_profile`
+```bash
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec /home/c5514/Scripts/goNiri
+fi
+```
 > *[WARNING]* Not sure if to be able to run niri you need to have seatd, it worked but I had elogind enabled too
 + Customizing
   - Install Tela-circle-dark
@@ -164,7 +170,7 @@ alias ns='nix-shell --run bash'
 
 PS1='[\u@\h \W]\$ '
 
-export PATH="$HOME/.config/fuzzel/scripts:$PATH"
+export PATH="$HOME/Scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export MPD_HOST=/tmp/mpd_socket
 export HISTCONTROL=ignoreboth
@@ -175,6 +181,6 @@ PROMPT_COMMAND="printf '\e[6 q'${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
   ```
-+ Fuzzel and wofi scripts
-  - Made this in the directory `~/.config/fuzzel/scripts/`: Clipboard history, launcher, Some tools.
-  - Wallpapper-selector with swww backend using wofi
++ Fuzzel and wofi scripts:
+  - Fuzzel: Clipboard history, launcher, Some tools.
+  - Wofi: Wallpapper-selector with swww backend.

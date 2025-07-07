@@ -20,7 +20,7 @@ alias ns='nix-shell --run bash'
 
 PS1='[\u@\h \W]\$ '
 
-export PATH="$HOME/.config/fuzzel/scripts:$PATH"
+export PATH="$HOME/Scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export MPD_HOST=/tmp/mpd_socket
 export HISTCONTROL=ignoreboth
