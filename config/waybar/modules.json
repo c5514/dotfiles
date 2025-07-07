@@ -149,10 +149,10 @@
 		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
 		"tooltip": true,
 		"format-icons": {
-			"default": "",
-			"performance": "",
-			"balanced": "󰗑",
-			"power-saver": ""
+			"default": "  ",
+			"performance": "  ",
+			"balanced": "󰗑  ",
+			"power-saver": "  "
 		}
 	},
   // Memory
@@ -174,7 +174,7 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && pkill fuzzel || cliphist list | fuzzel --match-mode fzf --dmenu | cliphist decode | wl-copy",
+    "on-click": "sleep 0.1 && pkill fuzzel || bash cliphist.sh",
     "on-click-right": "sleep 0.1 && cliphist wipe",
     "tooltip-format": "Clipboard Manager: Left(select), right(clean)"
   },
@@ -192,27 +192,16 @@
     "modules": ["custom/cliphist", "disk", "memory", "temperature" ]
   },
 
-  // Group Links
-	"group/links": {
-	"orientation": "horizontal",
-	"modules": [
-		"custom/empty",    
-		"custom/github",
-		"custom/whatsapp",
-		"custom/empty"      
-	]
-	},
-
   // Network
   "network": {
     "format": "  {ifname}",
     "format-wifi": "   {signalStrength}%",
     "format-ethernet": "󰊗  {ifname}",
-    "format-disconnected": "Disconnected",
+    "format-disconnected": "󰤮",
     "tooltip-format": "󰊗 {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} 󰿀 {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": "󰊗 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disconnected": "Disconneted",
     "max-length": 50,
     "on-click": "nm-connection-editor",
   },

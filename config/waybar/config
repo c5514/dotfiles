@@ -17,8 +17,6 @@
     "modules-left": [
         "niri/workspaces",
         "custom/empty",
-		    //"power-profiles-daemon",
-        //"group/links",
         "custom/empty",
         "wlr/taskbar",
         "custom/empty",
@@ -37,6 +35,7 @@
         "backlight",
         "backlight/slider",
         //"bluetooth",
+		    "power-profiles-daemon",
         "battery", 
         "network",
         "group/hardware",

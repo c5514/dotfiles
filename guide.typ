@@ -55,9 +55,15 @@
   sudo ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
   sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
   ```
++ Power management: 
+- Install power-profiles-daemon and enable it
+```bash
+sudo xbps-install -S power-profiles-daemon
+sudo ln -s /etc/sv/power-profiles-daemon/ /var/service
+```
 = Install neovim and cli apps
   ```bash
-  sudo xbps-install -S neovim  ripgrep nodejs gcc wget fzf eza git yazi lazygit github-cli starship zoxide mpv yt-dlp rmpc mpc mpd ffmpeg
+  sudo xbps-install -S neovim  ripgrep nodejs gcc wget curl fzf eza git yazi lazygit github-cli starship zoxide mpv yt-dlp rmpc mpc mpd ffmpeg
   sudo xbps-install -S cargo rust
   cargo install ttyper
   ```
@@ -69,11 +75,11 @@
 + Install niri and some dependencies
   - Niri and apps
   ```bash
-  sudo xbps-install -S niri evince Waybar fuzzel foot wlsunset swww wl-clipboard cliphist firefox nautilus swaylock sassc poppler gvfs unzip playerctl  obs mako
+  sudo xbps-install -S niri evince Waybar fuzzel wofi foot wlsunset swww wl-clipboard cliphist firefox nautilus swaylock sassc poppler gvfs unzip playerctl  obs mako ImageMagick
   ```
   - Fonts
   ```bash
-  sudo xbps-install -S noto-fonts-cjk noto-fonts-cjk-sans noto-fonts-cjk-serif noto-fonts-emoji nerd-fonts nerd-fonts-otf nerd-fonts-symbols-ttf nerd-fonts-ttf
+  sudo xbps-install -S noto-fonts-cjk noto-fonts-cjk-sans noto-fonts-cjk-serif noto-fonts-emoji nerd-fonts nerd-fonts-otf nerd-fonts-symbols-ttf nerd-fonts-ttf dejavu-fonts-ttf liberation-fonts-ttf font-awesome5
   ```
 + To run niri write the following script:
 ```bash
@@ -141,192 +147,34 @@ dbus-run-session niri --session
     ```
   - And this to `~/.bashrc`:
   ```bash
-  alias ls='eza --icons'
-  #alias ls='ls --color=auto'
-  alias ll='ls -l'
-  alias la='ls -la'
-  alias nv='nvim'
-  alias ee='exit'
-  alias cc='clear'
-  alias '..'='cd ..'
-  alias ff='fastfetch'
-  alias dwn='cd ~/Downloads'
-  alias doc='cd ~/Documents'
-  alias bye='sudo shutdown -P now'
-  alias syl='sudo reboot now'
-  alias ns='nix-shell --run bash'
+alias ls='eza --icons'
+# alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -la'
+alias nv='nvim'
+alias ee='exit'
+alias cc='clear'
+alias '..'='cd ..'
+alias ff='fastfetch'
+alias dwn='cd ~/Downloads'
+alias doc='cd ~/Documents'
+alias bye='sudo shutdown -P now'
+alias syl='sudo reboot now'
+alias ns='nix-shell --run bash'
 
-  eval "$(zoxide init bash)"
-  parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-  }
-  PS1="\[\033[0;32m\]  \[\033[0;90m\]\[\033[0;100m\]\W\[\033[0;90m\]\[\033[0m\] \[\033[0;35m\]\$(parse_git_branch)\[\033[0;32m\]\n❯ \[\033[0m\]"
-  export PATH="$HOME/.config/fuzzel/scripts:$PATH"
-  export PATH="$HOME/.cargo/bin:$PATH"
-  export MPD_HOST=/tmp/mpd_socket
-  export HISTCONTROL=ignoreboth
-  export EDITOR="nvim"
-  export VISUAl="nvim"
-  PROMPT_COMMAND="printf '\e[6 q'${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+PS1='[\u@\h \W]\$ '
+
+export PATH="$HOME/.config/fuzzel/scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export MPD_HOST=/tmp/mpd_socket
+export HISTCONTROL=ignoreboth
+export EDITOR="nvim"
+export VISUAl="nvim"
+PROMPT_COMMAND="printf '\e[6 q'${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
   ```
-+ Fuzzel scripts
-  - Made this in the directory `~/.config/fuzzel/scripts/` and create the file `launcher.sh`
-  ```bash
-#!/bin/bash
-choice=$(printf " Music Player\n Video Player\n󰖟 Web Browser\n󰼭 Typing Test" | fuzzel --dmenu --prompt "Tools: ")
-
-case "$choice" in
-    " Music Player") ~/.config/fuzzel/scripts/music.sh ;;
-    " Video Player") ~/.config/fuzzel/scripts/videos.sh ;;
-    "󰖟 Web Browser") ~/.config/fuzzel/scripts/web.sh ;;
-    "󰼭 Typing Test") ~/.config/fuzzel/scripts/ttyper.sh ;;
-    *) exit 1 ;;
-esac
-  ```
-  - Music script (`music.sh`):
-  ```bash
-#!/bin/bash
-
-foot --title="Music Player" -e bash -c '
-while true; do
-    echo "========================================================"
-    echo "                      Music Player                      "
-    echo "========================================================"
-    echo "1) Open rmpc"
-    echo "2) Search and add music to rmpc"
-    echo "3) Exit"
-    echo ""
-    read -p "Choose an option (1-3): " -r choice
-    
-    case "$choice" in
-        1)
-            echo "Opening rmpc..."
-            rmpc
-            ;;
-        2)
-            echo ""
-            echo "Search for music:"
-            read -r search_term
-            
-            if [[ -z "$search_term" ]]; then
-                echo "No search term provided"
-                continue
-            fi
-            
-            if [[ "$search_term" == http* ]]; then
-                echo "Adding URL to rmpc: $search_term"
-                rmpc addyt "$search_term"
-            else
-                echo "Searching for: $search_term"
-                echo "Getting YouTube URL..."
-                
-                # Get the actual YouTube page URL
-                youtube_url=$(yt-dlp --get-filename -o "https://www.youtube.com/watch?v=%(id)s" "ytsearch:$search_term" | head -n1)
-                
-                if [[ -n "$youtube_url" ]]; then
-                    echo "Found: $youtube_url"
-                    echo "Adding to rmpc..."
-                    rmpc addyt "$youtube_url"
-                    echo "✓ Song added to queue!"
-                else
-                    echo "✗ No results found for: $search_term"
-                fi
-            fi
-            echo ""
-            ;;
-        3|*)
-            break
-            ;;
-    esac
-done
-
-echo "Goodbye!"
-read -p "Press enter to close..."
-'
-  ```
-  - Videos script (`videos.sh`):
-  ```bash
-#!/bin/bash
-foot --title="Video Player" -e bash -c '
-last_input=""
-while true; do
-    if [[ -z "$last_input" ]]; then
-        echo "Video Player - Enter URL or search term:"
-        read -r input
-        if [[ -z "$input" ]]; then
-            echo "No input provided"
-            break
-        fi
-        last_input="$input"
-    else
-        input="$last_input"
-    fi
-
-    if [[ "$input" == http* ]]; then
-        echo "Playing URL: $input"
-        mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio" "$input"
-    else
-        echo "Searching for: $input"
-        mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio" "ytdl://ytsearch:$input"
-    fi
-    
-    echo ""
-    echo "Video finished playing."
-    echo "Choose an option:"
-    echo "1) Replay same video"
-    echo "2) Choose another video"
-    echo "3) Exit"
-    read -p "Enter your choice (1-3): " -r choice
-    
-    case "$choice" in
-        1)
-            echo "Replaying..."
-            echo ""
-            ;;
-        2)
-            echo ""
-            echo "Video Player - Enter URL or search term:"
-            read -r new_input
-            if [[ -z "$new_input" ]]; then
-                echo "No input provided, exiting..."
-                break
-            fi
-            last_input="$new_input"
-            echo ""
-            ;;
-        3|*)
-            break
-            ;;
-    esac
-done
-echo "Goodbye!"
-read -p "Press enter to close..."
-'
-  ```
-  - Web browser script (`web.sh`):
-  ```bash
-#!/bin/bash
-foot --title="w3m Browser" -e bash -c '
-echo "Enter URL or search term:"
-read -r query
-if [[ "$query" == http* ]]; then
-    w3m "$query"
-else
-    w3m "https://duckduckgo.com/?q=$query"
-fi
-'
-  ```
-  - Ttyper script (`ttyper.sh`):
-  ```bash
-#!/bin/bash
-foot --title="Typing test" -e bash -c '
-ttyper
-'
-  ```
-
-
-
-
-
-
-
++ Fuzzel and wofi scripts
+  - Made this in the directory `~/.config/fuzzel/scripts/`: Clipboard history, launcher, Some tools.
+  - Wallpapper-selector with swww backend using wofi
