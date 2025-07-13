@@ -75,7 +75,16 @@ sudo ln -s /etc/sv/power-profiles-daemon/ /var/service
 + Install niri and some dependencies
   - Niri and apps
   ```bash
-  sudo xbps-install -S niri evince Waybar fuzzel wofi foot wlsunset swww wl-clipboard cliphist firefox nautilus swaylock sassc poppler gvfs unzip playerctl  obs mako ImageMagick
+  sudo xbps-install -S niri evince Waybar eww fuzzel wofi foot wlsunset swww wl-clipboard cliphist firefox nautilus swaylock sassc poppler gvfs unzip playerctl  obs mako ImageMagick
+  ```
+  - Install waypaper:
+  ```bash
+  sudo xbps-install -S python3-pipx
+  pipx install waypaper
+  ```
+  - Install matugen
+  ```bash
+  cargo install matugen
   ```
   - Fonts
   ```bash
@@ -93,7 +102,6 @@ if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec /home/c5514/Scripts/goNiri
 fi
 ```
-> *[WARNING]* Not sure if to be able to run niri you need to have seatd, it worked but I had elogind enabled too
 + Customizing
   - Install Tela-circle-dark
   ```bash
@@ -183,4 +191,4 @@ eval "$(zoxide init bash)"
   ```
 + Fuzzel and wofi scripts:
   - Fuzzel: Clipboard history, launcher, Some tools.
-  - Wofi: Wallpapper-selector with swww backend.
+  - (Optional) Wofi: Wallpapper-selector with swww backend.

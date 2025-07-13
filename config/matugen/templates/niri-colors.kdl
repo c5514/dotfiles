@@ -144,9 +144,9 @@ layout {
     border {
         // off
         width 3
-        active-color "#8ccb72"
+        active-color "{{colors.primary.default.hex}}"
         inactive-color "#5e5c5c"
-        urgent-color "#e65851"
+        urgent-color "{{colors.error.default.hex}}"
     }
     shadow {
         // Uncomment the next line to enable shadows.

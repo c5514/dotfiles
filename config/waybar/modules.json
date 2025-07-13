@@ -49,8 +49,8 @@
 "niri/window": {
 	"format": "{}",
 	"rewrite": {
-		"(.*) - Mozilla Firefox": "🌎 $1",
-		"(.*) - zsh": "> [$1]"
+		"(.*) - Mozilla Firefox": " $1",
+		"(.*) - foot": "> [$1]"
 	}
 },
   // player
@@ -82,7 +82,7 @@
 
   // Rofi Application Launcher
   "custom/appmenu": {
-    "format": " ",
+    "format": "",
 "on-click": "sleep 0.2; if pgrep -x fuzzel> /dev/null; then pkill fuzzel; else fuzzel & fi",
     "tooltip-format": "Open/Close the application launcher"
   },
@@ -90,7 +90,8 @@
   // Power Menu
   "custom/exit": {
     "format": "",
-    "on-click": "wlogout",
+    //"on-click": "wlogout --protocol layer-shell -b 5",
+    "on-click": "sh $HOME/Scripts/menu.sh",
     "tooltip-format": "Power Menu"
   },
 
@@ -110,38 +111,20 @@
 
   // Clock
 "clock": {
-	"format": "  {:%H:%M}",
-    "format-alt": "{:%A, %B %d, %Y} ",
-	"tooltip-format": "\n<span size='12pt' font='JetBrainsMono NF'>{calendar}</span>",
-	"calendar": {
-		"mode"          : "year",
-		"mode-mon-col"  : 4,
-    //"weeks-pos": "right",
-        "on-scroll"     : 1,
-        "format": {
-        	"months":     "<span color='#66e755'><b>{}</b></span>",
-			"days":       "<span color='#e0e0e0'><b>{}</b></span>",
-            "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-        	"weekdays":   "<span color='#757dea'><b>{}</b></span>",
-            "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-        }
-    },
-    "actions":  {
-    	"on-click-right": "mode",
-        "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
-    }
+	"format": " {:%H:%M}",
+  "on-click": "sh $HOME/Scripts/calendar.sh",
+	"tooltip" : false
 },
 
   // System
   "custom/system": {
-    "format": "",
+    "format": "",
     "tooltip": false
   },
 
   // CPU
   "cpu": {
-    "format": "CPU:{usage}% "
+    "format": "CPU:{usage}%"
   },
 
 	"power-profiles-daemon": {
@@ -149,10 +132,10 @@
 		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
 		"tooltip": true,
 		"format-icons": {
-			"default": "  ",
-			"performance": "  ",
-			"balanced": "󰗑  ",
-			"power-saver": "  "
+			"default": "",
+			"performance": "",
+			"balanced": "󰗑",
+			"power-saver": ""
 		}
 	},
   // Memory
@@ -162,13 +145,13 @@
   "temperature": {
     "thermal-zone": 0,
     "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C  "
+    "format-critical": "{temperatureC}°C",
+    "format": " {temperatureC}°C"
   },
   // Harddisc space used
   "disk": {
     "interval": 30,
-    "format": "󰋊 {percentage_used}% "
+    "format": "󰋊 {percentage_used}%"
   },
 
   // Cliphist
@@ -179,7 +162,7 @@
     "tooltip-format": "Clipboard Manager: Left(select), right(clean)"
   },
   "niri/language": {
-    "format": "  {long}"
+    "format": " {long}"
   },
   // Group Hardware
   "group/hardware": {
@@ -187,21 +170,21 @@
     "drawer": {
       "transition-duration": 300,
       "children-class": "not-memory",
-      "transition-left-to-right": false
+      "transition-left-to-right": true
     },
-    "modules": ["custom/cliphist", "disk", "memory", "temperature" ]
+    "modules": ["custom/system", "disk", "memory", "temperature" ]
   },
 
   // Network
   "network": {
     "format": "  {ifname}",
-    "format-wifi": "   {signalStrength}%",
-    "format-ethernet": "󰊗  {ifname}",
-    "format-disconnected": "󰤮",
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰊗 {ifname}",
+    "format-disconnected": "󰖪 Disconnected",
     "tooltip-format": "󰊗 {ifname} via {gwaddri}",
-    "tooltip-format-wifi": "  {ifname} 󰿀 {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-wifi": " {ifname} 󰿀 {essid}\nIP:{ipaddr}\nStrength:{signalStrength}%\nFreq:{frequency}MHz\nUp:{bandwidthUpBits} Down:{bandwidthDownBits}",
     "tooltip-format-ethernet": "󰊗 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-    "tooltip-format-disconnected": "Disconneted",
+    "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
     "on-click": "nm-connection-editor",
   },
@@ -214,20 +197,24 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-alt": "{icon}  {timeTo}",
-    "format-icons": [" ", " ", " ", " ", " "],
+    "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
 	"tooltip" : false
   },
 
   // Pulseaudio
+  "group/audio": {
+    "orientation": "inherit",
+    "modules": ["pulseaudio", "pulseaudio/slider"]
+  },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": "󰝟 {icon} {format_source}",
-    "format-muted": "󰝟  {volume}%",
+    "format-muted": "󰝟 {volume}%",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -237,7 +224,7 @@
       "phone": " ",
       "portable": " ",
       "car": " ",
-      "default": ["󰕿", "󰖀", " "]
+      "default": ["󰕿", "󰖀", ""]
     },
     "tooltip": false,
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -266,7 +253,10 @@
   },
 
   // backlight:
-
+  "group/brightness": {
+    "orientation": "inherit",
+    "modules": ["backlight", "backlight/slider"]
+  },
 "backlight/slider": {
     "min": 0,
     "max": 100,

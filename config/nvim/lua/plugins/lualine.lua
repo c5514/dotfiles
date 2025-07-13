@@ -107,7 +107,7 @@ ins_left {
       gui = 'bold'
     }
   end,
-  separator = { left = '', right = '' }, -- Rounded delimiters
+  separator = { right = '' }, -- Rounded delimiters
   padding = 0,
 }
 

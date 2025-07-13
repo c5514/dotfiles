@@ -15,12 +15,14 @@
 
     // Modules Left
     "modules-left": [
+        "custom/empty",
         "niri/workspaces",
         "custom/empty",
+        //"group/hardware",
+		    //"power-profiles-daemon",
+        "custom/cliphist",
         "custom/empty",
-        "wlr/taskbar",
-        "custom/empty",
-        "niri/window",
+        "wlr/taskbar"
     ],
 
     // Modules Center
@@ -30,18 +32,14 @@
 
     // Modules Right    
     "modules-right": [
-        "pulseaudio",
-        "pulseaudio/slider",
-        "backlight",
-        "backlight/slider",
+        "group/audio",
+        "group/brightness",
         //"bluetooth",
-		    "power-profiles-daemon",
         "battery", 
         "network",
-        "group/hardware",
         "tray",
-        //"custom/exit",
         "custom/appmenu",
+        "custom/exit",
         "custom/notification",
     ]
 }

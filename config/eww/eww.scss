@@ -1,0 +1,162 @@
+@import "colors";
+$black:#121212;
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 15px;
+  color: $primary;
+  padding: 0 2px 0 2px;
+}
+
+.bar {
+  background-color: rgba($black, 0.4);
+  border-bottom: 1px solid rgba(69, 71, 90, 0.5);
+}
+
+tooltip {
+    border-radius: 10px;
+    background-color: $background;
+    opacity:0.6;
+    padding:20px;
+    margin:0px;
+}
+
+.calendar-popup {
+  background-color: rgba($background, 0.8);
+  border:4px solid rgba($primary,0.6); 
+  border-radius: 15px;
+  padding: 0 12px;
+}
+calendar {
+  color: $inverse_surface;
+  font-size: 18px;
+}
+calendar:selected {
+  color: $inverse_surface;
+  background-color: rgba($primary, 0.3);
+  border-radius: 15px;
+}
+calendar.header {
+color: $primary;
+font-weight: bold;
+}
+calendar.button {
+color: $inverse_surface;
+}
+calendar.highlight {
+color: $inverse_primary;
+font-weight: bold;
+}
+calendar:indeterminate {
+color: $on_primary;
+}
+
+.popup-container {
+  background-color: rgba($background, 0.9);
+  border:4px solid rgba($primary, 0.6); 
+  border-radius: 12px;
+  padding: 1em 1em 1em 1em;
+}
+
+.powermenu-container {
+  background-color: rgba($inverse_surface, 0.2);
+  padding: 0.4em 0.4em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.volume-container {
+  background-color: rgba($inverse_surface, 0.5);
+  padding: 0.1em 0.1em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.brightness-container {
+  background-color: rgba($inverse_surface, 0.5);
+  padding: 0.1em 0.1em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+
+.volume-scale trough highlight {
+    background-color: $primary;
+    border-radius: 15px;
+    min-height: 1.5rem;
+}
+
+.volume-scale highlight {
+    color: $primary;
+    border-radius: 1rem;
+}
+
+.volume-icon {
+    margin-left: 1.0rem;
+    color: rgba($black,0.8);
+}
+
+.brightness-scale trough highlight {
+    background-color: $primary;
+    border-radius: 15px;
+    min-height: 1.5rem;
+}
+
+.brightness-scale highlight {
+    color: $primary;
+    border-radius: 1rem;
+}
+
+.brightness-icon {
+    margin-left: 1.0rem;
+    color: rgba($black,0.8);
+}
+.metrics-container {
+  background-color: rgba($inverse_surface, 0.2);
+  padding: 0.4em 0.4em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.metric-button {
+  background: rgba($black,0.4);
+  border: 2px solid rgba($primary, 0.3);
+  padding: 8px;
+  border-radius: 50%;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.metric-button:hover {
+  background: rgba($primary, 0.3);
+}
+.clock:hover {
+  background: rgba($primary, 0.3);
+  padding: 0px 5px 0px 5px;
+  border-radius: 14px;
+}
+.clipboard:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 14px;
+}
+.volume:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 14px;
+}
+.network:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 14px;
+}
+.power:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 14px;
+}
+.notifications:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 50%;
+}
+.ws-active {
+  background: rgba($primary, 0.3);
+  border-radius: 20%;
+}
+.workspaces button:hover {
+  background: rgba($primary, 0.3);
+  border-radius: 20%;
+}
+

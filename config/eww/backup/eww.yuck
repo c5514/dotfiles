@@ -1,0 +1,187 @@
+(defpoll battery :interval "10s" "cat /sys/class/power_supply/BAT*/capacity")
+(defpoll battery_status :interval "10s" "cat /sys/class/power_supply/BAT*/status")
+(defpoll volume :interval "0.2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'")
+(defpoll volume_muted :interval "0.2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 'true' || echo 'false'")
+
+;; Calendar popup
+(defwidget calendar-popup []
+  (box :class "calendar-popup"
+    (calendar :class "calendar")))
+
+;; Main bar window
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  (bar))
+
+;; Calendar popup window
+(defwindow calendar-popup
+  :monitor 0
+  :geometry (geometry :x "50%"
+                      :y "12px"
+                      :width "375px"
+                      :height "250px"
+                      :anchor "top center")
+  :stacking "overlay"
+  :windowtype "dock"
+  (calendar-popup))
+
+
+;; EWW System Info Popup Widget Configuration
+
+;; Polls for system information
+(defpoll ram_percent 
+  :interval "2s" 
+  :initial "0"
+  `free | grep Mem | awk '{printf "%.0f", ($3/$2) * 100}'`)
+
+(defpoll cpu_usage 
+  :interval "1s" 
+  :initial "0"
+  `grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {printf "%.0f", usage}'`)
+
+(defpoll cpu_temp 
+  :interval "3s" 
+  :initial "0"
+  `cat /sys/class/thermal/thermal_zone0/temp | awk '{printf "%.0f", $1/1000}' || echo "0"`)
+
+(defpoll disk_usage 
+  :interval "30s" 
+  :initial "0"
+  `df -h / | awk 'NR==2 {printf "%.0f", $5}' | sed 's/%//g'`)
+
+(defpoll current_power_profile 
+  :interval "1s" 
+  :initial "balanced"
+  `powerprofilesctl get 2>/dev/null || echo "balanced"`)
+
+;; Window definition
+(defwindow menu_popup
+  :monitor 0
+  :geometry (geometry 
+    :x "5px" 
+    :y "12px" 
+    :width "320px" 
+    :height "90px"
+    :anchor "top right")
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore true
+  
+  (box 
+    :orientation "vertical" 
+    :class "popup-container"
+    :spacing 10
+    :space-evenly false
+    
+    ;; Powermenu
+    (box 
+      :orientation "horizontal" 
+      :class "powermenu-container"
+      :spacing 15
+      :space-evenly true
+      :halign "center"
+      (button :class "metric-button"
+              :onclick "loginctl poweroff"
+              :tooltip "Shutdown"
+        (label :text "⏻"))
+      (button :class "metric-button"
+              :onclick "swaylock -c 000000"
+              :tooltip "Lock"
+        (label :text ""))
+      (button :class "metric-button"
+              :onclick "loginctl suspend"
+              :tooltip "Suspend"
+        (label :text "󰤄"))
+      (button :class "metric-button"
+              :onclick "niri msg action quit"
+              :tooltip "Log out"
+        (label :text "󰍃"))
+      (button :class "metric-button"
+              :onclick "loginctl reboot"
+              :tooltip "Reboot"
+        (label :text "⏼"))
+    )
+    
+    ;; System info
+    (box 
+      :orientation "horizontal" 
+      :class "metrics-container"
+      :spacing 15
+      :space-evenly true
+      :halign "center"
+      
+      (button 
+        :class "metric-button"
+        :onclick "notify-send 'Memory Usage' '󰍛 ${ram_percent}%'"
+        :tooltip "Memory: 󰍛 ${ram_percent}%"
+        (overlay
+          (circular-progress 
+            :class "progress-ram"
+            :value ram_percent
+            :thickness 4
+            :start-at 75
+            :clockwise true)
+          (label 
+            :class "metric-icon"
+            :text "󰍛")))
+      (button 
+        :class "metric-button"
+        :onclick "notify-send 'CPU Usage' '󰻠 ${cpu_usage}%'"
+        :tooltip "CPU: ${cpu_usage}%"
+        (overlay
+          (circular-progress 
+            :class "progress-cpu"
+            :value cpu_usage
+            :thickness 4
+            :start-at 75
+            :clockwise true)
+          (label 
+            :class "metric-icon"
+            :text "󰻠")))
+      (button 
+        :class "metric-button"
+        :onclick "notify-send 'CPU Temperature' ' ${cpu_temp}°C${cpu_temp >= 80 ? ' (Critical!)' : ''}'"
+        :tooltip "Temperature:  ${cpu_temp}°C"
+        (overlay
+          (circular-progress 
+            :class "progress-temp ${cpu_temp >= 80 ? 'critical' : ''}"
+            :value {cpu_temp >= 80 ? 100 : cpu_temp * 1.25}
+            :thickness 4
+            :start-at 75
+            :clockwise true)
+          (label 
+            :class "metric-icon"
+            :text "")))
+      (button 
+        :class "metric-button"
+        :onclick "notify-send 'Disk Usage' '󰋊 ${disk_usage}%'"
+        :tooltip "Disk: 󰋊 ${disk_usage}%"
+        (overlay
+          (circular-progress 
+            :class "progress-disk"
+            :value disk_usage
+            :thickness 4
+            :start-at 75
+            :clockwise true)
+          (label 
+            :class "metric-icon"
+            :text "󰋊")))
+      (button 
+        :class "metric-button"
+        :onclick "powerprofilesctl set $(if [ '${current_power_profile}' = 'balanced' ]; then echo 'power-saver'; else echo 'balanced'; fi)"
+        :tooltip "Power profile: ${current_power_profile}"
+        (label 
+          :class "power-icon ${current_power_profile}"
+          :text {current_power_profile == "power-saver" ? "󰌪" : 
+                 current_power_profile == "balanced" ? "󰗑" : ""}))
+    )
+  )
+)

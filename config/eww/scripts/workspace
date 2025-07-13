@@ -1,0 +1,73 @@
+#!/bin/bash
+
+update_workspaces() {
+    # Get workspaces output
+    workspaces_output=$(niri msg workspaces)
+    
+    # Find the focused monitor section
+    focused_section=$(echo "$workspaces_output" | awk '/\*/ {focused=1} focused && /Output/ {print; exit}')
+    current_monitor=$(echo "$focused_section" | grep -o '"[^"]*"' | tr -d '"')
+    
+    # If not found, use the first monitor
+    if [[ -z "$current_monitor" ]]; then
+        current_monitor=$(echo "$workspaces_output" | awk '/Output/ {gsub(/[":]/, "", $2); print $2; exit}')
+    fi
+    
+    # Parse workspaces for current monitor
+    focused_ws=""
+    occupied_ws=()
+    
+    section_found=false
+    while IFS= read -r line; do
+        [[ -z "$line" ]] && continue
+        
+        if [[ "$line" == "Output \"$current_monitor\":" ]]; then
+            section_found=true
+            continue
+        elif [[ "$line" == Output* ]]; then
+            section_found=false
+        fi
+        
+        if $section_found; then
+            if [[ "$line" == *"*"* ]]; then
+                focused_ws=$(echo "$line" | tr -d -c '0-9')
+                occupied_ws+=("$focused_ws")
+            elif [[ "$line" =~ ^[[:space:]]*[0-9]+ ]]; then
+                ws=$(echo "$line" | tr -d -c '0-9')
+                occupied_ws+=("$ws")
+            fi
+        fi
+    done <<< "$workspaces_output"
+
+    # Generate workspace buttons - only for occupied and focused workspaces
+    buttons=""
+    for i in {1..6}; do
+        # Skip unoccupied workspaces
+        if ! [[ " ${occupied_ws[*]} " =~ " $i " || "$focused_ws" == "$i" ]]; then
+            continue
+        fi
+        
+        class=""
+        icon=""
+        
+        # Set icon based on state
+        if [[ "$focused_ws" == "$i" ]]; then
+            class="focused"
+            icon=""   # Filled circle for active workspace
+        else
+            class="occupied"
+            icon=""   # Empty circle for occupied workspace
+        fi
+
+        buttons+="(button :onclick \"niri msg action focus-workspace $i\" :class \"$class\" \"$icon\")"
+    done
+
+    echo "(box :class \"works\" :orientation \"h\" :spacing 5 :space-evenly \"false\" $buttons)"
+}
+
+# Initial update
+# Poll every 0.1 seconds for smooth updates
+while true; do
+    update_workspaces
+    sleep 0.1
+done

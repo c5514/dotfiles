@@ -1,0 +1,80 @@
+$gray: #e0e0e0;
+$black:#121212;
+$green: #8ccb72;
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 15px;
+  color: $gray;
+  padding: 0 2px 0 2px;
+}
+
+tooltip {
+    border-radius: 10px;
+    background-color: $black;
+    opacity:0.6;
+    padding:20px;
+    margin:0px;
+}
+
+.calendar-popup {
+  background-color: rgba($black, 0.8);
+  border:4px solid rgba($green,0.6); 
+  border-radius: 15px;
+  padding: 0 12px;
+}
+calendar {
+  color: $gray;
+  font-size: 18px;
+}
+calendar:selected {
+  color: $gray;
+  background-color: rgba($green, 0.3);
+  border-radius: 15px;
+}
+calendar.header {
+color: $green;
+font-weight: bold;
+}
+calendar.button {
+color: #afbea2;
+}
+calendar.highlight {
+color: #a1bdce;
+font-weight: bold;
+}
+calendar:indeterminate {
+color: #bfc9db;
+}
+
+.popup-container {
+  background-color: rgba(18, 18, 18, 0.9);
+  border:4px solid rgba($green, 0.6); 
+  border-radius: 12px;
+  padding: 1em 1em 1em 1em;
+}
+
+.powermenu-container {
+  background-color: rgba($gray, 0.2);
+  padding: 0.4em 0.4em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.metrics-container {
+  background-color: rgba($gray, 0.2);
+  padding: 0.4em 0.4em;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.metric-button {
+  background: rgba($black,0.4);
+  border: 2px solid rgba($gray, 0.3);
+  padding: 8px;
+  border-radius: 50%;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.metric-button:hover {
+  background: rgba($gray, 0.3);
+}
