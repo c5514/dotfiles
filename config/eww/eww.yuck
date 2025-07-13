@@ -297,7 +297,7 @@
 (defwidget volume_scale []
   (overlay :hexpand true
     (scale :min 0 :max 101 :active {volume_muted == "false"} :value {volume_muted == "true" ? 0 : volume} :onchange "pactl set-sink-volume 0 {}%" :class "volume-scale no-slider")
-    (label :class 'volume-icon ${volume_muted == "true" ? "less" : volume < 5 ? "less" : "more"}' :halign "start" :text {volume_muted == "true" ? "󰸈" : volume < 40 ? "" : volume < 67 ? "" : ""})
+    (label :class 'volume-icon ${volume_muted == "true" ? "less" : volume < 5 ? "less" : "more"}' :halign "start" :text {volume_muted == "true" ? "󰝟" : volume == 0 ? "󰝟" : volume < 40 ? "" : volume < 67 ? "" : ""})
   )
 )
 

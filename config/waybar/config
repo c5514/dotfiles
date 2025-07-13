@@ -17,11 +17,8 @@
     "modules-left": [
         "custom/empty",
         "niri/workspaces",
-        "custom/empty",
         //"group/hardware",
 		    //"power-profiles-daemon",
-        "custom/cliphist",
-        "custom/empty",
         "wlr/taskbar"
     ],
 
@@ -32,9 +29,10 @@
 
     // Modules Right    
     "modules-right": [
-        "group/audio",
-        "group/brightness",
+        //"group/audio",
+        //"group/brightness",
         //"bluetooth",
+        "custom/cliphist",
         "battery", 
         "network",
         "tray",

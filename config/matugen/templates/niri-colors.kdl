@@ -106,7 +106,7 @@ cursor {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    gaps 1
+    gaps 2
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
