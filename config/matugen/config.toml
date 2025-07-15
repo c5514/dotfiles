@@ -11,6 +11,7 @@ output_path = '~/.config/eww/colors.scss'
 [templates.mako]
 input_path = '~/.config/matugen/templates/mako-colors'
 output_path = '~/.config/mako/config'
+post_hook = 'makoctl reload'
 [templates.fuzzel]
 input_path = '~/.config/matugen/templates/fuzzel-colors.ini'
 output_path = '~/.config/fuzzel/fuzzel.ini'
