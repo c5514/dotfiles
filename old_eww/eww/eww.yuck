@@ -1,8 +1,129 @@
+;; Variables for system info
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "1m" "date '+%A, %B %d, %Y'")
+(defpoll battery :interval "10s" "cat /sys/class/power_supply/BAT*/capacity")
+(defpoll battery_status :interval "10s" "cat /sys/class/power_supply/BAT*/status")
+(defpoll volume :interval "0.2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'")
+(defpoll volume_muted :interval "0.2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 'true' || echo 'false'")
+(defpoll network :interval "5s" "nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2")
+(defpoll network_strength :interval "5s" "nmcli -f IN-USE,SIGNAL dev wifi | grep '*' | awk '{print $2}'")
+(defpoll workspaces :interval "0.01s"
+  "~/.config/eww/scripts/get_ws.sh"
+)
+(defpoll FW :interval "0.001s" '~/.config/eww/scripts/fw.sh')
+(defpoll brightness :interval "0.2s" "brightnessctl get | awk '{print int($1)}'")
+(defpoll max_brightness :interval "10s" "brightnessctl max")
+
+
+;; main bar widget
+(defwidget bar []
+  (centerbox :orientation "h"
+    (box :class "left-modules" :space-evenly false :halign "start"
+      (workspaces_widget)
+      (window_active))
+    
+    (box :class "center-modules" :space-evenly false :halign "center"
+      (clock-widget))
+    
+    (box :class "right-modules" :space-evenly false :halign "end"
+      (cliphist-widget)
+      (battery-widget)
+      (network-widget)
+      (power-widget)
+      (notification-widget))))
+
+;; individual widgets
+(defwidget workspaces_widget []
+  (box
+    :class "workspaces"
+    :orientation "horizontal"
+    :spacing 0
+    (for workspace in workspaces
+      (button
+        :class {workspace.active ? "ws-active" : "ws"}
+        :onclick "niri msg action focus-workspace ${workspace.name}"
+        :hexpand true
+        "${workspace.name}"
+      )
+    )
+  )
+)
+(defwidget window_active []
+    (box :orientation "h"
+         :space-evenly "false"
+         :spacing 0
+         :homogeneous true
+         (label :class "fw" :text FW)))
+
+(defwidget system-tray []
+  (box :class "system-tray"
+    ;; add your system tray icons here
+    ))
+
+(defwidget cliphist-widget []
+  (button :class "clipboard"
+          :onclick "sleep 0.1 && pkill fuzzel || bash cliphist.sh"
+    (label :class "clipboard-icon" :text "")))
+
+(defwidget clock-widget []
+  (button :class "clock"
+          :onclick "bash calendar.sh"
+          :tooltip "${date}"
+    " ${time}"))
+(defwidget network-widget []
+  (button :class "network ${network == '' ? 'disconnected' : 'connected'}"
+          :onclick "nm-connection-editor"
+          :tooltip "connected to: ${network}"
+    (box :space-evenly false
+      (label :class "network-icon" :text " ")
+      (label :class "network-name" :text "${network == '' ? 'disconnected' : network}")
+      )))
+
+(defwidget battery-widget []
+  (button :class "battery ${battery < 20 ? 'low' : battery < 50 ? 'medium' : 'high'}"
+          :onclick "gnome-power-statistics"
+          :tooltip "battery: ${battery}% (${battery_status})"
+    (box :space-evenly false
+      (label :class "battery-icon" 
+             :text "${battery_status == 'charging' ? '' : 
+                     battery < 20 ? '󰁻' : 
+                     battery < 40 ? '󰁽' : 
+                     battery < 60 ? '󰁿' : 
+                     battery < 80 ? '󰂁' : '󰁹'}")
+      (label :class "battery-level" :text "${battery}%"))))
+
+(defwidget notification-widget []
+  (button :class "notifications"
+          :onclick "makoctl dismiss"
+          :onrightclick "makoctl dismiss --all"
+          :tooltip "toggle notifications"
+    (label :class "notification-icon" :text "")))
+
+(defwidget power-widget []
+  (button :class "power"
+          :onclick "bash menu.sh"
+          :tooltip "power menu"
+    (label :class "power-icon" :text "")))
+
 ;; calendar popup
 (defwidget calendar-popup []
   (box :class "calendar-popup"
     (calendar :class "calendar")))
 
+;; main bar window
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  (bar))
+
+;; calendar popup window
 (defwindow calendar-popup
   :monitor 0
   :geometry (geometry :x "50%"
@@ -15,7 +136,9 @@
   (calendar-popup))
 
 
-;; system information
+;; eww system info popup widget configuration
+
+;; polls for system information
 (defpoll ram_percent 
   :interval "2s" 
   :initial "0"
@@ -40,8 +163,7 @@
   :interval "1s" 
   :initial "balanced"
   `powerprofilesctl get 2>/dev/null || echo "balanced"`)
-
-;; menu
+;; window definition
 (defwindow menu_popup
   :monitor 0
   :geometry (geometry 
@@ -59,8 +181,12 @@
     :class "popup-container"
     :spacing 10
     :space-evenly false
-    (box :orientation "v" :class "blue-light-menu"
-      (blue_light_filter) 
+    ;; audio-slider
+    (box :orientation "v" :class "volume-container" ;; wrapper box for volume and mic volume scales
+      (volume_scale) ;; volume scale
+    )
+    (box :orientation "v" :class "brightness-container" ;; wrapper box for volume and mic volume scales
+      (brightness_scale) ;; volume scale
     )
     ;; powermenu
     (box 
@@ -168,90 +294,16 @@
 )
 
 
-;; Variables for OSD visibility
-(defvar volume_osd_visible false)
-(defvar brightness_osd_visible false)
-(defpoll volume :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-volume")
-(defpoll volume_muted :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-volume-muted")
-(defpoll brightness :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-brightness")
-(defpoll max_brightness :interval "1s" "~/.config/eww/scripts/osd-control.sh get-max-brightness")
-
 (defwidget volume_scale []
   (overlay :hexpand true
-    (scale :min 0 :max 101 :active {volume_muted == "false"} :value {volume_muted == "true" ? 0 : volume} :onchange "~/.config/eww/scripts/osd-control.sh volume-up" :class "volume-scale no-slider")
+    (scale :min 0 :max 101 :active {volume_muted == "false"} :value {volume_muted == "true" ? 0 : volume} :onchange "pactl set-sink-volume 0 {}%" :class "volume-scale no-slider")
     (label :class 'volume-icon ${volume_muted == "true" ? "less" : volume < 5 ? "less" : "more"}' :halign "start" :text {volume_muted == "true" ? "󰝟" : volume == 0 ? "󰝟" : volume < 40 ? "" : volume < 67 ? "" : ""})
   )
 )
 
 (defwidget brightness_scale []
   (overlay :hexpand true
-    (scale :min 0 :max max_brightness :active true :value brightness :onchange "~/.config/eww/scripts/osd-control.sh brightness-up" :class "brightness-scale no-slider")
-    (label :class 'brightness-icon ${brightness < 50 ? "low" : brightness < 170 ? "medium" : "high"}' :halign "start" :text {brightness < 50 ? "󰃞" : brightness < 170 ? "󰃟" : "󰃠"})
-  )
-)
-
-(defwidget volume_osd []
-  (box :class "osd-container"
-       :orientation "vertical"
-       :space-evenly false
-       :spacing 10
-         (volume_scale)
-  )
-)
-
-(defwidget brightness_osd []
-  (box :class "osd-container"
-       :orientation "vertical"
-       :space-evenly false
-       :spacing 10
-         (brightness_scale)
-  )
-)
-
-;; OSD Windows
-(defwindow volume-osd-window
-  :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "8%"
-                      :width "250px"
-                      :height "60px"
-                      :anchor "bottom center")
-  :stacking "overlay"
-  :reserve (struts :distance "0px" :side "top")
-  :windowtype "dock"
-  :wm-ignore false
-  (revealer :reveal volume_osd_visible
-            :transition "slidedown"
-            :duration "200ms"
-    (volume_osd)))
-
-(defwindow brightness-osd-window
-  :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "8%"
-                      :width "250px"
-                      :height "60px"
-                      :anchor "bottom center")
-  :stacking "overlay"
-  :reserve (struts :distance "0px" :side "top")
-  :windowtype "dock"
-  :wm-ignore false
-  (revealer :reveal brightness_osd_visible
-            :transition "slidedown"
-            :duration "200ms"
-    (brightness_osd)))
-
-(defpoll filter_value :interval "0.1s" "cat /tmp/blue_light_temp")
-(defwidget blue_light_filter []
-  (box :class "filter-control"
-    (button :class "filter-btn" 
-            :onclick "~/.config/eww/scripts/blue-light-filter.sh red-light"
-            "󰌶")  ; Red light icon
-    (label :text {filter_value + " K"} 
-    :class "filter-value"
-    :halign "center")
-    (button :class "filter-btn"
-            :onclick "~/.config/eww/scripts/blue-light-filter.sh blue-light"
-            "󰌵")  ; Blue light icon
+    (scale :min 0 :max max_brightness :active true :value brightness :onchange "brightnessctl set {}" :class "brightness-scale no-slider")
+    (label :class 'brightness-icon ${brightness < 10 ? "low" : brightness < 50 ? "medium" : "high"}' :halign "start" :text {brightness < 10 ? "󰃞" : brightness < 50 ? "󰃟" : "󰃠"})
   )
 )

@@ -205,6 +205,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "swww-daemon"
 spawn-at-startup "sh" "-c" "eww daemon"
+spawn-at-startup "sh" "-c" "eww open brightness-osd-window"
+spawn-at-startup "sh" "-c" "eww open volume-osd-window"
 spawn-at-startup "waybar"
 // spawn-at-startup "sh" "-c" "eww open bar"
 spawn-at-startup "mako"
@@ -374,11 +376,11 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
-    XF86AudioMute        allow-when-locked=true { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "sh" "-c" "~/.config/eww/scripts/bright-up.sh"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "~/.config/eww/scripts/bright-down.sh"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/eww/scripts/volume-up.sh"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/eww/scripts/volume-down.sh"; }
+    XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "~/.config/eww/scripts/volume-mute.sh"; }
     XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
     XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
     XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }

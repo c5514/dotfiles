@@ -7,12 +7,6 @@ $black:#121212;
   color: $primary;
   padding: 0 2px 0 2px;
 }
-
-.bar {
-  background-color: rgba($black, 0.4);
-  border-bottom: 1px solid rgba(69, 71, 90, 0.5);
-}
-
 tooltip {
     border-radius: 10px;
     background-color: $background;
@@ -64,50 +58,6 @@ color: $on_primary;
   border-radius: 15px;
   font-size: 30px;
 }
-.volume-container {
-  background-color: rgba($inverse_surface, 0.3);
-  padding: 0.1em 0.1em;
-  border-radius: 15px;
-  font-size: 30px;
-}
-.brightness-container {
-  background-color: rgba($inverse_surface, 0.3);
-  padding: 0.1em 0.1em;
-  border-radius: 15px;
-  font-size: 30px;
-}
-
-.volume-scale trough highlight {
-    background-color: $primary;
-    border-radius: 15px;
-    min-height: 1.5rem;
-}
-
-.volume-scale highlight {
-    color: $primary;
-    border-radius: 1rem;
-}
-
-.volume-icon {
-    margin-left: 1.0rem;
-    color: rgba($black,0.8);
-}
-
-.brightness-scale trough highlight {
-    background-color: $primary;
-    border-radius: 15px;
-    min-height: 1.5rem;
-}
-
-.brightness-scale highlight {
-    color: $primary;
-    border-radius: 1rem;
-}
-
-.brightness-icon {
-    margin-left: 1.0rem;
-    color: rgba($black,0.8);
-}
 .metrics-container {
   background-color: rgba($inverse_surface, 0.2);
   padding: 0.4em 0.4em;
@@ -126,37 +76,43 @@ color: $on_primary;
 .metric-button:hover {
   background: rgba($primary, 0.3);
 }
-.clock:hover {
-  background: rgba($primary, 0.3);
-  padding: 0px 5px 0px 5px;
-  border-radius: 14px;
-}
-.clipboard:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 14px;
-}
-.volume:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 14px;
-}
-.network:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 14px;
-}
-.power:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 14px;
-}
-.notifications:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 50%;
-}
-.ws-active {
-  background: rgba($primary, 0.3);
-  border-radius: 20%;
-}
-.workspaces button:hover {
-  background: rgba($primary, 0.3);
-  border-radius: 20%;
+
+
+.osd-container {
+  background-color: rgba($background, 0.8);
+  padding: 0.55em 0.55em;
+  border-radius: 15px;
+  border:1px solid $primary; 
 }
 
+.volume-container, .brightness-container {
+  background-color: rgba($inverse_surface, 0.3);
+  padding: 0.1em 0.1em;
+  border-radius: 15px;
+}
+
+.volume-icon, .brightness-icon {
+  color: $primary;
+  font-size: 24px;
+}
+
+.brightness-scale trough highlight, .volume-scale trough highlight {
+  background-color: $primary;
+  border-radius: 15px;
+  min-height: 40px;
+}
+
+.brightness-scale highlight, .volume-scale highlight {
+  color: $primary;
+  border-radius: 1rem;
+  margin: 0em 0em 0em 2.4em;
+}
+
+.filter-control {
+  color: $primary;
+}
+.filter-btn {
+  color: $primary;
+  border:1px solid rgba($primary,0.7); 
+  border-radius: 15px;
+}

@@ -85,6 +85,7 @@ SUSE = "[ ](fg:green)"
 Ubuntu = "[ ](fg:bright-purple)"
 openSUSE = "[ ](fg:green)"
 Mint = "[󰣭 ](fg:green)"
+Void = "[ ](fg:green)"
 
 [python]
 format = "[$symbol ](yellow)"
