@@ -360,7 +360,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "sh" "-c" "if pgrep -x fuzzel> /dev/null; then pkill fuzzel; else fuzzel & fi"; }
     // Mod+Backspace hotkey-overlay-title="Wlogout" { spawn "wlogout" "--protocol" "layer-shell" "-b" "5"; }
-    Mod+Backspace hotkey-overlay-title="Menu" { spawn "menu.sh"; }
+    Mod+Backspace hotkey-overlay-title="Menu" { spawn "sh" "-c" "eww open --toggle menu_popup"; }
     Mod+B hotkey-overlay-title="Open browser: firefox" { spawn "firefox"; }
     // Mod+V hotkey-overlay-title="Open clipboard history" { spawn "sh" "-c" "pkill fuzzel || cliphist list | fuzzel --match-mode fzf --dmenu | cliphist decode | wl-copy"; }
     Mod+V hotkey-overlay-title="Clipboard history" { spawn "cliphist.sh"; }
@@ -368,7 +368,7 @@ binds {
     Mod+E hotkey-overlay-title="Open file manager: yazi" { spawn "foot" "-e" "yazi"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-c" "000000"; }
     Mod+D hotkey-overlay-title="Utils: fuzzel scripts" { spawn "launcher.sh"; }
-    Mod+S hotkey-overlay-title="Utils: fuzzel scripts" { spawn "waypaper"; }
+    Mod+S hotkey-overlay-title="Wallpaper changer" { spawn "waypaper"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

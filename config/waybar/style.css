@@ -154,7 +154,7 @@ window#waybar.empty #window {
 /* -----------------------------------------------------
  * Custom Modules
  * ----------------------------------------------------- */
-#custom-cliphist,#custom-exit,#custom-appmenu {
+#custom-cliphist,#custom-exit,#custom-appmenu, #custom-music {
     background-color: @primary;
     color: @black;
     font-size:16px;
@@ -168,7 +168,7 @@ window#waybar.empty #window {
     margin:0px;
     padding: 0px 5px 0px 5px;
     font-size:16px;
-    color:@gray;
+    color:@black;
 }
 
 #language {
@@ -188,12 +188,10 @@ window#waybar.empty #window {
 #mpris {
   background-color: @primary;
   font-size: 16px;
-  color: @gray;
+  color: @black;
   border-radius: 15px;
-  padding: 1px 10px 0px 10px;
-  margin: 3px 15px 3px 0px;
+  padding: 0px 5px 0px 5px;
   opacity:0.8;
-  border:3px solid @primary; 
 }
 #power-profiles-daemon {
     /* background-color: @darkgray; */

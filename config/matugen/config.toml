@@ -21,3 +21,6 @@ output_path = '~/.config/niri/config.kdl'
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-colors.toml'
 output_path = '~/.config/yazi/theme.toml'
+[templates.rmpc]
+input_path = '~/.config/matugen/templates/rmpc.ron'
+output_path = '~/.config/rmpc/themes/matcchiato.ron'

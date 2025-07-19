@@ -1,10 +1,14 @@
 @import "colors";
 $black:#121212;
+$gray:#e0e0e0;
+$darkgray: #83888f;
+$red: #ef3d17;
+$blue: #1774ef;
 * {
   all: unset;
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 15px;
-  color: $primary;
+  color: $gray;
   padding: 0 2px 0 2px;
 }
 tooltip {
@@ -16,7 +20,7 @@ tooltip {
 }
 
 .calendar-popup {
-  background-color: rgba($background, 0.8);
+  background-color: rgba($black, 0.9);
   border:3px solid $primary; 
   border-radius: 15px;
   padding: 0 12px;
@@ -46,49 +50,38 @@ color: $on_primary;
 }
 
 .popup-container {
-  background-color: rgba($background, 0.9);
+  background-color: $black;
   border:3px solid $primary; 
   border-radius: 12px;
   padding: 1em 1em 1em 1em;
 }
 
-.powermenu-container {
-  background-color: rgba($inverse_surface, 0.2);
-  padding: 0.4em 0.4em;
-  border-radius: 15px;
-  font-size: 30px;
-}
-.metrics-container {
-  background-color: rgba($inverse_surface, 0.2);
+.powermenu-container, .metrics-container {
+  background-color: rgba($gray,0.2);
   padding: 0.4em 0.4em;
   border-radius: 15px;
   font-size: 30px;
 }
 .metric-button {
-  background: rgba($black,0.4);
-  border: 2px solid rgba($primary, 0.3);
+  background: $primary;
   padding: 8px;
   border-radius: 50%;
   min-width: 30px;
   min-height: 30px;
 }
-
 .metric-button:hover {
-  background: rgba($primary, 0.3);
+  background: rgba($gray, 0.1);
+}
+.metric-icon, .progress-metric, .power-icon  {
+  color: $black;
 }
 
 
 .osd-container {
-  background-color: rgba($background, 0.8);
+  background-color: $black;
   padding: 0.55em 0.55em;
   border-radius: 15px;
   border:1px solid $primary; 
-}
-
-.volume-container, .brightness-container {
-  background-color: rgba($inverse_surface, 0.3);
-  padding: 0.1em 0.1em;
-  border-radius: 15px;
 }
 
 .volume-icon, .brightness-icon {
@@ -108,11 +101,113 @@ color: $on_primary;
   margin: 0em 0em 0em 2.4em;
 }
 
-.filter-control {
-  color: $primary;
+.filter-value {
+  color: $gray;
 }
-.filter-btn {
-  color: $primary;
-  border:1px solid rgba($primary,0.7); 
+.filter-btn-blue {
+  background-color: $blue;
   border-radius: 15px;
+}
+.filter-btn-red {
+  background-color: $red;
+  border-radius: 15px;
+}
+
+.music-widget {
+  background-color: rgba($black,0.9);
+  border-radius: 10px;
+  padding: 5px;
+  color: $primary;
+  border: 3px solid $primary;
+  box-shadow: 0 0 12px rgba($primary, 0.1);
+}
+
+.cover-art {
+  background-size: cover;
+  background-position: center;
+  min-width: 120px;
+  min-height: 120px;
+  border-radius: 15px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-right:20px ;
+  padding-bottom: 20px;
+}
+
+.music-info {
+  padding: 5px 0;
+  margin-right: 10px;
+}
+
+.song-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: $primary;
+  text-shadow: 0 0 1px rgba($primary, 0.3);
+  margin-bottom: 5px;
+} 
+
+.artist {
+  font-size: 14px;
+  opacity: 0.70;
+  color: $primary;
+  margin-bottom: 5px;
+}
+
+.controls {
+  margin: 8px 0;
+  font-size: 22px;
+}
+
+.controls button {
+  background: none;
+  color: $secondary;
+  padding: 0 10px;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 0 2 6px rgba($secondary, 0.3);
+}
+
+.controls button:hover {
+  color: $primary;
+  text-shadow: 0 0 10px rgba($primary, 1);
+}
+
+.position {
+  font-size: 12px;
+  opacity: 0.75;
+  color: $gray;
+  margin-bottom: 3px;
+}
+
+.progress-bar {
+  margin-left:  5;
+  padding: 0;
+  border: none;
+}
+
+.progress-bar trough {
+  background-color: rgba($primary, 0.1);
+  border-radius: 10px;
+  min-height: 12px;
+  min-width: 180px;
+  border: 1px solid rgba($primary, 0.3);
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.4);
+}
+
+.progress-bar highlight {
+  background-image: linear-gradient(to right, $primary, $secondary);
+  border-radius: 10px;
+  box-shadow: 0 0 3px $primary;
+}
+
+.cava-visualizer {
+  margin-left:  5;
+  font-family: "monospace";
+  font-size: 10px;
+  letter-spacing: 1px;
+  color:  $primary;
+  text-shadow: 0 0 6px rgba($primary, 0.5);
+  margin-top: 10px;
+  text-shadow: 0 0 3px $primary;
 }

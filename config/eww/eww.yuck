@@ -1,3 +1,4 @@
+(include "./music-widget/eww.yuck")
 ;; calendar popup
 (defwidget calendar-popup []
   (box :class "calendar-popup"
@@ -6,7 +7,7 @@
 (defwindow calendar-popup
   :monitor 0
   :geometry (geometry :x "50%"
-                      :y "12px"
+                      :y "5px"
                       :width "375px"
                       :height "250px"
                       :anchor "top center")
@@ -46,7 +47,7 @@
   :monitor 0
   :geometry (geometry 
     :x "5px" 
-    :y "12px" 
+    :y "5px" 
     :width "320px" 
     :height "90px"
     :anchor "top right")
@@ -72,23 +73,23 @@
       (button :class "metric-button"
               :onclick "loginctl poweroff"
               :tooltip "Shutdown"
-        (label :text "⏻"))
+        (label :class "metric-icon" :text "⏻"))
       (button :class "metric-button"
               :onclick "swaylock -c 000000"
               :tooltip "Lock"
-        (label :text ""))
+        (label :class "metric-icon" :text ""))
       (button :class "metric-button"
               :onclick "loginctl suspend"
               :tooltip "Suspend"
-        (label :text "󰤄"))
+        (label :class "metric-icon" :text "󰤄"))
       (button :class "metric-button"
               :onclick "niri msg action quit"
               :tooltip "Log out"
-        (label :text "󰍃"))
+        (label :class "metric-icon" :text "󰍃")) 
       (button :class "metric-button"
               :onclick "loginctl reboot"
               :tooltip "Reboot"
-        (label :text "⏼"))
+        (label :class "metric-icon" :text "⏼"))
     )
     
     ;; system info
@@ -105,7 +106,7 @@
         :tooltip "memory: 󰍛 ${ram_percent}%"
         (overlay
           (circular-progress 
-            :class "progress-ram"
+            :class "progress-metric"
             :value ram_percent
             :thickness 4
             :start-at 75
@@ -119,7 +120,7 @@
         :tooltip "cpu: ${cpu_usage}%"
         (overlay
           (circular-progress 
-            :class "progress-cpu"
+            :class "progress-metric"
             :value cpu_usage
             :thickness 4
             :start-at 75
@@ -133,7 +134,7 @@
         :tooltip "temperature:  ${cpu_temp}°c"
         (overlay
           (circular-progress 
-            :class "progress-temp ${cpu_temp >= 80 ? 'critical' : ''}"
+            :class "progress-metric ${cpu_temp >= 80 ? 'critical' : ''}"
             :value {cpu_temp >= 80 ? 100 : cpu_temp * 1.25}
             :thickness 4
             :start-at 75
@@ -147,7 +148,7 @@
         :tooltip "disk: 󰋊 ${disk_usage}%"
         (overlay
           (circular-progress 
-            :class "progress-disk"
+            :class "progress-metric"
             :value disk_usage
             :thickness 4
             :start-at 75
@@ -171,9 +172,9 @@
 ;; Variables for OSD visibility
 (defvar volume_osd_visible false)
 (defvar brightness_osd_visible false)
-(defpoll volume :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-volume")
-(defpoll volume_muted :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-volume-muted")
-(defpoll brightness :interval "100ms" "~/.config/eww/scripts/osd-control.sh get-brightness")
+(defpoll volume :interval "50ms" "~/.config/eww/scripts/osd-control.sh get-volume")
+(defpoll volume_muted :interval "50ms" "~/.config/eww/scripts/osd-control.sh get-volume-muted")
+(defpoll brightness :interval "50ms" "~/.config/eww/scripts/osd-control.sh get-brightness")
 (defpoll max_brightness :interval "1s" "~/.config/eww/scripts/osd-control.sh get-max-brightness")
 
 (defwidget volume_scale []
@@ -244,13 +245,13 @@
 (defpoll filter_value :interval "0.1s" "cat /tmp/blue_light_temp")
 (defwidget blue_light_filter []
   (box :class "filter-control"
-    (button :class "filter-btn" 
+    (button :class "filter-btn-red" 
             :onclick "~/.config/eww/scripts/blue-light-filter.sh red-light"
             "󰌶")  ; Red light icon
     (label :text {filter_value + " K"} 
     :class "filter-value"
     :halign "center")
-    (button :class "filter-btn"
+    (button :class "filter-btn-blue"
             :onclick "~/.config/eww/scripts/blue-light-filter.sh blue-light"
             "󰌵")  ; Blue light icon
   )

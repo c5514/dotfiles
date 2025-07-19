@@ -19,7 +19,8 @@
         "niri/workspaces",
         //"group/hardware",
 		    //"power-profiles-daemon",
-        "wlr/taskbar"
+        "wlr/taskbar",
+        "mpris"
     ],
 
     // Modules Center

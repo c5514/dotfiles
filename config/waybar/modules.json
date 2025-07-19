@@ -112,7 +112,7 @@
   // Clock
 "clock": {
 	"format": " {:%H:%M}",
-  "on-click": "sh $HOME/Scripts/calendar.sh",
+  "on-click": "eww open --toggle calendar-popup",
 	"tooltip" : false
 },
 
@@ -284,5 +284,19 @@
       ""
     ],
     "scroll-step": 1
-  }
+  },
+"mpris": {
+	"format": "{player_icon} {title}",
+	"format-paused": "{title}",
+	"player-icons": {
+		"default": "",
+    "firefox": "",
+    "spotify": ""
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+  "on-click": "eww open --toggle music-widget",
+  "tooltip": false,
+}
 }
