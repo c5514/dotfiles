@@ -76,7 +76,7 @@ format = "$symbol"
 [os.symbols]
 Alpine = "[ ](fg:bright-blue)"
 Arch = "[ ](fg:bright-blue)"
-Debian = "[ ](fg:red))"
+Debian = "[ ](fg:red)"
 EndeavourOS = "[ ](fg:purple)"
 Fedora = "[ ](fg:blue)"
 Macos = "[ ](fg:white)"
@@ -85,6 +85,7 @@ SUSE = "[ ](fg:green)"
 Ubuntu = "[ ](fg:bright-purple)"
 openSUSE = "[ ](fg:green)"
 Mint = "[󰣭 ](fg:green)"
+Void = "[ ](fg:green)"
 
 [python]
 format = "[$symbol ](yellow)"
