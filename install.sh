@@ -1,71 +1,58 @@
 #!/bin/bash
-
 sudo pacman -Syu
+echo "Installing neovim"
+sudo pacman -S neovim npm fzf ripgrep git curl wget npm lazygit yazi
 
-echo "Installing dependencies..."
-sudo pacman -S cliphist kitty network-manager network-manager-applet iwd htop polkit-gnome polkit-kde-agent pavucontrol nwg-look brightnessctl unzip usbutils
+echo "Installing utils"
+sudo pacman -S brightnessctl playerctl upower power-profiles-daemon wl-clipboard cliphist unzip 7zip udiskie udisks2 gvfs ImageMagick poppler fish starship zoxide eza github-cli btop cava ttyper 
 
-echo "Installing yay"
-sudo pacman -S --needed base-devel git
-git clone https://aur.archlinux.org/yay.git
-cd yay || exit
-makepkg -si 
+echo "Installing fonts"
+sudo pacman -S ttf-liberation ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-font-awesome noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra cantarell-fonts ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-mono 
 
-echo "Installing hyprland dependencies..."
-sudo pacman -S hyprlock aylurs-gtk-shell swww-git rofi-wayland hyprland hypridle
-yay -S matugen-bin
-sudo pacman -S bun dart-sass fd fzf hyprpicker slurp wf-recorder wl-clipboard wayshot swappy
-git clone https://github.com/Aylur/dotfiles.git
-cp -r dotfiles/ags ~/.config/ags
-
-echo "Installing neovim and LaTex related dependencies..."
-sudo pacman -S neovim zathura zathura-pdf-mupdf inkscape texlive-bibtexextra texlive-binextra texlive-langchinese texlive-langenglish texlive-langfrench texlive-langjapanese texlive-korean texlive-spanish texlive-publishers texlive-fontsextra texlive-latexextra texlive-latexrecommended texlive-mathscience
-git clone htpps://github.com/c5514/nvim_config.git
-mv ./nvim_config/nvim ~/.config/
-mv ./nvim_config/zathura ~/.config/
-echo "Installing inkscape extension textext"
-# Variables
-TEXTEXT_URL="https://github.com/textext/textext/releases/download/1.10.2/TexText-Linux-1.10.2.zip"
-DOWNLOAD_DIR="$HOME/Downloads"
-INSTALL_DIR="$HOME/.config/inkscape/extensions"
-ZIP_FILE="$DOWNLOAD_DIR/TexText-Linux-1.10.2.zip"
-
-# Create download and installation directories if they don't exist
-mkdir -p "$DOWNLOAD_DIR"
-mkdir -p "$INSTALL_DIR"
-
-# Download the TexText ZIP file
-echo "Downloading TexText extension..."
-if curl -L -o "$ZIP_FILE" "$TEXTEXT_URL"; then
-    echo "Download completed."
+echo "Do you want to install an AUR helper? (yes/no)"
+read -r install_choice
+install_choice=$(echo "$install_choice" | tr '[:upper:]' '[:lower:]')
+if [[ "$install_choice" == "yes" || "$install_choice" == "y" ]]; then
+  tmpdir=$(mktemp -d)
+  sudo pacman -S --needed base-devel
+  echo "Which AUR helper would you like to use? (yay/paru)"
+  read -r aur_helper
+  aur_helper=$(echo "$aur_helper" | tr '[:upper:]' '[:lower:]')
+  if [[ "$aur_helper" == "yay" ]]; then
+    git clone --depth=1 https://aur.archlinux.org/yay-bin.git "$tmpdir/yay-bin"
+    (cd "$tmpdir/yay-bin" && makepkg -si --noconfirm)
+  else
+    git clone --depth=1 https://aur.archlinux.org/paru.git "$tmpdir/paru"
+    (cd "$tmpdir/paru" && makepkg -si --noconfirm)
+  fi
+  rm -rf "$tmpdir"
 else
-    echo "Error downloading the file. Please check the URL."
-    exit 1
+  echo "AUR helper installation skipped."
 fi
 
-# Unzip the downloaded file
-echo "Extracting TexText extension..."
-if unzip -o "$ZIP_FILE" -d "$DOWNLOAD_DIR"; then
-    echo "Extraction completed."
-else
-    echo "Error extracting the ZIP file."
-    exit 1
+echo "Do you want to install Hyprland and applications:"
+read -r hyprland_choice
+if [[ "$hyprland_choice" == "yes" || "$hyprland_choice" == "no"]]; then
+  sudo pacman -S hyprlock hypridle hyprsunset hyprpicker nautilus tela-circle-icon-theme-blue swww fuzzel firefox spotify-launcher xdg-desktop-portal-gtk xdg-desktop-portal-gnome qt5-wayland qt6-wayland foot
+  paru -S bibata-cursor-theme grimblast-git matugen-bin
+  gsettings set org.gnome.desktop.interface icon-theme "'Tela-circle-blue-dark'" 
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  sudo pacman -S inkscape python-tinycss2 gtksourceview3
+  cp /usr/share/applications/org.inkscape.Inkscape.desktop ~/.local/share/applications/
+  sed -i 's/^Exec=inkscape/Exec=env GDK_BACKEND=x11 inkscape/' ~/.local/share/applications/org.inkscape.Inkscape.desktop
+  update-desktop-database ~/.local/share/applications/
+else 
+  echo "Skipping Hyprland installation..."
 fi
 
-# Move the extracted files to
-echo "Installing TexText extension..."
-cd "$HOME/Downloads/textext-1.10.2/" || exit
-python3 setup.py --skip-requirements-check
-# Clean up
-echo "Cleaning up..."
-rm -rf "$ZIP_FILE" "$DOWNLOAD_DIR/textext-1.10.2"
-echo "TexText extension installed successfully!"
+echo "Do you want to install LaTeX dependencies? It might take a while. (yes/no)"
+read -r latex_choice
+if [["$latex_choice" == "yes" || "$latex_choice" == "y" ]]; then
+  paru -S texlive-full
+  sudo pacman -S typst zathura zathura-pdf-poppler biber perl-yaml-tiny perl-file-homedir 
+  sudo fmtutil-sys --all
+else 
+  echo "Skipping LaTeX dependencies..."
+fi
 
-echo "Installing icon themes and fonts"
-sudo pacman -S papirus-icon-theme otf-font-awesome gnu-free-fonts noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono ttf-font-awesome ttf-jetbrains-mono-nerd ttf-material-design-icons-desktop-git
-
-echo "Installing non essential dependencies..."
-sudo pacman -S telegram-desktop spotify-launcher 
-
-echo "Changing shell to fish"
-chsh -s /usr/bin/fish
+echo "Finished installation"
