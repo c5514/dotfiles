@@ -91,7 +91,7 @@ sudo fmtutil-sys --all
 - Hyprland
 ```bash
 sudo pacman -S hyprlock hypridle hyprsunset hyprpicker nautilus tela-circle-icon-theme-blue swww fuzzel
-sudo pacman -S xdg-desktop-portal-gtk xdg-desktop-portal-gnome qt5-wayland qt6-wayland
+sudo pacman -S xdg-desktop-portal-gtk xdg-desktop-portal-gnome qt5-wayland qt6-wayland uwsm
 paru -S bibata-cursor-theme grimblast-git matugen-bin
 ```
 - Aplications
@@ -113,7 +113,7 @@ sudo gpasswsd -a c5514 gamemode
   ```
   - Inkscape window problem:
   ```bash
-  cp /usr/share/applications/org.inkscape.Inkscape.desktop ~/.local/share/applications/
-  sed -i 's/^Exec=inkscape/Exec=env GDK_BACKEND=x11 inkscape/' ~/.local/share/applications/org.inkscape.Inkscape.desktop
+  sudo cp /usr/share/applications/org.inkscape.Inkscape.desktop ~/.local/share/applications/
+  sudo sed -i 's/^Exec=inkscape/Exec=env GDK_BACKEND=x11 inkscape/' ~/.local/share/applications/org.inkscape.Inkscape.desktop
   update-desktop-database ~/.local/share/applications/
   ```

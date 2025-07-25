@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # requires imagemagick to generate thumbnails
-
+if pgrep -x fuzzel > /dev/null; then
+    pkill fuzzel
+    exit 0
+fi
 thumbnail_size=64
 thumbnail_dir="${XDG_CACHE_HOME:-$HOME/.cache}/cliphist/thumbnails"
 

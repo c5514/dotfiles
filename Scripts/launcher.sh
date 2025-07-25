@@ -1,4 +1,8 @@
 #!/bin/bash
+if pgrep -x fuzzel > /dev/null; then
+    pkill fuzzel
+    exit 0
+fi
 choice=$(printf " Quick LaTeX\n Music Player\n Video Player\n󰖟 Web Browser\n󰼭 Typing Test" | fuzzel --dmenu --prompt "Tools: ")
 
 case "$choice" in
