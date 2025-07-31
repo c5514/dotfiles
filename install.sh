@@ -124,7 +124,8 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
     sudo pacman -S --needed --noconfirm \
         hyprland hyprlock hypridle hyprsunset hyprpicker \
         nautilus swww fuzzel firefox spotify-launcher \
-        qt5-wayland qt6-wayland foot uwsm
+        qt5-wayland qt6-wayland foot uwsm xdg-desktop-portal-hyprland \
+        tela-circle-icon-theme-blue orchis-theme
     check_success "Hyprland packages installation"
     INSTALLED_COMPONENTS+=("Hyprland Desktop Environment (hyprland, hyprlock, hypridle, uwsm)")
     
@@ -132,7 +133,6 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
     if [[ "$AUR_HELPER_INSTALLED" == true ]]; then
         print_status "Installing AUR packages..."
         $aur_helper -S --noconfirm \
-            tela-circle-icon-theme-blue \
             bibata-cursor-theme \
             grimblast-git \
             matugen-bin
@@ -142,6 +142,7 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
         # Set GTK theme
         print_status "Setting GTK theme..."
         gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-blue-dark'
+        gsettings set org.gnome.desktop.interface gtk-theme 'Orchis-Dark-Compact'
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
         check_success "GTK theme configuration"
     else

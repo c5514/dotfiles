@@ -44,7 +44,7 @@
   mount -o noatime,compress=zstd:5,discard=async,space_cache=v2,subvol=@pkg /dev/root_partition /mnt/archinstall/var/cache/pacman/pkg
   mount -o noatime,compress=zstd:5,discard=async,space_cache=v2,subvol=@log /dev/root_partition /mnt/archinstall/var/log
   mount -o noatime,compress=zstd:5,discard=async,space_cache=v2,subvol=@snapshots /dev/root_partition /mnt/archinstall/.snapshots
-  mount -p /mnt/archinstall/boot
+  mkdir -p /mnt/archinstall/boot
   mount /dev/boot_partition /mnt/archinstall/boot
   swapon /dev/swap_partition
   ```
@@ -67,7 +67,7 @@ sudo pacman -S neovim npm fzf ripgrep git curl wget npm lazygit yazi
 ```
 - Utils
 ```bash
-sudo pacman -S brightnessctl playerctl upower power-profiles-daemon wl-clipboard cliphist unzip foot 7zip udiskie udisks2 gvfs ImageMagick poppler 
+sudo pacman -S brightnessctl playerctl upower power-profiles-daemon wl-clipboard cliphist unzip foot 7zip udiskie udisks2 gvfs ImageMagick poppler easyeffects
 ```
 - Shell programs
 ```bash
