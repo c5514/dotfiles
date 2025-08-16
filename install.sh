@@ -62,7 +62,7 @@ sudo pacman -S --needed --noconfirm \
     wl-clipboard cliphist unzip 7zip udiskie udisks2 gvfs \
     imagemagick poppler fish starship zoxide eza github-cli \
     btop cava ttyper dart-sass gnome-bluetooth-3.0 bluez bluez-utils \
-    easyeffects mpv mpd
+    easyeffects mpv mpd intel-media-driver
 check_success "System utilities installation"
 INSTALLED_COMPONENTS+=("CLI Utilities (brightnessctl, playerctl, fish, starship, zoxide, eza, btop, cava, etc.)")
 

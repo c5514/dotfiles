@@ -227,7 +227,7 @@ ls.add_snippets("tex", {
   s({ trig = "oxo", wordTrig = false, snippetType = "autosnippet" }, t("\\otimes"), { condition = tex.in_mathzone }),
   s({ trig = "opo", wordTrig = false, snippetType = "autosnippet" }, t("\\oplus"), { condition = tex.in_mathzone }),
   s(
-    { trig = "to", wordTrig = false, snippetType = "autosnippet", priority = 10 },
+    { trig = "to", wordTrig = true, snippetType = "autosnippet", priority = 10 },
     c(1, {
       t("\\to"),
       t("\\mapsto"),
@@ -263,7 +263,7 @@ ls.add_snippets("tex", {
     { condition = tex.in_mathzone }
   ),
   s(
-    { trig = "then", wordTrig = false, snippetType = "autosnippet", priority = 75 },
+    { trig = "thn", wordTrig = false, snippetType = "autosnippet", priority = 75 },
     t("\\Longrightarrow"),
     { condition = tex.in_mathzone }
   ),

@@ -349,21 +349,19 @@ ls.add_snippets("tex", {
     { condition = tex.in_mathzone }
   ),
   s(
-    { trig = "pp", wordTrig = false, dscr = "Partial symbol", snippetType = "autosnippet" },
-    c(1, {
-      fmta(
-        [[
-    			\partial_{<>}
-    			]],
-        { i(1, "\\mu") }
-      ),
-      fmta(
-        [[
-				\partial^{<>}
-				]],
-        { i(1, "\\mu") }
-      ),
-    }),
+    { trig = "pp", wordTrig = true, dscr = "Partial symbol", snippetType = "autosnippet" },
+    { t("\\partial"),
+      c(1, {
+        t(""),
+        fmta(
+          [[_{<>}]],
+          { i(1, "\\mu") }
+        ),
+        fmta(
+          [[^{<>}]],
+          { i(1, "\\mu") }
+        ),
+      }) },
     { condition = tex.in_mathzone }
   ),
   s(

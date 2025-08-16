@@ -133,4 +133,32 @@ ls.add_snippets("tex", {
       }
     )
   ),
+  s(
+    { trig = "exm", dscr = "Example box" },
+    fmta(
+      [[
+        \begin{Example}{<>}{exm:<>}
+           <>
+        \end{Example}
+      ]],
+      {
+        i(1, "Name"),
+        i(2, "Label"),
+        i(3, "Content"),
+      }
+    )
+  ),
+  s(
+    { trig = "prop", dscr = "Proposition" },
+    fmta(
+      [[
+        \begin{proposition}
+           <>
+        \end{proposition}
+      ]],
+      {
+        i(1, "Content"),
+      }
+    )
+  ),
 })
