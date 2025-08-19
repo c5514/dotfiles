@@ -117,3 +117,57 @@ sudo gpasswsd -a c5514 gamemode
   sudo sed -i 's/^Exec=inkscape/Exec=env GDK_BACKEND=x11 inkscape/' ~/.local/share/applications/org.inkscape.Inkscape.desktop
   update-desktop-database ~/.local/share/applications/
   ```
+= Snapshots
+ - Install snapper dependencies:
+ ```bash
+ sudo pacman -S snapper snap-pac grub-btrfs
+ ```
+ - Generate snapshost subvolume with snapper
+ ```bash
+ sudo umount /.snapshots
+ sudo rm -rf /.snaphots
+ sudo snapper -c root create-config /
+ ```
+ - The previous command creates `.snapshots` but we want to use `@snapshots` so:
+ ```bash
+ sudo btrfs subvolume delete .snapshots
+ sudo mkdir /.snapshots
+ sudo mount -a
+ sudo chmod 750 /.snapshots
+ sudo chown :wheel /.snapshots
+ ```
+ - Now we want to create our first snapshot:
+ ```bash
+ sudo snapper -c root create -d "**Base system install**"
+ ```
+ - Now we want to enable some services:
+ ```bash
+ sudo systemctl start snapper-timeline.timer
+ sudo systemctl enable snapper-timeline.timer
+ sudo systemctl start snapper-cleanup.timer
+ sudo systemctl enable snapper-cleanup.timer
+ ```
+ - Enable snapshot grub entries:
+   - Now enable grub-btrfs service:
+   ```bash
+   sudo systemctl enable --now grub-btrfsd.service
+   ```
+   - Now 
+   ```bash
+   sudo mkinitcpio -P
+   ```
+ - To rollback boot in one of the snapshot entries and do 
+ ```bash
+ sudo mount /dev/mapper/root /mnt
+ sudo mv /mnt/@ /mnt/@.broken
+ sudo btrfs subvolume snapshot /mnt/@snapshots/number/snapshot /mnt/@
+ sudo umount /mnt
+ ```
+ - If you don't remember the number of the snapshot you want to rollback use
+ ```bash
+ sudo grep -r '<date>' /mnt/@snapshots/*/info.xml
+ ```
+ - Then reboot and after booting the new root partition if there is a problem with `pacman` use 
+ ```bash
+ sudo rm -rf /var/lib/pacman/db.lck
+ ```
