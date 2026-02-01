@@ -2,13 +2,13 @@
 local capabilities = require('blink.cmp').get_lsp_capabilities({
   textDocument = { completion = { completionItem = { snippetSupport = false } } },
 })
-require("lspconfig").pyright.setup {
+vim.lsp.config('pyright', {
   capabilities = capabilities,
-}
-require("lspconfig").texlab.setup {
+})
+vim.lsp.config('texlab', {
   capabilities = capabilities,
-}
-require("lspconfig").lua_ls.setup {
+})
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -20,4 +20,4 @@ require("lspconfig").lua_ls.setup {
       },
     },
   },
-}
+})

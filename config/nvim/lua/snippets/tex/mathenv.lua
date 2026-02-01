@@ -126,6 +126,14 @@ ls.add_snippets("tex", {
       ),
       fmta(
         [[
+        \begin{matrix}
+           <>
+        \end{matrix}
+      ]],
+        { i(1) }
+      ),
+      fmta(
+        [[
         \begin{bmatrix}
            <>
         \end{bmatrix}
@@ -523,6 +531,31 @@ ls.add_snippets("tex", {
 				<>
 			\end{cases}]],
       { i(1) }),
+    { condition = tex.in_mathzone }
+  ),
+  s(
+    { trig = "com", wordTrig = false, dscr = "Commutator", snippetType = "autosnippet" },
+    fmta([[\comm{<>}{<>}]], { i(1, "\\hat{A}"), i(2, "\\hat{B}") }),
+    { condition = tex.in_mathzone }
+  ),
+  s(
+    { trig = "acm", wordTrig = false, dscr = "Anticommutator", snippetType = "autosnippet" },
+    fmta([[\acomm{<>}{<>}]], { i(1, "\\hat{A}"), i(2, "\\hat{B}") }),
+    { condition = tex.in_mathzone }
+  ),
+  s(
+    { trig = "   ", wordTrig = false, dscr = "Horizontal space", snippetType = "autosnippet" },
+    t("\\quad"),
+    { condition = tex.in_mathzone }
+  ),
+  s(
+    { trig = "hsp", wordTrig = false, dscr = "Horizontal space", snippetType = "autosnippet" },
+    fmta([[\hspace{<>}]], { i(1, "1cm") }),
+    { condition = tex.in_mathzone }
+  ),
+  s(
+    { trig = "vsp", wordTrig = false, dscr = "Horizontal space", snippetType = "autosnippet" },
+    fmta([[\vspace{<>}]], { i(1, "1cm") }),
     { condition = tex.in_mathzone }
   ),
 })

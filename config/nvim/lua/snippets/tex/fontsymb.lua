@@ -398,6 +398,12 @@ ls.add_snippets("tex", {
     snippetType = "autosnippet",
     dscr = "Display '\\underline{}'",
   }, { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }, { condition = tex.in_mathzone }),
+  postfix({
+    trig = "ovl",
+    match_pattern = [[[\\%w%.%_%-%"%']+$]],
+    snippetType = "autosnippet",
+    dscr = "Display '\\overline{}'",
+  }, { l("\\overline{" .. l.POSTFIX_MATCH .. "}") }, { condition = tex.in_mathzone }),
   s({ trig = "it", wordTrig = false, dscr = "'\\textit{}' or '\\mathit{}'" }, {
     f(function()
       if tex.in_mathzone() then
