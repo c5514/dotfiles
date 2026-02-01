@@ -103,7 +103,7 @@ sudo pacman -S firefox spotify-launcher inkscape python-tinycss2 gtksourceview3
 paru -S protonup-qt
 sudo pacman -S lib32-mesa steam
 sudo pacman -S gamemode lib32-gamemode
-sudo gpasswsd -a c5514 gamemode
+sudo gpasswd -a c5514 gamemode
 ```
 = Ricing:
   - GTK theme:
