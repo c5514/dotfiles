@@ -6,7 +6,7 @@
   device list
   stations name scan
   station name get-networks
-  stations name name connect SSID
+  station name connect SSID
   exit
   ```
   - Verify that it is connected to wifi with `ping archlinux.org`.

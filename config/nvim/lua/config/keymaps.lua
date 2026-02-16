@@ -44,20 +44,33 @@ map("n", "<leader>l", "+latex", { desc = "+LaTeX" })
 map("n", "<leader>i", "+inkscape", { desc = "+inkscape" })
 -- Formatting
 map("n", "<leader>c", "+formatting", { desc = "+formatting" })
-map('n', '<leader>cp', function()
-  local start_pos = vim.fn.search('^\\s*$', 'bnW') + 1
-  local end_pos = vim.fn.search('^\\s*$', 'nW') - 1
-  if start_pos <= 0 then start_pos = 1 end
-  if end_pos <= 0 then end_pos = vim.api.nvim_buf_line_count(0) end
-  require('conform').format({
-    range = { start = { start_pos, 0 }, ['end'] = { end_pos, 0 } },
-    timeout_ms = 500,
-  })
-end, { desc = 'Format paragraph' })
+map("n", "<leader>cp", function()
+	local start_pos = vim.fn.search("^\\s*$", "bnW") + 1
+	local end_pos = vim.fn.search("^\\s*$", "nW") - 1
+	if start_pos <= 0 then
+		start_pos = 1
+	end
+	if end_pos <= 0 then
+		end_pos = vim.api.nvim_buf_line_count(0)
+	end
+	require("conform").format({
+		range = { start = { start_pos, 0 }, ["end"] = { end_pos, 0 } },
+		timeout_ms = 500,
+	})
+end, { desc = "Format paragraph in LaTeX" })
+vim.keymap.set("n", "<leader>cb", function()
+	local ft = vim.bo.filetype
+	local timeout = 5000
+	if ft == "tex" or ft == "bib" then
+		timeout = 10000
+	end
+	require("conform").format({
+		timeout_ms = timeout,
+		lsp_fallback = true,
+	})
+end, { desc = "Format buffer" })
 -- Git
 map("n", "<leader>g", "+git", { desc = "+git" })
-
-
 
 -- Vimtex comands reassigned
 -- Change of math mode ds$ --> dsm, cs$ --> csm, ts$ --> tsm

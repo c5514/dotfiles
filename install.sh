@@ -125,7 +125,7 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
         hyprland hyprlock hypridle hyprsunset hyprpicker \
         nautilus swww fuzzel firefox spotify-launcher \
         qt5-wayland qt6-wayland foot uwsm xdg-desktop-portal-hyprland \
-        tela-circle-icon-theme-blue orchis-theme
+        tela-circle-icon-theme-blue orchis-theme matugen
     check_success "Hyprland packages installation"
     INSTALLED_COMPONENTS+=("Hyprland Desktop Environment (hyprland, hyprlock, hypridle, uwsm)")
     
@@ -134,10 +134,9 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
         print_status "Installing AUR packages..."
         $aur_helper -S --noconfirm \
             bibata-cursor-theme \
-            grimblast-git \
-            matugen-bin
+            grimblast-git
         check_success "AUR packages installation"
-        INSTALLED_COMPONENTS+=("Desktop Themes & Tools (Tela icons, Bibata cursors, Grimblast, Matugen)")
+        INSTALLED_COMPONENTS+=("Desktop Themes & Tools (Tela icons, Bibata cursors, Grimblast)")
         
         # Set GTK theme
         print_status "Setting GTK theme..."
@@ -151,7 +150,7 @@ if ask_yes_no "Do you want to install Hyprland and applications?"; then
     
     # Inkscape X11 workaround
     print_status "Setting up Inkscape X11 workaround..."
-    sudo pacman -S --needed --noconfirm inkscape python-tinycss2 gtksourceview3
+    sudo pacman -S --needed --noconfirm evince inkscape python-tinycss2 gtksourceview3
     
     # Create ~/.local/share/applications if it doesn't exist
     mkdir -p ~/.local/share/applications/
