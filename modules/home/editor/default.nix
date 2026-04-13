@@ -1,14 +1,15 @@
 { inputs, pkgs, ... }:
 {
-  # imports = [
-  #   # ./emacs.nix
-  #   # ./helix.nix
-  #   # ./vscodium.nix
-  # ];
+  imports = [
+    ./nvim.nix
+    # ./emacs.nix
+    # ./helix.nix
+    # ./vscodium.nix
+  ];
   home = {
     sessionVariables.EDITOR = "nvim";
-    packages = [
-      inputs.nixvim.packages.${pkgs.system}.default
-    ];
+    # packages = [
+    #   inputs.nixvim.packages.${pkgs.system}.default
+    # ];
   };
 }

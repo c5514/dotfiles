@@ -1,0 +1,40 @@
+{
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        font = "JetBrainsMono NF:size=14";
+        selection-target = "clipboard";
+      };
+      cursor = {
+        style = "beam";
+      };
+      colors = {
+        background = "0c090a";
+        foreground = "e0e0e0";
+        regular0 = "5c5f77";
+        regular1 = "d20f39";
+        regular2 = "40a02b";
+        regular3 = "df8e1d";
+        regular4 = "1e66f5";
+        regular5 = "ea76cb";
+        regular6 = "179299";
+        regular7 = "acb0be";
+        bright0 = "6c6f85";
+        bright1 = "d20f39";
+        bright2 = "40a02b";
+        bright3 = "df8e1d";
+        bright4 = "1e66f5";
+        bright5 = "ea76cb";
+        bright6 = "179299";
+        bright7 = "bcc0cc";
+      };
+      mouse = {
+        hide-when-typing = "yes";
+      };
+      csd = {
+        size = 0;
+      };
+    };
+  };
+}

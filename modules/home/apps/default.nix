@@ -6,25 +6,21 @@
     ./spicetify.nix
   ];
   home.packages = with pkgs; [
-    # vesktop
-    freetube
     # megacmd
-    megasync
+    #megasync
     # evince
     obsidian
-    # inputs.zen-browser.packages.${pkgs.system}.default
     zotero
-    # wineWowPackages.waylandFull
     inkscape
     texliveFull
     typst
     python312Packages.tkinter
     telegram-desktop
+    mpv
+    mpd
     feh
     obs-studio
     libreoffice-qt6-fresh
-    # thunderbird
-    vlc
     tor-browser
     ttyper
     btop

@@ -2,9 +2,9 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -16,31 +16,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-gnome-theme = {
-      url = "github:rafaelmardojai/firefox-gnome-theme";
-      flake = false;
-    };
-    nixvim.url = "github:c5514/nixvim";
-    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # nixvim.url = "github:c5514/nixvim";
     ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-    # hyprland-contrib = {
-    #   url = "github:hyprwm/contrib";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # hyprland = {
-    # 	url = "git+https://github.com/hyprwm/hyprland?submodules=1";
-    # 	inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # hyprland-plugins = {
-    # 	url = "github:hyprwm/hyprland-plugins";
-    # 	inputs.hyprland.follows = "hyprland";
-    # };
-    # Hyprspace = {
-    # 	url = "github:KZDKM/Hyprspace";
-    # 	inputs.hyprland.follows = "hyprland";
-    # };
-    # matugen.url = "github:Iniox/Matugen";
-    # matshell.url = "github:Neurarian/matshell";
   };
 
   outputs =

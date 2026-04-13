@@ -23,15 +23,15 @@
       };
       systemd-boot.enable = false;
     };
-    # plymouth = {
-    #   enable = true;
-    #   theme = "rings";
-    #   themePackages = with pkgs; [
-    #     (adi1090x-plymouth-themes.override {
-    #       selected_themes = [ "rings" ];
-    #     })
-    #   ];
-    # };
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
+    };
     consoleLogLevel = 0;
     initrd = {
       verbose = false;

@@ -160,8 +160,8 @@ const options = mkOptions(OPTIONS, {
         [
           "firefox",
           "vesktop",
-          // "nautilus",
-          "thunar",
+          "nautilus",
+          // "thunar",
           "telegram-desktop",
           "spotify",
           "zotero",

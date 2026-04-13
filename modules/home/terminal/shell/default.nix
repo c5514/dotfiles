@@ -33,8 +33,16 @@ in
     fish = {
       enable = true;
       package = pkgs.fish;
+      loginShellInit = ''
+        if uwsm check may-start && uwsm select
+               exec uwsm start default
+        end
+      '';
       interactiveShellInit = ''
         set fish_greeting
+        function set_cursor --on-event fish_prompt
+             echo -ne '\e[6 q'
+        end
       '';
       shellAliases = myAliases;
     };

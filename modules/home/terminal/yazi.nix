@@ -5,8 +5,8 @@
     package = pkgs.yazi;
     enableFishIntegration = true;
     settings = {
-      manager = {
-        show_hidden = true;
+      mgr = {
+        show_hidden = false;
         sort_by = "mtime";
         sort_dir_first = true;
         sort_reverse = true;

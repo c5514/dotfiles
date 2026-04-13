@@ -3,13 +3,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    systemd.enable = true;
+    systemd.enable = false;
     xwayland.enable = true;
-    # plugins = [
-    # 	inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-    # ];
     settings = {
-      monitor = ",preferred, auto, 1";
+      monitor = [
+        "eDP-1,preferred,auto,1"
+        # For the usage of projector using HDMI
+        ", preferred, auto, 1, mirror, eDP-1"
+      ];
       #Autostart
       exec-once = [
         "hypridle &"
@@ -37,13 +38,13 @@
         "WAYLAND_DISPLAY,wayland-1"
       ];
       #Programs
-      "$terminal" = "ghostty";
-      "$fileManager" = "thunar";
-      # "$menu" = "rofi -show drun -theme ~/.config/rofi/launcher.rasi";
-      # "$clipboard" = "rofi -theme ~/.config/rofi/cliphist2.rasi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
+      "$terminal" = "foot";
+      "$fileManager" = "~/Scripts/yazi.sh";
+      "$fileManager2" = "nautilus";
       "$menu" = "ags -t launcher";
       "$clipboard" = "ags -r 'launcher.open(\":ch \")'";
       "$browser" = "firefox";
+      "$latex" = "~/Scripts/quick-latex.sh";
       #Input
       input = {
         kb_layout = "us";
@@ -53,14 +54,13 @@
         touchpad = {
           natural_scroll = false;
         };
-        float_switch_override_focus = 2;
         numlock_by_default = true;
       };
       #General
       general = {
         gaps_in = 2;
-        gaps_out = 5;
-        border_size = 4;
+        gaps_out = 4;
+        border_size = 3;
         "col.active_border" = "rgba(49A0E6FF)";
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = true;
@@ -78,16 +78,17 @@
       #Decoration
       decoration = {
         rounding = 15;
+        rounding_power = 2;
         active_opacity = 1.0;
         inactive_opacity = 0.9;
         shadow = {
-          enabled = false;
+          enabled = true;
           color = "rgba(1a1a1aee)";
           render_power = 3;
-          range = 4;
+          range = 3;
         };
         blur = {
-          enabled = false;
+          enabled = true;
           size = 3;
           passes = 1;
           vibrancy = 0.1696;
@@ -95,7 +96,7 @@
       };
       #Animations
       animations = {
-        enabled = false;
+        enabled = true;
         bezier = [
           "linear, 0, 0, 1, 1"
           "md3_standard, 0.2, 0, 0, 1"
@@ -124,16 +125,9 @@
           "fadeLayersIn, 1, 2, menu_decel"
           "fadeLayersOut, 1, 4.5, menu_accel"
           "workspaces, 1, 7, menu_decel, slide"
-          # "workspaces, 1, 2.5, softAcDecel, slide"
-          # "workspaces, 1, 7, menu_decel, slidefade 15%"
-          # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
           "specialWorkspace, 1, 3, md3_decel, slidevert"
         ];
       };
-      gestures = {
-        workspace_swipe = true;
-      };
-
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
@@ -148,28 +142,29 @@
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exec, exit"
-        "$mainMod, E, exec, $terminal -e yazi"
-        "$mainMod SHIFT, E, exec, $fileManager"
+        "$mainMod, E, exec, $fileManager"
+        "$mainMod SHIFT, E, exec, $fileManager2"
         "$mainMod, SPACE, exec, $menu"
         "$mainMod, B, exec, $browser"
-        # "$mainMod, BACKSPACE, exec, wlogout"
+        "$mainMod SHIFT, B, exec, firejail --private firefox --private-window"
         "$mainMod, BACKSPACE, exec, ags -t powermenu"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
+        "$mainMod ALT, L, exec, hyprlock"
+        "$mainMod, R, exec, $latex"
         "$mainMod, D, exec, ags -t datemenu"
         "$mainMod, M, exec, ags -t quicksettings"
         #Workspaces overview
-        # "$mainMod, R, overview:toggle"
-        "$mainMod, R, exec, ags -t overview"
+        "$mainMod, O, exec, ags -t overview"
         #Screenshot
-        ", PRINT, exec, grimblast copy screen"
+        ", PRINT, exec, grimblast copy area"
         "$mainMod, PRINT, exec, grimblast copy active"
-        "$mainMod SHIFT, PRINT, exec, grimblast copy area"
+        "$mainMod SHIFT, PRINT, exec, grimblast copy screen"
         #Cliphist
         "$mainMod, V, exec, $clipboard"
         "$mainMod CTRL, V, exec, cliphist wipe"
         #Window management
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod SHIFT, F, fullscreen, 1"
+        "$mainMod, F, fullscreen, 1"
+        "$mainMod SHIFT, F, fullscreen, 0"
         "$mainMod CTRL, F, togglefloating"
         "$mainMod, P, pseudo,"
         "$mainMod, T, togglesplit,"
@@ -188,6 +183,11 @@
         "$mainMod SHIFT, H, resizeactive, -40 0"
         "$mainMod SHIFT, K, resizeactive, 0 -40"
         "$mainMod SHIFT, J, resizeactive, 0 40"
+        #Switch windows
+        "$mainMod CTRL, L, resizeactive, 40 0"
+        "$mainMod CTRL, H, resizeactive, -40 0"
+        "$mainMod CTRL, K, resizeactive, 0 -40"
+        "$mainMod CTRL, J, resizeactive, 0 40"
         #Switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -217,8 +217,7 @@
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
         #Move through existing workspaces
-        "$mainMod, Tab, workspace, e+1"
-        "$mainMod SHIFT, Tab, workspace, e-1"
+        "$mainMod, Tab, workspace, previous"
         #Change window focus on a workspace
         "ALT, Tab, cyclenext, none"
         "ALT, Tab, bringactivetotop"
@@ -244,28 +243,38 @@
         ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
       ];
+      workspace = [
+        "1, layout:monocle"
+        "2, layout:scrolling"
+        "3, layout:scrolling"
+        "6, layout:scrolling"
+        "8, layout:monocle"
+      ];
       windowrule =
         let
           f = regex: "float, class:${regex}$";
         in
         [
-          # (f "waypaper")
           (f "com.github.Aylur.ags")
           (f "org.gnome.Calculator")
           (f "org.gnome.Weather")
-          (f "org.inkscape.Inkscape")
           (f "org.gnome.Settings")
           (f "org.gnome.Nautilus")
           (f "thunar")
           (f "nz.co.mega.")
           (f "Tor Browser")
+          "workspace 3 silent, class:org.gnome.Evince"
+          "workspace 5 silent, class:org.inkscape.Inkscape"
           "workspace 6 silent, title:Telegram"
           "workspace 7 silent, class:Spotify"
-          "workspace 7 silent, class:FreeTube"
-          "workspace 6 silent, class:vesktop"
           "workspace 8 silent, class:Tor Browser"
         ];
       windowrulev2 = [
+        "float,class:(foot),title:(quick-latex)"
+        "size 540 540,class:(foot),title:(quick-latex)"
+        "move 400 200,class:(foot),title:(quick-latex)"
+        "float,class:(__main__.py)"
+        "move 100 200,class:(__main__.py)"
         "size 40% 50%,class:(nz.co.mega.)"
         "size 50% 60%,class:(org.gnome.Nautilus)"
         "size 50% 60%,class:(thunar)"
@@ -288,9 +297,6 @@
         "float,class:(simple-scan),title:(About)"
         "float,class:(Zotero)"
         "size 50% 50%,class:(Zotero),title:(Zotero)"
-        "size 80% 80%,class:(org.inkscape.Inkscape),title:(Inkscape)"
-        "float,title:(TexText)"
-        "move 80% 6%,class:(TexText)"
         "float,class:(soffice)"
         "center,class:(soffice)"
         # "stayfocused,title:(MainPicker)"
@@ -306,14 +312,10 @@
         "bordercolor rgba(1DD15DFF),class:(Spotify)"
         "size 50% 60%,class:(Spotify)"
         "move 2% 10%,class:(Spotify)"
-        "float,class:(FreeTube)"
-        "idleinhibit focus, class:(FreeTube)"
-        "bordercolor rgba(FF3333FF),class:(FreeTube)"
-        "size 40% 60%,class:(FreeTube)"
-        "move 60% 10%,class:(Freetube)"
         "idleinhibit focus, class:(org.pwmt.zathura)"
         "idleinhibit focus, class:(evince)"
         "idleinhibit focus, class:(com.mitchellh.ghostty)"
+        "idleinhibit focus, class:(foot)"
         "float,class:(vesktop)"
         "move 53% 53%,class:(vesktop)"
         "size 46% 40%,class:(vesktop)"

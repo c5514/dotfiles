@@ -7,8 +7,6 @@
     ../../modules/config/Utils/default.nix
     ../../modules/config/Network/default.nix
     #../../modules/config/DeskEnv/gnome.nix
-    # ../../modules/config/DeskEnv/xfce.nix
-    ../../modules/config/DeskEnv/dwl.nix
     ../../modules/config/DeskEnv/hyprland.nix
   ];
 
@@ -30,7 +28,7 @@
     };
   };
   console = {
-    earlySetup = true;
+    earlySetup = false;
     font = "ter-v20n";
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
@@ -87,7 +85,7 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     fira-code
     fira-code-symbols
     fira-sans

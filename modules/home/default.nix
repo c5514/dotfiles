@@ -6,6 +6,7 @@
     # ./dconf.nix
     ./theme.nix
     ./apps/default.nix
+    ./Scripts/default.nix
   ];
   home.file = {
     "Pictures/Nix".source = ./pictures;

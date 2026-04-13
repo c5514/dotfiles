@@ -2,12 +2,16 @@
 {
   # Hyprland modules
   programs = {
-    hyprland.enable = true;
+    hyprland = {
+      withUWSM = true;
+      enable = true;
+    };
     hyprlock.enable = true;
   };
   environment.systemPackages = with pkgs; [
     hyprshade
-    xfce.thunar
+    # xfce.thunar
+    nautilus
     evince
   ];
 }
