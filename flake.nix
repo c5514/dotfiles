@@ -2,9 +2,14 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    # nixpkgs.url = "nixpkgs/nixos-25.11";
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-25.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -18,6 +23,10 @@
     };
     # nixvim.url = "github:c5514/nixvim";
     ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -50,6 +59,7 @@
           };
           modules = [
             ./hosts/main/home.nix
+            inputs.nixvim.homeModules.nixvim
           ];
         };
       };

@@ -1,0 +1,27 @@
+{
+  imports = [
+    ./alpha.nix
+    ./autopairs.nix
+    ./blink.nix
+    ./bufferline.nix
+    ./conform.nix
+    ./flash.nix
+    ./git.nix
+    ./illustrate.nix
+    ./indent.nix
+    ./lsp.nix
+    ./lualine.nix
+    ./luasnip.nix
+    ./markview.nix
+    ./mini.nix
+    ./neotree.nix
+    ./smart-splits.nix
+    ./telescope.nix
+    ./todo-comments.nix
+    ./treesitter.nix
+    ./undotree.nix
+    ./vimtex.nix
+    ./vim-be-good.nix
+    ./yazi.nix
+  ];
+}

@@ -2,7 +2,6 @@
 let
   myAliases = {
     ll = "ls -l";
-    cd = "z";
     ff = "fastfetch";
     tx = "cd ~/Documents/Vim/Tex/";
     dwn = "cd ~/Downloads/";
@@ -14,6 +13,7 @@ let
     # ns = "nix-shell --run fish";
     # dot = "zellij attach dotfiles";
     hmS = "home-manager switch --flake .";
+    hmUF = "NIXPKGS_ALLOW_UNFREE=1 home-manager switch --flake . --impure";
     hmG = "home-manager generations";
     hmR = "home-manager remove-generations";
     nixS = "sudo nixos-rebuild switch --flake .";

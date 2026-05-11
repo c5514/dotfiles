@@ -313,7 +313,7 @@
         "size 50% 60%,class:(Spotify)"
         "move 2% 10%,class:(Spotify)"
         "idleinhibit focus, class:(org.pwmt.zathura)"
-        "idleinhibit focus, class:(evince)"
+        "idleinhibit focus, class:(org.gnome.Evince)"
         "idleinhibit focus, class:(com.mitchellh.ghostty)"
         "idleinhibit focus, class:(foot)"
         "float,class:(vesktop)"

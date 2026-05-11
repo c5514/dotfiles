@@ -12,6 +12,7 @@
     obsidian
     zotero
     inkscape
+    gimp
     texliveFull
     typst
     python312Packages.tkinter

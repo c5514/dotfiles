@@ -17,18 +17,18 @@
   home = {
     username = "c5514";
     homeDirectory = "/home/c5514";
-    stateVersion = "25.05";
+    stateVersion = "26.05";
     packages = with pkgs; [
       ripgrep
       coreutils
       brillo
       clang
-      swww
+      awww
       libnotify
       lshw
       procps
       lm_sensors
-      blueberry
+      blueman
       networkmanagerapplet
       libsForQt5.qt5.qtwayland
       expat

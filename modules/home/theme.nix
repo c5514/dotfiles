@@ -4,9 +4,11 @@
     enable = true;
     theme = {
       name = "Orchis-Dark";
-      # name = "adw-gtk3-dark";
       package = pkgs.orchis-theme;
-      # package = pkgs.adw-gtk3;
+    };
+    gtk4.theme = {
+      name = "Orchis-Dark";
+      package = pkgs.orchis-theme;
     };
     cursorTheme = {
       package = pkgs.bibata-cursors;
@@ -20,15 +22,15 @@
       name = "Tela-circle";
     };
     gtk3.extraConfig = {
-      Settings = ''gtk-application-prefer-dark-theme=1'';
+      Settings = "gtk-application-prefer-dark-theme=1";
     };
     gtk4.extraConfig = {
-      Settings = ''gtk-application-prefer-dark-theme=1'';
+      Settings = "gtk-application-prefer-dark-theme=1";
     };
   };
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
+    platformTheme.name = "gtk";
     style = {
       package = pkgs.adwaita-qt;
       name = "adwaita-dark";

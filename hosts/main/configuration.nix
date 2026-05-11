@@ -29,7 +29,7 @@
   };
   console = {
     earlySetup = false;
-    font = "ter-v20n";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-v20n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };

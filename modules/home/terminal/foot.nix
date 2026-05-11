@@ -9,7 +9,7 @@
       cursor = {
         style = "beam";
       };
-      colors = {
+      colors-dark = {
         background = "0c090a";
         foreground = "e0e0e0";
         regular0 = "5c5f77";

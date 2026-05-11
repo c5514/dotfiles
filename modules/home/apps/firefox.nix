@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   home = {
     sessionVariables.BROWSER = "firefox";
@@ -6,6 +11,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
@@ -20,6 +26,7 @@
     };
     profiles.default = {
       name = "Default";
+      path = "default";
       search = {
         force = true;
         default = "ddg";
@@ -61,13 +68,29 @@
         ublock-origin
         darkreader
         sponsorblock
-        youtube-shorts-block
         clearurls
-        ghostery
       ];
       settings = {
         "extensions.autoDisableScopes" = 0;
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "datareporting.healthreport.uploadEnabled" = false;
+        "datareporting.policy.dataSubmissionEnabled" = false;
+        "browser.tabs.crash.Reporting.sendReport" = false;
+        "browser.ping-centre.telemetry" = false;
+        "browser.tabs.crashReporting.sendReport" = false;
+        "browser.crashReports.unsubmittedCheck.enabled" = false;
+        "browser.contentblocking.category" = "strict";
+        "privacy.trackingprotection.fingerprinting.enabled" = true;
+        "privacy.trackingprotection.cryptomining.enabled" = true;
+        "extensions.pocket.enabled" = false;
+        "identity.fxaccounts.enabled" = false;
+        "browser.ctrlTab.recentlyUsedOrder" = true;
+        "browser.startup.page" = 3;
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "sidebar.visibility" = "expand-on-hover";
+        "signon.rememberSignons" = false;
+        "signon.autofillsForms" = false;
       };
     };
   };

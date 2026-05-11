@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    ./nvim.nix
+    ./nixvim/default.nix
     # ./emacs.nix
     # ./helix.nix
     # ./vscodium.nix

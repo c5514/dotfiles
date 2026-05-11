@@ -2,19 +2,16 @@
 {
   imports = [ inputs.ags.homeManagerModules.default ];
   home.packages = with pkgs; [
-    # inputs.matugen.packages.${system}.default
     matugen
     fd
     bun
     dart-sass
     gtk3
     hyprpicker
-    # wf-recorder
     swappy
     slurp
     wayshot
     pywal
-    # inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     sysstat # To find CPU usage
     alsa-utils # To enable sound for battery warning
   ];
@@ -26,5 +23,22 @@
       accountsservice
       webkitgtk_6_0
     ];
+  };
+  wayland.windowManager.hyprland = {
+    settings = {
+      exec-once = [ "ags & " ];
+      bind = [
+        "$mainMod, SPACE, exec, ags -t launcher"
+        "$mainMod, BACKSPACE, exec, ags -t powermenu"
+        "$mainMod, D, exec, ags -t datemenu"
+        "$mainMod, M, exec, ags -t quicksettings"
+        "$mainMod, V, exec, ags -r 'launcher.open(\":ch \")'"
+        "$mainMod, O, exec, ags -t overview"
+        "$mainMod CTRL, V, exec, cliphist wipe"
+      ];
+      windowrule = [
+        "match:class com.github.Aylur.ags, float on, size 30% 45%"
+      ];
+    };
   };
 }

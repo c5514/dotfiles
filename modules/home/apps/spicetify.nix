@@ -3,11 +3,11 @@ let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
   programs.spicetify = {
     enable = true;
-    # theme = spicePkgs.themes.dribbblish;
-    # colorScheme = "lunar";
+    theme = spicePkgs.themes.dribbblish;
+    colorScheme = "lunar";
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts

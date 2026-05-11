@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.rofi.enable = true;
-  programs.rofi.package = pkgs.rofi-wayland;
+  programs.rofi.package = pkgs.rofi;
   xdg.configFile = {
     "wal/templates/colors-rofi.rasi".text = ''
       * {{
