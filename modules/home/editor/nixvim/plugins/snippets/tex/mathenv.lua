@@ -93,8 +93,18 @@ ls.add_snippets("tex", {
 		snippetType = "autosnippet",
 		dscr = "Aligned environment (inner)",
 		choices = {
-			fmta([[\begin{aligned}[b]\n  <>\n\\end{aligned}]], { i(1) }),
-			fmta([[\begin{aligned}[c]\n  <>\n\\end{aligned}]], { i(1) }),
+			fmta(
+				[[\begin{aligned}[b]
+  <>
+\end{aligned}]],
+				{ i(1) }
+			),
+			fmta(
+				[[\begin{aligned}[c]
+  <>
+\end{aligned}]],
+				{ i(1) }
+			),
 		},
 		condition = U.in_mathzone,
 	}),
@@ -105,10 +115,10 @@ ls.add_snippets("tex", {
 		snippetType = "autosnippet",
 		dscr = "Matrix",
 		choices = {
-			fmta([[\begin{pmatrix}\n  <>\n\\end{pmatrix}]], { i(1) }),
-			fmta([[\begin{bmatrix}\n  <>\n\\end{bmatrix}]], { i(1) }),
-			fmta([[\begin{Bmatrix}\n  <>\n\\end{Bmatrix}]], { i(1) }),
-			fmta([[\begin{matrix}\n  <>\n\\end{matrix}]], { i(1) }),
+			fmta([[\begin{pmatrix}<>\end{pmatrix}]], { i(1) }),
+			fmta([[\begin{bmatrix}<>\end{bmatrix}]], { i(1) }),
+			fmta([[\begin{Bmatrix}<>\end{Bmatrix}]], { i(1) }),
+			fmta([[\begin{matrix}<>\end{matrix}]], { i(1) }),
 		},
 		condition = U.in_mathzone,
 	}),

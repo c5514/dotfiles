@@ -9,6 +9,7 @@
     # megacmd
     #megasync
     # evince
+    brave
     obsidian
     zotero
     inkscape

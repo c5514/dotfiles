@@ -145,6 +145,8 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod SHIFT, E, exec, $fileManager2"
         "$mainMod, B, exec, $browser"
+        "$mainMod SHIFT, B, exec, brave"
+        "$mainMod ALT, B, exec, tor-browser"
         "$mainMod ALT, L, exec, hyprlock"
         "$mainMod, R, exec, $latex"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
@@ -258,12 +260,12 @@
           (i "org.gnome.Evince")
           (i "com.mitchellh.ghostty")
           (i "foot")
-          (i "Spotify")
+          (i "spotify")
           (i "firefox")
           "match:class org.gnome.Evince, workspace 3 silent"
           "match:class org.inkscape.Inkscape, workspace 5 silent"
           "match:class Telegram, workspace 6 silent"
-          "match:class Spotify, workspace 7 silent, float on, move 2% 10%, size 50% 60%"
+          "match:class spotify, workspace 7 silent, float on, size 910 540, move 20 80"
           "match:class Tor Browser, workspace 8"
           "match:class foot, match:title quick-latex, float on, size 540 540, move 400 200"
           "match:class __main__.py, match:xwayland true, float on, move = 100 200"

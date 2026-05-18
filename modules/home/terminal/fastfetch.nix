@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.fastfetch = {
     enable = true;
@@ -10,7 +9,7 @@
         printRemaining = true;
         position = "left";
       };
-      general.multithreading = true;
+
       display = {
         stat = false;
         showErrors = false;
@@ -24,16 +23,20 @@
         };
         size = {
           binaryPrefix = "iec";
-          ndigits = "2";
         };
         temp = {
           unit = "C";
           ndigits = 2;
         };
         bar = {
-          charElapsed = "█";
-          charTotal = "░";
-          border = false;
+          char = {
+            elapsed = "█";
+            total = "░";
+          };
+          border = {
+            left = "";
+            right = "";
+          };
           width = 20;
         };
         percent = {

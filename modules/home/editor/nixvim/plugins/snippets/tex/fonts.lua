@@ -7,7 +7,6 @@ local f = ls.function_node
 ls.add_snippets("tex", {
 	U.n({
 		trig = "it",
-		snippetType = "autosnippet",
 		dscr = "Italic text/math",
 		nodes = {
 			f(function()
@@ -23,7 +22,6 @@ ls.add_snippets("tex", {
 	}),
 	U.n({
 		trig = "bf",
-		snippetType = "autosnippet",
 		dscr = "Bold text/math",
 		nodes = {
 			f(function()
