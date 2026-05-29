@@ -80,7 +80,8 @@ function M.postfix(var)
 	return postfix(
 		vim.tbl_extend("force", {
 			trig = var.trig,
-			match_pattern = var.match_pattern or [[[%w%.%_%-]+$]],
+			-- match_pattern = var.match_pattern or [[[%w%.%_%-]+$]],
+			match_pattern = var.match_pattern or [[\\?[%w%.%_%-]+$]],
 			snippetType = "autosnippet",
 			dscr = var.dscr,
 		}, var.opts or {}),

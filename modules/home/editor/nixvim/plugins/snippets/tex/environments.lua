@@ -187,7 +187,7 @@ ls.add_snippets("tex", {
 		trig = "quot",
 		wordTrig = true,
 		dscr = "Quote environment",
-		template = [[\begin{quote}\n  <>\n\\end{quote}]],
+		template = [[\begin{quote} <>\end{quote}]],
 		nodes = { i(1) },
 		condition = U.line_begin,
 	}),

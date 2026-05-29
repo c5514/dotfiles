@@ -159,7 +159,19 @@ table.insert(
 			fmta([[\frac{\dd <>}{\dd <>}]], { i(1), i(2, "x") }),
 			fmta([[\frac{\dd^2 <>}{\dd <>^2}]], { i(1), i(2, "x") }),
 			fmta([[\frac{\dd^3 <>}{\dd <>^3}]], { i(1), i(2, "x") }),
-			fmta([[\frac{\dd^{<>} <>}{\dd <>^{<>}}]], { i(1, "n"), i(2), i(3, "x"), rep(1) }),
+		},
+	})
+)
+table.insert(
+	snippets,
+	U.c({
+		trig = "pdec",
+		wordTrig = true,
+		dscr = "Partial Derivative (choice menu)",
+		choices = {
+			fmta([[\frac{\partial <>}{\partial <>}]], { i(1), i(2, "x") }),
+			fmta([[\frac{\partial^2 <>}{\partial <>^2}]], { i(1), i(2, "x") }),
+			fmta([[\frac{\partial^3 <>}{\partial <>^3}]], { i(1), i(2, "x") }),
 		},
 	})
 )
@@ -371,7 +383,7 @@ table.insert(
 table.insert(
 	snippets,
 	U.c({
-		trig = "  ",
+		trig = "   ",
 		wordTrig = false,
 		snippetType = "autosnippet",
 		dscr = "Horizontal spacing",

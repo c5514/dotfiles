@@ -27,7 +27,7 @@ ls.add_snippets(
 		{ trig = "///", text = "\\setminus" },
 		{ trig = "divd", text = "\\div" },
 		{ trig = "pm", text = "\\pm" },
-		{ trig = "mp", text = "\\mp" },
+		{ trig = "mp", text = "\\mp", opts = { wordTrig = true } },
 		{ trig = "cdotb", text = "\\bullet" },
 		{ trig = "star", text = "\\star" },
 		{ trig = "ast", text = "\\ast" },
@@ -70,7 +70,7 @@ ls.add_snippets(
 		{ trig = "cua", text = "\\square" },
 		{ trig = "tri", text = "\\triangle" },
 
-		{ trig = "partial", text = "\\partial" },
+		{ trig = "pap", text = "\\partial" },
 		{ trig = "nabla", text = "\\nabla" },
 		{ trig = "ell", text = "\\ell" },
 		{ trig = "wp", text = "\\wp" },
@@ -81,8 +81,8 @@ ls.add_snippets(
 		{ trig = "pll", text = "\\parallel" },
 		{ trig = "npl", text = "\\nparallel" },
 
-		{ trig = "prime", text = "\\prime" },
-		{ trig = "pprime", text = "^{\\prime}" },
+		{ trig = "pri", text = "\\prime" },
+		{ trig = "ppr", text = "^{\\prime}" },
 		{ trig = "ppp", text = "^{\\prime\\prime}" },
 	})
 )
@@ -212,6 +212,7 @@ ls.add_snippets(
 		{ trig = "acot", text = "\\arccot" },
 		{ trig = "asec", text = "\\arcsec" },
 		{ trig = "acsc", text = "\\arccsc" },
+		{ trig = "ln", text = "\\ln" },
 	})
 )
 

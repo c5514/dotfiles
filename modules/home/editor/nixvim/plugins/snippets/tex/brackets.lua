@@ -11,6 +11,7 @@ local brackets = {
 	{ trig = "lr{", left = "\\{", right = "\\}" },
 	{ trig = "lr[", left = "[", right = "]" },
 	{ trig = "lr<", left = "\\langle", right = "\\rangle" },
+	{ trig = "lrb", left = "[", right = "]}" },
 	{ trig = "lrB", left = "\\{", right = "\\}" },
 }
 
