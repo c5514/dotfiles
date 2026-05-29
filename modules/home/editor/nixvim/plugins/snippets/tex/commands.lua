@@ -326,7 +326,9 @@ ls.add_snippets("tex", {
 		trig = "frm",
 		wordTrig = true,
 		dscr = "Beamer frame",
-		template = [[\begin{frame}{<>}\n  <>\n\\end{frame}]],
+		template = [[\begin{frame}{<>}
+  <>
+\end{frame}]],
 		nodes = { i(1, "Frame Title"), i(2, "") },
 		condition = U.in_beamer,
 	}),
@@ -335,7 +337,10 @@ ls.add_snippets("tex", {
 		trig = "frmt",
 		wordTrig = true,
 		dscr = "Beamer frame with title",
-		template = [[\begin{frame}\n  \frametitle{<>}\n  <>\n\\end{frame}]],
+		template = [[\begin{frame}
+  \frametitle{<>}
+  <>
+\end{frame}]],
 		nodes = { i(1, "Frame Title"), i(2, "") },
 		condition = U.in_beamer,
 	}),
@@ -344,7 +349,9 @@ ls.add_snippets("tex", {
 		trig = "blk",
 		wordTrig = true,
 		dscr = "Beamer block",
-		template = [[\begin{block}{<>}\n  <>\n\\end{block}]],
+		template = [[\begin{block}{<>}
+  <>
+\end{block}]],
 		nodes = { i(1, "Block Title"), i(2, "") },
 		condition = U.in_beamer,
 	}),
@@ -353,7 +360,9 @@ ls.add_snippets("tex", {
 		trig = "ablk",
 		wordTrig = true,
 		dscr = "Beamer alert block",
-		template = [[\begin{alertblock}{<>}\n  <>\n\\end{alertblock}]],
+		template = [[\begin{alertblock}{<>}
+  <>
+\end{alertblock}]],
 		nodes = { i(1, "Alert Title"), i(2, "") },
 		condition = U.in_beamer,
 	}),

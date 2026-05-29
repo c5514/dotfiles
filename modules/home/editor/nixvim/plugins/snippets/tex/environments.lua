@@ -141,7 +141,9 @@ ls.add_snippets("tex", {
 		trig = "env",
 		wordTrig = true,
 		dscr = "Generic environment",
-		template = [[\begin{<>}\n  <>\n\\end{<>}]],
+		template = [[\begin{<>}
+  <>
+\end{<>}]],
 		nodes = { i(1, "environment"), i(2), rep(1) },
 		condition = U.line_begin,
 	}),
@@ -178,7 +180,9 @@ ls.add_snippets("tex", {
 		trig = "cent",
 		wordTrig = true,
 		dscr = "Center environment",
-		template = [[\begin{center}\n  <>\n\\end{center}]],
+		template = [[\begin{center}
+  <>
+\end{center}]],
 		nodes = { i(1) },
 		condition = U.line_begin,
 	}),

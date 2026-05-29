@@ -4,6 +4,7 @@
     ./autocmds.nix
     ./keymaps.nix
     ./options.nix
+    ./latex-templates.nix
   ];
   programs.nixvim = {
     enable = true;

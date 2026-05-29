@@ -36,7 +36,7 @@
         "$mainMod CTRL, V, exec, cliphist wipe"
       ];
       windowrule = [
-        "match:class waypapaer, float on"
+        "match:class waypaper, float on"
       ];
     };
   };

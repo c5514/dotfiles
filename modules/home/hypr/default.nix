@@ -151,9 +151,12 @@
         "$mainMod, R, exec, $latex"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
         #Screenshot
-        ", PRINT, exec, grimblast copy area"
-        "$mainMod, PRINT, exec, grimblast copy active"
-        "$mainMod SHIFT, PRINT, exec, grimblast copy screen"
+        # ", PRINT, exec, grimblast copy area"
+        # "$mainMod, PRINT, exec, grimblast copy active"
+        # "$mainMod SHIFT, PRINT, exec, grimblast copy screen"
+        ", XF86Cut, exec, grimblast copy area"
+        "$mainMod, XF86Cut, exec, grimblast copy active"
+        "$mainMod SHIFT, XF86Cut, exec, grimblast copy screen"
         #Window management
         "$mainMod, F, fullscreen, 1"
         "$mainMod SHIFT, F, fullscreen, 0"
