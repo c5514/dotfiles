@@ -233,7 +233,7 @@ ls.add_snippets("tex", {
 	U.fmta({
 		trig = "col",
 		wordTrig = true,
-		snippetType = "autosnippet",
+		-- snippetType = "autosnippet",
 		dscr = "Color in math",
 		template = [[\textcolor{<>}{<>}]],
 		nodes = { i(1, "red"), i(2, "") },

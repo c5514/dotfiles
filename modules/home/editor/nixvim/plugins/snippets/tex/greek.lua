@@ -42,4 +42,4 @@ local greek_letters = {
 	{ trig = ";z", text = "\\zeta" },
 }
 
-ls.add_snippets("tex", U.batch_autosnippet(greek_letters))
+ls.add_snippets("tex", U.batch_autosnippet(greek_letters, { wordTrig = false }))

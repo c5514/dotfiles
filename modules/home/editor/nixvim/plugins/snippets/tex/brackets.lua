@@ -11,8 +11,10 @@ local brackets = {
 	{ trig = "lr{", left = "\\{", right = "\\}" },
 	{ trig = "lr[", left = "[", right = "]" },
 	{ trig = "lr<", left = "\\langle", right = "\\rangle" },
-	{ trig = "lrb", left = "[", right = "]}" },
+	{ trig = "lrb", left = "[", right = "]" },
 	{ trig = "lrB", left = "\\{", right = "\\}" },
+	{ trig = "lrp", left = "\\left(", right = "\\right)" },
+	{ trig = "lra", left = "\\langle", right = "\\rangle" },
 }
 
 for _, br in ipairs(brackets) do
@@ -26,15 +28,6 @@ for _, br in ipairs(brackets) do
 		})
 	)
 end
-
-table.insert(
-	snippets,
-	U.n({
-		trig = "()",
-		snippetType = "autosnippet",
-		nodes = { t("\\left("), i(1, " "), t("\\right)") },
-	})
-)
 
 local delimiters = {
 	{ trig = "mean", cmd = "\\mean" },

@@ -5,7 +5,7 @@
       disable_filetype = [
         "TelescopePrompt"
         "vim"
-        "tex"
+        # "tex"
         "spectre_panel"
       ];
     };

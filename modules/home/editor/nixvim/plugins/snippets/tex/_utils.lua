@@ -15,9 +15,8 @@ M.line_begin = require("luasnip.extras.expand_conditions").line_begin
 local ls = require("luasnip")
 local fmta = require("luasnip.extras.fmt").fmta
 
--- Sensible defaults: manual trigger, not word-bound, normal priority
 local default_opts = {
-	wordTrig = false,
+	wordTrig = true,
 	priority = 10,
 }
 
@@ -80,25 +79,12 @@ function M.postfix(var)
 	return postfix(
 		vim.tbl_extend("force", {
 			trig = var.trig,
-			-- match_pattern = var.match_pattern or [[[%w%.%_%-]+$]],
-			match_pattern = var.match_pattern or [[\\?[%w%.%_%-]+$]],
+			match_pattern = var.match_pattern or [[[\\%w%.%_%-]+$]],
 			snippetType = "autosnippet",
 			dscr = var.dscr,
 		}, var.opts or {}),
 		{ lambda(var.cmd .. "{" .. lambda.POSTFIX_MATCH .. "}") },
 		{ condition = var.condition or M.in_mathzone }
-	)
-end
-
-function M.env(var)
-	var = var or {}
-	return ls.snippet(
-		opts(var),
-		fmta(
-			string.format([[\begin{%s}\n  <>\n\\end{%s}]], var.name, var.name),
-			{ ls.insert_node(1, var.default or "") }
-		),
-		{ condition = var.condition or M.line_begin }
 	)
 end
 
@@ -110,11 +96,14 @@ function M.batch_simple(list)
 	return snippets
 end
 
-function M.batch_autosnippet(list)
+function M.batch_autosnippet(list, batch_defaults)
 	local snippets = {}
 	for _, item in ipairs(list) do
 		item.opts = item.opts or {}
 		item.opts.snippetType = "autosnippet"
+		if batch_defaults then
+			item.opts = vim.tbl_extend("force", item.opts, batch_defaults)
+		end
 		table.insert(snippets, M.s(item))
 	end
 	return snippets

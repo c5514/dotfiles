@@ -9,25 +9,24 @@ local rep = require("luasnip.extras").rep
 ls.add_snippets(
 	"tex",
 	U.batch_autosnippet({
-		{ trig = "ooo", text = "\\infty" },
+		{ trig = "ooo", text = "\\infty" }, -- letters → wordTrig=true (ok)
 		{ trig = "fall", text = "\\forall" },
 		{ trig = "AA", text = "\\forall" },
 		{ trig = "exi", text = "\\exists" },
 		{ trig = "nex", text = "\\nexists" },
-
 		{ trig = "neg", text = "\\neg" },
 
-		{ trig = "***", text = "\\cdots" },
-		{ trig = "...", text = "\\ldots" },
-		{ trig = ",.", text = "\\cdot" },
+		{ trig = "***", text = "\\cdots", opts = { wordTrig = false } },
+		{ trig = "...", text = "\\ldots", opts = { wordTrig = false } },
+		{ trig = ",.", text = "\\cdot", opts = { wordTrig = false } },
 
 		{ trig = "xx", text = "\\times" },
 		{ trig = "oxo", text = "\\otimes" },
 		{ trig = "opo", text = "\\oplus" },
-		{ trig = "///", text = "\\setminus" },
+		{ trig = "///", text = "\\setminus", opts = { wordTrig = false } },
 		{ trig = "divd", text = "\\div" },
 		{ trig = "pm", text = "\\pm" },
-		{ trig = "mp", text = "\\mp", opts = { wordTrig = true } },
+		{ trig = "mp", text = "\\mp" },
 		{ trig = "cdotb", text = "\\bullet" },
 		{ trig = "star", text = "\\star" },
 		{ trig = "ast", text = "\\ast" },
@@ -41,8 +40,8 @@ ls.add_snippets(
 		{ trig = "eqv", text = "\\equiv" },
 		{ trig = "prp", text = "\\propto" },
 		{ trig = "perp", text = "\\perp" },
-		{ trig = "||", text = "\\mid" },
-		{ trig = "~~", text = "\\sim" },
+		{ trig = "||", text = "\\mid", opts = { wordTrig = false } },
+		{ trig = "~~", text = "\\sim", opts = { wordTrig = false } },
 		{ trig = "simeq", text = "\\simeq" },
 		{ trig = "asy", text = "\\asymp" },
 		{ trig = "deq", text = "\\doteq" },
@@ -64,8 +63,8 @@ ls.add_snippets(
 		{ trig = "ww", text = "\\wedge" },
 		{ trig = "iff", text = "\\iff" },
 
-		{ trig = "<<", text = "\\ll" },
-		{ trig = ">>", text = "\\gg" },
+		{ trig = "<<", text = "\\ll", opts = { wordTrig = false } },
+		{ trig = ">>", text = "\\gg", opts = { wordTrig = false } },
 
 		{ trig = "cua", text = "\\square" },
 		{ trig = "tri", text = "\\triangle" },
@@ -122,6 +121,7 @@ ls.add_snippets("tex", {
 	U.c({
 		trig = "->",
 		snippetType = "autosnippet",
+		wordTrig = false,
 		dscr = "Arrow shortcuts",
 		choices = { t("\\rightarrow"), t("\\leftarrow"), t("\\leftrightarrow") },
 	}),
@@ -129,6 +129,7 @@ ls.add_snippets("tex", {
 	U.c({
 		trig = "=>",
 		snippetType = "autosnippet",
+		wordTrig = false,
 		dscr = "Double arrow shortcuts",
 		choices = { t("\\Rightarrow"), t("\\Leftarrow"), t("\\Leftrightarrow") },
 	}),
@@ -136,6 +137,7 @@ ls.add_snippets("tex", {
 	U.c({
 		trig = "-->",
 		snippetType = "autosnippet",
+		opts = { priority = 50 },
 		dscr = "Long arrow shortcuts",
 		choices = { t("\\longrightarrow"), t("\\longleftarrow"), t("\\longleftrightarrow") },
 	}),
@@ -143,6 +145,7 @@ ls.add_snippets("tex", {
 	U.c({
 		trig = "==>",
 		snippetType = "autosnippet",
+		opts = { priority = 50 },
 		dscr = "Long double arrow shortcuts",
 		choices = { t("\\Longrightarrow"), t("\\Longleftarrow"), t("\\Longleftrightarrow") },
 	}),
@@ -152,15 +155,57 @@ ls.add_snippets("tex", {
 })
 
 ls.add_snippets("tex", {
-	U.s({ trig = "sr", snippetType = "autosnippet", dscr = "Square", text = "^2" }),
-	U.s({ trig = "cb", snippetType = "autosnippet", dscr = "Cube", text = "^3" }),
+	U.s({ trig = "sr", wordTrig = false, snippetType = "autosnippet", dscr = "Square", text = "^2" }),
+	U.s({ trig = "cb", wordTrig = false, snippetType = "autosnippet", dscr = "Cube", text = "^3" }),
 
-	U.fmta({ trig = "td", snippetType = "autosnippet", dscr = "Superscript", template = [[^{<>}]], nodes = { i(1) } }),
-	U.fmta({ trig = "sb", snippetType = "autosnippet", dscr = "Subscript", template = [[_{<>}]], nodes = { i(1) } }),
-	U.fmta({ trig = "^^", snippetType = "autosnippet", dscr = "Superscript", template = [[^{<>}]], nodes = { i(1) } }),
-	U.fmta({ trig = "__", snippetType = "autosnippet", dscr = "Subscript", template = [[_{<>}]], nodes = { i(1) } }),
-	U.fmta({ trig = ";;", snippetType = "autosnippet", dscr = "Superscript", template = [[^<>]], nodes = { i(1) } }),
-	U.fmta({ trig = ",,", snippetType = "autosnippet", dscr = "Subscript", template = [[_<>]], nodes = { i(1) } }),
+	U.fmta({
+		trig = "td",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Superscript",
+		template = [[^{<>}]],
+		nodes = { i(1) },
+	}),
+	U.fmta({
+		trig = "sb",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Subscript",
+		template = [[_{<>}]],
+		nodes = { i(1) },
+	}),
+	U.fmta({
+		trig = "^^",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Superscript",
+		template = [[^{<>}]],
+		nodes = { i(1) },
+	}),
+	U.fmta({
+		trig = "__",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Subscript",
+		template = [[_{<>}]],
+		nodes = { i(1) },
+	}),
+	U.fmta({
+		trig = ";;",
+		wordTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Superscript",
+		template = [[^<>]],
+		nodes = { i(1) },
+	}),
+	U.fmta({
+		trig = ",,",
+		worTrig = false,
+		snippetType = "autosnippet",
+		dscr = "Subscript",
+		template = [[_<>]],
+		nodes = { i(1) },
+	}),
 })
 
 ls.add_snippets(
