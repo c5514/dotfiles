@@ -41,7 +41,7 @@
         "WAYLAND_DISPLAY,wayland-1"
       ];
       #Programs
-      "$terminal" = "foot";
+      "$terminal" = "wezterm";
       "$fileManager" = "~/Scripts/yazi.sh";
       "$fileManager2" = "nautilus";
       "$browser" = "firefox";
@@ -255,6 +255,7 @@
           (f "org.gnome.Settings")
           (f "org.gnome.Nautilus")
           (f "xdg-desktop-portal-gtk")
+          (f "com.github.wwmm.easyeffects")
           (f "thunar")
           (f "org.pulseaudio.pavucontrol")
           (f "feh")
@@ -263,6 +264,7 @@
           (i "org.gnome.Evince")
           (i "com.mitchellh.ghostty")
           (i "foot")
+          (i "wezterm")
           (i "spotify")
           (i "firefox")
           "match:class org.gnome.Evince, workspace 3 silent"

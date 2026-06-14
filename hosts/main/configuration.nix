@@ -39,12 +39,16 @@
       layout = "us";
       variant = "altgr-intl";
     };
-    videoDrivers = [ "amdgpu" ];
+    # videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "modesetting" ];
   };
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+      ];
     };
     i2c.enable = true;
   };
@@ -108,6 +112,7 @@
     libinput.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
+    flatpak.enable = true;
   };
   xdg.portal.enable = true;
 

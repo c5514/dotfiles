@@ -9,7 +9,7 @@ local rep = require("luasnip.extras").rep
 ls.add_snippets(
 	"tex",
 	U.batch_autosnippet({
-		{ trig = "ooo", text = "\\infty" }, -- letters → wordTrig=true (ok)
+		{ trig = "ooo", text = "\\infty" },
 		{ trig = "fall", text = "\\forall" },
 		{ trig = "AA", text = "\\forall" },
 		{ trig = "exi", text = "\\exists" },
@@ -56,7 +56,7 @@ ls.add_snippets(
 		{ trig = "sube", text = "\\subseteq" },
 		{ trig = "supe", text = "\\supseteq" },
 		{ trig = "sbset", text = "\\subsetneq" },
-		{ trig = "empty", text = "\\emptyset" },
+		{ trig = "empt", text = "\\emptyset" },
 		{ trig = "varn", text = "\\varnothing" },
 
 		{ trig = "vv", text = "\\vee" },
@@ -70,7 +70,7 @@ ls.add_snippets(
 		{ trig = "tri", text = "\\triangle" },
 
 		{ trig = "pap", text = "\\partial" },
-		{ trig = "nabla", text = "\\nabla" },
+		{ trig = "nbl", text = "\\nabla" },
 		{ trig = "ell", text = "\\ell" },
 		{ trig = "wp", text = "\\wp" },
 		{ trig = "aleph", text = "\\aleph" },
@@ -218,6 +218,7 @@ ls.add_snippets(
 		{ trig = "ovl", cmd = "\\overline" },
 		{ trig = "vec", cmd = "\\vec" },
 		{ trig = "vb", cmd = "\\vb" },
+		{ trig = "vm", cmd = "\\vb*" },
 	})
 )
 

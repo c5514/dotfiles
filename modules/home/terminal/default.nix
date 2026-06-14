@@ -10,9 +10,6 @@
     # ./tmux.nix
     ./yazi.nix
     # ./zellij.nix
-    # ./wezterm.nix
+    ./wezterm.nix
   ];
-  # home.packages = with pkgs; [
-  #   ghostty
-  # ];
 }

@@ -34,8 +34,10 @@ in
       enable = true;
       package = pkgs.fish;
       loginShellInit = ''
-        if uwsm check may-start && uwsm select
-               exec uwsm start default
+        if test -z "$WAYLAND_DISPLAY"
+            if uwsm check may-start && uwsm select
+                exec uwsm start default
+            end
         end
       '';
       interactiveShellInit = ''

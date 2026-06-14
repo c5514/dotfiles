@@ -13,7 +13,7 @@ local brackets = {
 	{ trig = "lr<", left = "\\langle", right = "\\rangle" },
 	{ trig = "lrb", left = "[", right = "]" },
 	{ trig = "lrB", left = "\\{", right = "\\}" },
-	{ trig = "lrp", left = "\\left(", right = "\\right)" },
+	{ trig = "lrp", left = "(", right = ")" },
 	{ trig = "lra", left = "\\langle", right = "\\rangle" },
 }
 
@@ -23,6 +23,7 @@ for _, br in ipairs(brackets) do
 		U.fmta({
 			trig = br.trig,
 			snippetType = "autosnippet",
+			wordTrig = false,
 			template = string.format("\\left%s<>\\right%s", br.left, br.right),
 			nodes = { i(1, " ") },
 		})
