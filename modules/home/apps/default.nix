@@ -11,6 +11,8 @@
     # evince
     brave
     obsidian
+    zettlr
+    proton-vpn-cli
     zotero
     inkscape
     gimp

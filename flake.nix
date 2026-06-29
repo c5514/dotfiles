@@ -22,10 +22,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixvim.url = "github:c5514/nixvim";
-    ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    # ags.url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

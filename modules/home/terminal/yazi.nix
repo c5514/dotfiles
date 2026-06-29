@@ -13,14 +13,10 @@
       };
     };
     theme = {
-      manager = {
+      mgr = {
         cwd = {
           fg = "#61AFEF";
         };
-        hovered = {
-          bg = "#282C34";
-        };
-        preview_hovered.underline = true;
         find_keyword = {
           fg = "#E06C75";
           italic = true;
@@ -46,11 +42,6 @@
           fg = "#ABB2BF";
           bg = "#E5C07B";
         };
-        tab_active = {
-          bg = "#282C34";
-          fg = "#61AFEF";
-        };
-        tab_width = 1;
         count_copied = {
           fg = "#98C379";
           bg = "#282C34";
@@ -68,27 +59,57 @@
           fg = "#282C34";
         };
       };
-      status = {
-        separator_open = "";
-        separator_close = "";
-        separator_style = {
+      indicator = {
+        current = {
+          bg = "#282C34";
+        };
+        preview = {
+          underline = true;
+        };
+      };
+      tabs = {
+        active = {
+          bg = "#282C34";
+          fg = "#61AFEF";
+        };
+      };
+      mode = {
+        normal_main = {
+          fg = "#282C34";
+          bg = "#61AFEF";
+          bold = true;
+        };
+        normal_alt = {
           fg = "#61AFEF";
           bg = "#282C34";
         };
-        mode_normal = {
+        select_main = {
           fg = "#282C34";
           bg = "#61AFEF";
           bold = true;
         };
-        mode_select = {
+        select_alt = {
+          fg = "#61AFEF";
+          bg = "#282C34";
+        };
+        unset_main = {
           fg = "#282C34";
           bg = "#61AFEF";
           bold = true;
         };
-        mode_unset = {
-          fg = "#282C34";
-          bg = "#61AFEF";
-          bold = true;
+        unset_alt = {
+          fg = "#61AFEF";
+          bg = "#282C34";
+        };
+      };
+      status = {
+        sep_left = {
+          open = "";
+          close = "";
+        };
+        sep_right = {
+          open = "";
+          close = "";
         };
         progress_label = {
           fg = "#ABB2BF";
@@ -102,23 +123,23 @@
           fg = "#E06C75";
           bg = "#282C34";
         };
-        permissions_t = {
+        perm_type = {
           fg = "#98C379";
         };
-        permissions_r = {
+        perm_read = {
           fg = "#E06C75";
         };
-        permissions_w = {
+        perm_write = {
           fg = "#E5C07B";
         };
-        permissions_x = {
+        perm_exec = {
           fg = "#98C379";
         };
-        permissions_s = {
+        perm_sep = {
           fg = "#ABB2BF";
         };
       };
-      select = {
+      pick = {
         border = {
           fg = "#98C379";
         };
@@ -133,7 +154,7 @@
         };
         selected.reversed = true;
       };
-      completion.border = {
+      cmp.border = {
         fg = "#98C379";
       };
       tasks = {
@@ -158,7 +179,7 @@
         desc = {
           fg = "#E5C07B";
         };
-        separator = "  ";
+        separator = "  ";
         separator_style = {
           fg = "#ABB2BF";
         };
@@ -196,71 +217,71 @@
           {
             mime = "image/*";
             fg = "#E5C07B";
-          } # Orange
+          }
           # Media
           {
             mime = "video/*";
             fg = "#E06C75";
-          } # Red
+          }
           {
             mime = "audio/*";
             fg = "#E06C75";
-          } # Red
+          }
           # Archives
           {
             mime = "application/zip";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-tar";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-bzip*";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-bzip2";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-7z-compressed";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-rar";
             fg = "#C678DD";
-          } # Magenta
+          }
           {
             mime = "application/x-xz";
             fg = "#C678DD";
-          } # Magenta
+          }
           # Documents
           {
             mime = "application/doc";
             fg = "#D3D3D3";
-          } # Green
+          }
           {
             mime = "application/pdf";
             fg = "#D3D3D3";
-          } # Green
+          }
           {
             mime = "application/rtf";
             fg = "#D3D3D3";
-          } # Green
+          }
           {
             mime = "application/vnd.*";
             fg = "#D3D3D3";
-          } # Green
+          }
           # Fallback
           {
-            name = "*";
+            url = "*";
             fg = "#ABB2BF";
-          } # Blue
+          }
           {
-            name = "*/";
+            url = "*/";
             fg = "#61AFEF";
-          } # Blue
+          }
         ];
       };
     };

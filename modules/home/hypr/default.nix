@@ -14,6 +14,7 @@
     enable = true;
     systemd.enable = false;
     xwayland.enable = true;
+    configType = "hyprlang";
     settings = {
       monitor = [
         "eDP-1,preferred,auto,1"
@@ -45,7 +46,7 @@
       "$fileManager" = "~/Scripts/yazi.sh";
       "$fileManager2" = "nautilus";
       "$browser" = "firefox";
-      "$latex" = "~/Scripts/quick-latex.sh";
+      # "$latex" = "~/Scripts/quick-latex.sh";
       #Input
       input = {
         kb_layout = "us";
@@ -70,7 +71,7 @@
       };
       #Dwindle and Master
       dwindle = {
-        pseudotile = "yes";
+        # pseudotile = "yes";
         preserve_split = "yes";
       };
       master = {
@@ -148,7 +149,7 @@
         "$mainMod SHIFT, B, exec, brave"
         "$mainMod ALT, B, exec, tor-browser"
         "$mainMod ALT, L, exec, hyprlock"
-        "$mainMod, R, exec, $latex"
+        # "$mainMod, R, exec, $latex"
         "$mainMod, N, exec,  if hyprshade current | grep -q 'blue-light-filter'; then hyprshade off; else hyprshade on blue-light-filter; fi"
         #Screenshot
         # ", PRINT, exec, grimblast copy area"
@@ -264,13 +265,13 @@
           (i "org.gnome.Evince")
           (i "com.mitchellh.ghostty")
           (i "foot")
-          (i "wezterm")
-          (i "spotify")
+          (i "org.wezfurlong.wezterm")
+          (i "Spotify")
           (i "firefox")
           "match:class org.gnome.Evince, workspace 3 silent"
           "match:class org.inkscape.Inkscape, workspace 5 silent"
           "match:class Telegram, workspace 6 silent"
-          "match:class spotify, workspace 7 silent, float on, size 910 540, move 20 80"
+          "match:class Spotify, workspace 7 silent, float on, size 910 540, move 20 80"
           "match:class Tor Browser, workspace 8"
           "match:class foot, match:title quick-latex, float on, size 540 540, move 400 200"
           "match:class __main__.py, match:xwayland true, float on, move = 100 200"

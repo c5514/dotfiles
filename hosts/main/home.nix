@@ -30,7 +30,7 @@
       lm_sensors
       blueman
       networkmanagerapplet
-      libsForQt5.qt5.qtwayland
+      qt5.qtwayland
       expat
       fzf
       python3

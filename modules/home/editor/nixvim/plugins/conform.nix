@@ -24,6 +24,7 @@
         notify_on_error = true;
         formatters_by_ft = {
           lua = [ "stylua" ];
+          qml = [ "qmlformat" ];
           python = [
             "isort"
             "black"
@@ -113,6 +114,7 @@
       prettierd
       prettier
       nixfmt
+      kdePackages.qtdeclarative
     ];
   };
 }

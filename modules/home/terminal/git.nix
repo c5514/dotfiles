@@ -18,7 +18,7 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*" = {
+      settings."*" = {
         forwardAgent = false;
         addKeysToAgent = "yes";
         compression = false;

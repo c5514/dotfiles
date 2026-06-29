@@ -1,16 +1,50 @@
 import Quickshell
+import Quickshell.Io
 import QtQuick
-import "./modules/bar/"
-import "./modules/osd/"
-import "./modules/powermenu/"
-// import "./modules/powermenu" as PM
-ShellRoot {
-    Bar { }
+import "bar"
+import "app-launcher"
+import "notifications"
+import "theme-switcher"
+import "wallpaper"
+import "osd"
+import "monitor-manager"
+import "utils"
+import "powermenu"
+import "clipboard"
+import "calendar"
 
-    Volume {
-      id: volumeOsd
+Scope {
+    ThemeSwitcher {
+        id: ts
     }
-  //   Powermenu {
-  //   id: powerMenu
-  // }
+    Bar {
+        theme: ts.theme
+    }
+    AppLauncher {
+        theme: ts.theme
+    }
+    NotificationPopup {
+        theme: ts.theme
+    }
+    WallpaperManager {
+        theme: ts.theme
+    }
+    OSD {
+        theme: ts.theme
+    }
+    MonitorManager {
+        theme: ts.theme
+    }
+    Utils {
+        theme: ts.theme
+    }
+    Powermenu {
+        theme: ts.theme
+    }
+    Clipboard {
+        theme: ts.theme
+    }
+    Calendar {
+        theme: ts.theme
+    }
 }

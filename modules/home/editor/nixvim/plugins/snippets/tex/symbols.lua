@@ -200,7 +200,7 @@ ls.add_snippets("tex", {
 	}),
 	U.fmta({
 		trig = ",,",
-		worTrig = false,
+		wordTrig = false,
 		snippetType = "autosnippet",
 		dscr = "Subscript",
 		template = [[_<>]],
